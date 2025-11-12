@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/Button';
 import { ExternalLinkIcon } from 'lucide-react';
@@ -55,7 +56,8 @@ const showcaseProjects: ShowcaseProject[] = [
 ];
 
 export function ShowcaseProject() {
-  const { id } = useParams<{ id: string }>();
+  const router = useRouter();
+  const { id } = router.query;
   const sectionRef = useAnimateOnScroll<HTMLElement>();
 
   // Scroll to top on page load
@@ -70,7 +72,7 @@ export function ShowcaseProject() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Project Not Found</h1>
-          <Link to="/portfolio">
+          <Link href="/portfolio">
             <Button variant="outline">Return to Portfolio</Button>
           </Link>
         </div>
@@ -90,7 +92,7 @@ export function ShowcaseProject() {
         {/* Breadcrumb Navigation */}
         <div className="container mx-auto px-4 md:px-6 py-3 border-b border-gray-100">
           <nav className="text-sm">
-            <Link to="/portfolio" className="text-orange-500 hover:text-orange-600 transition-colors">
+            <Link href="/portfolio" className="text-orange-500 hover:text-orange-600 transition-colors">
               Portfolio
             </Link>
             <span className="mx-2 text-gray-400">/</span>
@@ -210,7 +212,7 @@ export function ShowcaseProject() {
 
                     {/* CTA Buttons */}
                     <div className="space-y-3">
-                      <Link to="/portfolio" className="block">
+                      <Link href="/portfolio" className="block">
                         <Button variant="outline" className="w-full">
                           Return to Portfolio
                         </Button>

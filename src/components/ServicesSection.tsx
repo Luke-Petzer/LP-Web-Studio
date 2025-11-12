@@ -28,21 +28,21 @@ export function ServicesSection() {
       }
     });
   }, []);
-  return <section ref={sectionRef} className="py-16 sm:py-20 bg-gray-50">
+  return <section ref={sectionRef} className="py-16 md:py-20 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 animate-on-scroll opacity-0">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 animate-on-scroll opacity-0">
             Websites designed to grow your business.
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll opacity-0">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto animate-on-scroll opacity-0">
             Affordable, modern, and built to convert visitors into customers.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <ServiceCard ref={el => cardsRef.current[0] = el} icon={<CodeIcon size={36} className="text-orange-500" />} title="Web Development" description="Custom, functional websites built to your brand and business goals." />
-          <ServiceCard ref={el => cardsRef.current[1] = el} icon={<SmartphoneIcon size={36} className="text-orange-500" />} title="Mobile Friendly" description="Responsive designs that perform beautifully across all devices." />
-          <ServiceCard ref={el => cardsRef.current[2] = el} icon={<MapPinIcon size={36} className="text-orange-500" />} title="Google Maps + Reviews" description="Integrated visibility to help local customers find and trust your business." />
-          <ServiceCard ref={el => cardsRef.current[3] = el} icon={<MessageCircleIcon size={36} className="text-orange-500" />} title="WhatsApp & Contact Forms" description="Seamless ways for customers to connect with you instantly." />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 overflow-x-hidden">
+          <ServiceCard ref={el => { cardsRef.current[0] = el; }} icon={<CodeIcon size={36} className="text-orange-500" />} title="Web Development" description="Custom, functional websites built to your brand and business goals." />
+          <ServiceCard ref={el => { cardsRef.current[1] = el; }} icon={<SmartphoneIcon size={36} className="text-orange-500" />} title="Mobile Friendly" description="Responsive designs that perform beautifully across all devices." />
+          <ServiceCard ref={el => { cardsRef.current[2] = el; }} icon={<MapPinIcon size={36} className="text-orange-500" />} title="Google Maps + Reviews" description="Integrated visibility to help local customers find and trust your business." />
+          <ServiceCard ref={el => { cardsRef.current[3] = el; }} icon={<MessageCircleIcon size={36} className="text-orange-500" />} title="WhatsApp & Contact Forms" description="Seamless ways for customers to connect with you instantly." />
         </div>
       </div>
     </section>;
@@ -57,7 +57,7 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(({
   title,
   description
 }, ref) => {
-  return <div ref={ref} className="bg-white p-6 sm:p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center group" style={{
+  return <div ref={ref} className="bg-white p-6 sm:p-8 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-orange-200 border-2 border-transparent transition-all duration-300 text-center group focus-within:ring-2 focus-within:ring-orange-500 focus-within:ring-offset-2" style={{
     opacity: 0
   }}>
         <div className="mb-4 sm:mb-5 inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-orange-100 transform group-hover:scale-110 transition-transform duration-300">

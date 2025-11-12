@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { ContactCTA } from '../components/ContactCTA';
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/Button';
@@ -334,11 +335,8 @@ const mockProjects: Project[] = [{
   galleryDescriptions: ['Current weather display', 'Weekly forecast view', 'Location search interface']
 }];
 export function ProjectDetail() {
-  const {
-    id
-  } = useParams<{
-    id: string;
-  }>();
+  const router = useRouter();
+  const { id } = router.query;
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<Project | null>(null);
   const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
@@ -427,7 +425,7 @@ export function ProjectDetail() {
         <div className="container mx-auto px-4 md:px-6 py-8 md:py-16" ref={mainContentRef}>
           {/* Back to Portfolio Link */}
           <div className="mb-8 md:mb-12 animate-on-scroll opacity-0">
-            <Link to="/portfolio" className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors">
+            <Link href="/portfolio" className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors">
               <ArrowLeftIcon size={16} className="mr-2" />
               <span>Back to Portfolio</span>
             </Link>

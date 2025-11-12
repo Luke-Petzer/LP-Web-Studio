@@ -1,12 +1,12 @@
 import { Button } from './ui/Button';
 import { ProjectCard } from './ui/ProjectCard';
 export function ProjectsSection() {
-  return <section className="py-20 bg-gray-50">
+  return <section className="py-16 md:py-20 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center">
           Recent Work
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 overflow-x-hidden">
           <ProjectCard
             image="/L-card.png"
             title="Loruki Website"

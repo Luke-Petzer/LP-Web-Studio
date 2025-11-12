@@ -41,7 +41,7 @@ export function Portfolio() {
     image: "/CC-card.png",
     category: 'website',
     projectType: 'Client',
-    link: 'disabled', // Special value to indicate disabled link
+    link: '#', // Special value to indicate disabled link
     learnings: [{
       text: 'Implementing client requirements and feedback'
     }, {

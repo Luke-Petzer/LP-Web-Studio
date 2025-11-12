@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
+
 export function PageTransition({
   children
 }: {
   children: React.ReactNode;
 }) {
-  const location = useLocation();
-  const [displayLocation, setDisplayLocation] = useState(location);
+  const router = useRouter();
+  const [displayPath, setDisplayPath] = useState(router.pathname);
   const [transitionStage, setTransitionStage] = useState('fadeIn');
+
   useEffect(() => {
-    if (location !== displayLocation) {
+    if (router.pathname !== displayPath) {
       setTransitionStage('fadeOut');
     }
-  }, [location, displayLocation]);
+  }, [router.pathname, displayPath]);
+
   const handleAnimationEnd = () => {
     if (transitionStage === 'fadeOut') {
       setTransitionStage('fadeIn');
-      setDisplayLocation(location);
+      setDisplayPath(router.pathname);
     }
   };
-  return <div key={location.pathname} className={`page-transition ${transitionStage}`} onAnimationEnd={handleAnimationEnd}>
+
+  return <div key={router.pathname} className={`page-transition ${transitionStage}`} onAnimationEnd={handleAnimationEnd}>
       {children}
     </div>;
 }

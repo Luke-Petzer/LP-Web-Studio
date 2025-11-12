@@ -102,22 +102,25 @@ export function App() {
       />
       <main>
         <HeroSection />
-        <Suspense fallback={<SectionLoadingFallback />}>
-          <ServicesSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoadingFallback />}>
-          <AboutSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoadingFallback />}>
-          <SkillsSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoadingFallback />}>
-          <ProjectsSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoadingFallback />}>
-          <TestimonialsSection />
-        </Suspense>
-        <ContactCTA />
+        {/* Content container that scrolls over the fixed hero background */}
+        <div className="relative bg-white z-20 shadow-2xl">
+          <Suspense fallback={<SectionLoadingFallback />}>
+            <ServicesSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoadingFallback />}>
+            <AboutSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoadingFallback />}>
+            <SkillsSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoadingFallback />}>
+            <ProjectsSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoadingFallback />}>
+            <TestimonialsSection />
+          </Suspense>
+          <ContactCTA />
+        </div>
       </main>
     </div>;
 }

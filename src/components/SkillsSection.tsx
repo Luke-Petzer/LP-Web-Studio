@@ -51,23 +51,23 @@ export function SkillsSection() {
     ];
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-16 md:py-20 lg:py-24 bg-white">
             <div className="container mx-auto px-4 md:px-6">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">My Tech Stack</h2>
-                <p className="text-lg text-gray-600 mb-10 text-center">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center">My Tech Stack</h2>
+                <p className="text-base sm:text-lg text-gray-600 mb-10 text-center max-w-3xl mx-auto">
                     The technologies and tools I use to build clean, reliable web solutions.
                 </p>
                 <div className="space-y-16 max-w-6xl mx-auto">
                     {skillCategories.map((category) => (
                         <div key={category.name} className="space-y-6">
-                            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 text-center">
                                 {category.name}
                             </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 overflow-x-hidden">
                                 {category.skills.map((skill) => (
                                     <div
                                         key={skill.name}
-                                        className={`p-4 rounded-lg ${skill.color} flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1`}
+                                        className={`p-4 rounded-lg ${skill.color} flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 focus-within:ring-2 focus-within:ring-orange-500 focus-within:ring-offset-2`}
                                     >
                     <span className="text-3xl mb-2" aria-hidden="true">
                       {skill.icon}

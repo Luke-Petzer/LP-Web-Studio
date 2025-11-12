@@ -16,45 +16,45 @@ export function HeroSection() {
       heading.style.opacity = '0';
       paragraph.style.opacity = '0';
       button.style.opacity = '0';
-      // Animate in sequence with increasing delays
+      // Animate in sequence with faster delays
       setTimeout(() => {
         heading.style.opacity = '1';
         heading.style.transform = 'translateY(0)';
-        heading.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      }, 300);
+        heading.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }, 150);
       setTimeout(() => {
         paragraph.style.opacity = '1';
         paragraph.style.transform = 'translateY(0)';
-        paragraph.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      }, 600);
+        paragraph.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }, 250);
       setTimeout(() => {
         button.style.opacity = '1';
         button.style.transform = 'translateY(0)';
-        button.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      }, 900);
+        button.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }, 400);
     }
   }, []);
-  return <section className="relative flex items-center text-white overflow-hidden hero-section" ref={heroRef} style={{
-      minHeight: 'calc(100vh - 80px)', // Account for header on all devices
-      height: 'auto' // Allow flexible height on mobile
-    }}>
-      {/* Background image with overlay */}
+  return <>
+    {/* Fixed background layer - stays in place while page scrolls */}
+    <div className="fixed top-0 left-0 w-full h-screen z-0" aria-hidden="true">
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: 'url("/Hero.jpg")',
-      width: '100%',
-      height: '100%'
-    }} aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/70"></div>
+        backgroundImage: 'url("/Hero.jpg")',
+      }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-800/85"></div>
       </div>
       {/* Animated geometric shapes - hidden on small screens */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block" aria-hidden="true">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
         <div className="absolute top-[20%] left-[10%] w-40 h-40 bg-orange-500/10 rounded-full mix-blend-overlay animate-pulse-slow"></div>
         <div className="absolute bottom-[30%] right-[15%] w-64 h-64 bg-teal-500/10 rounded-full mix-blend-overlay animate-float"></div>
         <div className="absolute top-[40%] right-[25%] w-32 h-32 bg-indigo-500/10 rounded-full mix-blend-overlay animate-pulse-slow" style={{
-        animationDelay: '2s'
-      }}></div>
+          animationDelay: '2s'
+        }}></div>
       </div>
-      <div className="relative z-10 w-full max-w-3xl mx-auto text-center flex flex-col items-center justify-center px-4 py-16 sm:py-20">
+    </div>
+
+    {/* Hero content section */}
+    <section className="relative flex items-center text-white overflow-hidden hero-section min-h-[100dvh] z-10" ref={heroRef}>
+      <div className="relative w-full max-w-3xl mx-auto text-center flex flex-col items-center justify-center px-4 py-16 sm:py-20">
         <h1 ref={headingRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight opacity-0" style={{
         transform: 'translateY(20px)'
       }}>
@@ -74,10 +74,11 @@ export function HeroSection() {
         </div>
       </div>
       {/* Scroll indicator - hidden on mobile */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block" aria-hidden="true">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white opacity-80">
           <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-    </section>;
+    </section>
+  </>;
 }

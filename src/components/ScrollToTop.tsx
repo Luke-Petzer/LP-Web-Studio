@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 export function ScrollToTop() {
-  const { pathname } = useLocation();
+  const router = useRouter();
 
   useEffect(() => {
     // Scroll to top immediately when route changes
@@ -11,7 +11,7 @@ export function ScrollToTop() {
       left: 0,
       behavior: 'instant' // Use instant to avoid animation conflicts
     });
-  }, [pathname]);
+  }, [router.pathname]);
 
   return null;
 }

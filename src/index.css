@@ -138,6 +138,23 @@
   .page-transition.fadeOut {
     animation: pageExit 200ms ease-in-out forwards;
   }
+
+  /* Fixed hero background effect - image stays in place while content scrolls over */
+  .hero-section {
+    position: relative;
+    will-change: transform;
+  }
+
+  /* Ensure smooth scrolling performance */
+  .hero-section::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+  }
 }
 
 /* Keyframes */
@@ -238,3 +255,27 @@
     }
   }
 }
+
+/* Additional animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+

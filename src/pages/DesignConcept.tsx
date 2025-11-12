@@ -1,4 +1,5 @@
-import { useParams, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/Button';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
@@ -90,7 +91,8 @@ const designProjects: DesignProject[] = [
 ];
 
 export function DesignConcept() {
-  const { id } = useParams<{ id: string }>();
+  const router = useRouter();
+  const { id } = router.query;
   const sectionRef = useAnimateOnScroll<HTMLElement>();
 
   const project = designProjects.find(p => p.id === id);
@@ -100,7 +102,7 @@ export function DesignConcept() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Design Concept Not Found</h1>
-          <Link to="/portfolio">
+          <Link href="/portfolio">
             <Button variant="outline">Return to Portfolio</Button>
           </Link>
         </div>
@@ -120,7 +122,7 @@ export function DesignConcept() {
         {/* Breadcrumb Navigation */}
         <div className="container mx-auto px-4 md:px-6 py-3 border-b border-gray-100">
           <nav className="text-sm">
-            <Link to="/portfolio" className="text-orange-500 hover:text-orange-600 transition-colors">
+            <Link href="/portfolio" className="text-orange-500 hover:text-orange-600 transition-colors">
               Portfolio
             </Link>
             <span className="mx-2 text-gray-400">/</span>
@@ -196,13 +198,13 @@ export function DesignConcept() {
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link to="/portfolio">
+                <Link href="/portfolio">
                   <Button variant="outline" className="w-full sm:w-auto">
                     Return to Portfolio
                   </Button>
                 </Link>
 
-                <Link to="/contact">
+                <Link href="/contact">
                   <Button variant="primary" className="w-full sm:w-auto">
                     Get in Touch
                   </Button>

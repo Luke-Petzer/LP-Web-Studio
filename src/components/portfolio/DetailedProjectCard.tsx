@@ -1,7 +1,7 @@
 import { useEffect, forwardRef } from 'react';
 import { ExternalLinkIcon } from 'lucide-react';
 import { EnhancedImage } from '../ui/EnhancedImage';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 interface ProjectLearning {
   text: string;
 }
@@ -76,7 +76,7 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
                 </div>
               ) : (
                 <Link
-                  to={
+                  href={
                     project.projectType === 'Showcase' ? `/showcase/${project.id}` :
                     project.projectType === 'Design' ? `/design/${project.id}` :
                     `/project/${project.id}`
