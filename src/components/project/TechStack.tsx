@@ -1,20 +1,50 @@
 import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
 import { CodeIcon, LayoutIcon, DatabaseIcon, ServerIcon, GlobeIcon, PenToolIcon, SettingsIcon, BarChartIcon, ExternalLinkIcon } from 'lucide-react';
+
 interface TechStackProps {
-  project: {
+  project?: {
     technologies?: Array<{
       name: string;
       category: string;
     }>;
     link?: string;
   };
+  // New detailed props
+  frontend?: string[];
+  backend?: string[];
+  libraries?: string[];
+  tools?: string[];
+  apis?: string[];
+  link?: string;
 }
+
 export function TechStack({
-  project
+  project,
+  frontend,
+  backend,
+  libraries,
+  tools,
+  apis,
+  link
 }: TechStackProps) {
   const techStackRef = useAnimateOnScroll<HTMLDivElement>();
-  // Default technologies if not provided
-  const technologies = project.technologies || [];
+
+  // Support both old and new prop structures
+  let technologies = project?.technologies || [];
+  const hasDetailedData = frontend || backend || libraries || tools || apis;
+
+  // Convert new structure to old structure if detailed data provided
+  if (hasDetailedData) {
+    technologies = [
+      ...(frontend || []).map(name => ({ name, category: 'frontend' })),
+      ...(backend || []).map(name => ({ name, category: 'backend' })),
+      ...(libraries || []).map(name => ({ name, category: 'libraries' })),
+      ...(tools || []).map(name => ({ name, category: 'tools' })),
+      ...(apis || []).map(name => ({ name, category: 'api' }))
+    ];
+  }
+
+  const projectLink = link || project?.link;
   // Group technologies by category
   const groupedTech = technologies.reduce((acc: any, tech: any) => {
     const category = tech.category || 'other';
@@ -61,9 +91,9 @@ export function TechStack({
                 </ul>
               </div>)}
         </div> : <p className="text-slate-500 italic">No technical details available</p>}
-      {project.link && <div className="mt-8 pt-6 border-t border-slate-200">
+      {projectLink && <div className="mt-8 pt-6 border-t border-slate-200">
           <h4 className="text-lg font-semibold mb-3">Project Link</h4>
-          <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-600 flex items-center">
+          <a href={projectLink} target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-600 flex items-center">
             <GlobeIcon size={18} className="mr-2" />
             Visit Live Project
             <ExternalLinkIcon size={14} className="ml-1" />

@@ -1,21 +1,44 @@
 import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
+
 interface TimelineItem {
   phase: string;
-  duration: string;
-  date: string;
+  duration?: string;
+  date?: string;
+  description?: string;
 }
+
 interface ProjectTimelineProps {
-  timeline: TimelineItem[];
+  timeline?: TimelineItem[];
+  duration?: string;
+  phases?: Array<{
+    phase: string;
+    description: string;
+  }>;
 }
+
 export function ProjectTimeline({
-  timeline
+  timeline,
+  phases
 }: ProjectTimelineProps) {
   const timelineRef = useAnimateOnScroll<HTMLDivElement>();
+
+  // Support both old and new prop structures
+  const timelineItems = timeline || (phases || []).map(p => ({
+    phase: p.phase,
+    description: p.description,
+    duration: '',
+    date: ''
+  }));
+
+  if (timelineItems.length === 0) {
+    return null;
+  }
+
   return <div ref={timelineRef} className="relative animate-on-scroll opacity-0">
       {/* Timeline line */}
       <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 transform md:translate-x-0"></div>
       <div className="space-y-8 relative">
-        {timeline.map((item, index) => <div key={index} className={`relative md:flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} animate-on-scroll opacity-0`} style={{
+        {timelineItems.map((item, index) => <div key={index} className={`relative md:flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} animate-on-scroll opacity-0`} style={{
         animationDelay: `${index * 150}ms`
       }}>
             {/* Timeline dot */}
@@ -27,11 +50,18 @@ export function ProjectTimeline({
               <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300">
                 <div className="flex flex-col mb-2">
                   <h3 className="font-semibold text-slate-800">{item.phase}</h3>
-                  <span className="text-sm text-orange-600 font-medium">
-                    {item.duration}
-                  </span>
+                  {item.duration && (
+                    <span className="text-sm text-orange-600 font-medium">
+                      {item.duration}
+                    </span>
+                  )}
                 </div>
-                <p className="text-sm text-slate-500">{item.date}</p>
+                {item.description && (
+                  <p className="text-sm text-slate-600 mt-2">{item.description}</p>
+                )}
+                {item.date && (
+                  <p className="text-sm text-slate-500 mt-1">{item.date}</p>
+                )}
               </div>
             </div>
           </div>)}

@@ -1,6 +1,7 @@
 import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
+
 interface ProjectHeroProps {
-  project: {
+  project?: {
     title: string;
     description: string;
     image: string;
@@ -9,17 +10,43 @@ interface ProjectHeroProps {
     timeline?: string;
     role?: string;
   };
+  // New props for detailed project data
+  title?: string;
+  tagline?: string;
+  image?: string;
+  category?: string;
+  date?: string;
+  client?: string;
+  role?: string;
 }
+
 export function ProjectHero({
-  project
+  project,
+  title,
+  tagline,
+  image,
+  category,
+  date,
+  client,
+  role
 }: ProjectHeroProps) {
   const heroRef = useAnimateOnScroll<HTMLElement>();
+
+  // Support both old and new prop structures
+  const heroTitle = title || project?.title || '';
+  const heroDescription = tagline || project?.description || '';
+  const heroImage = image || project?.image || '';
+  const heroCategory = category || (project?.category === 'website' ? 'Website' : project?.category === 'mobile' ? 'Mobile App' : 'Side Project') || '';
+  const heroClient = client || project?.client;
+  const heroRole = role || project?.role;
+  const heroTimeline = date || project?.timeline;
+
   return <section ref={heroRef} className="relative min-h-[60vh] flex items-center text-white overflow-hidden" style={{
     height: '60vh'
   }}>
       {/* Background image with overlay - Fixed dimensions to prevent layout shifts */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url("${project.image}")`,
+      backgroundImage: `url("${heroImage}")`,
       height: '100%',
       width: '100%'
     }} aria-hidden="true">
@@ -37,28 +64,28 @@ export function ProjectHero({
         <div className="max-w-4xl">
           <div className="mb-4 animate-on-scroll opacity-0">
             <span className="uppercase tracking-wider text-xs font-semibold bg-orange-500 px-3 py-1 rounded-sm">
-              {project.category === 'website' ? 'Website' : project.category === 'mobile' ? 'Mobile App' : 'Side Project'}
+              {heroCategory}
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight animate-on-scroll opacity-0">
-            {project.title}
+            {heroTitle}
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-3xl leading-relaxed text-white/90 animate-on-scroll opacity-0">
-            {project.description}
+            {heroDescription}
           </p>
           {/* Project metadata */}
           <div className="flex flex-wrap gap-x-8 gap-y-4 text-white/80 animate-on-scroll opacity-0">
-            {project.client && <div>
+            {heroClient && <div>
                 <span className="font-medium mr-2">Client:</span>
-                <span>{project.client}</span>
+                <span>{heroClient}</span>
               </div>}
-            {project.timeline && <div>
+            {heroTimeline && <div>
                 <span className="font-medium mr-2">Timeline:</span>
-                <span>{project.timeline}</span>
+                <span>{heroTimeline}</span>
               </div>}
-            {project.role && <div>
+            {heroRole && <div>
                 <span className="font-medium mr-2">My Role:</span>
-                <span>{project.role}</span>
+                <span>{heroRole}</span>
               </div>}
           </div>
         </div>

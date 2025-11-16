@@ -15,6 +15,8 @@ import { ColorPalette } from '../components/project/ColorPalette';
 import { ProjectTimeline } from '../components/project/ProjectTimeline';
 import { LearningsAccordion } from '../components/project/LearningsAccordion';
 import { RelatedProjects } from '../components/project/RelatedProjects';
+import { projectsDataMap } from '../data/projectsData';
+
 // Project data structure
 interface ProjectLearning {
   text: string;
@@ -54,6 +56,43 @@ interface Project {
 }
 // Move the mock data outside the component to prevent recreating it on each render
 const mockProjects: Project[] = [{
+  id: 'cafe-client',
+  title: 'Cafe Crave Website',
+  description: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews.',
+  overview: 'Cafe Crave is a modern, responsive website for a retro-inspired, halal-friendly café in Claremont, Cape Town.',
+  challenge: 'The client wanted to display live Google Reviews without exposing their private Google API key.',
+  solution: 'I architected a Backend-for-Frontend solution with a Node.js server deployed to Railway.',
+  image: "/CC-card.png",
+  category: 'website',
+  link: 'https://cafecrave.co.za',
+  client: 'Cafe Crave',
+  timeline: 'November 2025',
+  role: 'Full-Stack Developer',
+  learnings: [{
+    text: 'Value of Split-Hosting architecture'
+  }, {
+    text: 'Performance optimization with Core Web Vitals'
+  }, {
+    text: 'IntersectionObserver for scroll-spy navigation'
+  }],
+  technologies: [{
+    name: 'React',
+    category: 'frontend'
+  }, {
+    name: 'TypeScript',
+    category: 'frontend'
+  }, {
+    name: 'Node.js',
+    category: 'backend'
+  }, {
+    name: 'Express',
+    category: 'backend'
+  }],
+  timelineItems: [],
+  colorPalette: [],
+  galleryImages: ["/CC-card.png"],
+  galleryDescriptions: ['Cafe Crave Website']
+}, {
   id: 'loruki',
   title: 'Loruki Website',
   description: 'A cloud hosting platform with modern design and intuitive user experience.',
@@ -343,6 +382,13 @@ export function ProjectDetail() {
   const [, setImagesPreloaded] = useState(false);
   const mainContentRef = useAnimateOnScroll<HTMLDivElement>();
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('Project ID from router:', id);
+    console.log('Available detailed projects:', Object.keys(projectsDataMap));
+    console.log('Detailed project data:', typeof id === 'string' ? projectsDataMap[id] : null);
+  }, [id]);
   // Preload all project images on component mount to avoid layout shifts
   useEffect(() => {
     // Preload all project images at once to avoid layout shifts when navigating between projects
@@ -416,6 +462,101 @@ export function ProjectDetail() {
         </Button>
       </div>;
   }
+
+  // Check if this is a project with detailed data structure (like Cafe Crave)
+  const detailedProject = typeof id === 'string' ? projectsDataMap[id] : null;
+
+  if (detailedProject) {
+    // Render with new detailed structure
+    return <div className="font-sans text-gray-800 bg-white" ref={contentRef}>
+        <SEO title={`${detailedProject.hero.title} - Project Case Study | LP Web Studio`} description={detailedProject.hero.tagline} keywords={`${detailedProject.hero.title.toLowerCase()}, case study, web development, ${detailedProject.hero.category}, portfolio project`} />
+        <main className="pt-0">
+          {/* Hero Section */}
+          <ProjectHero
+            title={detailedProject.hero.title}
+            tagline={detailedProject.hero.tagline}
+            image={detailedProject.hero.image}
+            category={detailedProject.hero.category}
+            date={detailedProject.hero.date}
+            client={detailedProject.client}
+            role={detailedProject.role}
+          />
+          {/* Main Content */}
+          <div className="container mx-auto px-4 md:px-6 py-8 md:py-16" ref={mainContentRef}>
+            {/* Back to Portfolio Link */}
+            <div className="mb-8 md:mb-12 animate-on-scroll opacity-0">
+              <Link href="/portfolio" className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors">
+                <ArrowLeftIcon size={16} className="mr-2" />
+                <span>Back to Portfolio</span>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+              {/* Main Content Column */}
+              <div className="lg:col-span-2">
+                {/* Project Overview */}
+                <ProjectOverview
+                  description={detailedProject.overview.description}
+                  purpose={detailedProject.overview.purpose}
+                  targetAudience={detailedProject.overview.targetAudience}
+                  keyFeatures={detailedProject.overview.keyFeatures}
+                  scope={detailedProject.overview.scope}
+                />
+                {/* Challenge and Solution */}
+                <ChallengeAndSolution challenges={detailedProject.challenges} />
+                {/* Development Process */}
+                <section className="mb-16">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                    Development Process
+                  </h2>
+                  {/* Project Gallery */}
+                  {detailedProject.gallery && detailedProject.gallery.length > 0 && <ProjectGallery images={detailedProject.gallery} />}
+                  {/* Color Palette */}
+                  {detailedProject.colors && detailedProject.colors.length > 0 && <div className="mt-12">
+                      <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0">
+                        Color Palette
+                      </h3>
+                      <ColorPalette colors={detailedProject.colors} />
+                    </div>}
+                </section>
+                {/* Project Timeline */}
+                {detailedProject.timeline && detailedProject.timeline.phases && <section className="mb-16">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                      Project Timeline
+                    </h2>
+                    <ProjectTimeline
+                      phases={detailedProject.timeline.phases}
+                    />
+                  </section>}
+                {/* Learnings & Outcomes */}
+                <section className="mb-16">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                    Learnings & Outcomes
+                  </h2>
+                  <LearningsAccordion learnings={detailedProject.learnings} />
+                </section>
+              </div>
+              {/* Sidebar Column */}
+              <div className="lg:col-span-1">
+                <TechStack
+                  frontend={detailedProject.techStack.frontend}
+                  backend={detailedProject.techStack.backend}
+                  libraries={detailedProject.techStack.libraries}
+                  tools={detailedProject.techStack.tools}
+                  apis={detailedProject.techStack.apis}
+                  link={detailedProject.link}
+                />
+              </div>
+            </div>
+          </div>
+          {/* Related Projects */}
+          {relatedProjects.length > 0 && <RelatedProjects projects={relatedProjects} />}
+          {/* CTA Section */}
+          <ContactCTA />
+        </main>
+      </div>;
+  }
+
+  // Render with old structure for other projects
   return <div className="font-sans text-gray-800 bg-white" ref={contentRef}>
       <SEO title={`${project.title} - Project Case Study | LP Web Studio`} description={project.description} keywords={`${project.title.toLowerCase()}, case study, web development, ${project.category}, portfolio project`} />
       <main className="pt-0">

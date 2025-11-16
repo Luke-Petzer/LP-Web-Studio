@@ -36,18 +36,18 @@ export function Portfolio() {
     }]
   }, {
     id: 'cafe-client',
-    title: 'Cafe Client Website',
-    description: 'A modern, responsive website for a local cafe featuring online menu, location details, and booking functionality. Built with React and optimized for mobile devices.',
+    title: 'Cafe Crave Website',
+    description: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews.',
     image: "/CC-card.png",
     category: 'website',
     projectType: 'Client',
-    link: '#', // Special value to indicate disabled link
+    link: '/project/cafe-client',
     learnings: [{
-      text: 'Implementing client requirements and feedback'
+      text: 'Implementing secure API architecture for Google Reviews'
     }, {
-      text: 'Creating responsive menu layouts and booking systems'
+      text: 'Creating dynamic menu with scroll-spy navigation'
     }, {
-      text: 'Optimizing performance for local business needs'
+      text: 'Deploying split-hosting solution (Railway + Hostinger)'
     }]
   }, {
     id: 'granite-marble',
