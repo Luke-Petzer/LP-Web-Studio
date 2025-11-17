@@ -38,7 +38,7 @@ export function Portfolio() {
     id: 'cafe-client',
     title: 'Cafe Crave Website',
     description: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews.',
-    image: "/CC-card.png",
+    image: "/cc-home.png",
     category: 'website',
     projectType: 'Client',
     link: '/project/cafe-client',
@@ -184,7 +184,7 @@ export function Portfolio() {
             </p>
           </div>
           <ProjectFilter activeFilter={activeFilter} onFilterChange={setActiveFilter} />
-          <div className="mt-8 sm:mt-12 space-y-12 sm:space-y-16">
+          <div className="mt-16 sm:mt-20 md:mt-24 space-y-12 sm:space-y-16">
             {filteredProjects.map((project, index) => <DetailedProjectCard key={project.id} project={project} ref={el => { if (el) projectRefs.current[index] = el; }} index={index} />)}
           </div>
           {filteredProjects.length === 0 && <div className="text-center py-16">

@@ -118,6 +118,12 @@
     opacity: 1;
   }
 
+  /* Animation for portfolio project cards - triggered by IntersectionObserver */
+  .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
   /* Page container - FIXED for mobile with responsive header heights */
     .page-container {
         width: 100%;

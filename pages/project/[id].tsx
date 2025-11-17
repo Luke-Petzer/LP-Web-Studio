@@ -1,4 +1,4 @@
-import { ProjectDetail } from '../../src/pages/ProjectDetail';
+import { ProjectDetail } from '@/pages/ProjectDetail';
 
 export default function ProjectDetailPage() {
 

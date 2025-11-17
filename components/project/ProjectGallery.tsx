@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
 
@@ -28,7 +28,7 @@ export function ProjectGallery({
   });
   const [currentSlide, setCurrentSlide] = useState(0);
   const galleryRef = useAnimateOnScroll<HTMLDivElement>();
-  const slideRef = useRef<HTMLImageElement>(null);
+
   const nextSlide = () => {
     setCurrentSlide(prev => prev === galleryItems.length - 1 ? 0 : prev + 1);
   };
@@ -38,21 +38,7 @@ export function ProjectGallery({
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
-  // Add smooth transition effect when changing slides
-  useEffect(() => {
-    if (slideRef.current) {
-      slideRef.current.style.opacity = '0';
-      slideRef.current.style.transform = 'scale(0.98)';
-      const timer = setTimeout(() => {
-        if (slideRef.current) {
-          slideRef.current.style.opacity = '1';
-          slideRef.current.style.transform = 'scale(1)';
-          slideRef.current.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        }
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [currentSlide]);
+
   // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(() => {
@@ -72,10 +58,7 @@ export function ProjectGallery({
       <div className="relative rounded-lg overflow-hidden shadow-lg">
         {/* Main carousel image */}
         <div className="relative aspect-w-16 aspect-h-9 bg-gray-100">
-          {galleryItems.map((item, index) => <img key={index} ref={index === currentSlide ? slideRef : null} src={item.src} alt={item.alt} className={`absolute inset-0 w-full h-full object-cover ${currentSlide === index ? 'z-10' : 'opacity-0'}`} style={{
-          opacity: currentSlide === index ? 0 : 0,
-          transition: 'opacity 0.5s ease, transform 0.5s ease'
-        }} />)}
+          {galleryItems.map((item, index) => <img key={index} src={item.src} alt={item.alt} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${currentSlide === index ? 'z-10 opacity-100' : 'opacity-0 pointer-events-none'}`} />)}
         </div>
         {/* Navigation arrows */}
         <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors duration-300 z-20" aria-label="Previous slide">

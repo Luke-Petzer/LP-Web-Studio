@@ -56,7 +56,7 @@ export const cafeCraveData: ProjectData = {
   hero: {
     title: 'Cafe Crave Website',
     tagline: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews',
-    image: '/CC-card.png',
+    image: '/cc-home.png',
     category: 'Full-Stack Web Application',
     date: 'November 2025'
   },
@@ -128,24 +128,29 @@ export const cafeCraveData: ProjectData = {
   ],
   gallery: [
     {
-      src: '/CC-card.png',
+      src: '/cc-home.png',
       alt: 'Cafe Crave Homepage',
       description: 'The homepage featuring the cafe\'s unique retro vibe and welcoming atmosphere'
     },
     {
-      src: '/CC-card.png',
+      src: '/cc-menu.png',
       alt: 'Menu Page',
       description: 'Dynamic menu page with sticky navigation and category filtering'
     },
     {
-      src: '/CC-card.png',
+      src: '/cc-music.png',
       alt: 'Vinyl Collection',
       description: 'Interactive vinyl gallery showcasing the cafe\'s music collection'
     },
     {
-      src: '/CC-card.png',
+      src: '/cc-reviews.png',
       alt: 'Google Reviews Integration',
       description: 'Live Google Reviews displayed securely via custom API'
+    },
+    {
+      src: '/cc-instagram.png',
+      alt: 'Instagram Showcase',
+      description: 'Fully custom instagram post section to highlight on the best'
     }
   ],
   colors: [
@@ -156,7 +161,7 @@ export const cafeCraveData: ProjectData = {
     { name: 'Subtext on Light', hex: '#5A372B', usage: 'Secondary text on light backgrounds' },
     { name: 'Subtext on Dark', hex: '#BFA6A0', usage: 'Secondary text on dark backgrounds' }
   ],
-  link: 'https://cafecrave.co.za',
+  link: 'https://cafecravecpt.co.za',
   client: 'Cafe Crave',
   role: 'Full-Stack Developer'
 };

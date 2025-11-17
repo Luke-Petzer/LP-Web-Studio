@@ -14,7 +14,7 @@ export function ProjectsSection() {
             link="/showcase/loruki"
           />
           <ProjectCard
-            image="/CC-card.png"
+            image="/cc-home.png"
             title="Cafe Client Website"
             description="A modern, responsive website for a local cafe featuring online menu, location details, and booking functionality."
             link="disabled"

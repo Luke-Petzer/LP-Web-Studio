@@ -41,7 +41,7 @@ export default function Portfolio() {
     id: 'cafe-client',
     title: 'Cafe Crave Website',
     description: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews.',
-    image: "/CC-card.png",
+    image: "/cc-home.png",
     category: 'website',
     projectType: 'Client',
     link: '/project/cafe-client',
