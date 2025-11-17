@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { AboutHero } from '../components/about/AboutHero';
-import { AboutApproach } from '../components/about/AboutApproach';
-import { AboutExpertise } from '../components/about/AboutExpertise';
-import { ContactCTA } from '../components/ContactCTA';
-import { SEO } from '../components/SEO';
+import { AboutHero } from '../../components/about/AboutHero';
+import { AboutApproach } from '../../components/about/AboutApproach';
+import { AboutExpertise } from '../../components/about/AboutExpertise';
+import { ContactCTA } from '../../components/ContactCTA';
+import { SEO } from '../../components/SEO';
 export function About() {
   const siteUrl = 'https://lpwebstudio.com';
 

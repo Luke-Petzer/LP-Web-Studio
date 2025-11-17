@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { SEO } from '../components/SEO';
-import { Button } from '../components/ui/Button';
+import { SEO } from '../../components/SEO';
+import { Button } from '../../components/ui/Button';
 import { ExternalLinkIcon } from 'lucide-react';
-import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
+import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
 
 // Showcase project data structure
 interface ShowcaseProject {

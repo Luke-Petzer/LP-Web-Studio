@@ -1,21 +1,21 @@
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { ContactCTA } from '../components/ContactCTA';
-import { SEO } from '../components/SEO';
-import { Button } from '../components/ui/Button';
+import { ContactCTA } from '../../components/ContactCTA';
+import { SEO } from '../../components/SEO';
+import { Button } from '../../components/ui/Button';
 import { ArrowLeftIcon } from 'lucide-react';
-import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
-import { ProjectHero } from '../components/project/ProjectHero';
-import { ProjectOverview } from '../components/project/ProjectOverview';
-import { TechStack } from '../components/project/TechStack';
-import { ChallengeAndSolution } from '../components/project/ChallengeAndSolution';
-import { ProjectGallery } from '../components/project/ProjectGallery';
-import { ColorPalette } from '../components/project/ColorPalette';
-import { ProjectTimeline } from '../components/project/ProjectTimeline';
-import { LearningsAccordion } from '../components/project/LearningsAccordion';
-import { RelatedProjects } from '../components/project/RelatedProjects';
-import { projectsDataMap } from '../data/projectsData';
+import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
+import { ProjectHero } from '../../components/project/ProjectHero';
+import { ProjectOverview } from '../../components/project/ProjectOverview';
+import { TechStack } from '../../components/project/TechStack';
+import { ChallengeAndSolution } from '../../components/project/ChallengeAndSolution';
+import { ProjectGallery } from '../../components/project/ProjectGallery';
+import { ColorPalette } from '../../components/project/ColorPalette';
+import { ProjectTimeline } from '../../components/project/ProjectTimeline';
+import { LearningsAccordion } from '../../components/project/LearningsAccordion';
+import { RelatedProjects } from '../../components/project/RelatedProjects';
+import { projectsDataMap } from '../../data/projectsData';
 
 // Project data structure
 interface ProjectLearning {

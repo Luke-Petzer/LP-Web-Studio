@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://lpwebstudio.com/</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/Hero.jpg</image:loc>
+            <image:title>LP Web Studio - Professional Web Development Services</image:title>
+            <image:caption>Professional web development and design services in Cape Town</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Portfolio Page -->
+    <url>
+        <loc>https://lpwebstudio.com/portfolio</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/L-card.png</image:loc>
+            <image:title>Web Development Portfolio</image:title>
+        </image:image>
+    </url>
+
+    <!-- About Page -->
+    <url>
+        <loc>https://lpwebstudio.com/about</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/Me1.JPG</image:loc>
+            <image:title>Luke Petzer - Web Developer</image:title>
+        </image:image>
+    </url>
+
+    <!-- Contact Page -->
+    <url>
+        <loc>https://lpwebstudio.com/contact</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Showcase Projects -->
+    <url>
+        <loc>https://lpwebstudio.com/showcase/loruki</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/L-card.png</image:loc>
+            <image:title>Loruki Website Showcase</image:title>
+        </image:image>
+    </url>
+
+    <!-- Design Concept Projects -->
+    <url>
+        <loc>https://lpwebstudio.com/design/granite-marble</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/CM-card.png</image:loc>
+            <image:title>Granite and Marble Design Concept</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://lpwebstudio.com/design/green-scape-gardeners</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/GSG-card.png</image:loc>
+            <image:title>Green Scape Gardeners Design Concept</image:title>
+        </image:image>
+    </url>
+
+</urlset>

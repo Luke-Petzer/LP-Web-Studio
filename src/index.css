@@ -118,25 +118,25 @@
     opacity: 1;
   }
 
-  /* Page container - FIXED for mobile */
-  .page-container {
-    width: 100%;
-    min-height: calc(100vh - 80px);
-    padding-top: 80px;
+  /* Page container - FIXED for mobile with responsive header heights */
+    .page-container {
+        width: 100%;
+        min-height: calc(100vh - 64px); /* Mobile: 64px (h-16) */
+        padding-top: 64px;
+    }
+
+  @media (min-width: 640px) {
+    .page-container {
+      min-height: calc(100vh - 72px); /* sm: 72px (h-18) */
+      padding-top: 72px;
+    }
   }
 
-  /* Page transition styles */
-  .page-transition {
-    width: 100%;
-    min-height: calc(100vh - 80px);
-  }
-
-  .page-transition.fadeIn {
-    animation: pageEnter 250ms ease-in-out forwards;
-  }
-
-  .page-transition.fadeOut {
-    animation: pageExit 200ms ease-in-out forwards;
+  @media (min-width: 768px) {
+    .page-container {
+      min-height: calc(100vh - 80px); /* md: 80px (h-20) */
+      padding-top: 80px;
+    }
   }
 
   /* Fixed hero background effect - image stays in place while content scrolls over */
@@ -188,37 +188,34 @@
   100% { opacity: 0.95; }
 }
 
+
+@media (min-width: 640px) {
+    .page-container {
+        min-height: calc(100vh - 72px); /* sm: 72px (h-18) */
+        padding-top: 72px;
+    }
+}
+
 /* Mobile optimizations - PREVENT IMAGE FLASHING */
 @media (max-width: 768px) {
-  .page-container {
-    padding-top: 80px;
-    /* Fix mobile overscroll */
-    min-height: calc(100dvh - 80px);
-  }
+    page-container {
+        padding-top: 80px;
+        /* Fix mobile overscroll */
+        min-height: calc(100dvh - 80px);
+    }
 
-  /* Prevent horizontal scroll and overscroll */
-  body {
-    overflow-x: hidden;
-    /* Prevent overscroll bounce on mobile */
-    overscroll-behavior-y: none;
-    -webkit-overflow-scrolling: touch;
-  }
+    /* Prevent horizontal scroll and overscroll */
+    body {
+        overflow-x: hidden;
+        overscroll-behavior-y: none;
+        -webkit-overflow-scrolling: touch;
+    }
 
-  /* Fix for iOS Safari address bar */
-  html {
-    /* Prevent zoom on input focus */
-    -webkit-text-size-adjust: 100%;
-    /* Prevent overscroll bounce */
-    overscroll-behavior: none;
-  }
-
-  /* CRITICAL: Disable animations and transitions that cause image flashing */
-  img {
-    transition: none !important;
-    animation: none !important;
-    will-change: auto !important;
-  }
-
+    /* CRITICAL: Disable animations and transitions that cause image flashing */
+    img {
+        transition: none !important;
+        animation: none !important;
+    }
   /* Disable all scroll-triggered animations on mobile */
   .animate-on-scroll {
     opacity: 1 !important;

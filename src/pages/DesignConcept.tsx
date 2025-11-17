@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { SEO } from '../components/SEO';
-import { Button } from '../components/ui/Button';
-import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
+import { SEO } from '../../components/SEO';
+import { Button } from '../../components/ui/Button';
+import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
 
 // Design concept project data structure
 interface DesignProject {

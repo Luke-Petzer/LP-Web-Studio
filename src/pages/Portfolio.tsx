@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
-import { ProjectFilter } from '../components/portfolio/ProjectFilter';
-import { DetailedProjectCard } from '../components/portfolio/DetailedProjectCard';
-import { ContactCTA } from '../components/ContactCTA';
-import { SEO } from '../components/SEO';
+import { ProjectFilter } from '../../components/portfolio/ProjectFilter';
+import { DetailedProjectCard } from '../../components/portfolio/DetailedProjectCard';
+import { ContactCTA } from '../../components/ContactCTA';
+import { SEO } from '../../components/SEO';
 // Project data structure
 interface ProjectLearning {
   text: string;
@@ -183,9 +183,9 @@ export function Portfolio() {
               Discover our comprehensive collection of web development work, client projects, and innovative design concepts showcasing modern responsive design and user-focused solutions.
             </p>
           </div>
-          <ProjectFilter activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+          <ProjectFilter activeFilter={activeFilter} onFilterChange={setActiveFilter} />
           <div className="mt-8 sm:mt-12 space-y-12 sm:space-y-16">
-            {filteredProjects.map((project, index) => <DetailedProjectCard key={project.id} project={project} ref={el => projectRefs.current[index] = el} index={index} />)}
+            {filteredProjects.map((project, index) => <DetailedProjectCard key={project.id} project={project} ref={el => { if (el) projectRefs.current[index] = el; }} index={index} />)}
           </div>
           {filteredProjects.length === 0 && <div className="text-center py-16">
               <h3 className="text-2xl font-medium text-gray-600">

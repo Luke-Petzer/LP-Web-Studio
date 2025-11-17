@@ -1,5 +1,24 @@
-import { App } from '../src/App';
+import { Layout } from '../components/Layout';
+import { SEO } from '../components/SEO';
+import { HeroSection } from '../components/HeroSection';
+import { ServicesSection } from '../components/ServicesSection';
+import { ProjectsSection } from '../components/ProjectsSection';
+import { SkillsSection } from '../components/SkillsSection';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 
 export default function Home() {
-  return <App />;
+  return (
+    <Layout>
+      <SEO
+        title="LP Web Studio - Professional Web Development in Cape Town"
+        description="Transform your digital presence with custom web solutions. Professional web development services for small businesses in Cape Town, South Africa."
+        keywords="web development Cape Town, web design, responsive websites, small business websites, South Africa"
+      />
+      <HeroSection />
+      <ServicesSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <TestimonialsSection />
+    </Layout>
+  );
 }
