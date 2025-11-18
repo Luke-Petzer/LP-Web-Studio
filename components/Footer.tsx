@@ -3,34 +3,6 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <footer className="relative bg-slate-800 text-white z-20">
-      {/* CTA Section */}
-      <div className="bg-slate-900 py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Let's Build Something Great Together
-          </h2>
-          <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
-            Ready to grow your business online? Let's create a website that helps
-            your customers find and connect with you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/contact"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-            >
-              Get in Touch
-            </Link>
-            <a
-              href="https://wa.me/27673852286"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Footer Main Content */}
       <div className="container mx-auto px-6 py-12">

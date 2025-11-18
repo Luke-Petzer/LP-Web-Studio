@@ -14,7 +14,7 @@ import { ProjectGallery } from '../../components/project/ProjectGallery';
 import { ColorPalette } from '../../components/project/ColorPalette';
 import { ProjectTimeline } from '../../components/project/ProjectTimeline';
 import { LearningsAccordion } from '../../components/project/LearningsAccordion';
-import { RelatedProjects } from '../../components/project/RelatedProjects';
+// import { RelatedProjects } from '../../components/project/RelatedProjects';
 import { projectsDataMap } from '../../data/projectsData';
 
 // Project data structure
@@ -378,7 +378,7 @@ export function ProjectDetail() {
   const { id } = router.query;
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<Project | null>(null);
-  const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
+  // const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
   const [, setImagesPreloaded] = useState(false);
   const mainContentRef = useAnimateOnScroll<HTMLDivElement>();
   const contentRef = useRef<HTMLDivElement>(null);
@@ -418,15 +418,15 @@ export function ProjectDetail() {
     // Find the current project
     const currentProject = mockProjects.find(p => p.id === id) || null;
     if (currentProject) {
-      // Find related projects (excluding current)
-      const related = mockProjects.filter(p => p.id !== currentProject.id).filter(p => p.category === currentProject.category).slice(0, 2);
-      // If we need more projects to show, add from other categories
-      if (related.length < 2) {
-        const others = mockProjects.filter(p => p.id !== currentProject.id && !related.includes(p)).slice(0, 2 - related.length);
-        setRelatedProjects([...related, ...others]);
-      } else {
-        setRelatedProjects(related);
-      }
+      // Related projects logic commented out - uncomment when you have more projects
+      // const related = mockProjects.filter(p => p.id !== currentProject.id).filter(p => p.category === currentProject.category).slice(0, 2);
+      // if (related.length < 2) {
+      //   const others = mockProjects.filter(p => p.id !== currentProject.id && !related.includes(p)).slice(0, 2 - related.length);
+      //   setRelatedProjects([...related, ...others]);
+      // } else {
+      //   setRelatedProjects(related);
+      // }
+
       setProject(currentProject);
       // Set loading to false after a short delay to ensure smooth transitions
       const timer = setTimeout(() => {
@@ -439,22 +439,22 @@ export function ProjectDetail() {
   }, [id]);
   // Render with fixed dimensions to prevent layout shifts
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-slate-50" style={{
+    return <div className="min-h-screen flex items-center justify-center" style={{
       height: '100vh'
     }}>
         <div className="animate-pulse flex flex-col items-center">
-          <div className="w-32 h-32 bg-slate-200 rounded-full mb-4"></div>
-          <div className="h-6 w-48 bg-slate-200 rounded mb-2"></div>
-          <div className="h-4 w-36 bg-slate-200 rounded"></div>
+          <div className="w-32 h-32 bg-slate-800 rounded-full mb-4"></div>
+          <div className="h-6 w-48 bg-slate-800 rounded mb-2"></div>
+          <div className="h-4 w-36 bg-slate-800 rounded"></div>
         </div>
       </div>;
   }
   if (!project) {
-    return <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-4 text-center" style={{
+    return <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center" style={{
       height: '100vh'
     }}>
-        <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
-        <p className="text-lg text-slate-600 mb-8">
+        <h1 className="text-3xl font-bold mb-4 text-slate-50">Project Not Found</h1>
+        <p className="text-lg text-slate-400 mb-8">
           The project you're looking for doesn't exist or has been moved.
         </p>
         <Button href="/portfolio" variant="primary">
@@ -468,7 +468,7 @@ export function ProjectDetail() {
 
   if (detailedProject) {
     // Render with new detailed structure
-    return <div className="font-sans text-gray-800 bg-white" ref={contentRef}>
+    return <div className="font-sans text-slate-300" ref={contentRef}>
         <SEO title={`${detailedProject.hero.title} - Project Case Study | LP Web Studio`} description={detailedProject.hero.tagline} keywords={`${detailedProject.hero.title.toLowerCase()}, case study, web development, ${detailedProject.hero.category}, portfolio project`} />
         <main className="pt-0">
           {/* Hero Section */}
@@ -482,11 +482,11 @@ export function ProjectDetail() {
             role={detailedProject.role}
           />
           {/* Main Content */}
-          <div className="container mx-auto px-4 md:px-6 py-8 md:py-16" ref={mainContentRef}>
+          <div className="container mx-auto px-4 md:px-6 py-8 md:py-16 backdrop-blur-sm" ref={mainContentRef}>
             {/* Back to Portfolio Link */}
             <div className="mb-8 md:mb-12 animate-on-scroll opacity-0">
-              <Link href="/portfolio" className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors">
-                <ArrowLeftIcon size={16} className="mr-2" />
+              <Link href="/portfolio" className="inline-flex items-center gap-2 text-slate-400 hover:text-orange-500 transition-colors bg-slate-900/40 border border-slate-800 hover:border-orange-500/50 rounded-lg px-4 py-2">
+                <ArrowLeftIcon size={16} />
                 <span>Back to Portfolio</span>
               </Link>
             </div>
@@ -505,14 +505,14 @@ export function ProjectDetail() {
                 <ChallengeAndSolution challenges={detailedProject.challenges} />
                 {/* Development Process */}
                 <section className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
                     Development Process
                   </h2>
                   {/* Project Gallery */}
                   {detailedProject.gallery && detailedProject.gallery.length > 0 && <ProjectGallery images={detailedProject.gallery} />}
                   {/* Color Palette */}
                   {detailedProject.colors && detailedProject.colors.length > 0 && <div className="mt-12">
-                      <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0">
+                      <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0 text-slate-100">
                         Color Palette
                       </h3>
                       <ColorPalette colors={detailedProject.colors} />
@@ -520,7 +520,7 @@ export function ProjectDetail() {
                 </section>
                 {/* Project Timeline */}
                 {detailedProject.timeline && detailedProject.timeline.phases && <section className="mb-16">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
                       Project Timeline
                     </h2>
                     <ProjectTimeline
@@ -529,7 +529,7 @@ export function ProjectDetail() {
                   </section>}
                 {/* Learnings & Outcomes */}
                 <section className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
                     Learnings & Outcomes
                   </h2>
                   <LearningsAccordion learnings={detailedProject.learnings} />
@@ -548,26 +548,26 @@ export function ProjectDetail() {
               </div>
             </div>
           </div>
-          {/* Related Projects */}
-          {relatedProjects.length > 0 && <RelatedProjects projects={relatedProjects} />}
-          {/* CTA Section */}
+          {/*/!* Related Projects *!/*/}
+          {/*{relatedProjects.length > 0 && <RelatedProjects projects={relatedProjects} />}*/}
+          {/*/!* CTA Section *!/*/}
           <ContactCTA />
         </main>
       </div>;
   }
 
   // Render with old structure for other projects
-  return <div className="font-sans text-gray-800 bg-white" ref={contentRef}>
+  return <div className="font-sans text-slate-300" ref={contentRef}>
       <SEO title={`${project.title} - Project Case Study | LP Web Studio`} description={project.description} keywords={`${project.title.toLowerCase()}, case study, web development, ${project.category}, portfolio project`} />
       <main className="pt-0">
         {/* Hero Section */}
         <ProjectHero project={project} />
         {/* Main Content */}
-        <div className="container mx-auto px-4 md:px-6 py-8 md:py-16" ref={mainContentRef}>
+        <div className="container mx-auto px-4 md:px-6 py-8 md:py-16 backdrop-blur-sm" ref={mainContentRef}>
           {/* Back to Portfolio Link */}
           <div className="mb-8 md:mb-12 animate-on-scroll opacity-0">
-            <Link href="/portfolio" className="inline-flex items-center text-slate-600 hover:text-orange-500 transition-colors">
-              <ArrowLeftIcon size={16} className="mr-2" />
+            <Link href="/portfolio" className="inline-flex items-center gap-2 text-slate-400 hover:text-orange-500 transition-colors bg-slate-900/40 border border-slate-800 hover:border-orange-500/50 rounded-lg px-4 py-2">
+              <ArrowLeftIcon size={16} />
               <span>Back to Portfolio</span>
             </Link>
           </div>
@@ -580,14 +580,14 @@ export function ProjectDetail() {
               <ChallengeAndSolution project={project} />
               {/* Development Process */}
               <section className="mb-16">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
                   Development Process
                 </h2>
                 {/* Project Gallery */}
                 {project.galleryImages && project.galleryImages.length > 0 && <ProjectGallery images={project.galleryImages} descriptions={project.galleryDescriptions || []} />}
                 {/* Color Palette */}
                 {project.colorPalette && project.colorPalette.length > 0 && <div className="mt-12">
-                    <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0">
+                    <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0 text-slate-100">
                       Color Palette
                     </h3>
                     <ColorPalette colors={project.colorPalette} />
@@ -595,14 +595,14 @@ export function ProjectDetail() {
               </section>
               {/* Project Timeline */}
               {project.timelineItems && project.timelineItems.length > 0 && <section className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
                     Project Timeline
                   </h2>
                   <ProjectTimeline timeline={project.timelineItems} />
                 </section>}
               {/* Learnings & Outcomes */}
               <section className="mb-16">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-200 animate-on-scroll opacity-0">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
                   Learnings & Outcomes
                 </h2>
                 <LearningsAccordion learnings={project.learnings} />
@@ -614,9 +614,9 @@ export function ProjectDetail() {
             </div>
           </div>
         </div>
-        {/* Related Projects */}
-        {relatedProjects.length > 0 && <RelatedProjects projects={relatedProjects} />}
-        {/* CTA Section */}
+        {/*/!* Related Projects *!/*/}
+        {/*{relatedProjects.length > 0 && <RelatedProjects projects={relatedProjects} />}*/}
+        {/*/!* CTA Section *!/*/}
         <ContactCTA />
       </main>
     </div>;

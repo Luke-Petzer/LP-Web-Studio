@@ -29,7 +29,7 @@ export function Header() {
     return (
         <>
             {/* Main Header */}
-            <header className="fixed top-0 left-0 right-0 w-full z-50 bg-white shadow-md">
+            <header className="fixed top-0 left-0 right-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/50">
                 <div className="w-full h-20 px-6 lg:px-12 max-w-[1920px] mx-auto">
                     <div className="h-full flex items-center justify-between">
                         {/* Logo Section - Left */}
@@ -37,12 +37,12 @@ export function Header() {
                             <img
                                 src="/logo.svg"
                                 alt="LP Logo"
-                                className="h-12 w-auto"
+                                className="h-12 w-auto brightness-200"
                             />
                             <img
                                 src="/my-logo.svg"
                                 alt="LP Web Studio"
-                                className="h-7 w-auto"
+                                className="h-7 w-auto brightness-200"
                             />
                         </Link>
 
@@ -52,7 +52,7 @@ export function Header() {
                                 <Link
                                     href="/"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/') ? 'text-orange-500' : 'text-gray-800'
+                                        isActive('/') ? 'text-orange-500' : 'text-slate-300'
                                     }`}
                                 >
                                     Home
@@ -60,7 +60,7 @@ export function Header() {
                                 <Link
                                     href="/portfolio"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/portfolio') ? 'text-orange-500' : 'text-gray-800'
+                                        isActive('/portfolio') ? 'text-orange-500' : 'text-slate-300'
                                     }`}
                                 >
                                     Portfolio
@@ -68,7 +68,7 @@ export function Header() {
                                 <Link
                                     href="/about"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/about') ? 'text-orange-500' : 'text-gray-800'
+                                        isActive('/about') ? 'text-orange-500' : 'text-slate-300'
                                     }`}
                                 >
                                     About Me
@@ -76,7 +76,7 @@ export function Header() {
                                 <Link
                                     href="/contact"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/contact') ? 'text-orange-500' : 'text-gray-800'
+                                        isActive('/contact') ? 'text-orange-500' : 'text-slate-300'
                                     }`}
                                 >
                                     Contact
@@ -89,7 +89,7 @@ export function Header() {
                                     href="https://www.facebook.com/share/1B6hCGLJbh/?mibextid=wwXIfr"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-gray-600 hover:text-orange-500 transition-colors"
+                                    className="text-slate-400 hover:text-orange-500 transition-colors"
                                     aria-label="Facebook"
                                 >
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ export function Header() {
                                     href="https://www.instagram.com/lp.web.studio/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-gray-600 hover:text-orange-500 transition-colors"
+                                    className="text-slate-400 hover:text-orange-500 transition-colors"
                                     aria-label="Instagram"
                                 >
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -114,7 +114,7 @@ export function Header() {
                         {/* Mobile Menu Button - Right */}
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden p-2 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+                            className="md:hidden p-2 text-slate-300 hover:bg-slate-800 rounded-lg transition-colors"
                             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                         >
                             {mobileMenuOpen ? (
@@ -131,14 +131,14 @@ export function Header() {
             {mobileMenuOpen && (
                 <div className="fixed inset-0 z-40 md:hidden">
                     {/* Full Viewport Menu */}
-                    <div className="absolute inset-0 bg-white flex flex-col">
+                    <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-lg flex flex-col">
                         {/* Navigation Links - Centered and Stacked */}
                         <nav className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
                             <Link
                                 href="/"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`text-4xl font-bold transition-colors ${
-                                    isActive('/') ? 'text-orange-500' : 'text-gray-800 hover:text-orange-500'
+                                    isActive('/') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
                                 }`}
                             >
                                 Home
@@ -147,7 +147,7 @@ export function Header() {
                                 href="/portfolio"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`text-4xl font-bold transition-colors ${
-                                    isActive('/portfolio') ? 'text-orange-500' : 'text-gray-800 hover:text-orange-500'
+                                    isActive('/portfolio') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
                                 }`}
                             >
                                 Portfolio
@@ -156,7 +156,7 @@ export function Header() {
                                 href="/about"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`text-4xl font-bold transition-colors ${
-                                    isActive('/about') ? 'text-orange-500' : 'text-gray-800 hover:text-orange-500'
+                                    isActive('/about') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
                                 }`}
                             >
                                 About Me
@@ -165,20 +165,20 @@ export function Header() {
                                 href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`text-4xl font-bold transition-colors ${
-                                    isActive('/contact') ? 'text-orange-500' : 'text-gray-800 hover:text-orange-500'
+                                    isActive('/contact') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
                                 }`}
                             >
                                 Contact
                             </Link>
                         </nav>
 
-                        {/* Social Links - Bottom */}
-                        <div className="flex justify-center gap-8 py-8 border-t border-gray-200">
+                        {/* Social Icons - Bottom */}
+                        <div className="flex justify-center items-center gap-8 pb-12">
                             <a
                                 href="https://www.facebook.com/share/1B6hCGLJbh/?mibextid=wwXIfr"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-orange-500 transition-colors"
+                                className="text-slate-400 hover:text-orange-500 transition-colors"
                                 aria-label="Facebook"
                             >
                                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -189,7 +189,7 @@ export function Header() {
                                 href="https://www.instagram.com/lp.web.studio/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-600 hover:text-orange-500 transition-colors"
+                                className="text-slate-400 hover:text-orange-500 transition-colors"
                                 aria-label="Instagram"
                             >
                                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">

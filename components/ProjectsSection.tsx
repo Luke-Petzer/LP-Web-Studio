@@ -1,36 +1,54 @@
 import { Button } from './ui/Button';
 import { ProjectCard } from './ui/ProjectCard';
+import { Briefcase } from 'lucide-react';
+import { allProjects } from '../data/projectsData';
+
 export function ProjectsSection() {
-  return <section className="py-16 md:py-20 lg:py-24 bg-gray-50">
+  // Get first 3 projects for homepage display
+  const featuredProjects = allProjects.slice(0, 3);
+
+  return (
+    <section className="relative py-20 md:py-28 lg:py-32 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center">
-          Recent Work
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 overflow-x-hidden">
-          <ProjectCard
-            image="/L-card.png"
-            title="Loruki Website"
-            description="A demo cloud-hosting website created to experiment with responsive design and modern layout structure."
-            link="/showcase/loruki"
-          />
-          <ProjectCard
-            image="/cc-home.png"
-            title="Cafe Client Website"
-            description="A modern, responsive website for a local cafe featuring online menu, location details, and booking functionality."
-            link="disabled"
-          />
-          <ProjectCard
-            image="/CM-card.png"
-            title="Granite and Marble"
-            description="A comprehensive website design concept showcasing modern UI/UX principles for a stone and marble business."
-            link="/design/granite-marble"
-          />
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 text-sm text-slate-300 mb-6">
+            <Briefcase className="w-4 h-4 text-teal-400" />
+            <span>Our Portfolio</span>
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-50 mb-6">
+            Recent{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
+              Work
+            </span>
+          </h2>
+          <p className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto">
+            See how we've helped businesses like yours grow their online presence.
+          </p>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 overflow-x-hidden">
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              image={project.hero.image}
+              title={project.hero.title}
+              description={project.hero.tagline}
+              link={project.link || '#'}
+            />
+          ))}
+        </div>
+
         <div className="text-center">
-          <Button href="/portfolio" variant="outline">
+          <Button
+            href="/portfolio"
+            variant="outline"
+            className="border-2 border-slate-700 text-slate-50 hover:border-orange-500 hover:text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+          >
             See More Projects
           </Button>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }

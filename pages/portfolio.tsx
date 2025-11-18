@@ -3,8 +3,9 @@ import { Layout } from '../components/Layout';
 import { ProjectFilter } from '../components/portfolio/ProjectFilter';
 import { DetailedProjectCard } from '../components/portfolio/DetailedProjectCard';
 import { SEO } from '../components/SEO';
+import { allProjects, ProjectData } from '../data/projectsData';
 
-// Project data structure
+// Project data structure for portfolio display
 interface ProjectLearning {
   text: string;
 }
@@ -20,78 +21,33 @@ interface Project {
   learnings: ProjectLearning[];
 }
 
+// Helper function to convert ProjectData to Portfolio Project format
+function convertToPortfolioProject(projectData: ProjectData): Project {
+  const getProjectType = (id: string): 'Client' | 'Showcase' | 'Design' => {
+    if (id === 'cafe-client') return 'Client';
+    if (id === 'loruki') return 'Showcase';
+    return 'Design';
+  };
+
+  return {
+    id: projectData.id,
+    title: projectData.hero.title,
+    description: projectData.hero.tagline,
+    image: projectData.hero.image,
+    category: 'website',
+    projectType: getProjectType(projectData.id),
+    link: projectData.link || '#',
+    learnings: projectData.learnings.slice(0, 3).map(learning => ({ text: learning }))
+  };
+}
+
 export default function Portfolio() {
-  // Sample project data
-  const projects: Project[] = [{
-    id: 'loruki',
-    title: 'Loruki Website',
-    description: 'A demo cloud-hosting website created to experiment with responsive design and modern layout structure.',
-    image: "/L-card.png",
-    category: 'website',
-    projectType: 'Showcase',
-    link: '#',
-    learnings: [{
-      text: 'Improved my understanding of layouts and responsive design'
-    }, {
-      text: 'How to create a contact form linked to a google sheet'
-    }, {
-      text: 'Using external fonts and icons'
-    }]
-  }, {
-    id: 'cafe-client',
-    title: 'Cafe Crave Website',
-    description: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews.',
-    image: "/cc-home.png",
-    category: 'website',
-    projectType: 'Client',
-    link: '/project/cafe-client',
-    learnings: [{
-      text: 'Implementing secure API architecture for Google Reviews'
-    }, {
-      text: 'Creating dynamic menu with scroll-spy navigation'
-    }, {
-      text: 'Deploying split-hosting solution (Railway + Hostinger)'
-    }]
-  }, {
-    id: 'granite-marble',
-    title: 'Granite and Marble',
-    description: 'A comprehensive website design concept showcasing modern UI/UX principles for a stone and marble business.',
-    image: "/CM-card.png",
-    category: 'website',
-    projectType: 'Design',
-    link: '#',
-    learnings: [{
-      text: 'Creating cohesive design systems across multiple pages'
-    }, {
-      text: 'Developing visual hierarchy for business websites'
-    }, {
-      text: 'Designing user-friendly navigation and layouts'
-    }]
-  }, {
-    id: 'green-scape-gardeners',
-    title: 'Green Scape Gardeners',
-    description: 'A nature-inspired website design concept for a landscaping and gardening business, featuring organic layouts and earthy aesthetics.',
-    image: "/GSG-card.png",
-    category: 'website',
-    projectType: 'Design',
-    link: '#',
-    learnings: [{
-      text: 'Incorporating natural themes into web design'
-    }, {
-      text: 'Creating visually appealing gallery layouts'
-    }, {
-      text: 'Balancing imagery with content hierarchy'
-    }]
-  }];
+  // Convert centralized project data to portfolio format
+  const projects: Project[] = allProjects.map(convertToPortfolioProject);
 
   const [activeFilter, setActiveFilter] = useState<'all' | 'Client' | 'Showcase' | 'Design'>('all');
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter(project => project.projectType === activeFilter);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Scroll to top when filter changes
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [activeFilter]);
 
   // Setup refs for projects
   useEffect(() => {
@@ -135,18 +91,23 @@ export default function Portfolio() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-20 right-10 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-        </div>
-
+      <section className="relative py-20 md:py-28 backdrop-blur-sm overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              My Portfolio
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 text-sm text-slate-300 mb-6">
+              <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>Showcasing My Work</span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-50">
+              My{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
+                Portfolio
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
+            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
               A collection of my web development projects, design concepts, and technical experiments
             </p>
           </div>
@@ -154,7 +115,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="relative py-16 md:py-20 backdrop-blur-sm">
         <div className="container mx-auto px-4 md:px-6">
           <ProjectFilter activeFilter={activeFilter} onFilterChange={setActiveFilter} />
 
@@ -173,7 +134,7 @@ export default function Portfolio() {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">No projects found for this filter.</p>
+              <p className="text-slate-400 text-lg">No projects found for this filter.</p>
             </div>
           )}
         </div>

@@ -74,29 +74,29 @@ export function TechStack({
         return <CodeIcon size={18} className="text-teal-500" />;
     }
   };
-  return <div ref={techStackRef} className="bg-slate-50 p-6 rounded-xl shadow-sm mb-8 sticky top-24 animate-on-scroll opacity-0">
-      <h3 className="text-xl font-bold mb-6 pb-2 border-b-2 border-orange-500/30">
+  return <div ref={techStackRef} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 p-6 rounded-2xl shadow-xl mb-8 sticky top-24 animate-on-scroll opacity-0 hover:border-orange-500/50 transition-all duration-300">
+      <h3 className="text-xl font-bold mb-6 pb-2 border-b-2 border-orange-500/50 text-slate-50">
         Technical Details
       </h3>
       {Object.keys(groupedTech).length > 0 ? <div className="space-y-6">
           {Object.entries(groupedTech).map(([category, techs]: [string, any]) => <div key={category} className="mb-4">
-                <h4 className="text-lg font-semibold mb-3 flex items-center text-slate-700">
+                <h4 className="text-lg font-semibold mb-3 flex items-center text-slate-100">
                   <span className="capitalize">{category}</span>
                 </h4>
-                <ul className="space-y-2">
-                  {techs.map((tech: any, index: number) => <li key={index} className="flex items-center">
+                <ul className="space-y-3">
+                  {techs.map((tech: any, index: number) => <li key={index} className="flex items-center bg-slate-800/40 border border-slate-700/50 rounded-lg p-2 hover:border-orange-500/50 transition-colors">
                       {getCategoryIcon(category)}
-                      <span className="ml-2 text-slate-600">{tech.name}</span>
+                      <span className="ml-2 text-slate-300">{tech.name}</span>
                     </li>)}
                 </ul>
               </div>)}
-        </div> : <p className="text-slate-500 italic">No technical details available</p>}
-      {projectLink && <div className="mt-8 pt-6 border-t border-slate-200">
-          <h4 className="text-lg font-semibold mb-3">Project Link</h4>
-          <a href={projectLink} target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-600 flex items-center">
-            <GlobeIcon size={18} className="mr-2" />
+        </div> : <p className="text-slate-400 italic">No technical details available</p>}
+      {projectLink && <div className="mt-8 pt-6 border-t border-slate-700">
+          <h4 className="text-lg font-semibold mb-3 text-slate-100">Project Link</h4>
+          <a href={projectLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors bg-slate-800/40 border border-slate-700 hover:border-orange-500/50 rounded-lg px-4 py-3">
+            <GlobeIcon size={18} />
             Visit Live Project
-            <ExternalLinkIcon size={14} className="ml-1" />
+            <ExternalLinkIcon size={14} />
           </a>
         </div>}
     </div>;

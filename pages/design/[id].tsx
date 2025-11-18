@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { DesignConcept } from '../../src/pages/DesignConcept';
+import { Layout } from '../../components/Layout';
 
 export default function DesignConceptPage() {
   const router = useRouter();
@@ -7,5 +8,9 @@ export default function DesignConceptPage() {
 
   if (!id) return null;
 
-  return <DesignConcept />;
+  return (
+    <Layout>
+      <DesignConcept />
+    </Layout>
+  );
 }

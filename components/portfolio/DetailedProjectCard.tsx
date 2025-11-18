@@ -28,7 +28,7 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
     const img = new Image();
     img.src = project.image;
   }, [project.image]);
-  return <div ref={ref} className="bg-white rounded-xl overflow-hidden shadow-md opacity-0" style={{
+  return <div ref={ref} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-orange-500/50 transition-all duration-300 opacity-0" style={{
     transform: 'translateY(30px)',
     transition: 'opacity 0.8s ease, transform 0.8s ease',
     transitionDelay: `${index * 0.1}s`
@@ -52,16 +52,16 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
               {project.category === 'website' ? 'Website' : project.category === 'mobile' ? 'Mobile App' : 'Side Project'}
             </span>
           </div>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-slate-50">
             {project.title}
           </h3>
-          <p className="text-gray-600 mb-6">{project.description}</p>
+          <p className="text-slate-300 mb-6">{project.description}</p>
           <div className="mt-auto">
-            <h4 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">
+            <h4 className="text-lg sm:text-xl font-semibold mb-4 text-slate-100">
               What I Learned:
             </h4>
             <ul className="space-y-2 mb-6">
-              {project.learnings.map((learning, index) => <li key={index} className="flex items-start">
+              {project.learnings.map((learning, index) => <li key={index} className="flex items-start text-slate-400">
                   <span className="text-orange-500 mr-2" aria-hidden="true">
                     •
                   </span>
@@ -70,7 +70,7 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
             </ul>
             <div>
               {project.link === 'disabled' ? (
-                <div className="inline-flex items-center px-6 py-3 bg-gray-400 text-white shadow-md font-medium rounded-md cursor-not-allowed opacity-75">
+                <div className="inline-flex items-center px-6 py-3 bg-slate-700/50 text-slate-300 shadow-md font-medium rounded-lg cursor-not-allowed opacity-75">
                   Coming Soon
                   <span className="ml-2 text-sm">(In Development)</span>
                 </div>
@@ -81,7 +81,7 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
                     project.projectType === 'Design' ? `/design/${project.id}` :
                     `/project/${project.id}`
                   }
-                  className="inline-flex items-center px-6 py-3 bg-orange-500 text-white shadow-md font-medium rounded-md hover:bg-orange-600 transition-colors"
+                  className="inline-flex items-center px-6 py-3 bg-orange-500 text-white shadow-lg shadow-orange-500/30 font-medium rounded-lg hover:bg-orange-600 hover:shadow-orange-500/50 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   View Project{' '}
                   <ExternalLinkIcon size={16} className="ml-2" aria-hidden="true" />
