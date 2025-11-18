@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTheme } from '../contexts/ThemeContext';
 
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const router = useRouter();
+    const [mounted, setMounted] = useState(false);
+    const { theme, toggleTheme } = useTheme();
+
+    // Prevent hydration mismatch
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -29,7 +37,7 @@ export function Header() {
     return (
         <>
             {/* Main Header */}
-            <header className="fixed top-0 left-0 right-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/50">
+            <header className="fixed top-0 left-0 right-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
                 <div className="w-full h-20 px-6 lg:px-12 max-w-[1920px] mx-auto">
                     <div className="h-full flex items-center justify-between">
                         {/* Logo Section - Left */}
@@ -52,7 +60,7 @@ export function Header() {
                                 <Link
                                     href="/"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/') ? 'text-orange-500' : 'text-slate-300'
+                                        isActive('/') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
                                     }`}
                                 >
                                     Home
@@ -60,7 +68,7 @@ export function Header() {
                                 <Link
                                     href="/portfolio"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/portfolio') ? 'text-orange-500' : 'text-slate-300'
+                                        isActive('/portfolio') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
                                     }`}
                                 >
                                     Portfolio
@@ -68,7 +76,7 @@ export function Header() {
                                 <Link
                                     href="/about"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/about') ? 'text-orange-500' : 'text-slate-300'
+                                        isActive('/about') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
                                     }`}
                                 >
                                     About Me
@@ -76,7 +84,7 @@ export function Header() {
                                 <Link
                                     href="/contact"
                                     className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/contact') ? 'text-orange-500' : 'text-slate-300'
+                                        isActive('/contact') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
                                     }`}
                                 >
                                     Contact
@@ -108,21 +116,53 @@ export function Header() {
                                         <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                     </svg>
                                 </a>
+
+                                {/* Theme Toggle Button */}
+                                {mounted && (
+                                    <button
+                                        onClick={toggleTheme}
+                                        className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-orange-500 transition-all duration-300 border border-slate-700/50"
+                                        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                    >
+                                        {theme === 'dark' ? (
+                                            <Sun className="w-5 h-5" />
+                                        ) : (
+                                            <Moon className="w-5 h-5" />
+                                        )}
+                                    </button>
+                                )}
                             </div>
                         </div>
 
-                        {/* Mobile Menu Button - Right */}
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden p-2 text-slate-300 hover:bg-slate-800 rounded-lg transition-colors"
-                            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-                        >
-                            {mobileMenuOpen ? (
-                                <X className="w-6 h-6" />
-                            ) : (
-                                <Menu className="w-6 h-6" />
+                        {/* Mobile - Theme Toggle and Menu Button */}
+                        <div className="md:hidden flex items-center gap-2">
+                            {/* Theme Toggle Button - Mobile */}
+                            {mounted && (
+                                <button
+                                    onClick={toggleTheme}
+                                    className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-orange-500 transition-all duration-300 border border-slate-700/50"
+                                    aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                >
+                                    {theme === 'dark' ? (
+                                        <Sun className="w-5 h-5" />
+                                    ) : (
+                                        <Moon className="w-5 h-5" />
+                                    )}
+                                </button>
                             )}
-                        </button>
+
+                            <button
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                className="p-2 text-slate-300 hover:bg-slate-800 rounded-lg transition-colors"
+                                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                            >
+                                {mobileMenuOpen ? (
+                                    <X className="w-6 h-6" />
+                                ) : (
+                                    <Menu className="w-6 h-6" />
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </header>

@@ -28,7 +28,7 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
     const img = new Image();
     img.src = project.image;
   }, [project.image]);
-  return <div ref={ref} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-orange-500/50 transition-all duration-300 opacity-0" style={{
+  return <div ref={ref} className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-orange-500/50 transition-all duration-300 opacity-0" style={{
     transform: 'translateY(30px)',
     transition: 'opacity 0.8s ease, transform 0.8s ease',
     transitionDelay: `${index * 0.1}s`
@@ -52,16 +52,16 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
               {project.category === 'website' ? 'Website' : project.category === 'mobile' ? 'Mobile App' : 'Side Project'}
             </span>
           </div>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-slate-50">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-slate-900 dark:text-slate-50 transition-colors duration-300">
             {project.title}
           </h3>
-          <p className="text-slate-300 mb-6">{project.description}</p>
+          <p className="text-slate-700 dark:text-slate-300 mb-6 transition-colors duration-300">{project.description}</p>
           <div className="mt-auto">
-            <h4 className="text-lg sm:text-xl font-semibold mb-4 text-slate-100">
-              What I Learned:
+            <h4 className="text-lg sm:text-xl font-semibold mb-4 text-slate-800 dark:text-slate-100 transition-colors duration-300">
+              Key Business Features:
             </h4>
             <ul className="space-y-2 mb-6">
-              {project.learnings.map((learning, index) => <li key={index} className="flex items-start text-slate-400">
+              {project.learnings.map((learning, index) => <li key={index} className="flex items-start text-slate-600 dark:text-slate-400 transition-colors duration-300">
                   <span className="text-orange-500 mr-2" aria-hidden="true">
                     •
                   </span>
@@ -70,7 +70,7 @@ export const DetailedProjectCard = forwardRef<HTMLDivElement, DetailedProjectCar
             </ul>
             <div>
               {project.link === 'disabled' ? (
-                <div className="inline-flex items-center px-6 py-3 bg-slate-700/50 text-slate-300 shadow-md font-medium rounded-lg cursor-not-allowed opacity-75">
+                <div className="inline-flex items-center px-6 py-3 bg-slate-200 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 shadow-md font-medium rounded-lg cursor-not-allowed opacity-75 transition-colors duration-300">
                   Coming Soon
                   <span className="ml-2 text-sm">(In Development)</span>
                 </div>

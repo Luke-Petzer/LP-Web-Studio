@@ -90,13 +90,13 @@ export function ShowcaseProject() {
 
       <main>
         {/* Breadcrumb Navigation */}
-        <div className="container mx-auto px-4 md:px-6 py-4 border-b border-slate-800">
+        <div className="container mx-auto px-4 md:px-6 py-4 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
           <nav className="text-sm">
             <Link href="/portfolio" className="text-orange-500 hover:text-orange-400 transition-colors">
               Portfolio
             </Link>
-            <span className="mx-2 text-slate-600">/</span>
-            <span className="text-slate-400">{project.title}</span>
+            <span className="mx-2 text-slate-400 dark:text-slate-600">/</span>
+            <span className="text-slate-600 dark:text-slate-400 transition-colors duration-300">{project.title}</span>
           </nav>
         </div>
 
@@ -112,12 +112,12 @@ export function ShowcaseProject() {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in text-slate-50">
+              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in text-slate-900 dark:text-slate-50 transition-colors duration-300">
                 {project.title}
               </h1>
 
               {/* Project Image */}
-              <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl border border-slate-800 hover:border-orange-500/50 transition-all duration-300">
+              <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 hover:border-orange-500/50 transition-all duration-300">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -138,36 +138,36 @@ export function ShowcaseProject() {
                 <div className="lg:col-span-2 space-y-8">
 
                   {/* Overview */}
-                  <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
-                    <h2 className="text-2xl font-bold mb-4 text-slate-50 flex items-center gap-2">
+                  <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
+                    <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-50 flex items-center gap-2 transition-colors duration-300">
                       <span className="text-orange-500">📋</span> Overview
                     </h2>
-                    <p className="text-lg text-slate-300 leading-relaxed">
+                    <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed transition-colors duration-300">
                       {project.overview}
                     </p>
                   </div>
 
                   {/* Highlights */}
-                  <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
-                    <h2 className="text-2xl font-bold mb-4 text-slate-50 flex items-center gap-2">
+                  <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
+                    <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-50 flex items-center gap-2 transition-colors duration-300">
                       <span className="text-teal-400">✨</span> Highlights
                     </h2>
                     <ul className="space-y-3">
                       {project.highlights.map((highlight, index) => (
                         <li key={index} className="flex items-start">
                           <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mt-3 mr-3 flex-shrink-0"></span>
-                          <span className="text-slate-300">{highlight}</span>
+                          <span className="text-slate-700 dark:text-slate-300 transition-colors duration-300">{highlight}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Outcome */}
-                  <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
-                    <h2 className="text-2xl font-bold mb-4 text-slate-50 flex items-center gap-2">
+                  <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
+                    <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-50 flex items-center gap-2 transition-colors duration-300">
                       <span className="text-orange-500">🎯</span> Outcome
                     </h2>
-                    <p className="text-lg text-slate-300 leading-relaxed">
+                    <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed transition-colors duration-300">
                       {project.outcome}
                     </p>
                   </div>
@@ -175,20 +175,20 @@ export function ShowcaseProject() {
                   {/* Showcase Images */}
                   {project.showcaseImages && project.showcaseImages.length > 0 && (
                     <div>
-                      <h2 className="text-2xl font-bold mb-6 text-slate-50 flex items-center gap-2">
+                      <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-50 flex items-center gap-2 transition-colors duration-300">
                         <span className="text-teal-400">🖼️</span> Showcase Images
                       </h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {project.showcaseImages.map((image, index) => (
-                          <div key={index} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl overflow-hidden shadow-lg hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300">
+                          <div key={index} className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-lg hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300">
                             <img
                               src={image.src}
                               alt={image.title}
                               className="w-full h-auto object-cover"
                             />
                             <div className="p-4">
-                              <h3 className="text-lg font-semibold mb-2 text-slate-100">{image.title}</h3>
-                              <p className="text-slate-400 text-sm leading-relaxed">
+                              <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100 transition-colors duration-300">{image.title}</h3>
+                              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed transition-colors duration-300">
                                 {image.description}
                               </p>
                             </div>
@@ -201,16 +201,16 @@ export function ShowcaseProject() {
 
                 {/* Sidebar */}
                 <div className="lg:col-span-1">
-                  <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl sticky top-24 hover:border-orange-500/50 transition-all duration-300">
+                  <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl sticky top-24 hover:border-orange-500/50 transition-all duration-300">
 
                     {/* Tools Used */}
                     <div className="mb-8">
-                      <h3 className="text-lg font-semibold mb-4 text-slate-50">Tools Used</h3>
+                      <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-slate-50 transition-colors duration-300">Tools Used</h3>
                       <div className="flex flex-wrap gap-2">
                         {project.toolsUsed.map((tool, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-slate-800/50 border border-slate-700 text-slate-300 text-sm rounded-full hover:border-orange-500/50 transition-colors"
+                            className="px-3 py-1 bg-slate-100 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-full hover:border-orange-500/50 transition-all duration-300"
                           >
                             {tool}
                           </span>
@@ -221,7 +221,7 @@ export function ShowcaseProject() {
                     {/* CTA Buttons */}
                     <div className="space-y-3">
                       <Link href="/portfolio" className="block">
-                        <Button variant="outline" className="w-full border-2 border-slate-700 text-slate-100 hover:border-orange-500 hover:text-orange-500">
+                        <Button variant="outline" className="w-full border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 hover:border-orange-500 hover:text-orange-500">
                           Return to Portfolio
                         </Button>
                       </Link>

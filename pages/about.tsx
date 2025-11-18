@@ -3,6 +3,7 @@ import { Layout } from '../components/Layout';
 import { AboutHero } from '../components/about/AboutHero';
 import { AboutApproach } from '../components/about/AboutApproach';
 import { AboutExpertise } from '../components/about/AboutExpertise';
+import { SkillsSection } from '../components/SkillsSection';
 import { SEO } from '../components/SEO';
 
 export default function About() {
@@ -63,6 +64,7 @@ export default function About() {
       />
       <AboutHero />
       <AboutApproach />
+      <SkillsSection />
       <AboutExpertise />
     </Layout>
   );

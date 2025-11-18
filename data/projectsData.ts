@@ -120,11 +120,9 @@ export const cafeCraveData: ProjectData = {
     }
   ],
   learnings: [
-    'Value of Split-Hosting: Learned the significant benefits of a split-hosting architecture. Using Railway for a lightweight Node.js backend and Hostinger for static file hosting is both cost-effective and provides superior performance and security.',
-    'Performance is a Feature: Gained deep experience in diagnosing and fixing Core Web Vitals. Implementing width/height attributes, fetchpriority, and loading="lazy" has a massive impact on performance scores.',
-    'IntersectionObserver is Superior: For any scroll-based UI, IntersectionObserver is the modern, correct solution. It is far more performant and reliable than traditional scroll event listeners.',
-    'Security by Design: Building the secure API proxy from day one is the correct professional workflow for handling any private client credentials.',
-    'Documentation is Key: Writing comprehensive deployment and troubleshooting guides solidified the entire process, making the project easily maintainable.'
+    'Live Google Reviews Feed: Instantly displays 5-star customer reviews to new visitors, building trust and credibility that increases bookings and walk-ins.',
+    'Mobile-Optimized Menu: Customers can easily browse the full menu on their phones, with smooth filtering by category—no more squinting at paper menus or asking staff for details.',
+    'One-Click Contact & Directions: WhatsApp button and integrated Google Maps make it effortless for customers to reach out or find the café, reducing friction and increasing foot traffic.'
   ],
   gallery: [
     {
@@ -236,11 +234,9 @@ export const lorukiData: ProjectData = {
     }
   ],
   learnings: [
-    'Mobile-First Design: Starting with mobile layouts and progressively enhancing for larger screens results in cleaner, more maintainable code.',
-    'CSS Grid & Flexbox Mastery: These modern layout tools are incredibly powerful when used correctly and can eliminate the need for float-based layouts.',
-    'Semantic HTML Importance: Using proper HTML5 semantic elements (header, nav, main, section, footer) improves accessibility and SEO.',
-    'Responsive Images: Understanding how to serve appropriately-sized images for different viewports is crucial for performance.',
-    'Cross-Browser Testing: Different browsers can render CSS slightly differently; testing is essential.'
+    '100% Mobile Optimized: Website loads instantly and looks perfect on every phone, tablet, and desktop—ensuring no potential customer is lost due to poor mobile experience.',
+    'Clear Call-to-Actions: Strategic placement of contact forms and buttons guide visitors to take action, making it easy for them to get in touch or sign up.',
+    'Fast Loading Speed: Optimized images and clean code mean the site loads in under 2 seconds, keeping visitors engaged instead of bouncing to competitors.'
   ],
   gallery: [
     {
@@ -342,11 +338,9 @@ export const graniteMarbleData: ProjectData = {
     }
   ],
   learnings: [
-    'Industry-Specific Design: Understanding the target industry\'s aesthetic preferences and functional needs is crucial for creating relevant designs.',
-    'Design Systems: Creating a consistent design system with reusable components makes the design more cohesive and easier to implement.',
-    'User Journey Mapping: Planning the user\'s path from awareness to contact helps structure content logically.',
-    'Visual Storytelling: Using high-quality imagery strategically can communicate quality and craftsmanship more effectively than text.',
-    'Accessibility in Design: Considering color contrast, font sizes, and touch target sizes during the design phase prevents accessibility issues later.'
+    'Professional Portfolio Showcase: High-quality image galleries display past projects, helping customers visualize the quality of work and build confidence before making contact.',
+    'Easy Quote Requests: Simple contact forms and clear pricing information make it effortless for customers to request quotes, increasing conversion rates.',
+    'Service Page Clarity: Well-organized service pages explain what\'s offered in plain language, reducing customer confusion and phone calls with basic questions.'
   ],
   gallery: [
     {
@@ -464,10 +458,9 @@ export const greenScapeData: ProjectData = {
   ],
   learnings: [
     'Emotional Design: Using design elements that evoke feelings (tranquility, growth, nature) can be more effective than purely functional layouts.',
-    'Visual Balance: Balancing text-heavy content with imagery is crucial in service-based industries where visual proof is important.',
-    'Micro-interactions: Small animated details (leaves rustling, gentle transitions) can reinforce the brand theme without being distracting.',
-    'Content Strategy: For service businesses, clear pricing and service descriptions reduce friction in the customer journey.',
-    'Gallery Design: High-quality project galleries are the most powerful conversion tool for visual service industries.'
+    'Stunning Visual Galleries: Before-and-after project photos let potential customers see the transformation, making it easier for them to imagine their own space.',
+    'Service Area & Pricing: Clear information about service areas and transparent pricing helps customers self-qualify, attracting serious inquiries.',
+    'Seasonal Service Highlights: Featured sections for seasonal services (spring planting, winter prep) keep the website relevant year-round and encourage repeat business.'
   ],
   gallery: [
     {

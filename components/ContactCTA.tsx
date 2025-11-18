@@ -5,13 +5,13 @@ export function ContactCTA() {
   const ctaRef = useAnimateOnScroll<HTMLElement>();
 
   return (
-    <section ref={ctaRef} className="relative py-16 md:py-20 lg:py-24 bg-slate-900 backdrop-blur-sm z-20">
+    <section ref={ctaRef} className="relative py-16 md:py-20 lg:py-24 bg-slate-100 dark:bg-slate-900 backdrop-blur-sm z-20 transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-on-scroll opacity-0 text-slate-50">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
             Let's Build Something Great Together
           </h2>
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 mx-auto animate-on-scroll text-slate-300 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 mx-auto animate-on-scroll text-slate-700 dark:text-slate-300 leading-relaxed transition-colors duration-300">
             Ready to grow your business online?
             Let's create a website that helps your customers find and connect with you.
           </p>

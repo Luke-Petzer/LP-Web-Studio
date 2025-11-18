@@ -54,7 +54,7 @@ export function ProjectGallery({
   return <div ref={galleryRef} className="animate-on-scroll opacity-0" style={{
     transform: 'translateY(20px)'
   }}>
-      <h3 className="text-xl font-semibold mb-4">Project Gallery</h3>
+      <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-slate-100 transition-colors duration-300">Project Gallery</h3>
       <div className="relative rounded-lg overflow-hidden shadow-lg">
         {/* Main carousel image */}
         <div className="relative aspect-w-16 aspect-h-9 bg-gray-100">

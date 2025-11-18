@@ -41,18 +41,18 @@ export function ServicesSection() {
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 text-sm text-slate-300 mb-6">
-            <Sparkles className="w-4 h-4 text-teal-400" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 dark:bg-slate-800/40 backdrop-blur-sm border border-teal-200 dark:border-slate-700/50 text-sm text-teal-900 dark:text-slate-300 mb-6 transition-colors duration-300">
+            <Sparkles className="w-4 h-4 text-teal-500 dark:text-teal-400" />
             <span>Complete Digital Solutions</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-50 mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 dark:text-slate-50 mb-6 transition-colors duration-300">
             Everything You Need to{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
               Grow Online
             </span>
           </h2>
-          <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             We don't just build websites; we build systems that bring you customers.
           </p>
         </div>
@@ -84,8 +84,8 @@ export function ServicesSection() {
               cardsRef.current[2] = el;
             }}
             icon={<MapPin size={40} className="text-orange-500" />}
-            title="Google Maps & SEO"
-            description="Get found when locals search 'near me'. We optimize your Google Business Profile and website to rank higher in Cape Town."
+            title="Web Optimization & Setup"
+            description="Get found online with essential SEO basics, Google Business Profile setup, and fast-loading pages. We cover the fundamentals to help locals find you."
             bestFor="Local Services & Trades"
             featured={false}
           />
@@ -104,16 +104,16 @@ export function ServicesSection() {
 
         {/* Call to Action Card */}
         <div className="relative">
-          <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 md:p-12 text-center hover:border-orange-500/50 transition-all duration-300">
+          <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-8 md:p-12 text-center hover:border-orange-500/50 transition-all duration-300">
             {/* Decorative glow */}
             <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/20 to-teal-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <div className="relative">
               <Zap className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-              <h3 className="text-2xl md:text-3xl font-bold text-slate-100 mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 transition-colors duration-300">
                 Not sure what you need? Let's chat.
               </h3>
-              <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto transition-colors duration-300">
                 Get a free consultation and discover how we can help your business grow online.
               </p>
               <Link
@@ -146,11 +146,11 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(
         ref={ref}
         className={`
           relative group
-          bg-slate-900/60 backdrop-blur-sm 
+          bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm 
           border transition-all duration-300
           rounded-2xl p-6 md:p-8
           hover:border-orange-500/50 hover:-translate-y-2
-          ${featured ? 'border-orange-500/50 shadow-lg shadow-orange-500/20' : 'border-slate-800'}
+          ${featured ? 'border-orange-500/50 shadow-lg shadow-orange-500/20' : 'border-slate-200 dark:border-slate-800'}
         `}
         style={{ opacity: 0 }}
       >
@@ -166,27 +166,27 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(
 
         <div className="relative">
           {/* Icon */}
-          <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-800/80 border border-slate-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+          <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
             {icon}
           </div>
 
           {/* Title */}
-          <h3 className="text-xl md:text-2xl font-bold text-slate-100 mb-4 group-hover:text-white transition-colors">
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 group-hover:text-slate-950 dark:group-hover:text-white transition-colors">
             {title}
           </h3>
 
           {/* Description */}
-          <p className="text-slate-400 mb-6 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed transition-colors duration-300">
             {description}
           </p>
 
           {/* Best For Tag */}
-          <div className="pt-4 border-t border-slate-800">
+          <div className="pt-4 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
             <p className="text-sm font-semibold">
-              <span className={isPricing ? 'text-orange-400' : 'text-slate-500'}>
+              <span className={isPricing ? 'text-orange-500 dark:text-orange-400' : 'text-slate-500 dark:text-slate-500'}>
                 {isPricing ? '💰 ' : '✓ '}Best For:
               </span>{' '}
-              <span className="text-slate-300">{bestFor}</span>
+              <span className="text-slate-700 dark:text-slate-300 transition-colors duration-300">{bestFor}</span>
             </p>
           </div>
         </div>

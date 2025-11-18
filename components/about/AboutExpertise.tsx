@@ -36,12 +36,12 @@ export function AboutExpertise() {
     <section ref={sectionRef} className="relative py-20 md:py-28 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 text-sm text-slate-300 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 dark:bg-slate-800/40 backdrop-blur-sm border border-orange-200 dark:border-slate-700/50 text-sm text-orange-900 dark:text-slate-300 mb-6 transition-colors duration-300">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span>What I Bring to the Table</span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-slate-50 animate-fade-in">
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-slate-900 dark:text-slate-50 animate-fade-in transition-colors duration-300">
             My{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
               Expertise
@@ -97,17 +97,17 @@ const ExpertiseCard = forwardRef<HTMLDivElement, ExpertiseCardProps>(
     return (
       <div
         ref={ref}
-        className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl hover:border-orange-500/50 transition-all duration-300 group"
+        className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl hover:border-orange-500/50 transition-all duration-300 group"
         style={{ opacity: 0 }}
       >
         <div className="flex flex-col items-center">
-          <div className="mb-5 p-4 bg-slate-800/80 border border-slate-700 rounded-2xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+          <div className="mb-5 p-4 bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 rounded-2xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
             {icon}
           </div>
-          <h3 className="text-xl font-semibold mb-4 text-slate-100">{title}</h3>
+          <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-slate-100 transition-colors duration-300">{title}</h3>
           <ul className="space-y-2 text-center">
             {skills.map((skill, index) => (
-              <li key={index} className="text-slate-400 leading-relaxed">
+              <li key={index} className="text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-300">
                 {skill}
               </li>
             ))}

@@ -485,7 +485,7 @@ export function ProjectDetail() {
           <div className="container mx-auto px-4 md:px-6 py-8 md:py-16 backdrop-blur-sm" ref={mainContentRef}>
             {/* Back to Portfolio Link */}
             <div className="mb-8 md:mb-12 animate-on-scroll opacity-0">
-              <Link href="/portfolio" className="inline-flex items-center gap-2 text-slate-400 hover:text-orange-500 transition-colors bg-slate-900/40 border border-slate-800 hover:border-orange-500/50 rounded-lg px-4 py-2">
+              <Link href="/portfolio" className="inline-flex items-center gap-2 text-slate-700 dark:text-slate-400 hover:text-orange-500 transition-colors bg-white/80 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-orange-500/50 rounded-lg px-4 py-2">
                 <ArrowLeftIcon size={16} />
                 <span>Back to Portfolio</span>
               </Link>
@@ -505,14 +505,14 @@ export function ProjectDetail() {
                 <ChallengeAndSolution challenges={detailedProject.challenges} />
                 {/* Development Process */}
                 <section className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-300 dark:border-slate-700 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
                     Development Process
                   </h2>
                   {/* Project Gallery */}
                   {detailedProject.gallery && detailedProject.gallery.length > 0 && <ProjectGallery images={detailedProject.gallery} />}
                   {/* Color Palette */}
                   {detailedProject.colors && detailedProject.colors.length > 0 && <div className="mt-12">
-                      <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0 text-slate-100">
+                      <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-100 transition-colors duration-300">
                         Color Palette
                       </h3>
                       <ColorPalette colors={detailedProject.colors} />
@@ -520,7 +520,7 @@ export function ProjectDetail() {
                 </section>
                 {/* Project Timeline */}
                 {detailedProject.timeline && detailedProject.timeline.phases && <section className="mb-16">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-300 dark:border-slate-700 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
                       Project Timeline
                     </h2>
                     <ProjectTimeline
@@ -529,7 +529,7 @@ export function ProjectDetail() {
                   </section>}
                 {/* Learnings & Outcomes */}
                 <section className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-300 dark:border-slate-700 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
                     Learnings & Outcomes
                   </h2>
                   <LearningsAccordion learnings={detailedProject.learnings} />
@@ -566,7 +566,7 @@ export function ProjectDetail() {
         <div className="container mx-auto px-4 md:px-6 py-8 md:py-16 backdrop-blur-sm" ref={mainContentRef}>
           {/* Back to Portfolio Link */}
           <div className="mb-8 md:mb-12 animate-on-scroll opacity-0">
-            <Link href="/portfolio" className="inline-flex items-center gap-2 text-slate-400 hover:text-orange-500 transition-colors bg-slate-900/40 border border-slate-800 hover:border-orange-500/50 rounded-lg px-4 py-2">
+            <Link href="/portfolio" className="inline-flex items-center gap-2 text-slate-700 dark:text-slate-400 hover:text-orange-500 transition-colors bg-white/80 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 hover:border-orange-500/50 rounded-lg px-4 py-2">
               <ArrowLeftIcon size={16} />
               <span>Back to Portfolio</span>
             </Link>
@@ -580,14 +580,14 @@ export function ProjectDetail() {
               <ChallengeAndSolution project={project} />
               {/* Development Process */}
               <section className="mb-16">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-300 dark:border-slate-700 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
                   Development Process
                 </h2>
                 {/* Project Gallery */}
                 {project.galleryImages && project.galleryImages.length > 0 && <ProjectGallery images={project.galleryImages} descriptions={project.galleryDescriptions || []} />}
                 {/* Color Palette */}
                 {project.colorPalette && project.colorPalette.length > 0 && <div className="mt-12">
-                    <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0 text-slate-100">
+                    <h3 className="text-xl font-semibold mb-4 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-100 transition-colors duration-300">
                       Color Palette
                     </h3>
                     <ColorPalette colors={project.colorPalette} />
@@ -595,14 +595,14 @@ export function ProjectDetail() {
               </section>
               {/* Project Timeline */}
               {project.timelineItems && project.timelineItems.length > 0 && <section className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-300 dark:border-slate-700 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
                     Project Timeline
                   </h2>
                   <ProjectTimeline timeline={project.timelineItems} />
                 </section>}
               {/* Learnings & Outcomes */}
               <section className="mb-16">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-700 animate-on-scroll opacity-0 text-slate-50">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b border-slate-300 dark:border-slate-700 animate-on-scroll opacity-0 text-slate-900 dark:text-slate-50 transition-colors duration-300">
                   Learnings & Outcomes
                 </h2>
                 <LearningsAccordion learnings={project.learnings} />

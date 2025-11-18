@@ -2,17 +2,17 @@ import Link from 'next/link';
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-slate-800 text-white z-20">
+    <footer className="relative bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white z-20 transition-colors duration-300">
 
       {/* Footer Main Content */}
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Contact Info</h3>
-            <div className="space-y-3 text-slate-300">
+            <h3 className="text-xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300">Contact Info</h3>
+            <div className="space-y-3 text-slate-700 dark:text-slate-300 transition-colors duration-300">
               <p>
-                <span className="text-slate-400">Email:</span>{' '}
+                <span className="text-slate-600 dark:text-slate-400">Email:</span>{' '}
                 <a
                   href="mailto:contact@lpwebstudio.co.za"
                   className="hover:text-orange-500 transition-colors"
@@ -21,7 +21,7 @@ export const Footer = () => {
                 </a>
               </p>
               <p>
-                <span className="text-slate-400">Phone:</span>{' '}
+                <span className="text-slate-600 dark:text-slate-400">Phone:</span>{' '}
                 <a
                   href="tel:+27673852286"
                   className="hover:text-orange-500 transition-colors"
@@ -29,35 +29,35 @@ export const Footer = () => {
                   (067) 385-2286
                 </a>
               </p>
-              <p className="text-slate-400">Cape Town, South Africa</p>
+              <p className="text-slate-600 dark:text-slate-400">Cape Town, South Africa</p>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300">Quick Links</h3>
             <nav className="space-y-3">
               <Link
                 href="/"
-                className="block text-slate-300 hover:text-orange-500 transition-colors"
+                className="block text-slate-700 dark:text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Home
               </Link>
               <Link
                 href="/portfolio"
-                className="block text-slate-300 hover:text-orange-500 transition-colors"
+                className="block text-slate-700 dark:text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Portfolio
               </Link>
               <Link
                 href="/about"
-                className="block text-slate-300 hover:text-orange-500 transition-colors"
+                className="block text-slate-700 dark:text-slate-300 hover:text-orange-500 transition-colors"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="block text-slate-300 hover:text-orange-500 transition-colors"
+                className="block text-slate-700 dark:text-slate-300 hover:text-orange-500 transition-colors"
               >
                 Contact
               </Link>
@@ -66,13 +66,13 @@ export const Footer = () => {
 
           {/* Follow Me */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Follow Me</h3>
+            <h3 className="text-xl font-bold mb-6 text-slate-900 dark:text-white transition-colors duration-300">Follow Me</h3>
             <div className="flex gap-4">
               <a
                 href="https://www.facebook.com/share/1B6hCGLJbh/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-slate-700 hover:bg-orange-500 rounded transition-colors"
+                className="w-10 h-10 flex items-center justify-center bg-slate-300 dark:bg-slate-700 hover:bg-orange-500 dark:hover:bg-orange-500 rounded transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@ export const Footer = () => {
                 href="https://www.instagram.com/lp.web.studio/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-slate-700 hover:bg-orange-500 rounded transition-colors"
+                className="w-10 h-10 flex items-center justify-center bg-slate-300 dark:bg-slate-700 hover:bg-orange-500 dark:hover:bg-orange-500 rounded transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ export const Footer = () => {
                 href="https://wa.me/27673852286"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-slate-700 hover:bg-orange-500 rounded transition-colors"
+                className="w-10 h-10 flex items-center justify-center bg-slate-300 dark:bg-slate-700 hover:bg-orange-500 dark:hover:bg-orange-500 rounded transition-colors"
                 aria-label="WhatsApp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

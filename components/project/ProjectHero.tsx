@@ -60,14 +60,14 @@ export function ProjectHero({
               {heroCategory}
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight animate-on-scroll opacity-0 text-slate-50">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight animate-on-scroll opacity-0 text-white">
             {heroTitle}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-3xl leading-relaxed text-slate-300 animate-on-scroll opacity-0">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-3xl leading-relaxed text-slate-200 animate-on-scroll opacity-0">
             {heroDescription}
           </p>
           {/* Project metadata */}
-          <div className="flex flex-wrap gap-x-8 gap-y-4 text-slate-300 animate-on-scroll opacity-0">
+          <div className="flex flex-wrap gap-x-8 gap-y-4 text-slate-200 animate-on-scroll opacity-0">
             {heroClient && <div className="flex items-center gap-2">
                 <span className="font-semibold text-orange-400">Client:</span>
                 <span>{heroClient}</span>

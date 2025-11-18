@@ -94,20 +94,20 @@ export default function Portfolio() {
       <section className="relative py-20 md:py-28 backdrop-blur-sm overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 text-sm text-slate-300 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 dark:bg-slate-800/40 backdrop-blur-sm border border-orange-200 dark:border-slate-700/50 text-sm text-orange-900 dark:text-slate-300 mb-6 transition-colors duration-300">
               <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span>Showcasing My Work</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-50">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-900 dark:text-slate-50 transition-colors duration-300">
               My{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
                 Portfolio
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-8 leading-relaxed transition-colors duration-300">
               A collection of my web development projects, design concepts, and technical experiments
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function Portfolio() {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-slate-400 text-lg">No projects found for this filter.</p>
+              <p className="text-slate-600 dark:text-slate-400 text-lg transition-colors duration-300">No projects found for this filter.</p>
             </div>
           )}
         </div>

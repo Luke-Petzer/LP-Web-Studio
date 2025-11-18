@@ -61,7 +61,7 @@ export function HeroSection() {
           {/* Left Side - Content */}
           <div className="text-center lg:text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 text-sm text-slate-300 mb-6 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 dark:bg-slate-800/50 backdrop-blur-sm border border-orange-200 dark:border-slate-700/50 text-sm text-orange-900 dark:text-slate-300 mb-6 animate-fade-in-up transition-colors duration-300">
               <Sparkles className="w-4 h-4 text-orange-500" />
               <span>Premium Web Solutions for Cape Town Businesses</span>
             </div>
@@ -69,7 +69,7 @@ export function HeroSection() {
             {/* Headline */}
             <h1
               ref={headingRef}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-50 mb-6 leading-tight opacity-0"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-slate-50 mb-6 leading-tight opacity-0 transition-colors duration-300"
               style={{ transform: 'translateY(20px)' }}
             >
               Turn Google Searches into{' '}
@@ -81,7 +81,7 @@ export function HeroSection() {
             {/* Subheadline */}
             <p
               ref={paragraphRef}
-              className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed opacity-0"
+              className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed opacity-0 transition-colors duration-300"
               style={{ transform: 'translateY(20px)' }}
             >
               We build high-performance websites that get found on Google, convert visitors into leads, and grow your business 24/7.
@@ -105,7 +105,7 @@ export function HeroSection() {
                 href="/contact"
                 variant="outline"
                 size="lg"
-                className="border-2 border-slate-700 text-slate-50 hover:border-orange-500 hover:text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+                className="border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-50 hover:border-orange-500 hover:text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
               >
                 Get Started Free
               </Button>
@@ -114,16 +114,16 @@ export function HeroSection() {
             {/* Stats */}
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start mt-12 text-sm">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-teal-400" />
-                <span className="text-slate-400">100% Mobile Responsive</span>
+                <TrendingUp className="w-5 h-5 text-teal-500 dark:text-teal-400" />
+                <span className="text-slate-600 dark:text-slate-400 transition-colors duration-300">100% Mobile Responsive</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-teal-400" />
-                <span className="text-slate-400">SEO Optimized</span>
+                <TrendingUp className="w-5 h-5 text-teal-500 dark:text-teal-400" />
+                <span className="text-slate-600 dark:text-slate-400 transition-colors duration-300">SEO Optimized</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-teal-400" />
-                <span className="text-slate-400">Lightning Fast</span>
+                <TrendingUp className="w-5 h-5 text-teal-500 dark:text-teal-400" />
+                <span className="text-slate-600 dark:text-slate-400 transition-colors duration-300">Lightning Fast</span>
               </div>
             </div>
           </div>
@@ -136,17 +136,17 @@ export function HeroSection() {
           >
             <div className="relative">
               {/* Main Glassmorphic Card */}
-              <div className="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-2xl p-8 shadow-2xl">
+              <div className="bg-white/80 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl p-8 shadow-2xl transition-colors duration-300">
                 {/* Mock Browser Window */}
-                <div className="bg-slate-900/80 rounded-lg overflow-hidden border border-slate-700">
+                <div className="bg-slate-100 dark:bg-slate-900/80 rounded-lg overflow-hidden border border-slate-300 dark:border-slate-700 transition-colors duration-300">
                   {/* Browser Header */}
-                  <div className="flex items-center gap-2 px-4 py-3 bg-slate-800/50 border-b border-slate-700">
+                  <div className="flex items-center gap-2 px-4 py-3 bg-slate-200/80 dark:bg-slate-800/50 border-b border-slate-300 dark:border-slate-700 transition-colors duration-300">
                     <div className="flex gap-2">
                       <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                     </div>
-                    <div className="flex-1 ml-4 bg-slate-900/50 rounded px-3 py-1 text-xs text-slate-400">
+                    <div className="flex-1 ml-4 bg-white dark:bg-slate-900/50 rounded px-3 py-1 text-xs text-slate-600 dark:text-slate-400 transition-colors duration-300">
                       your-business.co.za
                     </div>
                   </div>
@@ -154,12 +154,12 @@ export function HeroSection() {
                   {/* Browser Content */}
                   <div className="p-6 space-y-4">
                     <div className="h-6 bg-gradient-to-r from-orange-500/50 to-transparent rounded"></div>
-                    <div className="h-4 bg-slate-700/50 rounded w-3/4"></div>
-                    <div className="h-4 bg-slate-700/50 rounded w-full"></div>
-                    <div className="h-4 bg-slate-700/50 rounded w-5/6"></div>
+                    <div className="h-4 bg-slate-300 dark:bg-slate-700/50 rounded w-3/4 transition-colors duration-300"></div>
+                    <div className="h-4 bg-slate-300 dark:bg-slate-700/50 rounded w-full transition-colors duration-300"></div>
+                    <div className="h-4 bg-slate-300 dark:bg-slate-700/50 rounded w-5/6 transition-colors duration-300"></div>
                     <div className="mt-6 flex gap-3">
                       <div className="h-10 bg-orange-500/30 rounded flex-1"></div>
-                      <div className="h-10 bg-slate-700/30 rounded flex-1"></div>
+                      <div className="h-10 bg-slate-300 dark:bg-slate-700/30 rounded flex-1 transition-colors duration-300"></div>
                     </div>
                   </div>
                 </div>
@@ -171,8 +171,8 @@ export function HeroSection() {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-teal-500/20 rounded-full blur-2xl"></div>
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-500/20 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-teal-500/30 dark:bg-teal-500/20 rounded-full blur-2xl transition-colors duration-300"></div>
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-500/30 dark:bg-orange-500/20 rounded-full blur-2xl transition-colors duration-300"></div>
             </div>
           </div>
         </div>
@@ -186,7 +186,7 @@ export function HeroSection() {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-slate-400"
+          className="text-slate-500 dark:text-slate-400 transition-colors duration-300"
         >
           <path
             d="M12 5V19M12 19L19 12M12 19L5 12"

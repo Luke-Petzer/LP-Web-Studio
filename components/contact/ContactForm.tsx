@@ -144,11 +144,11 @@ export function ContactForm() {
       setIsSubmitting(false);
     }
   };
-  return <div ref={formRef} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 md:p-10 shadow-xl hover:border-orange-500/50 transition-all duration-300" style={{
+  return <div ref={formRef} className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-8 md:p-10 shadow-xl hover:border-orange-500/50 transition-all duration-300" style={{
     opacity: 0,
     transform: 'translateY(20px)'
   }}>
-      <h2 className="text-3xl font-bold mb-6 text-slate-50">Send a Message</h2>
+      <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-slate-50 transition-colors duration-300">Send a Message</h2>
       {submitStatus === 'success' && <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg animate-fade-in flex items-center">
           <CheckCircleIcon size={20} className="mr-2 text-green-600" />
           Thank you for your message! I'll get back to you as soon as possible.
@@ -162,39 +162,39 @@ export function ContactForm() {
         opacity: 0,
         transform: 'translateY(15px)'
       }}>
-          <label htmlFor="fullName" className="block text-slate-300 font-medium mb-2">
+          <label htmlFor="fullName" className="block text-slate-700 dark:text-slate-300 font-medium mb-2 transition-colors duration-300">
             Full Name <span className="text-orange-500">*</span>
           </label>
-          <input type="text" id="fullName" name="fullName" value={formState.fullName} onChange={handleChange} placeholder="Your full name" className={`w-full px-4 py-3 rounded-lg border bg-slate-800/50 text-slate-100 placeholder-slate-500 ${errors.fullName ? 'border-red-500' : 'border-slate-700'} focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300`} />
+          <input type="text" id="fullName" name="fullName" value={formState.fullName} onChange={handleChange} placeholder="Your full name" className={`w-full px-4 py-3 rounded-lg border bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 ${errors.fullName ? 'border-red-500' : 'border-slate-300 dark:border-slate-700'} focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300`} />
           {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
         </div>
         <div ref={el => { if (el) formFieldsRef.current[1] = el; }} style={{
         opacity: 0,
         transform: 'translateY(15px)'
       }}>
-          <label htmlFor="email" className="block text-slate-300 font-medium mb-2">
+          <label htmlFor="email" className="block text-slate-700 dark:text-slate-300 font-medium mb-2 transition-colors duration-300">
             Email Address <span className="text-orange-500">*</span>
           </label>
-          <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} placeholder="your@email.com" className={`w-full px-4 py-3 rounded-lg border bg-slate-800/50 text-slate-100 placeholder-slate-500 ${errors.email ? 'border-red-500' : 'border-slate-700'} focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300`} />
+          <input type="email" id="email" name="email" value={formState.email} onChange={handleChange} placeholder="your@email.com" className={`w-full px-4 py-3 rounded-lg border bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 ${errors.email ? 'border-red-500' : 'border-slate-300 dark:border-slate-700'} focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300`} />
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
         <div ref={el => { if (el) formFieldsRef.current[2] = el; }} style={{
         opacity: 0,
         transform: 'translateY(15px)'
       }}>
-          <label htmlFor="phone" className="block text-slate-300 font-medium mb-2">
-            Phone Number <span className="text-slate-500">(Optional)</span>
+          <label htmlFor="phone" className="block text-slate-700 dark:text-slate-300 font-medium mb-2 transition-colors duration-300">
+            Phone Number <span className="text-slate-500 dark:text-slate-500">(Optional)</span>
           </label>
-          <input type="tel" id="phone" name="phone" value={formState.phone} onChange={handleChange} placeholder="+27 (12) 345-6789" className="w-full px-4 py-3 rounded-lg border bg-slate-800/50 text-slate-100 placeholder-slate-500 border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300" />
+          <input type="tel" id="phone" name="phone" value={formState.phone} onChange={handleChange} placeholder="+27 (12) 345-6789" className="w-full px-4 py-3 rounded-lg border bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300" />
         </div>
         <div ref={el => { if (el) formFieldsRef.current[3] = el; }} style={{
         opacity: 0,
         transform: 'translateY(15px)'
       }}>
-          <label htmlFor="message" className="block text-slate-300 font-medium mb-2">
+          <label htmlFor="message" className="block text-slate-700 dark:text-slate-300 font-medium mb-2 transition-colors duration-300">
             Message <span className="text-orange-500">*</span>
           </label>
-          <textarea id="message" name="message" value={formState.message} onChange={handleChange} rows={5} placeholder="Tell us about your project..." className={`w-full px-4 py-3 rounded-lg border bg-slate-800/50 text-slate-100 placeholder-slate-500 ${errors.message ? 'border-red-500' : 'border-slate-700'} focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none`} />
+          <textarea id="message" name="message" value={formState.message} onChange={handleChange} rows={5} placeholder="Tell us about your project..." className={`w-full px-4 py-3 rounded-lg border bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 ${errors.message ? 'border-red-500' : 'border-slate-300 dark:border-slate-700'} focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none`} />
           {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
         </div>
         <div ref={el => { if (el) formFieldsRef.current[4] = el; }} className="pt-2" style={{

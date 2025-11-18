@@ -3,7 +3,7 @@ import { SEO } from '../components/SEO';
 import { HeroSection } from '../components/HeroSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { ProjectsSection } from '../components/ProjectsSection';
-import { SkillsSection } from '../components/SkillsSection';
+import { PricingSection } from '../components/PricingSection';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { ContactCTA } from '../components/ContactCTA';
 
@@ -17,9 +17,9 @@ export default function Home() {
       />
       <HeroSection />
       <ServicesSection />
+      <PricingSection />
       <TestimonialsSection />
       <ProjectsSection />
-      <SkillsSection />
       <ContactCTA />
     </Layout>
   );

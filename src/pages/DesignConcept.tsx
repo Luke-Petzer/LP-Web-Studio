@@ -120,13 +120,13 @@ export function DesignConcept() {
 
       <main>
         {/* Breadcrumb Navigation */}
-        <div className="container mx-auto px-4 md:px-6 py-4 border-b border-slate-800">
+        <div className="container mx-auto px-4 md:px-6 py-4 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
           <nav className="text-sm">
             <Link href="/portfolio" className="text-orange-500 hover:text-orange-400 transition-colors">
               Portfolio
             </Link>
-            <span className="mx-2 text-slate-600">/</span>
-            <span className="text-slate-400">{project.title}</span>
+            <span className="mx-2 text-slate-400 dark:text-slate-600">/</span>
+            <span className="text-slate-600 dark:text-slate-400 transition-colors duration-300">{project.title}</span>
           </nav>
         </div>
 
@@ -142,16 +142,16 @@ export function DesignConcept() {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in text-slate-50">
+              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in text-slate-900 dark:text-slate-50 transition-colors duration-300">
                 {project.title}
               </h1>
 
               {/* Overview */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-4 text-slate-100 flex items-center justify-center gap-2">
+                <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100 flex items-center justify-center gap-2 transition-colors duration-300">
                   <span className="text-orange-500">💡</span> Overview
                 </h2>
-                <p className="text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
                   {project.overview}
                 </p>
               </div>
@@ -163,13 +163,13 @@ export function DesignConcept() {
         <section className="py-12 md:py-16 backdrop-blur-sm">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12 text-slate-50 flex items-center justify-center gap-2">
+              <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-slate-50 flex items-center justify-center gap-2 transition-colors duration-300">
                 <span className="text-teal-400">🎨</span> Design Pages
               </h2>
 
               <div className="space-y-12">
                 {project.designImages.map((image, index) => (
-                  <div key={index} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl overflow-hidden shadow-2xl hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300">
+                  <div key={index} className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-2xl hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300">
                     {/* Image */}
                     <div className="aspect-video w-full overflow-hidden">
                       <img
@@ -181,8 +181,8 @@ export function DesignConcept() {
 
                     {/* Image Info */}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2 text-slate-100">{image.title}</h3>
-                      <p className="text-slate-400 leading-relaxed">{image.description}</p>
+                      <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100 transition-colors duration-300">{image.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-300">{image.description}</p>
                     </div>
                   </div>
                 ))}
@@ -195,16 +195,16 @@ export function DesignConcept() {
         <section className="py-12 md:py-16 backdrop-blur-sm">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-2xl mx-auto text-center">
-              <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300">
-                <h2 className="text-2xl font-bold mb-6 text-slate-50">Interested in working together?</h2>
-                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+              <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300">
+                <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-50 transition-colors duration-300">Interested in working together?</h2>
+                <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed transition-colors duration-300">
                   This design concept showcases my ability to create cohesive, professional website designs.
                   Let's discuss how I can help bring your vision to life.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Link href="/portfolio">
-                    <Button variant="outline" className="w-full sm:w-auto border-2 border-slate-700 text-slate-100 hover:border-orange-500 hover:text-orange-500">
+                    <Button variant="outline" className="w-full sm:w-auto border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 hover:border-orange-500 hover:text-orange-500">
                       Return to Portfolio
                     </Button>
                   </Link>

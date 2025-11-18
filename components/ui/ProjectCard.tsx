@@ -25,7 +25,7 @@ export function ProjectCard({
   const altText = `${title} - Professional web development project showcase by LP Web Studio`;
 
   return (
-    <div className="group relative bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
+    <div className="group relative bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
       {/* Hover Glow Effect */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/0 to-teal-500/0 group-hover:from-orange-500/20 group-hover:to-teal-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -39,17 +39,17 @@ export function ProjectCard({
           height={256}
           style={{aspectRatio: '400/256'}}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent dark:from-slate-900 dark:via-slate-900/60 dark:to-transparent transition-colors duration-300"></div>
 
         <div className="absolute bottom-0 left-0 right-0 p-6">
-          <h3 className="text-2xl font-bold mb-2 text-slate-50 group-hover:text-white transition-colors">
+          <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-slate-50 group-hover:text-slate-950 dark:group-hover:text-white transition-colors">
             {title}
           </h3>
-          <p className="mb-4 text-slate-300 leading-relaxed">
+          <p className="mb-4 text-slate-700 dark:text-slate-300 leading-relaxed transition-colors duration-300">
             {description}
           </p>
           {isDisabled ? (
-            <div className="inline-flex items-center px-4 py-2 bg-slate-700/50 text-slate-300 text-sm rounded-lg cursor-not-allowed">
+            <div className="inline-flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 text-sm rounded-lg cursor-not-allowed transition-colors duration-300">
               Coming Soon
             </div>
           ) : (
