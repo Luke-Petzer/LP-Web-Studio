@@ -44,6 +44,8 @@
     scroll-behavior: smooth;
     /* Prevent overscroll bounce on iOS */
     overscroll-behavior: none;
+    /* Always reserve space for scrollbar to prevent layout shift */
+    scrollbar-gutter: stable;
   }
 
   body {

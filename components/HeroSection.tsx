@@ -63,7 +63,7 @@ export function HeroSection() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 dark:bg-slate-800/50 backdrop-blur-sm border border-orange-200 dark:border-slate-700/50 text-sm text-orange-900 dark:text-slate-300 mb-6 animate-fade-in-up transition-colors duration-300">
               <Sparkles className="w-4 h-4 text-orange-500" />
-              <span>Premium Web Solutions for Cape Town Businesses</span>
+              <span>Affordable Web Design for Cape Town Small Businesses</span>
             </div>
 
             {/* Headline */}

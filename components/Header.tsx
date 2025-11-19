@@ -7,13 +7,7 @@ import { useTheme } from '../contexts/ThemeContext';
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const router = useRouter();
-    const [mounted, setMounted] = useState(false);
     const { theme, toggleTheme } = useTheme();
-
-    // Prevent hydration mismatch
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -37,67 +31,70 @@ export function Header() {
     return (
         <>
             {/* Main Header */}
-            <header className="fixed top-0 left-0 right-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
-                <div className="w-full h-20 px-6 lg:px-12 max-w-[1920px] mx-auto">
+            <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
+                <div className="h-20 px-6 lg:px-12 max-w-[1920px] mx-auto">
                     <div className="h-full flex items-center justify-between">
                         {/* Logo Section - Left */}
-                        <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+                        <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
                             <img
-                                src="/logo.svg"
+                                src="/Logo.svg"
                                 alt="LP Logo"
-                                className="h-12 w-auto brightness-200"
+                                className="h-16 w-auto dark:invert transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                             />
                             <img
-                                src="/my-logo.svg"
+                                src="/My-Logo.svg"
                                 alt="LP Web Studio"
-                                className="h-7 w-auto brightness-200"
+                                className="h-12 w-auto dark:invert transition-all duration-300 group-hover:scale-105"
                             />
                         </Link>
 
                         {/* Desktop Navigation - Right */}
-                        <div className="hidden md:flex items-center gap-10">
-                            <nav className="flex items-center gap-10">
+                        <div className="hidden md:flex items-center gap-8">
+                            <nav className="flex items-center gap-8">
                                 <Link
                                     href="/"
-                                    className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
+                                        isActive('/') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
                                     }`}
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     href="/portfolio"
-                                    className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/portfolio') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
+                                        isActive('/portfolio') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
                                     }`}
                                 >
                                     Portfolio
                                 </Link>
                                 <Link
                                     href="/about"
-                                    className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/about') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
+                                        isActive('/about') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
                                     }`}
                                 >
                                     About Me
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className={`font-semibold text-base transition-colors hover:text-orange-500 ${
-                                        isActive('/contact') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300'
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
+                                        isActive('/contact') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
                                     }`}
                                 >
                                     Contact
                                 </Link>
                             </nav>
 
+                            {/* Divider */}
+                            <div className="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
+
                             {/* Social Icons */}
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-3">
                                 <a
                                     href="https://www.facebook.com/share/1B6hCGLJbh/?mibextid=wwXIfr"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-slate-400 hover:text-orange-500 transition-colors"
+                                    className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-slate-800 transition-all duration-200 hover:scale-110 hover:-rotate-6 hover:shadow-md"
                                     aria-label="Facebook"
                                 >
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -108,7 +105,7 @@ export function Header() {
                                     href="https://www.instagram.com/lp.web.studio/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-slate-400 hover:text-orange-500 transition-colors"
+                                    className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-slate-800 transition-all duration-200 hover:scale-110 hover:rotate-6 hover:shadow-md"
                                     aria-label="Instagram"
                                 >
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -116,50 +113,51 @@ export function Header() {
                                         <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                     </svg>
                                 </a>
-
-                                {/* Theme Toggle Button */}
-                                {mounted && (
-                                    <button
-                                        onClick={toggleTheme}
-                                        className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-orange-500 transition-all duration-300 border border-slate-700/50"
-                                        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                                    >
-                                        {theme === 'dark' ? (
-                                            <Sun className="w-5 h-5" />
-                                        ) : (
-                                            <Moon className="w-5 h-5" />
-                                        )}
-                                    </button>
-                                )}
                             </div>
+
+                            {/* Divider */}
+                            <div className="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
+
+                            {/* Theme Toggle Button */}
+                            <button
+                                onClick={toggleTheme}
+                                className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-700 hover:text-orange-500 transition-all duration-200 border border-slate-200 dark:border-slate-700 hover:scale-110 hover:shadow-lg hover:border-orange-300 dark:hover:border-orange-500"
+                                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                suppressHydrationWarning
+                            >
+                                {theme === 'dark' ? (
+                                    <Sun className="w-5 h-5 hover:rotate-90 transition-transform duration-300" />
+                                ) : (
+                                    <Moon className="w-5 h-5 hover:rotate-12 transition-transform duration-300" />
+                                )}
+                            </button>
                         </div>
 
                         {/* Mobile - Theme Toggle and Menu Button */}
-                        <div className="md:hidden flex items-center gap-2">
+                        <div className="md:hidden flex items-center gap-3">
                             {/* Theme Toggle Button - Mobile */}
-                            {mounted && (
-                                <button
-                                    onClick={toggleTheme}
-                                    className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 hover:text-orange-500 transition-all duration-300 border border-slate-700/50"
-                                    aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                                >
-                                    {theme === 'dark' ? (
-                                        <Sun className="w-5 h-5" />
-                                    ) : (
-                                        <Moon className="w-5 h-5" />
-                                    )}
-                                </button>
-                            )}
+                            <button
+                                onClick={toggleTheme}
+                                className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-700 hover:text-orange-500 transition-all duration-200 border border-slate-200 dark:border-slate-700 hover:scale-110 hover:shadow-md"
+                                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                                suppressHydrationWarning
+                            >
+                                {theme === 'dark' ? (
+                                    <Sun className="w-4 h-4" />
+                                ) : (
+                                    <Moon className="w-4 h-4" />
+                                )}
+                            </button>
 
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="p-2 text-slate-300 hover:bg-slate-800 rounded-lg transition-colors"
+                                className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-700 hover:text-orange-500 transition-all duration-200 border border-slate-200 dark:border-slate-700 hover:scale-110 hover:shadow-md active:scale-95"
                                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                             >
                                 {mobileMenuOpen ? (
-                                    <X className="w-6 h-6" />
+                                    <X className="w-5 h-5 transition-transform duration-200" />
                                 ) : (
-                                    <Menu className="w-6 h-6" />
+                                    <Menu className="w-5 h-5 transition-transform duration-200" />
                                 )}
                             </button>
                         </div>
