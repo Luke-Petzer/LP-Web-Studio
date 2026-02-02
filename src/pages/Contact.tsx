@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { ContactHero } from '../components/contact/ContactHero';
-import { ContactForm } from '../components/contact/ContactForm';
-import { ContactInfo } from '../components/contact/ContactInfo';
-import { SEO } from '../components/SEO';
+import { ContactHero } from '../../components/contact/ContactHero';
+import { ContactForm } from '../../components/contact/ContactForm';
+import { ContactInfo } from '../../components/contact/ContactInfo';
+import { SEO } from '../../components/SEO';
 export function Contact() {
   const siteUrl = 'https://lpwebstudio.com';
 

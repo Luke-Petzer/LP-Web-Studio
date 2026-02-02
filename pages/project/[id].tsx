@@ -1,12 +1,10 @@
-import { useRouter } from 'next/router';
-import { ProjectDetail } from '../../src/pages/ProjectDetail';
+import { ProjectDetail } from '@/pages/ProjectDetail';
+import { Layout } from '../../components/Layout';
 
 export default function ProjectDetailPage() {
-  const router = useRouter();
-  const { id } = router.query;
-
-  if (!id) return null;
-
-  return <ProjectDetail />;
+  return (
+    <Layout>
+      <ProjectDetail />
+    </Layout>
+  );
 }
-

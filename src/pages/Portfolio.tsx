@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
-import { ProjectFilter } from '../components/portfolio/ProjectFilter';
-import { DetailedProjectCard } from '../components/portfolio/DetailedProjectCard';
-import { ContactCTA } from '../components/ContactCTA';
-import { SEO } from '../components/SEO';
+import { ProjectFilter } from '../../components/portfolio/ProjectFilter';
+import { DetailedProjectCard } from '../../components/portfolio/DetailedProjectCard';
+import { ContactCTA } from '../../components/ContactCTA';
+import { SEO } from '../../components/SEO';
 // Project data structure
 interface ProjectLearning {
   text: string;
@@ -36,18 +36,18 @@ export function Portfolio() {
     }]
   }, {
     id: 'cafe-client',
-    title: 'Cafe Client Website',
-    description: 'A modern, responsive website for a local cafe featuring online menu, location details, and booking functionality. Built with React and optimized for mobile devices.',
-    image: "/CC-card.png",
+    title: 'Cafe Crave Website',
+    description: 'A full-stack, retro-inspired website for a local café, featuring a secure API for live Google Reviews.',
+    image: "/cc-home.png",
     category: 'website',
     projectType: 'Client',
-    link: '#', // Special value to indicate disabled link
+    link: '/project/cafe-client',
     learnings: [{
-      text: 'Implementing client requirements and feedback'
+      text: 'Implementing secure API architecture for Google Reviews'
     }, {
-      text: 'Creating responsive menu layouts and booking systems'
+      text: 'Creating dynamic menu with scroll-spy navigation'
     }, {
-      text: 'Optimizing performance for local business needs'
+      text: 'Deploying split-hosting solution (Railway + Hostinger)'
     }]
   }, {
     id: 'granite-marble',
@@ -183,9 +183,9 @@ export function Portfolio() {
               Discover our comprehensive collection of web development work, client projects, and innovative design concepts showcasing modern responsive design and user-focused solutions.
             </p>
           </div>
-          <ProjectFilter activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-          <div className="mt-8 sm:mt-12 space-y-12 sm:space-y-16">
-            {filteredProjects.map((project, index) => <DetailedProjectCard key={project.id} project={project} ref={el => projectRefs.current[index] = el} index={index} />)}
+          <ProjectFilter activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+          <div className="mt-16 sm:mt-20 md:mt-24 space-y-12 sm:space-y-16">
+            {filteredProjects.map((project, index) => <DetailedProjectCard key={project.id} project={project} ref={el => { if (el) projectRefs.current[index] = el; }} index={index} />)}
           </div>
           {filteredProjects.length === 0 && <div className="text-center py-16">
               <h3 className="text-2xl font-medium text-gray-600">

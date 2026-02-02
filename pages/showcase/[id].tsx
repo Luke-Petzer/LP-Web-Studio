@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { ShowcaseProject } from '../../src/pages/ShowcaseProject';
+import { Layout } from '../../components/Layout';
 
 export default function ShowcaseProjectPage() {
   const router = useRouter();
@@ -7,6 +8,10 @@ export default function ShowcaseProjectPage() {
 
   if (!id) return null;
 
-  return <ShowcaseProject />;
+  return (
+    <Layout>
+      <ShowcaseProject />
+    </Layout>
+  );
 }
 

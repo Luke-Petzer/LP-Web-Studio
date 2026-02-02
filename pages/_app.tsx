@@ -1,16 +1,16 @@
-import '../src/index.css';
 import type { AppProps } from 'next/app';
 import { HelmetProvider } from 'react-helmet-async';
-import { Layout } from '../src/components/Layout';
-import { ScrollToTop } from '../src/components/ScrollToTop';
+import { ThemeProvider } from '../contexts/ThemeContext';
+import '../src/index.css';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <HelmetProvider>
-      <ScrollToTop />
-      <Layout>
+      <ThemeProvider>
         <Component {...pageProps} />
-      </Layout>
+      </ThemeProvider>
     </HelmetProvider>
   );
 }
+
+export default MyApp;

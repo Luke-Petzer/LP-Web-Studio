@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { SEO } from '../components/SEO';
-import { Button } from '../components/ui/Button';
-import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
+import { SEO } from '../../components/SEO';
+import { Button } from '../../components/ui/Button';
+import { useAnimateOnScroll } from '../../hooks/useAnimateOnScroll';
 
 // Design concept project data structure
 interface DesignProject {
@@ -101,7 +101,7 @@ export function DesignConcept() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Design Concept Not Found</h1>
+          <h1 className="text-2xl font-bold text-slate-50 mb-4">Design Concept Not Found</h1>
           <Link href="/portfolio">
             <Button variant="outline">Return to Portfolio</Button>
           </Link>
@@ -111,45 +111,47 @@ export function DesignConcept() {
   }
 
   return (
-    <div className="font-sans text-gray-800 bg-white">
+    <div className="font-sans text-slate-300">
       <SEO
         title={`${project.title} - Design Concept`}
         description={project.overview}
         keywords="design concept, UI/UX design, web design, portfolio"
       />
 
-      <main className="pt-20">
+      <main>
         {/* Breadcrumb Navigation */}
-        <div className="container mx-auto px-4 md:px-6 py-3 border-b border-gray-100">
+        <div className="container mx-auto px-4 md:px-6 py-4 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
           <nav className="text-sm">
-            <Link href="/portfolio" className="text-orange-500 hover:text-orange-600 transition-colors">
+            <Link href="/portfolio" className="text-orange-500 hover:text-orange-400 transition-colors">
               Portfolio
             </Link>
-            <span className="mx-2 text-gray-400">/</span>
-            <span className="text-gray-600">{project.title}</span>
+            <span className="mx-2 text-slate-400 dark:text-slate-600">/</span>
+            <span className="text-slate-600 dark:text-slate-400 transition-colors duration-300">{project.title}</span>
           </nav>
         </div>
 
         {/* Project Hero */}
-        <section ref={sectionRef} className="py-8 md:py-12 bg-white">
+        <section ref={sectionRef} className="py-8 md:py-12 backdrop-blur-sm">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
               {/* Project Type Badge */}
               <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-teal-500/90 backdrop-blur-sm text-white text-sm font-semibold rounded-full shadow-lg shadow-teal-500/30">
                   {project.projectType}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in text-slate-900 dark:text-slate-50 transition-colors duration-300">
                 {project.title}
               </h1>
 
               {/* Overview */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-4">Overview</h2>
-                <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100 flex items-center justify-center gap-2 transition-colors duration-300">
+                  <span className="text-orange-500">💡</span> Overview
+                </h2>
+                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto transition-colors duration-300">
                   {project.overview}
                 </p>
               </div>
@@ -158,14 +160,16 @@ export function DesignConcept() {
         </section>
 
         {/* Design Gallery */}
-        <section className="py-12 md:py-16 bg-gray-50">
+        <section className="py-12 md:py-16 backdrop-blur-sm">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12">Design Pages</h2>
+              <h2 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-slate-50 flex items-center justify-center gap-2 transition-colors duration-300">
+                <span className="text-teal-400">🎨</span> Design Pages
+              </h2>
 
               <div className="space-y-12">
                 {project.designImages.map((image, index) => (
-                  <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                  <div key={index} className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-2xl hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300">
                     {/* Image */}
                     <div className="aspect-video w-full overflow-hidden">
                       <img
@@ -177,8 +181,8 @@ export function DesignConcept() {
 
                     {/* Image Info */}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{image.title}</h3>
-                      <p className="text-gray-600">{image.description}</p>
+                      <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100 transition-colors duration-300">{image.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-300">{image.description}</p>
                     </div>
                   </div>
                 ))}
@@ -188,27 +192,29 @@ export function DesignConcept() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 backdrop-blur-sm">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-2xl font-bold mb-6">Interested in working together?</h2>
-              <p className="text-lg text-gray-600 mb-8">
-                This design concept showcases my ability to create cohesive, professional website designs.
-                Let's discuss how I can help bring your vision to life.
-              </p>
+              <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300">
+                <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-50 transition-colors duration-300">Interested in working together?</h2>
+                <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed transition-colors duration-300">
+                  This design concept showcases my ability to create cohesive, professional website designs.
+                  Let's discuss how I can help bring your vision to life.
+                </p>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link href="/portfolio">
-                  <Button variant="outline" className="w-full sm:w-auto">
-                    Return to Portfolio
-                  </Button>
-                </Link>
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <Link href="/portfolio">
+                    <Button variant="outline" className="w-full sm:w-auto border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 hover:border-orange-500 hover:text-orange-500">
+                      Return to Portfolio
+                    </Button>
+                  </Link>
 
-                <Link href="/contact">
-                  <Button variant="primary" className="w-full sm:w-auto">
-                    Get in Touch
-                  </Button>
-                </Link>
+                  <Link href="/contact">
+                    <Button variant="primary" className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50">
+                      Get in Touch
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
