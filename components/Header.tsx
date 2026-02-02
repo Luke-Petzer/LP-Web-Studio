@@ -40,11 +40,13 @@ export function Header() {
                                 src="/Logo.svg"
                                 alt="LP Logo"
                                 className="h-16 w-auto dark:invert transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+                                fetchPriority="high"
                             />
                             <img
                                 src="/My-Logo.svg"
                                 alt="LP Web Studio"
                                 className="h-12 w-auto dark:invert transition-all duration-300 group-hover:scale-105"
+                                fetchPriority="high"
                             />
                         </Link>
 

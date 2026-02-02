@@ -14,7 +14,7 @@ export function AboutHero() {
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-500/30 dark:bg-teal-500/20 rounded-full blur-2xl hidden lg:block transition-colors duration-300"></div>
                 <div className="relative overflow-hidden rounded-full shadow-2xl border-4 border-slate-300 dark:border-slate-800 transition-colors duration-300">
                   <img
-                    src="/Me1.JPG"
+                    src="/Profile-headshot.png"
                     alt="Luke Petzer on a balcony"
                     className="w-full h-auto object-cover"
                     loading="eager"

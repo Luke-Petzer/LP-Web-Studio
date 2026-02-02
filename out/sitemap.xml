@@ -5,7 +5,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://lpwebstudio.com/</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -18,7 +18,7 @@
     <!-- Portfolio Page -->
     <url>
         <loc>https://lpwebstudio.com/portfolio</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <image:image>
@@ -30,7 +30,7 @@
     <!-- About Page -->
     <url>
         <loc>https://lpwebstudio.com/about</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
@@ -42,15 +42,36 @@
     <!-- Contact Page -->
     <url>
         <loc>https://lpwebstudio.com/contact</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+
+    <!-- Privacy Policy -->
+    <url>
+        <loc>https://lpwebstudio.com/privacy-policy</loc>
+        <lastmod>2025-11-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- Client Projects -->
+    <url>
+        <loc>https://lpwebstudio.com/project/cafe-client</loc>
+        <lastmod>2025-11-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+        <image:image>
+            <image:loc>https://lpwebstudio.com/cc-home.png</image:loc>
+            <image:title>Cafe Crave Website - Full-Stack Client Project</image:title>
+            <image:caption>Professional cafe website with live Google Reviews integration</image:caption>
+        </image:image>
     </url>
 
     <!-- Showcase Projects -->
     <url>
         <loc>https://lpwebstudio.com/showcase/loruki</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image>
@@ -62,7 +83,7 @@
     <!-- Design Concept Projects -->
     <url>
         <loc>https://lpwebstudio.com/design/granite-marble</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
         <image:image>
@@ -73,7 +94,7 @@
 
     <url>
         <loc>https://lpwebstudio.com/design/green-scape-gardeners</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-11-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
         <image:image>

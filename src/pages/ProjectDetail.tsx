@@ -389,30 +389,17 @@ export function ProjectDetail() {
     console.log('Available detailed projects:', Object.keys(projectsDataMap));
     console.log('Detailed project data:', typeof id === 'string' ? projectsDataMap[id] : null);
   }, [id]);
-  // Preload all project images on component mount to avoid layout shifts
+  // Preload only the current project's hero image for faster display
   useEffect(() => {
-    // Preload all project images at once to avoid layout shifts when navigating between projects
-    const allImages = mockProjects.reduce((acc: string[], project) => {
-      acc.push(project.image);
-      if (project.galleryImages) {
-        acc.push(...project.galleryImages);
+    if (id && typeof id === 'string') {
+      const currentProject = mockProjects.find(p => p.id === id);
+      if (currentProject?.image) {
+        const img = new Image();
+        img.src = currentProject.image;
+        img.onload = () => setImagesPreloaded(true);
       }
-      return acc;
-    }, []);
-    const uniqueImages = [...new Set(allImages)];
-    let loadedCount = 0;
-    const totalImages = uniqueImages.length;
-    uniqueImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-      img.onload = img.onerror = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          setImagesPreloaded(true);
-        }
-      };
-    });
-  }, [setImagesPreloaded]);
+    }
+  }, [id, setImagesPreloaded]);
   // Load project data once on initial render
   useEffect(() => {
     // Find the current project
@@ -428,11 +415,8 @@ export function ProjectDetail() {
       // }
 
       setProject(currentProject);
-      // Set loading to false after a short delay to ensure smooth transitions
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 100);
-      return () => clearTimeout(timer);
+      // Set loading to false immediately for faster page display
+      setLoading(false);
     } else {
       setLoading(false);
     }

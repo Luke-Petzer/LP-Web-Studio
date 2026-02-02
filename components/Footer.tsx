@@ -78,6 +78,12 @@ export const Footer = () => {
               >
                 → Contact
               </Link>
+              <Link
+                href="/privacy-policy"
+                className="block text-slate-600 dark:text-slate-300 hover:text-orange-500 hover:translate-x-1 transition-all duration-200"
+              >
+                → Privacy Policy
+              </Link>
             </nav>
           </div>
 
@@ -128,33 +134,6 @@ export const Footer = () => {
             <p className="text-xs text-slate-400 dark:text-slate-500 mt-6">
               WhatsApp icons by Freepik - Flaticon
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-sm text-slate-600 dark:text-slate-400">
-              <p>
-                © {new Date().getFullYear()} <span className="font-semibold text-slate-900 dark:text-white">LP Web Studio</span>. All Rights Reserved.
-              </p>
-              <span className="hidden md:inline">•</span>
-              <Link
-                href="/privacy-policy"
-                className="text-slate-600 dark:text-slate-400 hover:text-orange-500 transition-colors duration-200"
-              >
-                Privacy Policy
-              </Link>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-slate-600 dark:text-slate-400">
-              <span className="flex items-center gap-2">
-                Made with
-                <span className="text-orange-500">❤</span>
-                in Cape Town
-              </span>
-            </div>
           </div>
         </div>
       </div>

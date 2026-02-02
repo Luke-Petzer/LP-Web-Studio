@@ -10,7 +10,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   // Load theme from localStorage on mount
@@ -23,8 +23,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (savedTheme) {
         setTheme(savedTheme);
       } else {
-        // Default to dark mode
-        setTheme('dark');
+        // Default to light mode
+        setTheme('light');
       }
     }
   }, []);

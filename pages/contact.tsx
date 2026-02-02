@@ -4,6 +4,7 @@ import { ContactHero } from '../components/contact/ContactHero';
 import { ContactForm } from '../components/contact/ContactForm';
 import { ContactInfo } from '../components/contact/ContactInfo';
 import { SEO } from '../components/SEO';
+import { WhatsAppButton } from '../components/ui/WhatsAppButton';
 
 export default function Contact() {
   const siteUrl = 'https://lpwebstudio.com';
@@ -72,6 +73,9 @@ export default function Contact() {
           <ContactInfo />
         </div>
       </div>
+
+      {/* WhatsApp Button - Fixed Bottom Right */}
+      <WhatsAppButton />
     </Layout>
   );
 }

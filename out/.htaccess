@@ -10,6 +10,20 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
+# Add preconnect headers for external resources
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header add Link "<https://fonts.googleapis.com>; rel=preconnect"
+    Header add Link "<https://fonts.gstatic.com>; rel=preconnect; crossorigin"
+    Header add Link "<https://connect.facebook.net>; rel=preconnect"
+  </FilesMatch>
+
+  # Security headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
 # Enable GZIP compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json

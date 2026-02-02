@@ -159,7 +159,7 @@ export const cafeCraveData: ProjectData = {
     { name: 'Subtext on Light', hex: '#5A372B', usage: 'Secondary text on light backgrounds' },
     { name: 'Subtext on Dark', hex: '#BFA6A0', usage: 'Secondary text on dark backgrounds' }
   ],
-  link: 'https://cafecravecpt.co.za',
+  link: '/project/cafe-client',
   client: 'Cafe Crave',
   role: 'Full-Stack Developer'
 };

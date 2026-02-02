@@ -45,7 +45,7 @@ export function ProjectCard({
           <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-slate-50 group-hover:text-slate-950 dark:group-hover:text-white transition-colors">
             {title}
           </h3>
-          <p className="mb-4 text-slate-700 dark:text-slate-300 leading-relaxed transition-colors duration-300">
+          <p className="mb-4 text-slate-800 dark:text-slate-300 font-medium leading-relaxed transition-colors duration-300">
             {description}
           </p>
           {isDisabled ? (
