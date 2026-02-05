@@ -37,13 +37,13 @@ export function Header() {
                         {/* Logo Section - Left */}
                         <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
                             <img
-                                src="/Logo.svg"
+                                src="/Logo.png"
                                 alt="LP Logo"
                                 className="h-16 w-auto dark:invert transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                                 fetchPriority="high"
                             />
                             <img
-                                src="/My-Logo.svg"
+                                src="/My-Logo.png"
                                 alt="LP Web Studio"
                                 className="h-12 w-auto dark:invert transition-all duration-300 group-hover:scale-105"
                                 fetchPriority="high"
