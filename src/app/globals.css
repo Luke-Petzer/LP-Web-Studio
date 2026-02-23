@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   LP WEB STUDIO — Ethereal/Light Global Styles
+   ═══════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* ─── Brand Tokens (CSS Variables) ─── */
+    --accent: #6366f1;
+    --bg-void: #050505;
+    --bg-white: #ffffff;
+    --ink: #1a1a1a;
+    --slate: #4b5563;
+
+    /* ─── 8px Soft Grid ─── */
+    --spacing-hairline: 4px;
+    --spacing-base: 8px;
+    --spacing-component: 16px;
+    --spacing-sectional: 24px;
+    --spacing-atmospheric: 32px;
+    --spacing-structural: 48px;
+    --spacing-grandeur: 64px;
+
+    /* ─── Glass Tokens (for dark sections) ─── */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-dim: rgba(255, 255, 255, 0.05);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-white);
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── Selection Color ─── */
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.2);
+    color: var(--ink);
+  }
+
+  /* ─── Scrollbar Styling ─── */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+}
+
+@layer components {
+
+  /* ─── Mesh Transition (Dark hero → White body) ─── */
+  .mesh-transition {
+    background: linear-gradient(to bottom, #050505 0%, #050505 85%, #ffffff 100%);
+  }
+
+  /* ─── Glass Card (for dark sections like hero) ─── */
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 2rem;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ─── Light Card (for white sections) ─── */
+  .light-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 2rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .light-card:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ─── Glow Text (sparingly — headings in dark sections) ─── */
+  .glow-text {
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5),
+      0 0 16px rgba(99, 102, 241, 0.15);
+  }
+
+  /* ─── Section Container ─── */
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: var(--spacing-sectional);
+    padding-right: var(--spacing-sectional);
+  }
+
+  /* ─── Mercury Button (magnetic follow — NO morph) ─── */
+  .mercury-btn {
+    position: relative;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    border-radius: 9999px;
+    /* Solid pill — no animation */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .mercury-btn:hover {
+    /* No border-radius change — stays solid pill */
+  }
+
+  /* ─── Scroll Reveal (CSS fallback for non-JS contexts) ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+
+  /* ─── Accent underline ─── */
+  .accent-underline {
+    position: relative;
+  }
+
+  .accent-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, transparent);
+  }
+}

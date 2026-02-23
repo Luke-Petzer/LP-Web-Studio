@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP Web Studio | Interactive Performance</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void: '#050505',
+          accent: '#6366f1',
+          ink: '#1a1a1a',
+          slate: '#4b5563',
+        },
+        fontFamily: {
+          heading: ['Plus Jakarta Sans', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.cdnfonts.com/css/satoshi');
+  
+  html { scroll-behavior: smooth; }
+  body { background: #ffffff; color: #1a1a1a; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+  /* Mesh Gradient Transition */
+  .mesh-transition {
+    background: linear-gradient(to bottom, #050505 0%, #050505 85%, #ffffff 100%);
+  }
+
+  /* Floating Island Nav */
+  .nav-island {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    max-width: 1200px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-scrolled {
+    top: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+  }
+  .nav-scrolled .nav-text { color: #1a1a1a; }
+  .nav-scrolled .nav-logo { background: #1a1a1a; color: #ffffff; }
+
+  /* Mercury Button Effect */
+  .mercury-btn {
+    position: relative;
+    transition: border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
+  .mercury-btn:hover {
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+  }
+
+  /* Focus Lens Section */
+  .lens-container {
+    position: relative;
+    --lens-x: 50%;
+    --lens-y: 50%;
+  }
+  .lens-base {
+    filter: grayscale(1) blur(4px) opacity(0.3);
+    transition: filter 0.3s ease;
+  }
+  .lens-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: circle(180px at var(--lens-x) var(--lens-y));
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* 3D Depth Stack */
+  .depth-stack-viewport {
+    perspective: 2000px;
+    height: 300vh; /* Scroll height */
+  }
+  .depth-card {
+    transition: transform 0.1s linear, opacity 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, opacity;
+  }
+  .depth-card.pinned {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+  }
+
+  /* Scroll Reveal Animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<div class="min-h-screen flex flex-col">
+  <!-- NAVIGATION -->
+  <header id="main-nav" class="nav-island rounded-full px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="nav-logo w-8 h-8 rounded-full bg-white text-void flex items-center justify-center font-bold text-xs transition-colors">
+        LP
+      </div>
+      <span class="nav-text font-heading font-bold text-white text-sm tracking-tight transition-colors">LP Studio</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8">
+      <a id="nav-work-link" href="#work" class="nav-text text-white text-xs font-medium uppercase tracking-widest hover:opacity-70 transition-colors">Work</a>
+      <a id="nav-process-link" href="#process" class="nav-text text-white text-xs font-medium uppercase tracking-widest hover:opacity-70 transition-colors">Process</a>
+      <a id="nav-pricing-link" href="#pricing" class="nav-text text-white text-xs font-medium uppercase tracking-widest hover:opacity-70 transition-colors">Pricing</a>
+    </nav>
+    <a id="nav-cta-link" href="#contact" class="mercury-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white">
+      Audit
+    </a>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+    
+    <!-- HERO SECTION -->
+    <section id="hero" class="mesh-transition min-h-screen relative flex items-center justify-center pt-24 pb-32 px-6">
+      <div class="max-w-4xl w-full text-center relative z-10">
+        <div class="reveal active">
+          <span class="bg-white/10 backdrop-blur-md text-white text-[10px] uppercase tracking-[0.3em] font-bold px-4 py-2 rounded-full mb-8 inline-block">
+            Precision Engineering
+          </span>
+        </div>
+        <h1 class="font-heading font-extrabold text-white text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-8 reveal active delay-100">
+          Performance <br/> 
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Uncompromised.</span>
+        </h1>
+        <p class="font-body text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-12 reveal active delay-200 leading-relaxed">
+          Bespoke digital experiences built for high-conversion brands who demand world-class speed and minimal aesthetics.
+        </p>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 reveal active delay-300">
+          <a id="hero-mercury-cta" href="#contact" class="mercury-btn px-10 py-5 rounded-full text-sm font-bold w-full md:w-auto text-white shadow-xl hover:scale-105">
+            Optimize Your Website
+          </a>
+          <a id="hero-secondary-cta-link" href="#work" class="text-white/80 hover:text-white px-8 py-4 text-sm font-bold flex items-center gap-2 transition-all">
+            View Case Studies <iconify-icon icon="lucide:arrow-right"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D INTERACTIVE DEPTH STACK (WORK) -->
+    <section id="work" class="relative bg-white pt-32">
+      <div class="max-w-7xl mx-auto px-6 mb-16">
+        <p class="text-accent font-bold text-xs uppercase tracking-widest mb-4">Portfolio</p>
+        <h2 class="text-ink text-4xl md:text-5xl font-extrabold tracking-tight">Selected Experiments</h2>
+      </div>
+      
+      <div class="depth-stack-viewport relative">
+        <div id="depth-stack-container" class="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+          <!-- Card 1 -->
+          <div class="depth-card absolute w-[300px] h-[400px] md:w-[450px] md:h-[600px] bg-void rounded-[2rem] p-8 shadow-2xl flex flex-col justify-end text-white overflow-hidden" data-z="0">
+            <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent"></div>
+            <div class="relative z-10">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2 block">FinTech</span>
+              <h3 class="text-3xl font-bold mb-4">Quanta Core</h3>
+              <p class="text-white/60 text-sm">Sub-50ms trading interface for high-frequency algorithmic traders.</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="depth-card absolute w-[300px] h-[400px] md:w-[450px] md:h-[600px] bg-zinc-900 rounded-[2rem] p-8 shadow-2xl flex flex-col justify-end text-white overflow-hidden" data-z="-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-transparent"></div>
+            <div class="relative z-10">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2 block">SaaS</span>
+              <h3 class="text-3xl font-bold mb-4">Nexus Flow</h3>
+              <p class="text-white/60 text-sm">Collaboration engine designed to eliminate project management friction.</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="depth-card absolute w-[300px] h-[400px] md:w-[450px] md:h-[600px] bg-slate-900 rounded-[2rem] p-8 shadow-2xl flex flex-col justify-end text-white overflow-hidden" data-z="-1000">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent"></div>
+            <div class="relative z-10">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-accent mb-2 block">Crypto</span>
+              <h3 class="text-3xl font-bold mb-4">Ether Vault</h3>
+              <p class="text-white/60 text-sm">Maximum security assets custody with zero-latency verification.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOCUS LENS GRID (PROCESS) -->
+    <section id="process" class="bg-white py-48 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-start mb-32">
+          <div class="reveal">
+            <p class="text-accent font-bold text-xs uppercase tracking-widest mb-4">Philosophy</p>
+            <h2 class="text-ink text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+              We remove the noise <br/> so your growth can speak.
+            </h2>
+          </div>
+        </div>
+
+        <!-- Lens Reveal Grid -->
+        <div id="focus-lens-section" class="lens-container grid grid-cols-1 md:grid-cols-3 gap-12">
+          <!-- Layer A: Grayscale/Blur -->
+          <div class="lens-base contents">
+            <div class="p-12 border border-black/5 rounded-[3rem] bg-zinc-50">
+              <h3 class="text-ink text-xl font-bold mb-4">Frictionless Experience</h3>
+              <p class="text-slate leading-relaxed">Traditional forms are dead. We implement seamless direct-response channels like WhatsApp and Telegram to cut lead drop-off.</p>
+            </div>
+            <div class="p-12 border border-black/5 rounded-[3rem] bg-zinc-50">
+              <h3 class="text-ink text-xl font-bold mb-4">Performance First</h3>
+              <p class="text-slate leading-relaxed">Every millisecond costs money. Our stack is optimized at the edge, ensuring instant delivery regardless of user location.</p>
+            </div>
+            <div class="p-12 border border-black/5 rounded-[3rem] bg-zinc-50">
+              <h3 class="text-ink text-xl font-bold mb-4">Strategic Whitespace</h3>
+              <p class="text-slate leading-relaxed">We don't use bento grids or distracting borders. We use space to guide users toward your primary call-to-action.</p>
+            </div>
+          </div>
+          
+          <!-- Layer B: Color/Sharp (The Reveal) -->
+          <div class="lens-overlay grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="p-12 border-2 border-accent rounded-[3rem] bg-white shadow-xl scale-[1.05] transition-transform">
+              <h3 class="text-ink text-xl font-extrabold mb-4">Frictionless Experience</h3>
+              <p class="text-slate leading-relaxed">Traditional forms are dead. We implement seamless direct-response channels like WhatsApp and Telegram to cut lead drop-off.</p>
+            </div>
+            <div class="p-12 border-2 border-accent rounded-[3rem] bg-white shadow-xl scale-[1.05] transition-transform">
+              <h3 class="text-ink text-xl font-extrabold mb-4">Performance First</h3>
+              <p class="text-slate leading-relaxed">Every millisecond costs money. Our stack is optimized at the edge, ensuring instant delivery regardless of user location.</p>
+            </div>
+            <div class="p-12 border-2 border-accent rounded-[3rem] bg-white shadow-xl scale-[1.05] transition-transform">
+              <h3 class="text-ink text-xl font-extrabold mb-4">Strategic Whitespace</h3>
+              <p class="text-slate leading-relaxed">We don't use bento grids or distracting borders. We use space to guide users toward your primary call-to-action.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="max-w-7xl mx-auto px-6 pb-48">
+      <div class="text-center mb-24 reveal">
+        <h2 class="text-ink text-4xl font-extrabold mb-4">The Performance Packages</h2>
+        <p class="text-slate">Simplified structures for high-velocity teams.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="p-12 bg-white border border-slate-200 rounded-[2rem] shadow-sm hover:shadow-md hover:border-slate-300 transition-all reveal">
+          <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-slate mb-8">Base</h3>
+          <div class="text-5xl font-bold tracking-tight mb-8">R1,500</div>
+          <ul class="space-y-6 text-sm text-slate mb-12">
+            <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-accent"></iconify-icon> Single Page Excellence</li>
+            <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-accent"></iconify-icon> Core Web Vitals Pass</li>
+          </ul>
+          <a id="price-base-cta-link" href="#contact" class="block text-center py-4 border border-black/10 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Request Quote</a>
+        </div>
+        
+        <div class="p-12 bg-void text-white rounded-[2rem] shadow-2xl reveal">
+          <div class="flex justify-between items-start mb-8">
+            <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Advantage</h3>
+            <span class="bg-accent text-white text-[8px] px-3 py-1 rounded-full uppercase">Most Popular</span>
+          </div>
+          <div class="text-5xl font-bold tracking-tight mb-8">R2,500</div>
+          <ul class="space-y-6 text-sm text-white/60 mb-12">
+            <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-accent"></iconify-icon> Multi-Page Architecture</li>
+            <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-accent"></iconify-icon> 99+ PageSpeed Score</li>
+          </ul>
+          <a id="price-pro-cta-link" href="#contact" class="mercury-btn block text-center py-4 rounded-full text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-accent/20">Partner with Us</a>
+        </div>
+
+        <div class="p-12 bg-indigo-50/30 border border-indigo-100 rounded-[2rem] shadow-sm hover:shadow-md hover:border-indigo-500 hover:shadow-indigo-100 transition-all reveal">
+          <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-slate mb-8">Custom</h3>
+          <div class="text-5xl font-bold tracking-tight mb-8">R5,000+</div>
+          <ul class="space-y-6 text-sm text-slate mb-12">
+            <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-accent"></iconify-icon> Headless CMS</li>
+            <li class="flex items-center gap-3"><iconify-icon icon="lucide:check" class="text-accent"></iconify-icon> Custom Animations</li>
+          </ul>
+          <a id="price-custom-cta-link" href="#contact" class="block text-center py-4 border border-black/10 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all">Contact Studio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-4xl mx-auto px-6 pb-48 reveal">
+      <div class="text-center mb-16">
+        <h2 class="text-ink text-4xl md:text-5xl font-extrabold mb-4">Ready to perform?</h2>
+        <p class="text-slate">Let's analyze your current performance bottlenecks.</p>
+      </div>
+      
+      <form class="space-y-12" onsubmit="event.preventDefault();">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="group">
+            <label class="text-[10px] uppercase tracking-widest text-slate font-bold mb-2 block">Full Name</label>
+            <input type="text" class="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-accent transition-colors" placeholder="John Doe">
+          </div>
+          <div class="group">
+            <label class="text-[10px] uppercase tracking-widest text-slate font-bold mb-2 block">Email Address</label>
+            <input type="email" class="w-full bg-transparent border-b border-black/10 py-4 outline-none focus:border-accent transition-colors" placeholder="john@brand.com">
+          </div>
+        </div>
+        <div class="text-center pt-8">
+          <button type="submit" class="mercury-btn px-16 py-6 rounded-full text-sm font-bold uppercase tracking-[0.2em] text-white shadow-2xl hover:scale-110">
+            Initiate Audit
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-void py-24 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+        <div class="flex flex-col items-center md:items-start">
+          <div class="w-12 h-12 rounded-full bg-white text-void flex items-center justify-center font-bold text-lg mb-4">LP</div>
+          <p class="text-white/40 text-xs tracking-widest uppercase">© 2026 LP Web Studio. Cape Town, SA.</p>
+        </div>
+        <div class="flex gap-8">
+          <a id="footer-ig-link" href="#" class="text-white/60 hover:text-white transition-colors"><iconify-icon icon="lucide:instagram" class="text-2xl"></iconify-icon></a>
+          <a id="footer-wa-link" href="#" class="text-white/60 hover:text-white transition-colors"><iconify-icon icon="mdi:whatsapp" class="text-2xl"></iconify-icon></a>
+        </div>
+        <div class="text-white/40 text-[10px] tracking-widest uppercase text-center md:text-right">Engineered for speed</div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // 1. Mercury Button Elastic Morphing
+  document.querySelectorAll('.mercury-btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // Stretch towards cursor
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+      
+      // Morph edges slightly
+      const xPerc = (e.clientX - rect.left) / rect.width * 100;
+      const yPerc = (e.clientY - rect.top) / rect.height * 100;
+      btn.style.borderRadius = `${xPerc}% ${100-xPerc}% ${yPerc}% ${100-yPerc}% / ${yPerc}% ${100-yPerc}% ${xPerc}% ${100-xPerc}%`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0, 0) scale(1)';
+      btn.style.borderRadius = '9999px';
+    });
+  });
+
+  // 2. Focus Lens Effect
+  const lensContainer = document.getElementById('focus-lens-section');
+  if (lensContainer) {
+    lensContainer.addEventListener('mousemove', (e) => {
+      const rect = lensContainer.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      lensContainer.style.setProperty('--lens-x', `${x}px`);
+      lensContainer.style.setProperty('--lens-y', `${y}px`);
+    });
+  }
+
+  // 3. 3D Depth Stack Scroll Logic
+  const stackContainer = document.querySelector('.depth-stack-viewport');
+  const cards = document.querySelectorAll('.depth-card');
+  
+  window.addEventListener('scroll', () => {
+    const rect = stackContainer.getBoundingClientRect();
+    const scrollProgress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+    
+    cards.forEach((card, index) => {
+      const initialZ = parseInt(card.dataset.z);
+      const zProgress = scrollProgress * 2500; // Total Z movement
+      const currentZ = initialZ + zProgress;
+      
+      // Fly toward camera and fade out
+      if (currentZ > 400) {
+        card.style.opacity = Math.max(0, 1 - (currentZ - 400) / 400);
+      } else {
+        card.style.opacity = 1;
+      }
+      
+      card.style.transform = `translateZ(${currentZ}px) rotateX(${currentZ * 0.05}deg)`;
+
+      // Prevent interaction if card is "behind" camera
+      card.style.pointerEvents = currentZ > 800 ? 'none' : 'auto';
+    });
+  });
+
+  // 4. Card 3D Tilt Hover (when pinned/near)
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+
+      const baseTransform = card.style.transform.split(' rotateX')[0];
+      card.style.transform = `${baseTransform} rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      card.classList.add('pinned');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('pinned');
+    });
+  });
+
+  // Intersection Observer for Reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav Scroll Effect
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  });
+</script>
+</body>
+</html>
