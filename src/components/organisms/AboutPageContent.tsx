@@ -47,6 +47,18 @@ const techStack = [
         description:
             "Enterprise-grade databases for real customer data.",
     },
+    {
+        icon: Code2,
+        name: "n8n & Gemini 2.0",
+        description:
+            "Autonomous pipelines that audit leads, enrich data, and route high-value targets to your sales channels.",
+    },
+    {
+        icon: Gauge,
+        name: "Generative Engine Optimization",
+        description:
+            "Structuring data so LLMs natively understand and recommend your services.",
+    },
 ];
 
 /* ─── Why Work With Me ─── */
@@ -90,6 +102,55 @@ export function AboutPageContent() {
                 </p>
             </motion.div>
 
+            {/* Architect Profile — Terminal Bio Card */}
+            <motion.div
+                className="max-w-7xl mb-structural"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
+                <div className="rounded-[2rem] bg-void overflow-hidden border border-white/5">
+                    {/* Terminal chrome bar */}
+                    <div className="flex items-center gap-2 px-6 py-4 border-b border-white/5 bg-white/3">
+                        <span className="w-3 h-3 rounded-full bg-red-500/70" />
+                        <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                        <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                        <span className="ml-4 text-white/30 text-xs font-mono">
+                            architect.profile — zsh
+                        </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-8 md:p-12">
+                        <p className="text-accent font-mono text-xs mb-4">
+                            $ whoami
+                        </p>
+                        <h2 className="text-white text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-6">
+                            The Architect:{" "}
+                            <span className="text-accent">Luke Petzer</span>
+                        </h2>
+                        <p className="text-white/60 leading-relaxed max-w-3xl">
+                            I don&apos;t run a bloated agency. I am a senior technical architect
+                            operating out of Cape Town. I manage the entire infrastructure
+                            stack&mdash;from the Next.js React codebase to the n8n autonomous
+                            pipelines. You speak directly to the engineer building your business
+                            engine.
+                        </p>
+                        <div className="mt-8 flex flex-wrap gap-3">
+                            {["Next.js 15", "React", "n8n", "Vercel Edge", "Supabase", "Framer Motion"].map((tag) => (
+                                <span
+                                    key={tag}
+                                    className="text-[10px] font-bold uppercase tracking-widest text-accent bg-accent/10 px-3 py-1.5 rounded-full font-mono"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
             {/* Philosophy — Anti-WordPress */}
             <motion.div
                 className="max-w-7xl mb-structural"
@@ -103,14 +164,13 @@ export function AboutPageContent() {
                 </h2>
                 <blockquote className="relative pl-8 border-l-4 border-accent mb-8">
                     <p className="text-ink text-lg leading-relaxed italic">
-                        &ldquo;Most agencies sell you a template and charge for maintenance.
-                        I don&apos;t work like that.&rdquo;
+                        &ldquo;Most agencies sell you a pre-packaged template and charge you a monthly fee to press &lsquo;update&rsquo;. We build custom software.&rdquo;
                     </p>
                 </blockquote>
                 <p className="text-slate leading-relaxed">
-                    I believe in <strong className="text-ink">Hand-Coded Performance</strong>.
-                    No Drag-and-Drop bloat. No plugin security holes. Just clean, semantic
-                    Next.js code that scores 90+ on Google PageSpeed Insights — every time.
+                    I believe in <strong className="text-ink">hand-coded performance</strong>.
+                    No drag-and-drop bloat. No plugin security vulnerabilities. Just clean, semantic
+                    Next.js code that scores 90+ on Google PageSpeed Insights&mdash;guaranteed.
                 </p>
             </motion.div>
 
@@ -125,7 +185,7 @@ export function AboutPageContent() {
                 <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
                     The Engine
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sectional">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-sectional">
                     {techStack.map((tech, i) => (
                         <motion.div
                             key={tech.name}

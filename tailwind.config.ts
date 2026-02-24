@@ -34,6 +34,7 @@ const config: Config = {
           border: "rgba(255, 255, 255, 0.1)",
           "border-dim": "rgba(255, 255, 255, 0.05)",
         },
+        ghost: "var(--text-ghost)",
       },
 
       /* ─── 8px Soft Grid Spacing ─── */

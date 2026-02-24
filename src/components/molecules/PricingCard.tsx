@@ -1,9 +1,16 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/atoms/Button";
+
+/* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
+const luxurySpring = {
+    stiffness: 150,
+    damping: 25,
+    mass: 1,
+};
 
 interface PricingCardProps {
     title: string;
@@ -18,12 +25,6 @@ interface PricingCardProps {
     children?: ReactNode;
 }
 
-const luxurySpring = {
-    stiffness: 150,
-    damping: 25,
-    mass: 1,
-};
-
 export function PricingCard({
     title,
     price,
@@ -35,63 +36,75 @@ export function PricingCard({
     recommended = false,
     className = "",
 }: PricingCardProps) {
+    const shouldReduceMotion = useReducedMotion();
+
     return (
         <motion.div
-            className={`relative glass-card p-atmospheric flex flex-col gap-sectional ${recommended ? "border-accent/40 shadow-eclipse-glow-sm" : ""} ${className}`}
-            initial={{ opacity: 0, y: 30 }}
+            className={`group relative overflow-hidden glass-card p-atmospheric flex flex-col gap-sectional transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.3)] hover:border-indigo-500/50 ${recommended ? "border-accent/40 shadow-accent-glow-sm" : ""} ${className}`}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ type: "spring", ...luxurySpring }}
-            whileHover={{ y: -4 }}
         >
-            {/* Recommended Badge */}
-            {recommended && (
-                <div className="absolute -top-[14px] left-1/2 -translate-x-1/2">
-                    <span className="px-component py-[6px] bg-accent text-brand-black text-xs font-mono font-semibold rounded-full uppercase tracking-wider">
-                        Recommended
-                    </span>
+            {/* Shine Sweep — diagonal translate sweep on hover, CSS only */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 -translate-x-[150%] skew-x-12 bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%] z-0 pointer-events-none"
+            />
+
+            {/* All card content lifted above the glow */}
+            <div className="relative z-10 flex flex-col gap-sectional flex-1">
+
+                {/* Recommended Badge */}
+                {recommended && (
+                    <div className="absolute -top-[14px] left-1/2 -translate-x-1/2">
+                        <span className="px-component py-[8px] bg-accent text-brand-black text-xs font-mono font-semibold rounded-full uppercase tracking-wider">
+                            Recommended
+                        </span>
+                    </div>
+                )}
+
+                {/* Header */}
+                <div className="flex flex-col gap-base">
+                    <h3 className="text-lg font-heading font-semibold text-white">
+                        {title}
+                    </h3>
+                    {description && (
+                        <p className="text-sm text-secondary">{description}</p>
+                    )}
                 </div>
-            )}
 
-            {/* Header */}
-            <div className="flex flex-col gap-base">
-                <h3 className="text-lg font-heading font-semibold text-white">
-                    {title}
-                </h3>
-                {description && (
-                    <p className="text-sm text-secondary">{description}</p>
-                )}
-            </div>
+                {/* Price */}
+                <div className="flex items-baseline gap-base">
+                    <span className="text-3xl font-heading font-bold text-white">
+                        {price}
+                    </span>
+                    {period && (
+                        <span className="text-sm font-mono text-secondary">{period}</span>
+                    )}
+                </div>
 
-            {/* Price */}
-            <div className="flex items-baseline gap-base">
-                <span className="text-3xl font-heading font-bold text-white">
-                    {price}
-                </span>
-                {period && (
-                    <span className="text-sm font-mono text-secondary">{period}</span>
-                )}
-            </div>
+                {/* Features List */}
+                <ul className="flex flex-col gap-component flex-1">
+                    {features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-component">
+                            <Check className="w-[16px] h-[16px] text-accent mt-[2px] shrink-0" strokeWidth={2.5} />
+                            <span className="text-sm text-secondary-light">{feature}</span>
+                        </li>
+                    ))}
+                </ul>
 
-            {/* Features List */}
-            <ul className="flex flex-col gap-component flex-1">
-                {features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-component">
-                        <Check className="w-[16px] h-[16px] text-accent mt-[2px] shrink-0" strokeWidth={2.5} />
-                        <span className="text-sm text-secondary-light">{feature}</span>
-                    </li>
-                ))}
-            </ul>
+                {/* CTA */}
+                <Button
+                    href={ctaHref}
+                    variant={recommended ? "primary" : "outline"}
+                    size="md"
+                    className="w-full justify-center mt-component"
+                >
+                    {ctaText}
+                </Button>
 
-            {/* CTA */}
-            <Button
-                href={ctaHref}
-                variant={recommended ? "primary" : "outline"}
-                size="md"
-                className="w-full justify-center mt-component"
-            >
-                {ctaText}
-            </Button>
+            </div>{/* end z-10 content wrapper */}
         </motion.div>
     );
 }

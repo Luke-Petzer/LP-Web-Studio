@@ -16,16 +16,16 @@ const fadeUp: Variants = {
 /* ─── Data ─── */
 const processCards = [
     {
-        title: "Frictionless Experience",
-        body: "Traditional forms are dead. We implement seamless direct-response channels like WhatsApp and Telegram to cut lead drop-off.",
+        title: "Direct Lead Capture",
+        body: "Traditional forms are dead. We integrate WhatsApp, Telegram, and n8n webhook pipelines to capture, enrich, and route leads directly to your phone in milliseconds.",
     },
     {
-        title: "Performance First",
-        body: "Every millisecond costs money. Our stack is optimized at the edge, ensuring instant delivery regardless of user location.",
+        title: "Vercel Edge Rendering",
+        body: "Every millisecond costs money. We bypass shared hosting. Your Next.js application runs on Vercel\u2019s global CDN, delivering sub-second load times.",
     },
     {
-        title: "Strategic Whitespace",
-        body: "We don\u2019t use bento grids or distracting borders. We use space to guide users toward your primary call-to-action.",
+        title: "Generative Engine Optimization (GEO)",
+        body: "Standard SEO is no longer enough. We engineer your site architecture and llms.txt files so AI models like Gemini and ChatGPT accurately recommend your business to users.",
     },
 ];
 
@@ -57,11 +57,11 @@ export function ProcessSection() {
                 >
                     <div>
                         <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
-                            Philosophy
+                            The Architecture
                         </p>
                         <h2 className="text-ink text-4xl md:text-5xl font-heading font-extrabold tracking-tight leading-tight">
-                            We remove the noise <br />
-                            so your growth can speak.
+                            Engineered for Speed{" "}
+                            <br />and Automation.
                         </h2>
                     </div>
                 </motion.div>

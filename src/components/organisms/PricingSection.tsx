@@ -1,15 +1,17 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { Check, Zap } from "lucide-react";
 
-/* ─── Spring ─── */
+/* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
+const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
+
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { type: "spring", stiffness: 150, damping: 25, mass: 1 },
+        transition: spring,
     },
 };
 
@@ -27,11 +29,10 @@ const tiers = [
             "Hosted on Vercel Edge Network",
         ],
         cta: "Get Started",
-        style: "bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300",
+        style: "bg-white border border-slate-200 shadow-sm",
         priceColor: "text-ink",
         textColor: "text-slate",
-        ctaStyle:
-            "block text-center py-4 border border-black/10 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-ink hover:text-white transition-all",
+        ctaVariant: "outline" as const,
     },
     {
         name: "Professional",
@@ -50,38 +51,37 @@ const tiers = [
         style: "bg-void text-white shadow-2xl",
         priceColor: "text-white",
         textColor: "text-white/60",
-        ctaStyle:
-            "mercury-btn block text-center py-4 rounded-full text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-accent/20",
+        ctaVariant: "primary" as const,
     },
     {
         name: "High-Performance",
         price: "R7,500+",
         period: "Contact for Quote",
         features: [
-            "5+ Pages, Fully Custom",
-            "Advanced SEO & Analytics",
-            "Custom Features (Blogs, APIs)",
+            "Full Next.js Architecture",
+            "Custom API Integrations",
+            "n8n Business Automations (Missed Call Text-Back, Lead Routing)",
+            "Advanced Technical SEO & Schema Injection",
             "Priority Support",
-            "Built on Next.js & Tailwind CSS",
         ],
         cta: "Contact Studio",
-        style:
-            "bg-indigo-50/30 border border-indigo-100 shadow-sm hover:shadow-md hover:border-indigo-500 hover:shadow-indigo-100",
+        style: "bg-indigo-50/30 border border-indigo-100 shadow-sm",
         priceColor: "text-ink",
         textColor: "text-slate",
-        ctaStyle:
-            "block text-center py-4 border border-black/10 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-ink hover:text-white transition-all",
+        ctaVariant: "outline" as const,
     },
 ];
 
 export function PricingSection() {
+    const shouldReduceMotion = useReducedMotion();
+
     return (
-        <section id="pricing" className="max-w-7xl mx-auto px-6 pb-structural">
+        <section id="pricing" className="max-w-7xl mx-auto px-6 pt-24 pb-structural">
             {/* Header */}
             <motion.div
                 className="text-center mb-structural"
                 variants={fadeUp}
-                initial="hidden"
+                initial={shouldReduceMotion ? "visible" : "hidden"}
                 whileInView="visible"
                 viewport={{ once: true }}
             >
@@ -98,20 +98,26 @@ export function PricingSection() {
                 {tiers.map((tier, i) => (
                     <motion.div
                         key={tier.name}
-                        className={`relative p-8 rounded-[2rem] transition-all h-full flex flex-col ${tier.style}`}
+                        className={`group relative overflow-hidden p-[32px] rounded-[2rem] h-full flex flex-col transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-500/30 ${tier.style}`}
                         variants={fadeUp}
-                        initial="hidden"
+                        initial={shouldReduceMotion ? "visible" : "hidden"}
                         whileInView="visible"
                         viewport={{ once: true, margin: "-40px" }}
-                        transition={{ delay: i * 0.1 }}
+                        transition={{ ...spring, delay: shouldReduceMotion ? 0 : i * 0.1 }}
                     >
+                        {/* Shine Sweep — diagonal translate sweep on hover */}
+                        <div
+                            aria-hidden="true"
+                            className="absolute inset-0 -translate-x-[150%] skew-x-12 bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%] z-0 pointer-events-none"
+                        />
+
                         {/* Badge */}
                         {tier.recommended && (
                             <div className="flex justify-between items-start mb-6">
                                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white/40">
                                     {tier.name}
                                 </h3>
-                                <span className="bg-accent text-white text-[8px] px-3 py-1 rounded-full uppercase flex items-center gap-1">
+                                <span className="bg-accent text-white text-xs px-[8px] py-[4px] rounded-full uppercase flex items-center gap-1">
                                     <Zap className="w-[10px] h-[10px]" strokeWidth={2.5} />
                                     Recommended
                                 </span>
@@ -147,10 +153,22 @@ export function PricingSection() {
                             ))}
                         </ul>
 
-                        {/* CTA */}
-                        <a href="#contact" className={tier.ctaStyle}>
+                        {/* CTA — Framer Motion spring, no CSS transition */}
+                        <motion.a
+                            href="#contact"
+                            className={`block text-center py-[16px] rounded-full text-xs font-bold uppercase tracking-widest ${tier.recommended
+                                ? "mercury-btn text-white shadow-lg shadow-accent/20"
+                                : "border border-black/10 text-ink"
+                                }`}
+                            whileHover={shouldReduceMotion ? {} : {
+                                backgroundColor: tier.recommended ? undefined : "#1a1a1a",
+                                color: tier.recommended ? undefined : "#ffffff",
+                                scale: 1.02,
+                            }}
+                            transition={spring}
+                        >
                             {tier.cta}
-                        </a>
+                        </motion.a>
                     </motion.div>
                 ))}
             </div>

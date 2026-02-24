@@ -3,6 +3,7 @@
 import { useRef, useCallback } from "react";
 import { motion, type Variants } from "framer-motion";
 import { MessageCircle, Mail, Clock, Gauge } from "lucide-react";
+import { FaqAccordion } from "@/components/molecules/FaqAccordion";
 
 /* ─── Spring ─── */
 const fadeUp: Variants = {
@@ -77,7 +78,7 @@ export function ContactPageContent() {
                         </h2>
 
                         <a
-                            href="https://wa.me/27681071838"
+                            href="https://wa.me/27673852286"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all mb-4"
@@ -114,10 +115,9 @@ export function ContactPageContent() {
                             </h2>
                         </div>
                         <p className="text-slate leading-relaxed text-sm">
-                            Not sure if your site is the problem? Send me your URL. I will run
-                            a Core Web Vitals test and send you a{" "}
-                            <strong className="text-ink">video breakdown</strong> of exactly
-                            how much money speed is costing you.
+                            Unsure why your leads are dropping off? Submit your URL. We will run a raw data extraction and a Core Web Vitals test.
+                            You will receive a technical breakdown of exactly how much money your current latency is costing you, and the{" "}
+                            <strong className="text-ink">precise architecture required to fix it</strong>.
                         </p>
                     </div>
                 </motion.div>
@@ -183,6 +183,9 @@ export function ContactPageContent() {
                     </form>
                 </motion.div>
             </div>
+
+            {/* Objection-Handling FAQ */}
+            <FaqAccordion />
         </section>
     );
 }

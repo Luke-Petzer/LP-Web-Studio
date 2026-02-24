@@ -1,5 +1,11 @@
 import { type ReactNode } from "react";
 
+/**
+ * Typography Atoms — Server Components (no interactivity needed)
+ * Protocol §2: All sizes use the fluid clamp() scale from tailwind.config.ts
+ * Protocol §4: Atoms are pure Server Components
+ */
+
 /* ─── Heading Component (H1–H6) ─── */
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -10,6 +16,17 @@ interface HeadingProps {
     glow?: boolean;
 }
 
+/**
+ * Maps heading levels to the fluid type scale defined in tailwind.config.ts.
+ * Each class resolves to a clamp() value — no static px breakpoints.
+ * Scale follows Golden Ratio (φ = 1.618):
+ *   h1 → text-5xl  (clamp 4.236rem → 5.5rem)
+ *   h2 → text-3xl  (clamp 2.618rem → 3.5rem)
+ *   h3 → text-2xl  (clamp 2rem → 2.618rem)
+ *   h4 → text-xl   (clamp 1.618rem → 2rem)
+ *   h5 → text-lg   (clamp 1.25rem → 1.618rem)
+ *   h6 → text-base (clamp 1rem → 1.125rem)
+ */
 const headingSizes: Record<HeadingLevel, string> = {
     1: "text-5xl",
     2: "text-3xl",
@@ -46,9 +63,9 @@ interface TextProps {
 }
 
 const textSizes: Record<TextSize, string> = {
-    sm: "text-sm",
-    base: "text-base",
-    lg: "text-lg",
+    sm: "text-sm",   // clamp(0.875rem → 1rem)
+    base: "text-base", // clamp(1rem → 1.125rem)
+    lg: "text-lg",   // clamp(1.25rem → 1.618rem)
 };
 
 export function Text({

@@ -37,13 +37,13 @@ export function Header() {
                         {/* Logo Section - Left */}
                         <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
                             <img
-                                src="/Logo.png"
+                                src="/Logo.svg"
                                 alt="LP Logo"
                                 className="h-16 w-auto dark:invert transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
                                 fetchPriority="high"
                             />
                             <img
-                                src="/My-Logo.png"
+                                src="/My-Logo.svg"
                                 alt="LP Web Studio"
                                 className="h-12 w-auto dark:invert transition-all duration-300 group-hover:scale-105"
                                 fetchPriority="high"
@@ -55,33 +55,29 @@ export function Header() {
                             <nav className="flex items-center gap-8">
                                 <Link
                                     href="/"
-                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
-                                        isActive('/') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
-                                    }`}
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${isActive('/') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
+                                        }`}
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     href="/portfolio"
-                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
-                                        isActive('/portfolio') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
-                                    }`}
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${isActive('/portfolio') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
+                                        }`}
                                 >
                                     Portfolio
                                 </Link>
                                 <Link
                                     href="/about"
-                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
-                                        isActive('/about') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
-                                    }`}
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${isActive('/about') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
+                                        }`}
                                 >
                                     About Me
                                 </Link>
                                 <Link
                                     href="/contact"
-                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${
-                                        isActive('/contact') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
-                                    }`}
+                                    className={`font-semibold text-base transition-all duration-200 hover:scale-110 ${isActive('/contact') ? 'text-orange-500' : 'text-slate-700 dark:text-slate-300 hover:text-orange-500'
+                                        }`}
                                 >
                                     Contact
                                 </Link>
@@ -177,36 +173,32 @@ export function Header() {
                             <Link
                                 href="/"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`text-4xl font-bold transition-colors ${
-                                    isActive('/') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
-                                }`}
+                                className={`text-4xl font-bold transition-colors ${isActive('/') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
+                                    }`}
                             >
                                 Home
                             </Link>
                             <Link
                                 href="/portfolio"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`text-4xl font-bold transition-colors ${
-                                    isActive('/portfolio') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
-                                }`}
+                                className={`text-4xl font-bold transition-colors ${isActive('/portfolio') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
+                                    }`}
                             >
                                 Portfolio
                             </Link>
                             <Link
                                 href="/about"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`text-4xl font-bold transition-colors ${
-                                    isActive('/about') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
-                                }`}
+                                className={`text-4xl font-bold transition-colors ${isActive('/about') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
+                                    }`}
                             >
                                 About Me
                             </Link>
                             <Link
                                 href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`text-4xl font-bold transition-colors ${
-                                    isActive('/contact') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
-                                }`}
+                                className={`text-4xl font-bold transition-colors ${isActive('/contact') ? 'text-orange-500' : 'text-slate-100 hover:text-orange-500'
+                                    }`}
                             >
                                 Contact
                             </Link>

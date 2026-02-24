@@ -14,6 +14,7 @@
     --bg-white: #ffffff;
     --ink: #1a1a1a;
     --slate: #4b5563;
+    --text-ghost: #fafafa;
 
     /* ─── 8px Soft Grid ─── */
     --spacing-hairline: 4px;
@@ -49,7 +50,8 @@
 
   /* ─── Scrollbar Styling ─── */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
+    /* hairline — Protocol §1 */
   }
 
   ::-webkit-scrollbar-track {
@@ -114,24 +116,20 @@
     padding-right: var(--spacing-sectional);
   }
 
-  /* ─── Mercury Button (magnetic follow — NO morph) ─── */
+  /* ─── Mercury Button (magnetic follow — Framer Motion spring only) ─── */
+  /* Protocol §3: NO CSS transitions. All motion via Framer Motion springs. */
   .mercury-btn {
     position: relative;
     background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
     border-radius: 9999px;
-    /* Solid pill — no animation */
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  .mercury-btn:hover {
-    /* No border-radius change — stays solid pill */
-  }
-
-  /* ─── Scroll Reveal (CSS fallback for non-JS contexts) ─── */
+  /* ─── Scroll Reveal (CSS fallback for non-JS / prefers-reduced-motion) ─── */
+  /* Protocol §3: CSS transition removed. Framer Motion whileInView handles animation. */
+  /* This class is kept only as a static fallback for SSR/no-JS contexts. */
   .reveal {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .reveal.active {

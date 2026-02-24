@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Navigation } from "@/components/organisms/Navigation";
 import { HeroSection } from "@/components/organisms/HeroSection";
 import { ProcessSection } from "@/components/organisms/ProcessSection";
+import { CoreCapabilitiesSection } from "@/components/organisms/CoreCapabilitiesSection";
 import { PortfolioSection } from "@/components/organisms/PortfolioSection";
+import { SpeedRevenueBanner } from "@/components/organisms/SpeedRevenueBanner";
 import { PricingSection } from "@/components/organisms/PricingSection";
-import { ContactSection } from "@/components/organisms/ContactSection";
+import { TestimonialSection } from "@/components/organisms/TestimonialSection";
+import { ContactPageContent } from "@/components/organisms/ContactPageContent";
 import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema } from "@/components/seo/SchemaTemplates";
+
+/**
+ * Protocol §7: ISR — Incremental Static Regeneration for load-shedding resilience.
+ * Page is statically generated and revalidated every hour.
+ */
+export const revalidate = 3600;
 
 /* ─── Homepage FAQs for FAQPage Schema ─── */
 const homepageFaqs = [
@@ -39,17 +49,43 @@ export default function HomePage() {
             {/* SEO Layer 3: Homepage FAQPage Schema */}
             <JsonLd data={faqPageSchema(homepageFaqs)} />
 
-            <Navigation />
+            {/* Protocol §7: Suspense boundaries for load-shedding resilience */}
+            <Suspense>
+                <Navigation />
+            </Suspense>
 
             <main>
-                <HeroSection />
-                <ProcessSection />
-                <PortfolioSection />
-                <PricingSection />
-                <ContactSection />
+                <Suspense>
+                    <HeroSection />
+                </Suspense>
+                <Suspense>
+                    <ProcessSection />
+                </Suspense>
+                <Suspense>
+                    <CoreCapabilitiesSection />
+                </Suspense>
+                <Suspense>
+                    <PortfolioSection />
+                </Suspense>
+                <Suspense>
+                    <SpeedRevenueBanner />
+                </Suspense>
+                <Suspense>
+                    <PricingSection />
+                </Suspense>
+                <Suspense>
+                    <TestimonialSection />
+                </Suspense>
+                <Suspense>
+                    <section id="contact" className="bg-white py-structural px-6">
+                        <ContactPageContent />
+                    </section>
+                </Suspense>
             </main>
 
-            <Footer />
+            <Suspense>
+                <Footer />
+            </Suspense>
         </>
     );
 }

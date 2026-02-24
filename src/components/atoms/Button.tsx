@@ -1,9 +1,9 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-/* ─── The Luxury Spring Profile (Critically Damped) ─── */
+/* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
 const luxurySpring = {
     stiffness: 150,
     damping: 25,
@@ -26,11 +26,11 @@ interface ButtonProps {
 
 const variantStyles: Record<Variant, string> = {
     primary:
-        "bg-accent text-brand-black font-semibold shadow-eclipse-glow-sm hover:shadow-eclipse-glow",
+        "bg-accent text-brand-black font-semibold shadow-accent-glow-sm hover:shadow-accent-glow",
     outline:
-        "bg-transparent border border-accent text-accent hover:bg-accent/10",
+        "bg-transparent border border-accent text-accent",
     ghost:
-        "bg-transparent text-secondary hover:text-accent hover:bg-glass-bg",
+        "bg-transparent text-secondary",
 };
 
 const sizeStyles: Record<Size, string> = {
@@ -49,16 +49,21 @@ export function Button({
     type = "button",
     disabled = false,
 }: ButtonProps) {
-    const classes = `inline-flex items-center justify-center rounded-glass transition-colors ${variantStyles[variant]} ${sizeStyles[size]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
+    const shouldReduceMotion = useReducedMotion();
+    const classes = `inline-flex items-center justify-center rounded-glass ${variantStyles[variant]} ${sizeStyles[size]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
+
+    const hoverAnim = shouldReduceMotion || disabled ? {} : { scale: 1.02 };
+    const tapAnim = shouldReduceMotion || disabled ? {} : { scale: 0.98 };
+    const transition = { type: "spring" as const, ...luxurySpring };
 
     if (href) {
         return (
             <motion.a
                 href={href}
                 className={classes}
-                whileHover={disabled ? {} : { scale: 1.02 }}
-                whileTap={disabled ? {} : { scale: 0.98 }}
-                transition={{ type: "spring", ...luxurySpring }}
+                whileHover={hoverAnim}
+                whileTap={tapAnim}
+                transition={transition}
             >
                 {children}
             </motion.a>
@@ -71,9 +76,9 @@ export function Button({
             onClick={onClick}
             disabled={disabled}
             className={classes}
-            whileHover={disabled ? {} : { scale: 1.02 }}
-            whileTap={disabled ? {} : { scale: 0.98 }}
-            transition={{ type: "spring", ...luxurySpring }}
+            whileHover={hoverAnim}
+            whileTap={tapAnim}
+            transition={transition}
         >
             {children}
         </motion.button>

@@ -24,23 +24,20 @@ const projects = [
             "Cafe Crave needed to bypass delivery apps and own their customer data.",
         solution:
             "A custom Next.js build with direct Google Reviews API integration.",
-        result: "93/100 Mobile Performance Score. Zero load-time lag.",
+        result: "93/100 Mobile Performance Score. Engineered to bypass the 3-second abandonment threshold that kills 53% of mobile traffic. Ensures zero lead drop-off on mobile networks.",
         stack: ["Next.js", "Tailwind", "Railway"],
         gradient: "from-accent/20 to-transparent",
     },
     {
-        id: "granite",
-        title: "Granite & Marble Design",
-        category: "Design",
-        score: "95/100",
-        challenge:
-            "Selling high-ticket stone requires trust. Old forms were killing buyer interest.",
-        solution:
-            'A "Tech-Noir" visual showcase with instant-load galleries.',
-        result:
-            'Frictionless "Get Quote" via WhatsApp. Instant Gallery Loading.',
-        stack: ["React", "Framer Motion", "Vercel Edge"],
-        gradient: "from-indigo-500/20 to-transparent",
+        id: "pending-project",
+        title: "[PENDING_DATA]",
+        category: "[PENDING_DATA]",
+        score: "[PENDING_DATA]",
+        challenge: "[PENDING_DATA]",
+        solution: "[PENDING_DATA]",
+        result: "[PENDING_DATA]",
+        stack: ["[PENDING_DATA]"],
+        gradient: "from-purple-500/20 to-transparent",
     },
     {
         id: "lp-web-studio",
@@ -75,7 +72,7 @@ export function WorkPageContent() {
                     <span className="text-accent">We Benchmark.</span>
                 </h1>
                 <p className="text-slate text-lg max-w-xl mx-auto">
-                    Real businesses. Real code. 90+ Performance Scores.
+                    Real businesses. Custom React code. Vercel deployments. Sub-second load times.
                 </p>
             </motion.div>
 

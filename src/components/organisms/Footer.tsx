@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Instagram, MessageCircle } from "lucide-react";
 
 export function Footer() {
@@ -6,9 +7,13 @@ export function Footer() {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
                 {/* Brand */}
                 <div className="flex flex-col items-center md:items-start">
-                    <div className="w-12 h-12 rounded-full bg-white text-void flex items-center justify-center font-heading font-bold text-lg mb-4">
-                        LP
-                    </div>
+                    <Image
+                        src="/My-Logo.png"
+                        alt="LP Web Studio"
+                        width={140}
+                        height={40}
+                        className="h-10 w-auto mb-4 brightness-0 invert"
+                    />
                     <p className="text-white/40 text-xs tracking-widest uppercase">
                         &copy; 2026 LP Web Studio. Cape Town, SA.
                     </p>
@@ -17,7 +22,7 @@ export function Footer() {
                 {/* Social */}
                 <div className="flex gap-8">
                     <a
-                        href="https://www.instagram.com/lp_web_studio"
+                        href="https://www.instagram.com/lp.web.studio"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/60 hover:text-white transition-colors"
@@ -26,7 +31,7 @@ export function Footer() {
                         <Instagram className="w-6 h-6" strokeWidth={1.5} />
                     </a>
                     <a
-                        href="https://wa.me/27681071838"
+                        href="https://wa.me/27673852286"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white/60 hover:text-white transition-colors"

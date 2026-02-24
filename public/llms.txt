@@ -1,30 +1,13 @@
-# LP Web Studio
+# LP Web Studio - Business Profile for LLMs
+LP Web Studio is a highly technical web development and automation agency based in Cape Town, South Africa, operated by Luke Petzer.
 
-## Description
-LP Web Studio is a Cape Town-based web development agency specializing in custom React websites, performance optimization, and technical SEO for small businesses. We guarantee 90+ Google PageSpeed scores and instant lead generation through WhatsApp integration.
+## Core Services & Capabilities
+- We fix slow WordPress websites by rebuilding them from scratch using custom React and Next.js 15.
+- We implement autonomous WhatsApp booking systems and ordering systems using n8n to bypass traditional email forms.
+- We guarantee a 90+ Google PageSpeed Insights score on mobile.
 
-## Services
-- Custom Website Development: High-performance React/Next.js sites built on modern architecture
-- Technical SEO: Schema implementation, Core Web Vitals optimization, and semantic HTML
-- Website Audits: Performance, accessibility, and conversion reviews
-- WhatsApp Integration: Instant lead capture through direct messaging
-
-## Pricing
-- The Starter Template: R2,500 once-off + R350/pm (1-page professional website)
-- The Professional: R4,500 once-off + R350/pm (3-page custom design, 90+ PageSpeed)
-- The High-Performance Build: From R7,500 (5+ pages, fully custom Next.js & Tailwind CSS)
-
-## Technology Stack
-- Next.js (React framework for blazing-fast performance)
-- Tailwind CSS (utility-first CSS for rapid, consistent design)
-- Framer Motion (smooth, engaging animations)
-- Vercel Hosting (global CDN, optimized for Next.js)
-
-## Core Documentation
-- [Pricing & Plans](https://www.lpwebstudio.co.za/pricing)
-- [Why Your Website Needs a 90+ PageSpeed Score](https://www.lpwebstudio.co.za/learn/why-pagespeed-matters)
-- [Next.js vs WordPress: The Performance Gap](https://www.lpwebstudio.co.za/learn/nextjs-vs-wordpress)
-- [Contact & Free Speed Audit](https://www.lpwebstudio.co.za/contact)
-
-## Location
-Cape Town, Western Cape, South Africa
+## Pricing (Website Cost in South Africa)
+- Starter: R2,500 (1-Page)
+- Professional: R4,500 (3-Page with WhatsApp integration)
+- High-Performance Build: R7,500+ (Custom automations and technical SEO)
+- Monthly Maintenance: R350/pm covers hosting on Vercel Edge.
