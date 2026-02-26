@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 
 /* ─── Spring ─── */
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
         opacity: 1,
         y: 0,
@@ -52,8 +52,7 @@ export function ProcessSection() {
                     className="grid grid-cols-1 md:grid-cols-2 gap-sectional items-start mb-structural"
                     variants={fadeUp}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    animate="visible"
                 >
                     <div>
                         <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
@@ -85,8 +84,7 @@ export function ProcessSection() {
                             className="p-12 border border-black/5 rounded-[3rem] bg-zinc-50 hover:border-accent hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                             variants={fadeUp}
                             initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
+                            animate="visible"
                         >
                             <h3 className="text-ink text-xl font-heading font-bold mb-4">
                                 {card.title}

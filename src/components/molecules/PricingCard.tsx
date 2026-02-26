@@ -40,16 +40,15 @@ export function PricingCard({
 
     return (
         <motion.div
-            className={`group relative overflow-hidden glass-card p-atmospheric flex flex-col gap-sectional transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.3)] hover:border-indigo-500/50 ${recommended ? "border-accent/40 shadow-accent-glow-sm" : ""} ${className}`}
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            className={`group relative overflow-hidden glass-card p-atmospheric flex flex-col gap-sectional transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-accent-glow hover:border-accent/50 ${recommended ? "border-accent/40 shadow-accent-glow-sm" : ""} ${className}`}
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", ...luxurySpring }}
         >
             {/* Shine Sweep — diagonal translate sweep on hover, CSS only */}
             <div
                 aria-hidden="true"
-                className="absolute inset-0 -translate-x-[150%] skew-x-12 bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%] z-0 pointer-events-none"
+                className="absolute inset-0 -translate-x-[150%] skew-x-12 bg-gradient-to-r from-transparent via-accent/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[150%] z-0 pointer-events-none"
             />
 
             {/* All card content lifted above the glow */}

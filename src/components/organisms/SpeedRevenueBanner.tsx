@@ -1,13 +1,13 @@
 "use client";
 
-import { motion, type Variants, useReducedMotion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { TrendingUp } from "lucide-react";
 
 /* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
 const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
 
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
@@ -23,17 +23,14 @@ const stats = [
  * Protocol §4: Client Organism for Framer Motion.
  */
 export function SpeedRevenueBanner() {
-    const shouldReduceMotion = useReducedMotion();
-
     return (
         <section className="bg-white py-structural px-6">
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     className="grid grid-cols-1 lg:grid-cols-2 gap-structural items-center"
                     variants={fadeUp}
-                    initial={shouldReduceMotion ? "visible" : "hidden"}
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    initial="hidden"
+                    animate="visible"
                 >
                     {/* LEFT — Headline + body */}
                     <div>
@@ -65,10 +62,9 @@ export function SpeedRevenueBanner() {
                                 key={stat.value}
                                 className="flex items-start gap-4 p-6 rounded-[1.5rem] bg-void text-white"
                                 variants={fadeUp}
-                                initial={shouldReduceMotion ? "visible" : "hidden"}
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                transition={{ ...spring, delay: shouldReduceMotion ? 0 : i * 0.1 }}
+                                initial="hidden"
+                                animate="visible"
+                                transition={{ ...spring, delay: i * 0.1 }}
                             >
                                 <span className="text-3xl font-heading font-extrabold text-accent shrink-0">
                                     {stat.value}

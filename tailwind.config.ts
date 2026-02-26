@@ -9,14 +9,14 @@ const config: Config = {
     extend: {
       /* ─── Ethereal/Light Palette ─── */
       colors: {
-        void: "#050505",
-        ink: "#1a1a1a",
-        slate: "#4b5563",
+        void: "rgb(var(--bg-void) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        slate: "rgb(var(--slate) / <alpha-value>)",
         accent: {
-          DEFAULT: "#6366f1",
-          glow: "rgba(99, 102, 241, 0.3)",
-          high: "rgba(99, 102, 241, 0.7)",
-          muted: "rgba(99, 102, 241, 0.15)",
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          glow: "rgb(var(--accent) / 0.3)",
+          high: "rgb(var(--accent) / 0.7)",
+          muted: "rgb(var(--accent) / 0.15)",
         },
         brand: {
           black: "#050505",
@@ -30,11 +30,11 @@ const config: Config = {
           dark: "#374151",
         },
         glass: {
-          bg: "rgba(255, 255, 255, 0.05)",
-          border: "rgba(255, 255, 255, 0.1)",
-          "border-dim": "rgba(255, 255, 255, 0.05)",
+          bg: "rgb(var(--bg-white) / 0.05)",
+          border: "rgb(var(--bg-white) / 0.1)",
+          "border-dim": "rgb(var(--bg-white) / 0.05)",
         },
-        ghost: "var(--text-ghost)",
+        ghost: "rgb(var(--text-ghost) / <alpha-value>)",
       },
 
       /* ─── 8px Soft Grid Spacing ─── */
@@ -70,10 +70,10 @@ const config: Config = {
 
       /* ─── Shadows ─── */
       boxShadow: {
-        "accent-glow": "0 0 15px rgba(99, 102, 241, 0.4), inset 0 0 10px rgba(99, 102, 241, 0.15)",
-        "accent-glow-sm": "0 0 8px rgba(99, 102, 241, 0.3)",
+        "accent-glow": "0 4px 20px rgb(var(--accent) / 0.1)",
+        "accent-glow-sm": "0 2px 10px rgb(var(--accent) / 0.05)",
         glass: "0 8px 32px 0 rgba(0, 0, 0, 0.36)",
-        "glass-hover": "0 8px 32px 0 rgba(99, 102, 241, 0.12)",
+        "glass-hover": "0 8px 32px 0 rgb(var(--accent) / 0.12)",
         soft: "0 10px 30px -10px rgba(0, 0, 0, 0.1)",
       },
 

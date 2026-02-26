@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, type Variants, useReducedMotion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
@@ -9,7 +9,7 @@ import { ArrowUpRight } from "lucide-react";
 const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
 
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
         opacity: 1,
         y: 0,
@@ -20,66 +20,64 @@ const fadeUp: Variants = {
 /* ─── Project Data ─── */
 const projects = [
     {
+        id: "nova-studio",
+        category: "Creative Agency",
+        title: "Nova Studio",
+        description:
+            "A high-performance digital architecture demo featuring glassmorphism and sub-second load times.",
+        gradient: "from-blue-500/20 to-transparent",
+        bg: "bg-[#0A0C10]",
+        screenshot: "/nova-studio.webp",
+        liveUrl: "https://design-architecture-1.lpwebstudio.co.za",
+    },
+    {
         id: "cafe-crave",
         category: "Full-Stack",
         title: "Cafe Crave",
         description:
-            "Full-stack website with live Google Reviews API and 93/100 PageSpeed score.",
+            "Custom React build for a local eatery, featuring a live Google Reviews API and optimized mobile conversion.",
         gradient: "from-accent/20 to-transparent",
         bg: "bg-void",
-        screenshot: "/cc-home.png",
-        liveUrl: "https://cafecrave.co.za",
+        screenshot: "/cafe-crave.webp",
+        liveUrl: "https://cafecravecpt.co.za",
     },
     {
-        id: "pending-project",
-        category: "[PENDING_DATA]",
-        title: "[PENDING_DATA]",
-        description: "[PENDING_DATA]",
-        gradient: "from-purple-500/20 to-transparent",
-        bg: "bg-zinc-900",
-        screenshot: "/cc-home.png",
-        liveUrl: "#",
-    },
-    {
-        id: "green-scape",
-        category: "Design",
-        title: "Green Scape",
+        id: "big-six",
+        category: "Editorial Design",
+        title: "The Big Six",
         description:
-            "Nature-inspired website design for landscaping with before/after galleries.",
-        gradient: "from-blue-400/20 to-transparent",
-        bg: "bg-slate-900",
-        screenshot: "/Home-Page.png",
-        liveUrl: "https://green-scape-theta.vercel.app",
+            "A premium restoration story landing page focused on immersive typography and smooth visual masking.",
+        gradient: "from-amber-600/20 to-transparent",
+        bg: "bg-[#F5F5F0]",
+        screenshot: "/big-six.webp",
+        liveUrl: "https://thebigsix.lpwebstudio.co.za",
     },
 ];
 
 export function PortfolioSection() {
     const [activeIndex, setActiveIndex] = useState(1);
-    const shouldReduceMotion = useReducedMotion();
 
     const handleCardClick = (index: number) => {
         setActiveIndex(index);
     };
 
     return (
-        <section id="work" className="relative bg-white py-structural">
+        <section id="work" className="relative bg-white py-structural min-h-[600px] lg:min-h-[800px]">
             {/* Section Header */}
             <div className="max-w-7xl mx-auto px-6 mb-component">
                 <motion.p
                     className="text-accent font-bold text-xs uppercase tracking-widest mb-4"
                     variants={fadeUp}
-                    initial={shouldReduceMotion ? "visible" : "hidden"}
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    initial="hidden"
+                    animate="visible"
                 >
                     Portfolio
                 </motion.p>
                 <motion.h2
                     className="text-ink text-4xl md:text-5xl font-heading font-extrabold tracking-tight"
                     variants={fadeUp}
-                    initial={shouldReduceMotion ? "visible" : "hidden"}
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    initial="hidden"
+                    animate="visible"
                 >
                     Selected Work
                 </motion.h2>
@@ -92,10 +90,9 @@ export function PortfolioSection() {
                         key={project.id}
                         className={`relative shrink-0 w-[85vw] sm:w-[350px] snap-center ${project.bg} rounded-[2rem] shadow-2xl flex flex-col overflow-hidden`}
                         variants={fadeUp}
-                        initial={shouldReduceMotion ? "visible" : "hidden"}
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-40px" }}
-                        transition={{ ...spring, delay: shouldReduceMotion ? 0 : i * 0.1 }}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ ...spring, delay: i * 0.1 }}
                     >
                         {/* Gradient overlay */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} z-10 pointer-events-none`} />
@@ -108,6 +105,8 @@ export function PortfolioSection() {
                                 fill
                                 sizes="(max-width: 768px) 85vw, 350px"
                                 className="object-cover object-top"
+                                quality={90}
+                                priority={i === 0}
                             />
                         </div>
 
@@ -138,7 +137,7 @@ export function PortfolioSection() {
 
             {/* ─── Desktop: Overlapping card deck ─── */}
             <div className="hidden md:flex relative h-[600px] items-center justify-center px-6 overflow-hidden">
-                <div className="relative w-full max-w-6xl h-full flex items-center justify-center">
+                <div className="relative w-full max-max-6xl h-full flex items-center justify-center">
                     {projects.map((project, i) => {
                         const offset = i - activeIndex;
                         const isActive = i === activeIndex;
@@ -163,18 +162,20 @@ export function PortfolioSection() {
                                 {/* Gradient overlay */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} z-10`} />
 
-                                {/* Screenshot image — top 60% */}
-                                <div className="relative w-full h-[60%] overflow-hidden">
+                                {/* Screenshot image — top half with aspect-video */}
+                                <div className="relative w-full aspect-video overflow-hidden">
                                     <Image
                                         src={project.screenshot}
                                         alt={`${project.title} website screenshot`}
                                         fill
                                         sizes="450px"
                                         className="object-cover object-top"
+                                        quality={90}
+                                        priority={i === 0}
                                     />
                                 </div>
 
-                                {/* Text content — bottom 40% */}
+                                {/* Text content — remaining space */}
                                 <div className="relative z-20 p-6 flex flex-col gap-2 flex-1">
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-accent">
                                         {project.category}

@@ -1,13 +1,13 @@
 "use client";
 
-import { motion, type Variants, useReducedMotion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Code2, Wrench, Search, Workflow } from "lucide-react";
 
 /* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
 const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
 
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
@@ -41,8 +41,6 @@ const capabilities = [
  * Protocol §4: Client Organism for Framer Motion animation.
  */
 export function CoreCapabilitiesSection() {
-    const shouldReduceMotion = useReducedMotion();
-
     return (
         <section id="capabilities" className="bg-void py-structural px-6">
             <div className="max-w-7xl mx-auto">
@@ -50,9 +48,8 @@ export function CoreCapabilitiesSection() {
                 <motion.div
                     className="mb-structural"
                     variants={fadeUp}
-                    initial={shouldReduceMotion ? "visible" : "hidden"}
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    initial="hidden"
+                    animate="visible"
                 >
                     <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
                         Core Capabilities
@@ -76,10 +73,9 @@ export function CoreCapabilitiesSection() {
                             key={cap.title}
                             className="group relative p-8 rounded-[2rem] border border-white/8 bg-white/4 hover:border-accent/50 hover:bg-white/8 transition-colors"
                             variants={fadeUp}
-                            initial={shouldReduceMotion ? "visible" : "hidden"}
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-40px" }}
-                            transition={{ ...spring, delay: shouldReduceMotion ? 0 : i * 0.08 }}
+                            initial="hidden"
+                            animate="visible"
+                            transition={{ ...spring, delay: i * 0.08 }}
                         >
                             {/* Icon */}
                             <cap.icon

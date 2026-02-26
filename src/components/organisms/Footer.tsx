@@ -12,7 +12,7 @@ export function Footer() {
                         alt="LP Web Studio"
                         width={140}
                         height={40}
-                        className="h-10 w-auto mb-4 brightness-0 invert"
+                        className="h-10 mb-4 brightness-0 invert"
                     />
                     <p className="text-white/40 text-xs tracking-widest uppercase">
                         &copy; 2026 LP Web Studio. Cape Town, SA.

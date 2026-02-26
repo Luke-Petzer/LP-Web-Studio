@@ -11,7 +11,7 @@ export function HeroSection() {
     return (
         <section
             id="hero"
-            className="mesh-transition min-h-screen relative flex items-center justify-center pt-24 pb-32 px-6"
+            className="mesh-transition min-h-screen relative flex items-center justify-center pt-32 pb-32 px-6"
         >
             <HeroContent />
         </section>

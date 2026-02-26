@@ -13,7 +13,7 @@ import {
 
 /* ─── Spring ─── */
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
         opacity: 1,
         y: 0,
@@ -82,7 +82,7 @@ const reasons = [
 
 export function AboutPageContent() {
     return (
-        <section className="max-w-7xl mx-auto px-6">
+        <section className="min-h-screen pt-32 pb-24 max-w-7xl mx-auto px-6">
             {/* Header */}
             <motion.div
                 className="max-w-7xl mb-structural"
@@ -107,8 +107,7 @@ export function AboutPageContent() {
                 className="max-w-7xl mb-structural"
                 variants={fadeUp}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                animate="visible"
             >
                 <div className="rounded-[2rem] bg-void overflow-hidden border border-white/5">
                     {/* Terminal chrome bar */}
@@ -156,8 +155,7 @@ export function AboutPageContent() {
                 className="max-w-7xl mb-structural"
                 variants={fadeUp}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                animate="visible"
             >
                 <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
                     The Philosophy
@@ -179,8 +177,7 @@ export function AboutPageContent() {
                 className="mb-structural"
                 variants={fadeUp}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                animate="visible"
             >
                 <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
                     The Engine
@@ -192,8 +189,7 @@ export function AboutPageContent() {
                             className="p-8 rounded-[2rem] border border-black/5 bg-zinc-50 hover:border-accent hover:shadow-lg transition-all"
                             variants={fadeUp}
                             initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
+                            animate="visible"
                             transition={{ delay: i * 0.08 }}
                         >
                             <tech.icon
@@ -215,8 +211,7 @@ export function AboutPageContent() {
             <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                animate="visible"
             >
                 <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
                     Why Work With Me?
@@ -228,8 +223,7 @@ export function AboutPageContent() {
                             className="p-8 rounded-[2rem] bg-void text-white"
                             variants={fadeUp}
                             initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
+                            animate="visible"
                             transition={{ delay: i * 0.1 }}
                         >
                             <reason.icon

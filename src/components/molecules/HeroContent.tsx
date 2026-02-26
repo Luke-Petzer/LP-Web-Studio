@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants, useReducedMotion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { MercuryButton } from "@/components/molecules/MercuryButton";
 
 /* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
@@ -12,7 +12,7 @@ const stagger: Variants = {
 };
 
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
@@ -24,15 +24,8 @@ const fadeUp: Variants = {
  * Protocol §4: "Children Prop" pattern — Server content inside Client wrapper.
  */
 export function HeroContent() {
-    const shouldReduceMotion = useReducedMotion();
-
-    const animVariants = shouldReduceMotion
-        ? { hidden: {}, visible: {} }
-        : { hidden: stagger.hidden, visible: stagger.visible };
-
-    const itemVariants = shouldReduceMotion
-        ? { hidden: {}, visible: {} }
-        : fadeUp;
+    const animVariants = { hidden: stagger.hidden, visible: stagger.visible };
+    const itemVariants = fadeUp;
 
     return (
         <motion.div
@@ -54,9 +47,9 @@ export function HeroContent() {
                 className="font-heading font-extrabold text-white text-5xl tracking-tighter mb-8"
                 variants={itemVariants}
             >
-                Your Website is Leaking Revenue.{" "}
-                We <span className="text-indigo-500">Engineer</span>{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">
+                Your Website is <span className="text-accent">Leaking Revenue.</span>{" "}
+                We <span className="text-accent">Engineer</span>{" "}
+                <span className="text-accent">
                     the Fix.
                 </span>
             </motion.h1>

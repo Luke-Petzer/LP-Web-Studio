@@ -1,13 +1,13 @@
 "use client";
 
-import { motion, type Variants, useReducedMotion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Quote } from "lucide-react";
 
 /* ─── Spring Physics ─── */
 const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
 
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
@@ -17,17 +17,14 @@ const fadeUp: Variants = {
  * Void background keeps the dark momentum leading into the footer.
  */
 export function TestimonialSection() {
-    const shouldReduceMotion = useReducedMotion();
-
     return (
         <section className="bg-void py-structural px-6">
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     className="relative"
                     variants={fadeUp}
-                    initial={shouldReduceMotion ? "visible" : "hidden"}
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    initial="hidden"
+                    animate="visible"
                 >
                     {/* Large decorative quote mark */}
                     <Quote

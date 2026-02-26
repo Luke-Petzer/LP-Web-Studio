@@ -7,7 +7,7 @@ import { FaqAccordion } from "@/components/molecules/FaqAccordion";
 
 /* ─── Spring ─── */
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 0 },
     visible: {
         opacity: 1,
         y: 0,
@@ -41,7 +41,7 @@ export function ContactPageContent() {
     const submitBtn = useMercuryButton();
 
     return (
-        <section className="max-w-7xl mx-auto px-6">
+        <section className="min-h-screen pt-32 pb-24 max-w-7xl mx-auto px-6">
             {/* Header */}
             <motion.div
                 className="max-w-7xl mb-structural"
@@ -54,7 +54,7 @@ export function ContactPageContent() {
                 </p>
                 <h1 className="text-ink text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-4">
                     Stop Losing Leads.{" "}
-                    <span className="text-accent">Start Converting.</span>
+                    <span>Start Converting.</span>
                 </h1>
                 <p className="text-slate text-lg">
                     Your competitors are already on WhatsApp. Are you?
@@ -68,8 +68,7 @@ export function ContactPageContent() {
                     className="flex flex-col gap-sectional"
                     variants={fadeUp}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    animate="visible"
                 >
                     {/* Instant Connection */}
                     <div className="p-8 rounded-[2rem] bg-void text-white">
@@ -107,7 +106,7 @@ export function ContactPageContent() {
                     </div>
 
                     {/* The Audit Offer */}
-                    <div className="p-8 rounded-[2rem] border border-accent/20 bg-indigo-50/30">
+                    <div className="p-8 rounded-[2rem] border border-accent/20 bg-accent/5">
                         <div className="flex items-center gap-3 mb-4">
                             <Gauge className="w-6 h-6 text-accent" strokeWidth={1.5} />
                             <h2 className="text-ink text-lg font-heading font-bold">
@@ -127,8 +126,7 @@ export function ContactPageContent() {
                     className="p-8 md:p-12 rounded-[2rem] border border-black/5 bg-zinc-50"
                     variants={fadeUp}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    animate="visible"
                 >
                     <h2 className="text-ink text-xl font-heading font-bold mb-8">
                         Request a Free Speed Audit

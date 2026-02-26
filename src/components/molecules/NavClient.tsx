@@ -82,7 +82,7 @@ export function NavClient() {
                             width={120}
                             height={32}
                             priority
-                            className={`h-8 w-auto transition-[filter] duration-300 ${!isLight ? "invert brightness-0" : ""}`}
+                            className={`h-8 transition-[filter] duration-300 ${!isLight ? "invert brightness-0" : ""}`}
                         />
                     </a>
 
@@ -97,7 +97,7 @@ export function NavClient() {
                                     className="text-xs font-medium uppercase tracking-widest"
                                     animate={{
                                         color: isActive
-                                            ? "#6366f1"
+                                            ? "rgb(var(--accent))"
                                             : isLight ? "#1a1a1a" : "#ffffff",
                                     }}
                                     transition={shouldReduceMotion ? { duration: 0 } : spring}
@@ -156,13 +156,13 @@ export function NavClient() {
                     >
                         {/* Backdrop */}
                         <div
-                            className="absolute inset-0 backdrop-blur-md bg-[#050505]/60"
+                            className="absolute inset-0 backdrop-blur-md bg-void/60"
                             onClick={() => setIsOpen(false)}
                         />
 
                         {/* Glass Card */}
                         <motion.div
-                            className="relative z-10 flex flex-col items-center justify-center gap-8 p-8 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.15)] w-[calc(100%-3rem)] max-w-sm"
+                            className="relative z-10 flex flex-col items-center justify-center gap-8 p-8 rounded-2xl bg-white/5 border border-white/10 shadow-accent-glow w-[calc(100%-3rem)] max-w-sm"
                             initial={{ opacity: 0, scale: 0.95, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 10 }}

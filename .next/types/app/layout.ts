@@ -1,4 +1,4 @@
-// File: C:\Users\lukep\LP Web Studio\LP-Website\LP-Web-Studio\src\app\layout.tsx
+// File: /Users/lukepetzer/LP Web Studio/Business-Website/LP-Web-Studio/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

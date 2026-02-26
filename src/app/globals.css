@@ -8,13 +8,13 @@
 
 @layer base {
   :root {
-    /* ─── Brand Tokens (CSS Variables) ─── */
-    --accent: #6366f1;
-    --bg-void: #050505;
-    --bg-white: #ffffff;
-    --ink: #1a1a1a;
-    --slate: #4b5563;
-    --text-ghost: #fafafa;
+    /* ─── Brand Tokens (CSS Variables - Raw RGB for Tailwind <alpha-value>) ─── */
+    --accent: 30 64 175;
+    --bg-void: 10 10 10;
+    --bg-white: 255 255 255;
+    --ink: 26 26 26;
+    --slate: 148 163 184;
+    --text-ghost: 248 250 252;
 
     /* ─── 8px Soft Grid ─── */
     --spacing-hairline: 4px;
@@ -26,9 +26,9 @@
     --spacing-grandeur: 64px;
 
     /* ─── Glass Tokens (for dark sections) ─── */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-border-dim: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgb(var(--bg-white) / 0.05);
+    --glass-border: rgb(var(--bg-white) / 0.1);
+    --glass-border-dim: rgb(var(--bg-white) / 0.05);
   }
 
   html {
@@ -44,8 +44,8 @@
 
   /* ─── Selection Color ─── */
   ::selection {
-    background-color: rgba(99, 102, 241, 0.2);
-    color: var(--ink);
+    background-color: rgb(var(--accent) / 0.2);
+    color: rgb(var(--ink));
   }
 
   /* ─── Scrollbar Styling ─── */
@@ -78,7 +78,7 @@
   /* ─── Glass Card (for dark sections like hero) ─── */
   .glass-card {
     background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-radius: 2rem;
@@ -92,7 +92,7 @@
   /* ─── Light Card (for white sections) ─── */
   .light-card {
     background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 2rem;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   }
@@ -104,8 +104,9 @@
 
   /* ─── Glow Text (sparingly — headings in dark sections) ─── */
   .glow-text {
-    text-shadow: 0 0 8px rgba(99, 102, 241, 0.5),
-      0 0 16px rgba(99, 102, 241, 0.15);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: rgb(var(--accent));
   }
 
   /* ─── Section Container ─── */
@@ -120,7 +121,7 @@
   /* Protocol §3: NO CSS transitions. All motion via Framer Motion springs. */
   .mercury-btn {
     position: relative;
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #172554 100%);
     border-radius: 9999px;
   }
 
@@ -152,6 +153,6 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, #6366f1, transparent);
+    background: linear-gradient(90deg, rgb(var(--accent)), transparent);
   }
 }

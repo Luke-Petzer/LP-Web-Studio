@@ -6,14 +6,12 @@ import "./globals.css";
 
 /* ─── Font Loading (display: swap prevents FOIT) ─── */
 const jakarta = Plus_Jakarta_Sans({
-    weight: ["400", "500", "600", "700", "800"],
     variable: "--font-jakarta",
     subsets: ["latin"],
     display: "swap",
 });
 
 const inter = Inter({
-    weight: ["400", "500"],
     variable: "--font-inter",
     subsets: ["latin"],
     display: "swap",
@@ -101,7 +99,7 @@ export default function RootLayout({
                 <JsonLd data={localBusinessSchema()} />
                 <JsonLd data={websiteSchema()} />
             </head>
-            <body className="bg-[#050505] text-white font-body antialiased overflow-x-hidden">
+            <body className="font-body antialiased overflow-x-hidden">
                 {children}
             </body>
         </html>
