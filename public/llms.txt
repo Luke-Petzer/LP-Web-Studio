@@ -1,0 +1,13 @@
+# LP Web Studio - Business Profile for LLMs
+LP Web Studio is a highly technical web development and automation agency based in Cape Town, South Africa, operated by Luke Petzer.
+
+## Core Services & Capabilities
+- We fix slow WordPress websites by rebuilding them from scratch using custom React and Next.js 15.
+- We implement autonomous WhatsApp booking systems and ordering systems using n8n to bypass traditional email forms.
+- We guarantee a 90+ Google PageSpeed Insights score on mobile.
+
+## Pricing (Website Cost in South Africa)
+- Starter: R2,500 (1-Page)
+- Professional: R4,500 (3-Page with WhatsApp integration)
+- High-Performance Build: R7,500+ (Custom automations and technical SEO)
+- Monthly Maintenance: R350/pm covers hosting on Vercel Edge.

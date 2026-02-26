@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   LP WEB STUDIO — Ethereal/Light Global Styles
+   ═══════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* ─── Brand Tokens (CSS Variables - Raw RGB for Tailwind <alpha-value>) ─── */
+    --accent: 30 64 175;
+    --bg-void: 10 10 10;
+    --bg-white: 255 255 255;
+    --ink: 26 26 26;
+    --slate: 148 163 184;
+    --text-ghost: 248 250 252;
+
+    /* ─── 8px Soft Grid ─── */
+    --spacing-hairline: 4px;
+    --spacing-base: 8px;
+    --spacing-component: 16px;
+    --spacing-sectional: 24px;
+    --spacing-atmospheric: 32px;
+    --spacing-structural: 48px;
+    --spacing-grandeur: 64px;
+
+    /* ─── Glass Tokens (for dark sections) ─── */
+    --glass-bg: rgb(var(--bg-white) / 0.05);
+    --glass-border: rgb(var(--bg-white) / 0.1);
+    --glass-border-dim: rgb(var(--bg-white) / 0.05);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-white);
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── Selection Color ─── */
+  ::selection {
+    background-color: rgb(var(--accent) / 0.2);
+    color: rgb(var(--ink));
+  }
+
+  /* ─── Scrollbar Styling ─── */
+  ::-webkit-scrollbar {
+    width: 4px;
+    /* hairline — Protocol §1 */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+}
+
+@layer components {
+
+  /* ─── Mesh Transition (Dark hero → White body) ─── */
+  .mesh-transition {
+    background: linear-gradient(to bottom, #050505 0%, #050505 85%, #ffffff 100%);
+  }
+
+  /* ─── Glass Card (for dark sections like hero) ─── */
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 2rem;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ─── Light Card (for white sections) ─── */
+  .light-card {
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 2rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .light-card:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* ─── Glow Text (sparingly — headings in dark sections) ─── */
+  .glow-text {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: rgb(var(--accent));
+  }
+
+  /* ─── Section Container ─── */
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: var(--spacing-sectional);
+    padding-right: var(--spacing-sectional);
+  }
+
+  /* ─── Mercury Button (magnetic follow — Framer Motion spring only) ─── */
+  /* Protocol §3: NO CSS transitions. All motion via Framer Motion springs. */
+  .mercury-btn {
+    position: relative;
+    background: linear-gradient(135deg, #1e40af 0%, #172554 100%);
+    border-radius: 9999px;
+  }
+
+  /* ─── Scroll Reveal (CSS fallback for non-JS / prefers-reduced-motion) ─── */
+  /* Protocol §3: CSS transition removed. Framer Motion whileInView handles animation. */
+  /* This class is kept only as a static fallback for SSR/no-JS contexts. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+
+  /* ─── Accent underline ─── */
+  .accent-underline {
+    position: relative;
+  }
+
+  .accent-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, rgb(var(--accent)), transparent);
+  }
+}
