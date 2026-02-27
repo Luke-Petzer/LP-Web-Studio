@@ -77,7 +77,7 @@ export function NavClient() {
                     {/* Logo */}
                     <a href="/" className="flex items-center gap-2 group" aria-label="LP Web Studio home">
                         <Image
-                            src="/My-Logo.svg"
+                            src="/my-logo.svg"
                             alt="LP Web Studio"
                             width={120}
                             height={32}

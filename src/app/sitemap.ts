@@ -1,32 +1,30 @@
-import type { MetadataRoute } from "next";
-import { getAllSlugs } from "@/lib/knowledge";
-
-const SITE_URL = "https://www.lpwebstudio.co.za";
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const knowledgeSlugs = getAllSlugs();
-
-    const staticPages: MetadataRoute.Sitemap = [
+    return [
         {
-            url: SITE_URL,
+            url: 'https://lpwebstudio.co.za',
             lastModified: new Date(),
-            changeFrequency: "monthly",
+            changeFrequency: 'monthly',
             priority: 1,
         },
         {
-            url: `${SITE_URL}/learn`,
+            url: 'https://lpwebstudio.co.za/work',
             lastModified: new Date(),
-            changeFrequency: "weekly",
+            changeFrequency: 'monthly',
             priority: 0.8,
         },
-    ];
-
-    const knowledgePages: MetadataRoute.Sitemap = knowledgeSlugs.map((slug) => ({
-        url: `${SITE_URL}/learn/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-    }));
-
-    return [...staticPages, ...knowledgePages];
+        {
+            url: 'https://lpwebstudio.co.za/about',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://lpwebstudio.co.za/contact',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        }
+    ]
 }

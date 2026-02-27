@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessSchema, websiteSchema } from "@/components/seo/SchemaTemplates";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 /* ─── Font Loading (display: swap prevents FOIT) ─── */
@@ -58,18 +59,22 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: "https://www.lpwebstudio.co.za",
+        canonical: "https://lpwebstudio.co.za",
+    },
+    icons: {
+        icon: "/icon.svg",
+        apple: "/icon.svg",
     },
     openGraph: {
         type: "website",
         locale: "en_ZA",
-        url: "https://www.lpwebstudio.co.za",
+        url: "https://lpwebstudio.co.za",
         siteName: "LP Web Studio",
         title: "LP Web Studio | Cape Town High-Performance Web Development",
         description: "Fix your slow WordPress website. Custom Next.js builds with integrated WhatsApp booking systems.",
         images: [
             {
-                url: "/og-image.jpg",
+                url: "/og-image.png",
                 width: 1200,
                 height: 630,
                 alt: "LP Web Studio - High-Performance Web Architecture",
@@ -80,7 +85,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "LP Web Studio | Cape Town High-Performance Web Development",
         description: "Fix your slow WordPress website. Custom Next.js builds with integrated WhatsApp booking systems.",
-        images: ["/og-image.jpg"],
+        images: ["/og-image.png"],
     },
 };
 
@@ -101,6 +106,7 @@ export default function RootLayout({
             </head>
             <body className="font-body antialiased overflow-x-hidden">
                 {children}
+                <Analytics />
             </body>
         </html>
     );
