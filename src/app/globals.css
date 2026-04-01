@@ -25,6 +25,13 @@
     --spacing-structural: 48px;
     --spacing-grandeur: 64px;
 
+    /* ─── Nav height tokens (for hero content offset) ─── */
+    --nav-height-expanded: 72px;   /* full-width nav at top */
+    --nav-height-bubble: 64px;     /* bubble nav when scrolled */
+
+    /* ─── Motion Easing (custom overshoot curve — matches WQF system) ─── */
+    --easing: cubic-bezier(.62, .16, .13, 1.01);
+
     /* ─── Glass Tokens (for dark sections) ─── */
     --glass-bg: rgb(var(--bg-white) / 0.05);
     --glass-border: rgb(var(--bg-white) / 0.1);
@@ -70,9 +77,28 @@
 
 @layer components {
 
-  /* ─── Mesh Transition (Dark hero → White body) ─── */
+  /* ─── Grain Overlay (dot-matrix ambient texture for dark sections) ─── */
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+    animation: grain-breathe 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes grain-breathe {
+    from { opacity: 0.4; }
+    to   { opacity: 0.7; }
+  }
+
+  /* ─── Mesh Transition (Dark hero — starts from top-0 under transparent nav) ─── */
   .mesh-transition {
-    background: linear-gradient(to bottom, #050505 0%, #050505 85%, #ffffff 100%);
+    background: #050505;
   }
 
   /* ─── Glass Card (for dark sections like hero) ─── */
@@ -140,6 +166,13 @@
 }
 
 @layer utilities {
+  @media (prefers-reduced-motion: reduce) {
+    .grain-overlay {
+      animation: none;
+      opacity: 0.5;
+    }
+  }
+
 
   /* ─── Accent underline ─── */
   .accent-underline {
