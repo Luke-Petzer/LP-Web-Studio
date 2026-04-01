@@ -29,7 +29,6 @@ const faqs = [
 /**
  * FaqAccordion — Client Molecule
  * Spring-animated accordion, one item open at a time.
- * Protocol §4: 'use client' for interaction.
  */
 export function FaqAccordion() {
     const shouldReduceMotion = useReducedMotion();
@@ -39,9 +38,17 @@ export function FaqAccordion() {
 
     return (
         <div className="mt-structural">
-            <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
+            {/* Section intro */}
+            <p className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-4">
+                FAQ
+            </p>
+            <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-2">
                 Common Questions
             </h2>
+            <p className="text-slate-400 text-sm mb-10">
+                Still have questions? We&rsquo;ve got answers.
+            </p>
+
             <div className="flex flex-col divide-y divide-black/5">
                 {faqs.map((faq, i) => (
                     <div key={faq.q}>
@@ -49,22 +56,18 @@ export function FaqAccordion() {
                         <button
                             onClick={() => toggle(i)}
                             aria-expanded={openIndex === i}
-                            className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+                            className="w-full flex items-center justify-between gap-6 py-6 text-left group cursor-pointer"
                         >
-                            <span className="text-ink font-heading font-bold text-lg group-hover:text-accent transition-colors">
+                            <span className="text-ink font-heading font-bold text-lg group-hover:opacity-70 transition-opacity duration-200">
                                 {faq.q}
                             </span>
-                            <motion.span
-                                className="shrink-0 text-accent"
-                                animate={{ rotate: openIndex === i ? 0 : 0 }}
-                                transition={spring}
-                            >
+                            <span className="shrink-0 text-ink/30">
                                 {openIndex === i ? (
-                                    <Minus className="w-5 h-5" strokeWidth={2} />
+                                    <Minus className="w-6 h-6" strokeWidth={1.75} />
                                 ) : (
-                                    <Plus className="w-5 h-5" strokeWidth={2} />
+                                    <Plus className="w-6 h-6" strokeWidth={1.75} />
                                 )}
-                            </motion.span>
+                            </span>
                         </button>
 
                         {/* Answer panel */}
