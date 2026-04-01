@@ -6,9 +6,6 @@ import { usePathname } from "next/navigation";
 import { Zap } from "lucide-react";
 import Image from "next/image";
 
-/* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
-const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
-
 const navLinks = [
     { label: "Work", href: "/work" },
     { label: "About", href: "/about" },
@@ -17,9 +14,9 @@ const navLinks = [
 
 /**
  * NavClient — Client Molecule
- * Owns all interactive state: scroll detection, color transitions, mobile overlay.
- * Passed as a child to the Navigation Server Component.
- * Protocol §4: Molecules are 'use client' for interaction.
+ * At top (scroll=0): full-width, transparent, flush to viewport top
+ * Scrolled (scroll>80): bubble morphs in — rounded-full, dark-glass, top-4
+ * All morphing via Framer Motion animate on <motion.header> + <motion.nav>
  */
 export function NavClient() {
     const pathname = usePathname();
@@ -30,7 +27,7 @@ export function NavClient() {
     const { scrollY } = useScroll();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
-        setScrolled(latest > 100);
+        setScrolled(latest > 80);
     });
 
     /* ─── Lock body scroll when overlay is open ─── */
@@ -51,28 +48,48 @@ export function NavClient() {
     /* ─── Hamburger span color ─── */
     const spanBg = isLight ? "bg-ink" : "bg-white";
 
+    const morphTransition = shouldReduceMotion
+        ? { duration: 0 }
+        : { duration: 0.35, ease: [0.62, 0.16, 0.13, 1.01] as [number, number, number, number] };
+
     return (
         <>
+            {/* ─── Header shell: full-width at top, shrinks to bubble on scroll ─── */}
             <motion.header
-                className="fixed top-6 left-1/2 z-50 w-[calc(100%-2rem)] max-w-[1200px]"
+                className="fixed left-1/2 z-50"
                 style={{ x: "-50%" }}
+                animate={{
+                    top: scrolled ? "1rem" : "0px",
+                    width: scrolled ? "calc(100% - 2rem)" : "100%",
+                    maxWidth: scrolled ? "1200px" : "100%",
+                }}
+                transition={morphTransition}
                 aria-label="Main navigation"
             >
                 <motion.nav
-                    className="flex items-center justify-between px-6 py-[8px] rounded-full border"
+                    className="flex items-center justify-between"
                     animate={{
+                        borderRadius: scrolled ? "9999px" : "0px",
+                        paddingLeft: scrolled ? "1.5rem" : "2.5rem",
+                        paddingRight: scrolled ? "1.5rem" : "2.5rem",
+                        paddingTop: scrolled ? "0.5rem" : "1.25rem",
+                        paddingBottom: scrolled ? "0.5rem" : "1.25rem",
                         backgroundColor: isLight
-                            ? "rgba(255, 255, 255, 0.85)"
-                            : "rgba(255, 255, 255, 0.05)",
+                            ? scrolled ? "rgba(255,255,255,0.88)" : "rgba(255,255,255,0.0)"
+                            : scrolled ? "rgba(10,10,10,0.80)" : "rgba(0,0,0,0.0)",
                         borderColor: isLight
-                            ? "rgba(0, 0, 0, 0.05)"
-                            : "rgba(255, 255, 255, 0.1)",
-                        boxShadow: isLight
-                            ? "0 10px 30px -10px rgba(0,0,0,0.1)"
+                            ? scrolled ? "rgba(0,0,0,0.07)" : "rgba(0,0,0,0.0)"
+                            : scrolled ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.0)",
+                        boxShadow: scrolled && isLight
+                            ? "0 10px 30px -10px rgba(0,0,0,0.12)"
                             : "none",
                     }}
-                    transition={shouldReduceMotion ? { duration: 0 } : spring}
-                    style={{ backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
+                    transition={morphTransition}
+                    style={{
+                        backdropFilter: "blur(12px)",
+                        WebkitBackdropFilter: "blur(12px)",
+                        border: "1px solid",
+                    }}
                 >
                     {/* Logo */}
                     <a href="/" className="flex items-center gap-2 group" aria-label="LP Web Studio home">
@@ -100,7 +117,7 @@ export function NavClient() {
                                             ? "rgb(var(--accent))"
                                             : isLight ? "#1a1a1a" : "#ffffff",
                                     }}
-                                    transition={shouldReduceMotion ? { duration: 0 } : spring}
+                                    transition={shouldReduceMotion ? { duration: 0 } : morphTransition}
                                     whileHover={shouldReduceMotion ? {} : { opacity: 0.7 }}
                                 >
                                     {link.label}
@@ -115,7 +132,7 @@ export function NavClient() {
                         className="hidden md:inline-flex mercury-btn px-[16px] py-[8px] rounded-full text-xs font-bold uppercase tracking-wider text-white items-center"
                         whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
                         whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
-                        transition={spring}
+                        transition={morphTransition}
                     >
                         <Zap className="inline w-3 h-3 mr-1" strokeWidth={2.5} />
                         Audit
@@ -128,23 +145,14 @@ export function NavClient() {
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isOpen}
                     >
-                        <span
-                            className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "rotate-45 translate-y-[0.4rem]" : ""
-                                }`}
-                        />
-                        <span
-                            className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "opacity-0" : "opacity-100"
-                                }`}
-                        />
-                        <span
-                            className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "-rotate-45 -translate-y-[0.4rem]" : ""
-                                }`}
-                        />
+                        <span className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "rotate-45 translate-y-[0.4rem]" : ""}`} />
+                        <span className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "opacity-0" : "opacity-100"}`} />
+                        <span className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "-rotate-45 -translate-y-[0.4rem]" : ""}`} />
                     </button>
                 </motion.nav>
             </motion.header>
 
-            {/* ─── Glassmorphic Mobile Overlay (outside header to avoid transform context) ─── */}
+            {/* ─── Glassmorphic Mobile Overlay ─── */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -175,8 +183,7 @@ export function NavClient() {
                                         key={link.label}
                                         href={link.href}
                                         onClick={() => setIsOpen(false)}
-                                        className={`text-2xl font-heading font-bold transition-colors ${isActive ? "text-accent" : "text-white hover:text-accent/70"
-                                            }`}
+                                        className={`text-2xl font-heading font-bold transition-colors ${isActive ? "text-accent" : "text-white hover:text-accent/70"}`}
                                     >
                                         {link.label}
                                     </a>
