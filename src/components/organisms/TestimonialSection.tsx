@@ -1,75 +1,148 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Quote } from "lucide-react";
 
-/* ─── Spring Physics ─── */
-const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
+/* ─────────────────────────────────────────────────────────────
+   Animation — FIXED
+   Was: y: 0 in hidden, animate="visible"
+   Now: y: 18 rise, whileInView on scroll entry
+───────────────────────────────────────────────────────────── */
+const spring = { type: "spring" as const, stiffness: 160, damping: 26 };
 
 const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 0 },
+    hidden: { opacity: 0, y: 18 },
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
+const quoteReveal: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { type: "spring", stiffness: 160, damping: 26, delay: 0.15 },
+    },
+};
+
+const attributionReveal: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.5, ease: "easeOut", delay: 0.4 },
+    },
+};
+
 /**
- * TestimonialSection — Client Organism
- * Stark, high-contrast blockquote between Pricing and Contact.
- * Void background keeps the dark momentum leading into the footer.
+ * TestimonialSection — REDESIGNED as a pull-quote.
+ *
+ * Previous issues:
+ *   - Quote split into two sizes (text-base + text-xl) — felt like body copy
+ *   - Lucide <Quote> icon felt like a UI widget, not typography
+ *   - "Verified Client" badge was text-accent (over-using accent)
+ *
+ * Now:
+ *   - Single unified quote size: text-xl md:text-2xl — all one voice
+ *   - Typographic " character at ~160px, opacity-[0.04] — atmospheric, not decorative
+ *   - Attribution block clean and restrained
+ *   - All accent stripped — this section earns trust through weight, not color
  */
 export function TestimonialSection() {
     return (
-        <section className="bg-void py-structural px-6">
-            <div className="max-w-4xl mx-auto">
+        <section className="relative bg-zinc-50 py-28 md:py-36 px-6 md:px-10 lg:px-16 overflow-hidden">
+
+            {/* Subtle diagonal pattern — prevents the light section feeling like dead space */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 pointer-events-none opacity-[0.03]"
+                style={{
+                    backgroundImage: "repeating-linear-gradient(135deg, #1e40af 0px, #1e40af 1px, transparent 1px, transparent 40px)",
+                }}
+            />
+
+            <div className="relative z-10 max-w-4xl mx-auto">
                 <motion.div
-                    className="relative"
-                    variants={fadeUp}
                     initial="hidden"
-                    animate="visible"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
                 >
-                    {/* Large decorative quote mark */}
-                    <Quote
-                        className="w-16 h-16 text-accent/20 mb-8"
-                        strokeWidth={1}
+                    {/*
+                      Typographic quote mark — a massive " in the heading font,
+                      acting as a background watermark. Not a Lucide icon.
+                      The font renders it as a proper typographic form.
+                    */}
+                    <motion.div
+                        variants={fadeUp}
                         aria-hidden="true"
+                        className="font-heading font-black text-ink select-none pointer-events-none
+                                   text-[160px] md:text-[200px] leading-none
+                                   opacity-[0.04] mb-[-60px] md:mb-[-80px]"
+                    >
+                        &ldquo;
+                    </motion.div>
+
+                    {/* Accent rule — visual anchor above the quote */}
+                    <motion.div
+                        variants={fadeUp}
+                        aria-hidden="true"
+                        className="w-16 h-[2px] bg-accent/40 mb-10"
                     />
 
                     <blockquote>
-                        <p className="text-lg leading-relaxed tracking-tight mb-10">
-                            <span className="text-base md:text-lg font-medium text-white/90 leading-relaxed">
-                                &ldquo;Luke has been exceptional from start to finish on the project!
-                                I was skeptical at first when I saw his message in my business&rsquo;
-                                Facebook account, as most of the time it&rsquo;s some scam or swindler,
-                                but all I can say is that I do not regret opening dialogue with him.
+                        {/*
+                          TYPOGRAPHY FIX: unified pull-quote size.
+                          Previous: split into two different sizes mid-quote.
+                          Now: single text-xl md:text-2xl throughout — reads as
+                          one powerful statement, not two separate paragraphs.
+                        */}
+                        <motion.p
+                            variants={quoteReveal}
+                            className="font-heading font-medium text-ink/90
+                                       text-xl md:text-2xl leading-[1.4]
+                                       tracking-[-0.01em] mb-10"
+                        >
+                            Luke has been exceptional from start to finish on the project.
+                            I was skeptical at first, but all I can say is that I do not
+                            regret opening dialogue with him. His professionalism and work
+                            ethic is above what I&rsquo;ve experienced in the industry and
+                            his execution of planning is pinpoint.{" "}
+                            <span className="text-ink/50">
+                                Please, save yourself from having to run around after designers
+                                and use Luke — phenomenal individual.
                             </span>
-                            <span className="text-xl md:text-2xl font-semibold text-white block my-4">
-                                His professionalism and work ethic is above what I&rsquo;ve experienced
-                                in the industry and his execution of planning is pinpoint. Please, save
-                                yourself from having to run around after designers and use Luke;
-                                phenomenal individual.&rdquo;
-                            </span>
-                        </p>
+                        </motion.p>
 
-                        <footer className="flex items-center gap-4">
-                            {/* Avatar initial */}
-                            <div className="w-12 h-12 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center shrink-0">
-                                <span className="text-accent font-heading font-bold text-lg">G</span>
+                        <motion.footer
+                            variants={attributionReveal}
+                            className="flex items-center gap-4"
+                        >
+                            {/* Avatar */}
+                            <div className="w-11 h-11 rounded-full bg-black/[0.06]
+                                            border border-black/[0.08]
+                                            flex items-center justify-center shrink-0">
+                                <span className="text-ink/60 font-heading font-bold text-base">
+                                    G
+                                </span>
                             </div>
+
+                            {/* Name + role */}
                             <div>
-                                <cite className="text-white font-heading font-bold not-italic block">
+                                <cite className="text-ink font-heading font-bold
+                                                not-italic text-sm block">
                                     Gio
                                 </cite>
-                                <span className="text-white/40 text-sm">
+                                <span className="text-ink/40 text-xs">
                                     Owner, Cafe Crave
                                 </span>
                             </div>
 
-                            {/* Score pill */}
-                            <div className="ml-auto hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
-                                <span className="text-accent text-xs font-bold uppercase tracking-widest">
+                            {/* Verified pill — ACCENT AUDIT: stripped to white/20 border, no accent text */}
+                            <div className="ml-auto hidden sm:flex items-center gap-2
+                                            bg-black/[0.04] border border-black/[0.08]
+                                            px-4 py-2 rounded-full">
+                                <span className="text-ink/40 text-[10px] font-bold
+                                                uppercase tracking-widest">
                                     Verified Client
                                 </span>
                             </div>
-                        </footer>
+                        </motion.footer>
                     </blockquote>
                 </motion.div>
             </div>
