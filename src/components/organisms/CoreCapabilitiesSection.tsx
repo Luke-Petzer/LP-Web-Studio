@@ -1,104 +1,413 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { Code2, Wrench, Search, Workflow } from "lucide-react";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
+import { GrainOverlay } from "@/components/atoms/GrainOverlay";
 
-/* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
-const spring = { type: "spring" as const, stiffness: 150, damping: 25, mass: 1 };
+/* ─────────────────────────────────────────────────────────────
+   UX: prefers-reduced-motion respected globally in this component
+   via useReducedMotion() — all spring/layout animations are
+   disabled or instant when the user has this preference set.
+───────────────────────────────────────────────────────────── */
 
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 0 },
-    visible: { opacity: 1, y: 0, transition: spring },
+/* ─────────────────────────────────────────────────────────────
+   Capability data
+   Each column has: index, title, body, a unique color palette,
+   and a geometric SVG gesture (dot-matrix / abstract form).
+───────────────────────────────────────────────────────────── */
+type Capability = {
+    index: string;
+    title: string;
+    body: string;
+    bg: string;           // column background
+    textPrimary: string;  // title + counter color
+    textBody: string;     // body copy color
+    borderColor: string;  // separator between columns
+    gesture: React.ReactNode;
 };
 
-/* ─── Capability Cards ─── */
-const capabilities = [
+/* Geometric SVG gestures — distinct per column, ~opacity-[0.12] */
+const ConcentricRings = () => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        {[20, 45, 70, 95, 120].map((r) => (
+            <circle
+                key={r}
+                cx="100" cy="100" r={r}
+                stroke="white" strokeWidth="1"
+                strokeDasharray="2 6"
+            />
+        ))}
+        <circle cx="100" cy="100" r="6" fill="white" fillOpacity="0.4" />
+    </svg>
+);
+
+const DiagonalGrid = () => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        {Array.from({ length: 9 }).map((_, i) => (
+            <line
+                key={i}
+                x1={-20 + i * 30} y1="0"
+                x2={180 + i * 30 - 200} y2="200"
+                stroke="white" strokeWidth="1" strokeOpacity="0.6"
+            />
+        ))}
+        {Array.from({ length: 9 }).map((_, i) => (
+            <line
+                key={`r${i}`}
+                x1={220 - i * 30} y1="0"
+                x2={20 - i * 30 + 200} y2="200"
+                stroke="white" strokeWidth="1" strokeOpacity="0.3"
+            />
+        ))}
+    </svg>
+);
+
+const RadiatingSpokes = () => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        {Array.from({ length: 16 }).map((_, i) => {
+            const angle = (i / 16) * Math.PI * 2;
+            const x2 = 100 + Math.cos(angle) * 90;
+            const y2 = 100 + Math.sin(angle) * 90;
+            return (
+                <line key={i} x1="100" y1="100" x2={x2} y2={y2}
+                    stroke="white" strokeWidth="1" strokeOpacity={i % 2 === 0 ? 0.7 : 0.3} />
+            );
+        })}
+        <circle cx="100" cy="100" r="8" fill="white" fillOpacity="0.5" />
+        <circle cx="100" cy="100" r="20" stroke="white" strokeWidth="1" strokeOpacity="0.4" />
+    </svg>
+);
+
+const DotMatrix = () => (
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        {Array.from({ length: 8 }).map((_, row) =>
+            Array.from({ length: 8 }).map((_, col) => (
+                <rect
+                    key={`${row}-${col}`}
+                    x={12 + col * 25} y={12 + row * 25}
+                    width="4" height="4"
+                    rx="1"
+                    fill="#1a1a1a"
+                    fillOpacity={((row + col) % 3 === 0) ? 0.5 : 0.2}
+                />
+            ))
+        )}
+    </svg>
+);
+
+const capabilities: Capability[] = [
     {
-        icon: Code2,
+        index: "01",
         title: "Custom Next.js Applications",
-        body: "Brand new, hand-coded web applications built on React and Next.js. Engineered from the ground up for sub-second load times and maximum conversion.",
+        body: "Brand new, hand-coded web applications built on React and Next.js. Engineered from the ground up for sub-second load times and maximum conversion. No templates. No bloat.",
+        bg: "#0A0A0A",
+        textPrimary: "text-white",
+        textBody: "text-white/50",
+        borderColor: "border-white/[0.06]",
+        gesture: <ConcentricRings />,
     },
     {
-        icon: Wrench,
+        index: "02",
         title: "Legacy Rebuilds & Speed Optimization",
-        body: "Love your current design but losing leads to a slow WordPress backend? We will rip out the old engine and rebuild your existing UI on our high-speed React stack.",
+        body: "Love your current design but losing leads to a slow WordPress backend? We rip out the old engine and rebuild your existing UI on our high-speed React stack.",
+        bg: "#111827",
+        textPrimary: "text-white",
+        textBody: "text-white/50",
+        borderColor: "border-white/[0.06]",
+        gesture: <DiagonalGrid />,
     },
     {
-        icon: Search,
-        title: "Technical SEO & Infrastructure",
-        body: "We don\u2019t guess with keywords. We implement strict JSON-LD schema, Semantic HTML, and Core Web Vitals optimisations so search engines prioritise your site natively.",
+        index: "03",
+        title: "Technical SEO & GEO",
+        body: "We implement strict JSON-LD schema, Semantic HTML, and Core Web Vitals optimisations — then engineer your llms.txt so AI models like Gemini and ChatGPT recommend your business.",
+        bg: "#1e40af",
+        textPrimary: "text-white",
+        textBody: "text-white/70",
+        borderColor: "border-white/[0.1]",
+        gesture: <RadiatingSpokes />,
     },
     {
-        icon: Workflow,
+        index: "04",
         title: "n8n Business Automations",
         body: "Stop doing manual admin. We build custom API pipelines using n8n that automatically capture, enrich, and route your website leads directly to your CRM or WhatsApp.",
+        bg: "#F4F4F2",
+        textPrimary: "text-[#0A0A0A]",
+        textBody: "text-[#0A0A0A]/50",
+        borderColor: "border-black/[0.06]",
+        gesture: <DotMatrix />,
     },
 ];
 
-/**
- * CoreCapabilitiesSection — Client Component (Organism)
- * Tech-Noir void background with 4-column / 2×2 responsive grid.
- * Protocol §4: Client Organism for Framer Motion animation.
- */
-export function CoreCapabilitiesSection() {
+/* ─────────────────────────────────────────────────────────────
+   Framer Motion variants
+───────────────────────────────────────────────────────────── */
+const sectionReveal: Variants = {
+    hidden: { opacity: 0, y: 18 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { type: "spring", stiffness: 180, damping: 28 },
+    },
+};
+
+const bodyReveal: Variants = {
+    hidden: { opacity: 0, y: 8 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { duration: 0.22, ease: "easeOut" },
+    },
+    exit: {
+        opacity: 0, y: 4,
+        transition: { duration: 0.12, ease: "easeIn" },
+    },
+};
+
+/* ─────────────────────────────────────────────────────────────
+   CapabilityColumn — single accordion panel
+───────────────────────────────────────────────────────────── */
+function CapabilityColumn({
+    cap,
+    index,
+    isActive,
+    onActivate,
+    reducedMotion,
+}: {
+    cap: Capability;
+    index: number;
+    isActive: boolean;
+    onActivate: (i: number | null) => void;
+    reducedMotion: boolean;
+}) {
+    const handleToggle = useCallback(() => {
+        onActivate(isActive ? null : index);
+    }, [isActive, index, onActivate]);
+
+    const handleKeyDown = useCallback(
+        (e: React.KeyboardEvent) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleToggle();
+            }
+        },
+        [handleToggle]
+    );
+
     return (
-        <section id="capabilities" className="bg-void py-structural px-6">
-            <div className="max-w-7xl mx-auto">
-                {/* Section Header */}
-                <motion.div
-                    className="mb-structural"
-                    variants={fadeUp}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
-                        Core Capabilities
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-sectional items-end">
-                        <h2 className="text-white text-4xl md:text-5xl font-heading font-extrabold tracking-tight leading-tight">
-                            High-Performance Engineering.{" "}
-                            <span className="text-accent">Zero Bloat.</span>
-                        </h2>
-                        <p className="text-white/50 text-lg leading-relaxed md:max-w-md md:ml-auto">
-                            We don&apos;t use templates. We build, optimise, and automate digital
-                            infrastructure for businesses that scale.
-                        </p>
-                    </div>
-                </motion.div>
+        <motion.div
+            layout={!reducedMotion}
+            className={`
+                relative flex flex-col justify-between overflow-hidden
+                border-r last:border-r-0 ${cap.borderColor}
+                cursor-pointer select-none
+                min-h-[480px] md:min-h-[560px]
+                w-full
+            `}
+            style={{
+                backgroundColor: cap.bg,
+            }}
+            animate={
+                isActive
+                    ? { boxShadow: "inset 0 0 60px rgba(30,64,175,0.08)" }
+                    : { boxShadow: "none" }
+            }
+            onClick={handleToggle}
+            onKeyDown={handleKeyDown}
+            role="button"
+            aria-expanded={isActive}
+            aria-label={`${cap.title} — capability ${cap.index}`}
+            tabIndex={0}
+            transition={
+                reducedMotion
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 300, damping: 35 }
+            }
+            whileHover={reducedMotion ? {} : { filter: "brightness(1.06)" }}
+        >
+            {/* Grain on dark columns only */}
+            {index !== 3 && <GrainOverlay className="opacity-40" />}
 
-                {/* 2×2 → 4-col Capability Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-sectional">
-                    {capabilities.map((cap, i) => (
-                        <motion.div
-                            key={cap.title}
-                            className="group relative p-8 rounded-[2rem] border border-white/8 bg-white/4 hover:border-accent/50 hover:bg-white/8 transition-colors"
-                            variants={fadeUp}
-                            initial="hidden"
-                            animate="visible"
-                            transition={{ ...spring, delay: i * 0.08 }}
-                        >
-                            {/* Icon */}
-                            <cap.icon
-                                className="w-8 h-8 text-accent mb-6 transition-transform group-hover:scale-110"
-                                strokeWidth={1.5}
-                            />
-
-                            {/* Title */}
-                            <h3 className="text-white text-lg font-heading font-bold mb-3 leading-snug">
-                                {cap.title}
-                            </h3>
-
-                            {/* Body */}
-                            <p className="text-white/50 text-sm leading-relaxed">
-                                {cap.body}
-                            </p>
-
-                            {/* Subtle accent underline on hover */}
-                            <div className="mt-6 h-px w-0 bg-accent group-hover:w-full transition-all duration-500 ease-out" />
-                        </motion.div>
-                    ))}
+            {/* Geometric gesture — center of column, acts as ambient illustration */}
+            <div
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{ opacity: isActive ? 0.18 : 0.1 }}
+            >
+                <div className="w-40 h-40 md:w-52 md:h-52 transition-opacity duration-500">
+                    {cap.gesture}
                 </div>
             </div>
+
+            {/* Content — flex-col, space-between fills column height */}
+            <div className="relative z-10 flex flex-col justify-between h-full p-7 md:p-8 gap-6">
+
+                {/* TOP: counter */}
+                <p className={`text-[10px] font-bold uppercase tracking-[0.3em] ${cap.textPrimary} opacity-40`}>
+                    {cap.index} / 04
+                </p>
+
+                {/* BOTTOM: title + body */}
+                <div>
+                    <h3
+                        className={`
+                            font-heading font-black leading-tight
+                            ${isActive ? "text-2xl md:text-3xl mb-4" : "text-xl md:text-2xl mb-0"}
+                            ${cap.textPrimary}
+                            transition-all duration-300
+                        `}
+                    >
+                        {cap.title}
+                    </h3>
+
+                    {/* Body — only visible when active. AnimatePresence handles mount/unmount. */}
+                    <AnimatePresence>
+                        {isActive && (
+                            <motion.p
+                                className={`text-sm leading-relaxed ${cap.textBody}`}
+                                variants={bodyReveal}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                            >
+                                {cap.body}
+                            </motion.p>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Expand hint — visible only when collapsed */}
+                    <AnimatePresence>
+                        {!isActive && (
+                            <motion.p
+                                className={`text-[10px] uppercase tracking-widest font-bold mt-3 ${cap.textPrimary} opacity-30`}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.3 }}
+                                exit={{ opacity: 0, transition: { duration: 0.08 } }}
+                            >
+                                Tap to expand
+                            </motion.p>
+                        )}
+                    </AnimatePresence>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CoreCapabilitiesSection — Horizontal Accordion (desktop)
+                             Vertical Accordion (mobile)
+
+   Desktop layout:
+     - 4 columns share full width via flex
+     - Active column: flex-[2.5], inactive: flex-[1]
+     - Framer `layout` prop animates the reflow via FLIP
+     - No reflow on main thread — only transform composited
+
+   Mobile layout:
+     - Columns stack vertically (flex-col)
+     - Each is full width
+     - Body copy still toggles via AnimatePresence
+     - No flex-basis manipulation needed
+───────────────────────────────────────────────────────────── */
+export function CoreCapabilitiesSection() {
+    /* null = no active column on initial load — user chooses */
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const reducedMotion = useReducedMotion() ?? false;
+
+    const handleActivate = useCallback((i: number | null) => {
+        setActiveIndex(i);
+    }, []);
+
+    return (
+        <section id="capabilities" className="bg-void overflow-hidden">
+
+            {/* Section header — sits above the accordion columns */}
+            <div className="relative px-6 md:px-10 lg:px-16 pt-24 pb-16 max-w-7xl mx-auto">
+                <GrainOverlay className="opacity-40" />
+
+                <div className="relative z-10">
+                    <motion.p
+                        className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-5"
+                        variants={sectionReveal}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                    >
+                        Core Capabilities
+                    </motion.p>
+
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                        <motion.h2
+                            className="font-heading font-extrabold text-white
+                                       text-[clamp(32px,4vw,56px)]
+                                       tracking-[-0.03em] leading-[0.95] max-w-2xl"
+                            variants={sectionReveal}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.5 }}
+                        >
+                            High-Performance Engineering.{" "}
+                            <span className="text-accent">Zero Bloat.</span>
+                        </motion.h2>
+
+                        <motion.p
+                            className="text-white/40 text-sm leading-relaxed max-w-xs md:text-right"
+                            variants={sectionReveal}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.5 }}
+                        >
+                            Select a capability to learn more.
+                        </motion.p>
+                    </div>
+                </div>
+            </div>
+
+            {/* ── DESKTOP: Horizontal accordion ───────────────────────── */}
+            <div className="hidden md:flex w-full" aria-label="Core capabilities">
+                {capabilities.map((cap, i) => (
+                    <motion.div
+                        key={cap.index}
+                        layout={!reducedMotion}
+                        style={{
+                            flexGrow: activeIndex === i ? 2.5 : 1,
+                            flexShrink: 1,
+                            flexBasis: "0%",
+                        }}
+                        transition={
+                            reducedMotion
+                                ? { duration: 0 }
+                                : { type: "spring", stiffness: 300, damping: 35 }
+                        }
+                        className="relative"
+                    >
+                        <CapabilityColumn
+                            cap={cap}
+                            index={i}
+                            isActive={activeIndex === i}
+                            onActivate={handleActivate}
+                            reducedMotion={reducedMotion}
+                        />
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* ── MOBILE: Vertical accordion ───────────────────────────
+                Each card is full-width. Same toggle logic, no flex-basis.
+                Body copy still uses AnimatePresence via CapabilityColumn.
+            ──────────────────────────────────────────────────────────── */}
+            <div className="flex md:hidden flex-col" aria-label="Core capabilities">
+                {capabilities.map((cap, i) => (
+                    <CapabilityColumn
+                        key={cap.index}
+                        cap={cap}
+                        index={i}
+                        isActive={activeIndex === i}
+                        onActivate={handleActivate}
+                        reducedMotion={reducedMotion}
+                    />
+                ))}
+            </div>
+
+            {/* Bottom padding spacer — section has no py-structural to allow flush columns */}
+            <div className="h-28 bg-void" />
         </section>
     );
 }
