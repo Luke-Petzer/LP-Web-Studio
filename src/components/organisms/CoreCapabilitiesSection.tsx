@@ -230,7 +230,7 @@ function CapabilityColumn({
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 style={{ opacity: isActive ? 0.18 : 0.1 }}
             >
-                <div className="w-40 h-40 md:w-52 md:h-52 transition-opacity duration-500">
+                <div className="w-56 h-56 md:w-72 md:h-72 transition-opacity duration-500">
                     {cap.gesture}
                 </div>
             </div>

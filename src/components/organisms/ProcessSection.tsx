@@ -7,16 +7,29 @@ const processCards = [
         index: "01",
         title: "Direct Lead Capture",
         body: "Traditional forms are dead. We integrate WhatsApp, Telegram, and n8n webhook pipelines to capture, enrich, and route leads directly to your phone in milliseconds.",
+        cardStyle: {
+            backgroundColor: "rgba(245,242,242,0.05)",
+            border: "1px solid rgba(245,242,242,0.07)",
+        },
     },
     {
         index: "02",
         title: "Edge Performance",
         body: "Every millisecond costs money. Your Next.js application runs on Vercel's global CDN — bypassing shared hosting and delivering sub-second load times from Cape Town to London.",
+        cardStyle: {
+            backgroundColor: "#161616",
+            border: "1px solid rgba(245,242,242,0.07)",
+            borderTop: "2px solid rgba(254,176,93,0.30)",
+        },
     },
     {
         index: "03",
         title: "AI Search Visibility",
         body: "Standard SEO is no longer enough. We engineer your site architecture and llms.txt so AI models like Gemini and ChatGPT accurately recommend your business when customers ask.",
+        cardStyle: {
+            backgroundColor: "#1F1E1E",
+            border: "1px solid rgba(245,242,242,0.12)",
+        },
     },
 ];
 
@@ -97,7 +110,7 @@ export function ProcessSection() {
                         initial="hidden"
                         animate="visible"
                     >
-                        Every site we ship runs all three. No exceptions, no shortcuts.
+                        Every site ships with all three built in. The capabilities section shows you how we deliver each one.
                     </motion.p>
 
                     <motion.a
@@ -115,7 +128,7 @@ export function ProcessSection() {
 
                 {/* ── RIGHT PANEL — scrolling cards ─────────────────────────
                     py-24: top/bottom padding gives breathing room.
-                    Each card is min-h-[75vh], creating the "scroll through"
+                    Each card is min-h-[60vh], creating the "scroll through"
                     feel without any JavaScript scroll-locking.
                 ──────────────────────────────────────────────────────────── */}
                 <div className="md:w-[58%] flex flex-col gap-8 py-24">
@@ -124,9 +137,8 @@ export function ProcessSection() {
                             key={card.index}
                             className="relative rounded-[2rem] flex flex-col justify-between overflow-hidden"
                             style={{
-                                backgroundColor: "rgba(245,242,242,0.05)",
-                                border: "1px solid rgba(245,242,242,0.07)",
-                                minHeight: "75vh",
+                                ...card.cardStyle,
+                                minHeight: "60vh",
                                 padding: "clamp(2rem, 4vw, 3rem)",
                             }}
                             variants={cardReveal}
@@ -159,7 +171,7 @@ export function ProcessSection() {
                                 />
                                 <p
                                     className="text-sm md:text-base leading-relaxed max-w-md"
-                                    style={{ color: "rgba(245,242,242,0.50)" }}
+                                    style={{ color: "rgba(245,242,242,0.65)" }}
                                 >
                                     {card.body}
                                 </p>
