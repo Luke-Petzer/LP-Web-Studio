@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { MessageCircle, Mail, Gauge } from "lucide-react";
+import { MessageCircle, Mail } from "lucide-react";
 import { FaqAccordion } from "@/components/molecules/FaqAccordion";
 
 /* ─────────────────────────────────────────────────────────────
@@ -41,6 +41,7 @@ function useMercuryButton() {
 
 export function ContactPageContent() {
     const submitBtn = useMercuryButton();
+    const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     return (
         <section className="min-h-screen pt-32 pb-24 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
@@ -58,14 +59,12 @@ export function ContactPageContent() {
                     Contact
                 </p>
 
-                {/* FIXED: clamp() fluid scale, font-black, tight tracking */}
                 <h1 className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
                                text-[clamp(32px,4.5vw,60px)] text-ink mb-4">
-                    Stop Losing Leads.{" "}
-                    <span className="text-ink/60">Start Converting.</span>
+                    Let&apos;s talk about your system.
                 </h1>
                 <p className="text-slate-500 text-lg max-w-lg">
-                    Your competitors are already on WhatsApp. Are you?
+                    Your competitors are already automating. First call is free — we scope your project, identify what&apos;s possible, and you leave with a clear plan.
                 </p>
             </motion.div>
 
@@ -87,10 +86,10 @@ export function ContactPageContent() {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ ...spring, delay: 0.1 }}
                 >
-                    {/* Instant Connection card */}
-                    <div className="p-8 rounded-[2rem] bg-void text-white">
-                        <h2 className="text-white font-heading font-bold text-lg mb-6">
-                            Instant Connection
+                    {/* Reach us directly card */}
+                    <div className="p-8 rounded-[2rem] bg-black/[0.04] border border-black/[0.07]">
+                        <h2 className="text-ink font-heading font-bold text-base mb-6">
+                            Reach us directly
                         </h2>
 
                         <a
@@ -98,61 +97,49 @@ export function ContactPageContent() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-4 p-4 rounded-2xl
-                                       bg-white/[0.05] border border-white/[0.08]
-                                       hover:bg-white/[0.09] transition-colors duration-200
-                                       cursor-pointer mb-3"
+                                       bg-black/[0.03] border border-black/[0.06]
+                                       hover:bg-black/[0.06] transition-colors duration-200 cursor-pointer mb-3"
                         >
-                            {/* ACCENT AUDIT: icon → white/50 (decorative, not CTA) */}
-                            <MessageCircle className="w-7 h-7 text-white/50 shrink-0" strokeWidth={1.5} />
+                            <MessageCircle className="w-7 h-7 text-ink/30 shrink-0" strokeWidth={1.5} />
                             <div>
-                                <span className="text-white font-bold text-sm block">WhatsApp</span>
-                                <span className="text-white/40 text-xs">
-                                    Average response: 15 mins
-                                </span>
+                                <span className="text-ink font-bold text-sm block">WhatsApp</span>
+                                <span className="text-ink/40 text-xs">Average response: 15 mins</span>
                             </div>
                         </a>
 
                         <a
                             href="mailto:contact@lpwebstudio.co.za"
                             className="flex items-center gap-4 p-4 rounded-2xl
-                                       bg-white/[0.05] border border-white/[0.08]
-                                       hover:bg-white/[0.09] transition-colors duration-200
-                                       cursor-pointer"
+                                       bg-black/[0.03] border border-black/[0.06]
+                                       hover:bg-black/[0.06] transition-colors duration-200 cursor-pointer"
                         >
-                            {/* ACCENT AUDIT: icon → white/50 */}
-                            <Mail className="w-7 h-7 text-white/50 shrink-0" strokeWidth={1.5} />
+                            <Mail className="w-7 h-7 text-ink/30 shrink-0" strokeWidth={1.5} />
                             <div>
-                                <span className="text-white font-bold text-sm block">Email</span>
-                                <span className="text-white/40 text-xs">
-                                    contact@lpwebstudio.co.za
-                                </span>
+                                <span className="text-ink font-bold text-sm block">Email</span>
+                                <span className="text-ink/40 text-xs">contact@lpwebstudio.co.za</span>
                             </div>
                         </a>
                     </div>
 
-                    {/* Audit Offer card */}
-                    {/*
-                      ACCENT AUDIT:
-                      Was: border-accent/20 bg-accent/5 — over-using accent as decoration
-                      Now: neutral dark card matching the site's editorial tone
-                    */}
-                    <div className="p-8 rounded-[2rem] border border-black/[0.08] bg-zinc-50">
-                        <div className="flex items-center gap-3 mb-4">
-                            {/* ACCENT AUDIT: icon → ink/40 on light background */}
-                            <Gauge className="w-5 h-5 text-ink/40" strokeWidth={1.5} />
-                            <h2 className="text-ink font-heading font-bold text-base">
-                                The Audit Offer
-                            </h2>
-                        </div>
-                        <p className="text-slate-600 leading-relaxed text-sm">
-                            Unsure why your leads are dropping off? Submit your URL. We will run
-                            a raw data extraction and a Core Web Vitals test. You will receive
-                            a technical breakdown of exactly how much money your current latency
-                            is costing you, and the{" "}
-                            <strong className="text-ink">
-                                precise architecture required to fix it
-                            </strong>.
-                        </p>
+                    {/* How it works card */}
+                    <div className="p-8 rounded-[2rem] bg-black/[0.04] border border-black/[0.07]">
+                        <h2 className="text-ink font-heading font-bold text-base mb-6">
+                            How it works
+                        </h2>
+                        <ol className="space-y-4">
+                            {[
+                                "Fill in the form with your project brief.",
+                                "We reply within 15 minutes on WhatsApp.",
+                                "First call is free. We scope, you decide.",
+                            ].map((step, i) => (
+                                <li key={i} className="flex items-start gap-4">
+                                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink/30 mt-0.5 shrink-0 w-4">
+                                        {String(i + 1).padStart(2, "0")}
+                                    </span>
+                                    <span className="text-sm text-ink/60 leading-relaxed">{step}</span>
+                                </li>
+                            ))}
+                        </ol>
                     </div>
                 </motion.div>
 
@@ -166,10 +153,35 @@ export function ContactPageContent() {
                     transition={{ ...spring, delay: 0.2 }}
                 >
                     <h2 className="text-ink font-heading font-bold text-xl mb-8">
-                        Request a Free Speed Audit
+                        Book a Discovery Call
                     </h2>
 
-                    <form className="flex flex-col gap-10" onSubmit={(e) => e.preventDefault()}>
+                    <form
+                        className="flex flex-col gap-10"
+                        onSubmit={async (e) => {
+                            e.preventDefault();
+                            setFormState("loading");
+                            const data = new FormData(e.currentTarget);
+                            try {
+                                const res = await fetch(
+                                    process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ?? "/api/contact",
+                                    {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({
+                                            name: data.get("name"),
+                                            email: data.get("email"),
+                                            message: data.get("message"),
+                                        }),
+                                    }
+                                );
+                                if (!res.ok) throw new Error("Network response not ok");
+                                setFormState("success");
+                            } catch {
+                                setFormState("error");
+                            }
+                        }}
+                    >
                         <div>
                             <label className="text-[10px] uppercase tracking-widest
                                              text-slate-400 font-bold mb-2 block">
@@ -177,6 +189,7 @@ export function ContactPageContent() {
                             </label>
                             <input
                                 type="text"
+                                name="name"
                                 className="w-full bg-transparent border-b border-black/10
                                            py-5 outline-none focus:border-ink/40
                                            transition-colors text-ink placeholder:text-slate-300"
@@ -191,6 +204,7 @@ export function ContactPageContent() {
                             </label>
                             <input
                                 type="email"
+                                name="email"
                                 className="w-full bg-transparent border-b border-black/10
                                            py-5 outline-none focus:border-ink/40
                                            transition-colors text-ink placeholder:text-slate-300"
@@ -201,14 +215,16 @@ export function ContactPageContent() {
                         <div>
                             <label className="text-[10px] uppercase tracking-widest
                                              text-slate-400 font-bold mb-2 block">
-                                Your Website URL
+                                Tell us about your project
                             </label>
-                            <input
-                                type="url"
+                            <textarea
+                                name="message"
+                                rows={4}
                                 className="w-full bg-transparent border-b border-black/10
-                                           py-5 outline-none focus:border-ink/40
-                                           transition-colors text-ink placeholder:text-slate-300"
-                                placeholder="https://yourbusiness.co.za"
+                                           py-4 outline-none focus:border-ink/40
+                                           transition-colors text-ink placeholder:text-slate-300
+                                           resize-none"
+                                placeholder="What are you building? What's broken? What do you want to automate?"
                             />
                         </div>
 
@@ -217,18 +233,34 @@ export function ContactPageContent() {
                             onMouseMove={submitBtn.onMouseMove}
                             onMouseLeave={submitBtn.onMouseLeave}
                             type="submit"
+                            disabled={formState === "loading" || formState === "success"}
                             className="mercury-btn px-12 py-5 rounded-full text-sm font-bold
                                        uppercase tracking-[0.2em] text-white
-                                       w-full md:w-auto self-start cursor-pointer"
+                                       w-full md:w-auto self-start cursor-pointer
+                                       disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Initiate Audit
+                            {formState === "loading" ? "Sending..." : formState === "success" ? "Brief Sent ✓" : "Send Brief"}
                         </button>
+
+                        {formState === "success" && (
+                            <p className="text-sm text-ink/60">
+                                Got your brief. You&apos;ll hear from me within 15 minutes on WhatsApp.
+                            </p>
+                        )}
+                        {formState === "error" && (
+                            <p className="text-sm text-red-500/70">
+                                Something went wrong. Try WhatsApp directly instead.
+                            </p>
+                        )}
                     </form>
                 </motion.div>
             </div>
 
             {/* FAQ */}
-            <div className="mt-20 md:mt-24">
+            <div className="mt-24 pt-24 border-t border-black/[0.06]">
+                <p className="font-mono text-xs uppercase tracking-widest text-ink/30 mb-12">
+                    Common Questions
+                </p>
                 <FaqAccordion />
             </div>
         </section>
