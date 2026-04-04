@@ -99,7 +99,7 @@ const capabilities: Capability[] = [
     {
         index: "01",
         title: "Custom Next.js Applications",
-        body: "Brand new, hand-coded web applications built on React and Next.js. Engineered from the ground up for sub-second load times and maximum conversion. No templates. No bloat.",
+        body: "Your site loads in under a second. Your competitors' doesn't. We build from scratch — no templates, no page builders, no compromises. Pure Next.js, engineered for conversion.",
         bg: "#0A0A0A",
         textPrimary: "text-white",
         textBody: "text-white/50",
@@ -109,8 +109,8 @@ const capabilities: Capability[] = [
     {
         index: "02",
         title: "B2B Wholesale Portals",
-        body: "End-to-end ordering systems for manufacturers and distributors. Give your clients a secure portal for live pricing, automated ordering, and real-time WhatsApp notifications via n8n. Zero manual data entry.",
-        bg: "#131313",
+        body: "Your B2B clients stop calling to place orders. They log in, browse live pricing, and check out — automatically notified via WhatsApp. Zero manual data entry from your team.",
+        bg: "#1A1918",
         textPrimary: "text-white",
         textBody: "text-white/50",
         borderColor: "border-white/[0.06]",
@@ -119,7 +119,7 @@ const capabilities: Capability[] = [
     {
         index: "03",
         title: "Technical SEO & Architecture",
-        body: "We implement strict JSON-LD schema, semantic HTML, and Core Web Vitals optimisations — then engineer your site architecture and llms.txt so AI models like Gemini and ChatGPT accurately recommend your business.",
+        body: "When someone asks ChatGPT or Gemini to recommend a business like yours, we engineer the architecture so your name comes up. Standard SEO is no longer the only game.",
         bg: "#2B2A2A",
         textPrimary: "text-white",
         textBody: "text-white/70",
@@ -129,7 +129,7 @@ const capabilities: Capability[] = [
     {
         index: "04",
         title: "n8n Business Automations",
-        body: "Stop doing manual admin. We build custom API pipelines using n8n that automatically capture, enrich, and route your website leads directly to your CRM or WhatsApp.",
+        body: "Your site captures a lead. n8n enriches it, routes it to your CRM, and fires you a WhatsApp notification — before you've opened your laptop.",
         bg: "#F4F4F2",
         textPrimary: "text-[#0A0A0A]",
         textBody: "text-[#0A0A0A]/50",
@@ -206,7 +206,7 @@ function CapabilityColumn({
             }}
             animate={
                 isActive
-                    ? { boxShadow: "inset 0 0 60px rgba(254,176,93,0.08)" }
+                    ? { boxShadow: "inset 0 0 60px rgba(254,176,93,0.20)" }
                     : { boxShadow: "none" }
             }
             onClick={handleToggle}
@@ -271,19 +271,6 @@ function CapabilityColumn({
                         )}
                     </AnimatePresence>
 
-                    {/* Expand hint — visible only when collapsed */}
-                    <AnimatePresence>
-                        {!isActive && (
-                            <motion.p
-                                className={`text-[10px] uppercase tracking-widest font-bold mt-3 ${cap.textPrimary} opacity-30`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.3 }}
-                                exit={{ opacity: 0, transition: { duration: 0.08 } }}
-                            >
-                                Tap to expand
-                            </motion.p>
-                        )}
-                    </AnimatePresence>
                 </div>
             </div>
         </motion.div>
@@ -317,7 +304,7 @@ export function CoreCapabilitiesSection() {
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.5 }}
                     >
-                        Capabilities
+                        The Build
                     </motion.p>
 
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -330,19 +317,9 @@ export function CoreCapabilitiesSection() {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.5 }}
                         >
-                            High-Performance Engineering.{" "}
-                            <span className="text-accent">Zero Bloat.</span>
+                            Four disciplines.{" "}
+                            <span className="text-accent">One complete system.</span>
                         </motion.h2>
-
-                        <motion.p
-                            className="text-white/40 text-sm leading-relaxed max-w-xs md:text-right"
-                            variants={sectionReveal}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.5 }}
-                        >
-                            Select a capability to learn more.
-                        </motion.p>
                     </div>
                 </div>
             </div>
@@ -388,6 +365,25 @@ export function CoreCapabilitiesSection() {
                         reducedMotion={reducedMotion}
                     />
                 ))}
+            </div>
+
+            {/* CTA row */}
+            <div className="px-6 md:px-10 lg:px-16 py-16 max-w-7xl mx-auto flex items-center justify-between">
+                <p
+                    className="font-mono text-xs uppercase tracking-widest"
+                    style={{ color: "rgba(245,242,242,0.30)" }}
+                >
+                    Ready to scope a project?
+                </p>
+                <a
+                    href="#contact"
+                    className="font-mono text-xs uppercase tracking-widest
+                               transition-opacity duration-200 hover:opacity-60
+                               flex items-center gap-2"
+                    style={{ color: "#FEB05D" }}
+                >
+                    Start a conversation →
+                </a>
             </div>
 
             {/* Bottom padding spacer */}
