@@ -34,7 +34,7 @@ export function ParticleField({ color = "light" }: ParticleFieldProps) {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        let animFrameId: number;
+        let animFrameId = 0;
 
         // Dark particles for light bg, white particles for dark bg
         const rgb = color === "dark" ? "43, 42, 42" : "255, 255, 255";
@@ -75,15 +75,12 @@ export function ParticleField({ color = "light" }: ParticleFieldProps) {
             tick();
         };
 
-        // Use ResizeObserver to handle canvas resizing
+        // Use ResizeObserver to handle canvas resizing and particle re-initialization
         const observer = new ResizeObserver(() => {
-            canvas.width = canvas.offsetWidth || window.innerWidth;
-            canvas.height = canvas.offsetHeight || window.innerHeight;
+            cancelAnimationFrame(animFrameId);
+            initAndRun();
         });
         observer.observe(canvas);
-
-        // Initialize with correct dimensions
-        initAndRun();
 
         return () => {
             cancelAnimationFrame(animFrameId);
