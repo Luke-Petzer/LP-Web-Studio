@@ -16,8 +16,8 @@ export function Footer() {
                             height={40}
                             className="h-10 mb-4 brightness-0 invert"
                         />
-                        <p className="text-white/40 text-[10px] tracking-widest uppercase">
-                            Cape Town, SA.
+                        <p className="font-mono text-[10px] text-white/40 uppercase tracking-widest">
+                            High-performance systems. Built in Cape Town.
                         </p>
                     </div>
 
@@ -53,7 +53,7 @@ export function Footer() {
 
                     {/* Social Icons (Right) */}
                     <div className="flex flex-col items-center">
-                        <div className="flex gap-8 mb-4">
+                        <div className="flex gap-8">
                             <a
                                 href="https://www.instagram.com/lp.web.studio"
                                 target="_blank"
@@ -73,9 +73,6 @@ export function Footer() {
                                 <MessageCircle className="w-6 h-6" strokeWidth={1.5} />
                             </a>
                         </div>
-                        <p className="text-white/40 text-[10px] tracking-widest uppercase text-center">
-                            High-performance systems. Built in Cape Town.
-                        </p>
                     </div>
                 </div>
 
