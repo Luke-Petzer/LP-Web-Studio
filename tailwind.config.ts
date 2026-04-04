@@ -35,17 +35,20 @@ const config: Config = {
           "border-dim": "rgb(var(--bg-white) / 0.05)",
         },
         ghost: "rgb(var(--text-ghost) / <alpha-value>)",
+        paper: "rgb(var(--bg-paper) / <alpha-value>)",
+        carbon: "rgb(var(--bg-carbon) / <alpha-value>)",
       },
 
-      /* ─── 8px Soft Grid Spacing ─── */
+      /* ─── Exponential Spacing Scale ─── */
       spacing: {
         hairline: "4px",
         base: "8px",
         component: "16px",
         sectional: "24px",
-        atmospheric: "32px",
-        structural: "48px",
-        grandeur: "64px",
+        atmospheric: "40px",
+        structural: "96px",
+        grandeur: "128px",
+        epic: "160px",
       },
 
       /* ─── Golden Ratio Fluid Typography (φ = 1.618) ─── */
