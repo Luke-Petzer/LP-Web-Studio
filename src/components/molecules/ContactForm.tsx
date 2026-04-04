@@ -126,7 +126,7 @@ export function ContactForm() {
                     onMouseLeave={onMouseLeave}
                     type="submit"
                     disabled={formState === "loading"}
-                    className="mercury-btn px-16 py-[24px] rounded-full text-sm font-bold uppercase tracking-[0.2em] text-white shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="mercury-btn px-16 py-[24px] rounded-full text-sm font-bold uppercase tracking-[0.2em] text-white disabled:opacity-60 disabled:cursor-not-allowed"
                     whileHover={shouldReduceMotion || formState === "loading" ? {} : { scale: 1.03 }}
                     whileTap={shouldReduceMotion || formState === "loading" ? {} : { scale: 0.97 }}
                     transition={spring}
