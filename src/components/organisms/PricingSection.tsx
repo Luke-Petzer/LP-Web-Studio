@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Check, Zap } from "lucide-react";
+import { Check } from "lucide-react";
 
 const spring = { type: "spring" as const, stiffness: 160, damping: 26 };
 
@@ -17,17 +17,17 @@ const tiers = [
         subtext: "Once-Off + R350/pm hosting",
         description: "Fast, professional digital footprint for businesses going online.",
         features: [
-            "1-Page High-Performance Build",
-            "WhatsApp Lead Capture",
-            "Mobile-First Layout",
-            "Local SEO & Google Maps",
-            "Lightning-Fast Edge Hosting",
+            "1-Page Custom Next.js Build",
+            "WhatsApp Enquiry Integration",
+            "90+ PageSpeed Score — Guaranteed",
+            "Cape Town Local SEO Setup",
+            "Vercel Edge Hosting Included",
         ],
-        cta: "Get Started",
+        cta: "Start a Project",
         recommended: false,
         card: {
-            backgroundColor: "rgba(245,242,242,0.05)",
-            border: "1px solid rgba(245,242,242,0.08)",
+            backgroundColor: "rgba(245,242,242,0.08)",
+            border: "1px solid rgba(245,242,242,0.13)",
         },
         priceColor: "#F5F2F2",
         bodyColor: "rgba(245,242,242,0.50)",
@@ -46,10 +46,10 @@ const tiers = [
         description: "Built for lead generation, search visibility, and conversion.",
         features: [
             "3-Page Custom Architecture",
-            "Automated Booking Integration",
+            "Booking / Calendar Integration",
             "Dynamic Photo Gallery",
             "Google Business Profile Setup",
-            "Guaranteed 90+ PageSpeed",
+            "AI Search Visibility (Schema + llms.txt)",
         ],
         cta: "Partner with Us",
         recommended: true,
@@ -66,17 +66,17 @@ const tiers = [
         subtext: "Custom scope — monthly retainer based on usage",
         description: "Autonomous B2B pipelines and AI-powered systems built to scale.",
         features: [
-            "Full Next.js & DB Architecture",
-            "AI Lead Generation Engines",
-            "n8n Business Automations",
-            "Advanced Technical SEO",
-            "Priority Engineering Support",
+            "Full Next.js + Database Architecture",
+            "n8n Automation Pipeline",
+            "B2B Ordering Portal Development",
+            "Multi-system API Integration",
+            "Dedicated Engineering Partnership",
         ],
         cta: "Contact Studio",
         recommended: false,
         card: {
-            backgroundColor: "rgba(245,242,242,0.05)",
-            border: "1px solid rgba(245,242,242,0.08)",
+            backgroundColor: "rgba(245,242,242,0.08)",
+            border: "1px solid rgba(245,242,242,0.13)",
         },
         priceColor: "#F5F2F2",
         bodyColor: "rgba(245,242,242,0.50)",
@@ -101,7 +101,7 @@ export function PricingSection() {
 
                 {/* Header */}
                 <motion.div
-                    className="mb-16 md:mb-20"
+                    className="mb-6"
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
@@ -127,6 +127,18 @@ export function PricingSection() {
                         Hand-coded performance. Zero compromise. Pick your tier.
                     </p>
                 </motion.div>
+
+                <motion.p
+                    className="text-sm max-w-lg mt-2 mb-16 md:mb-20"
+                    style={{ color: "rgba(245,242,242,0.40)" }}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    Three scopes. Every project is hand-coded, performance-tested, and delivered on time.
+                    No templates, no page builders, no surprises.
+                </motion.p>
 
                 {/* Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -161,8 +173,7 @@ export function PricingSection() {
                                                        font-mono text-[10px] uppercase tracking-wider"
                                             style={{ backgroundColor: "#2B2A2A", color: "#F5F2F2" }}
                                         >
-                                            <Zap className="w-2.5 h-2.5" strokeWidth={2.5} />
-                                            Popular
+                                            Recommended
                                         </span>
                                     )}
                                 </div>
