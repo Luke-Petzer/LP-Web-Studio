@@ -46,16 +46,10 @@ const attributionReveal: Variants = {
  */
 export function TestimonialSection() {
     return (
-        <section className="relative bg-zinc-50 py-28 md:py-36 px-6 md:px-10 lg:px-16 overflow-hidden">
-
-            {/* Subtle diagonal pattern — prevents the light section feeling like dead space */}
-            <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none opacity-[0.03]"
-                style={{
-                    backgroundImage: "repeating-linear-gradient(135deg, #1e40af 0px, #1e40af 1px, transparent 1px, transparent 40px)",
-                }}
-            />
+        <section
+            className="relative py-32 md:py-40 px-6 md:px-10 lg:px-16 overflow-hidden"
+            style={{ backgroundColor: "#F5F2F2" }}
+        >
 
             <div className="relative z-10 max-w-4xl mx-auto">
                 <motion.div
