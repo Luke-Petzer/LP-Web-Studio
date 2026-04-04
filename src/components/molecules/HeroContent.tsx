@@ -152,8 +152,8 @@ export function HeroContent() {
 
             {/* ── Bottom metadata strip ─────────────────────────── */}
             <motion.div
-                className="absolute bottom-10 left-6 md:left-12 lg:left-20 z-10
-                           flex items-end gap-8 md:gap-12"
+                className="absolute bottom-10 left-6 md:left-12 lg:left-20 z-20
+                           flex flex-wrap items-end gap-8 md:gap-12 max-w-[60%]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.6 }}
@@ -163,20 +163,20 @@ export function HeroContent() {
                     { value: "Cape Town, ZA", label: "location" },
                     { value: "15 min", label: "avg. response" },
                 ].map(({ value, label }) => (
-                    <div key={label} className="flex flex-col gap-1">
-                        <span
-                            className="font-heading font-black text-[clamp(18px,2vw,28px)] tracking-[-0.02em] leading-none"
+                    <dl key={label} className="flex flex-col gap-1">
+                        <dd
+                            className="font-heading font-black text-[clamp(18px,2vw,28px)] tracking-[-0.02em] leading-none m-0"
                             style={{ color: "#2B2A2A" }}
                         >
                             {value}
-                        </span>
-                        <span
+                        </dd>
+                        <dt
                             className="font-mono text-[9px] uppercase tracking-[0.2em]"
                             style={{ color: "rgba(43,42,42,0.35)" }}
                         >
                             {label}
-                        </span>
-                    </div>
+                        </dt>
+                    </dl>
                 ))}
             </motion.div>
 
