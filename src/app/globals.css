@@ -148,10 +148,27 @@
 
   /* ─── Mercury Button (magnetic follow — Framer Motion spring only) ─── */
   /* Protocol §3: NO CSS transitions. All motion via Framer Motion springs. */
+
+  /* Primary dark — for light backgrounds (hero, contact, footer) */
   .mercury-btn {
+    position: relative;
+    background: #111111;
+    border-radius: 9999px;
+    color: #ffffff;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .mercury-btn:hover {
+    background: #222222;
+  }
+
+  /* Primary amber — for dark backgrounds */
+  .mercury-btn-amber {
     position: relative;
     background: linear-gradient(135deg, #feb05d 0%, #e8963a 100%);
     border-radius: 9999px;
+    color: #2B2A2A;
+    transition: background 0.2s ease, transform 0.15s ease;
   }
 
   /* ─── Scroll Reveal (CSS fallback for non-JS / prefers-reduced-motion) ─── */

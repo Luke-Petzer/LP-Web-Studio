@@ -41,8 +41,7 @@ export function MercuryButton({
                 onMouseMove={onMouseMove}
                 onMouseLeave={onMouseLeave}
                 href={primaryHref}
-                className="mercury-btn px-[40px] py-[16px] rounded-full text-sm font-bold text-white shadow-xl transition-colors hover:bg-white hover:text-black"
-                style={{ backgroundColor: "#111" }}
+                className="mercury-btn px-[40px] py-[16px] rounded-full text-sm font-bold text-white"
             >
                 {primaryText}
             </a>
