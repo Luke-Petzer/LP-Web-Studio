@@ -25,8 +25,7 @@ const contactSchema = z.object({
         .string()
         .min(10, "Message must be at least 10 characters")
         .max(2000, "Message must be under 2000 characters")
-        .trim()
-        .optional(),
+        .trim(),
     website: z.string().url().optional().or(z.literal("")), // honeypot-style optional field
 });
 
@@ -60,6 +59,19 @@ export async function POST(request: Request) {
             name: data.name,
             email: data.email,
         });
+
+        const webhookUrl = process.env.N8N_WEBHOOK_URL;
+        if (webhookUrl) {
+            try {
+                await fetch(webhookUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name: data.name, email: data.email, message: data.message }),
+                });
+            } catch {
+                // Webhook failure should not block the user response
+            }
+        }
 
         return NextResponse.json(
             { success: true, message: "Your message has been received. We'll be in touch within 24 hours." },

@@ -43,6 +43,34 @@ export function ContactPageContent() {
     const submitBtn = useMercuryButton();
     const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setFormState("loading");
+        const form = e.currentTarget;
+        const data = new FormData(form);
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: data.get("name"),
+                    email: data.get("email"),
+                    message: data.get("message"),
+                    website: data.get("website"), // honeypot
+                }),
+            });
+            if (res.status === 422) {
+                setFormState("error");
+                return;
+            }
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            form.reset();
+            setFormState("success");
+        } catch {
+            setFormState("error");
+        }
+    };
+
     return (
         <section className="min-h-screen pt-32 pb-24 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
 
@@ -132,7 +160,7 @@ export function ContactPageContent() {
                                 "We reply within 15 minutes on WhatsApp.",
                                 "First call is free. We scope, you decide.",
                             ].map((step, i) => (
-                                <li key={i} className="flex items-start gap-4">
+                                <li key={step} className="flex items-start gap-4">
                                     <span className="font-mono text-[10px] uppercase tracking-widest text-ink/30 mt-0.5 shrink-0 w-4">
                                         {String(i + 1).padStart(2, "0")}
                                     </span>
@@ -158,38 +186,20 @@ export function ContactPageContent() {
 
                     <form
                         className="flex flex-col gap-10"
-                        onSubmit={async (e) => {
-                            e.preventDefault();
-                            setFormState("loading");
-                            const data = new FormData(e.currentTarget);
-                            try {
-                                const res = await fetch(
-                                    process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ?? "/api/contact",
-                                    {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({
-                                            name: data.get("name"),
-                                            email: data.get("email"),
-                                            message: data.get("message"),
-                                        }),
-                                    }
-                                );
-                                if (!res.ok) throw new Error("Network response not ok");
-                                setFormState("success");
-                            } catch {
-                                setFormState("error");
-                            }
-                        }}
+                        onSubmit={handleSubmit}
                     >
                         <div>
-                            <label className="text-[10px] uppercase tracking-widest
+                            <label
+                                htmlFor="contact-name"
+                                className="text-[10px] uppercase tracking-widest
                                              text-slate-400 font-bold mb-2 block">
                                 Full Name
                             </label>
                             <input
+                                id="contact-name"
                                 type="text"
                                 name="name"
+                                required
                                 className="w-full bg-transparent border-b border-black/10
                                            py-5 outline-none focus:border-ink/40
                                            transition-colors text-ink placeholder:text-slate-300"
@@ -198,13 +208,17 @@ export function ContactPageContent() {
                         </div>
 
                         <div>
-                            <label className="text-[10px] uppercase tracking-widest
+                            <label
+                                htmlFor="contact-email"
+                                className="text-[10px] uppercase tracking-widest
                                              text-slate-400 font-bold mb-2 block">
                                 Email Address
                             </label>
                             <input
+                                id="contact-email"
                                 type="email"
                                 name="email"
+                                required
                                 className="w-full bg-transparent border-b border-black/10
                                            py-5 outline-none focus:border-ink/40
                                            transition-colors text-ink placeholder:text-slate-300"
@@ -213,19 +227,28 @@ export function ContactPageContent() {
                         </div>
 
                         <div>
-                            <label className="text-[10px] uppercase tracking-widest
+                            <label
+                                htmlFor="contact-message"
+                                className="text-[10px] uppercase tracking-widest
                                              text-slate-400 font-bold mb-2 block">
                                 Tell us about your project
                             </label>
                             <textarea
+                                id="contact-message"
                                 name="message"
                                 rows={4}
+                                required
                                 className="w-full bg-transparent border-b border-black/10
                                            py-4 outline-none focus:border-ink/40
                                            transition-colors text-ink placeholder:text-slate-300
                                            resize-none"
                                 placeholder="What are you building? What's broken? What do you want to automate?"
                             />
+                        </div>
+
+                        {/* Honeypot — visually hidden, bots fill this */}
+                        <div style={{ position: "absolute", left: "-9999px", top: "auto", width: "1px", height: "1px", overflow: "hidden" }} aria-hidden="true">
+                            <input type="text" name="website" tabIndex={-1} autoComplete="off" />
                         </div>
 
                         <button
@@ -239,19 +262,21 @@ export function ContactPageContent() {
                                        w-full md:w-auto self-start cursor-pointer
                                        disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {formState === "loading" ? "Sending..." : formState === "success" ? "Brief Sent ✓" : "Send Brief"}
+                            {formState === "loading" ? "Sending..." : formState === "success" ? "Brief Sent" : "Send Brief"}
                         </button>
 
-                        {formState === "success" && (
-                            <p className="text-sm text-ink/60">
-                                Got your brief. You&apos;ll hear from me within 15 minutes on WhatsApp.
-                            </p>
-                        )}
-                        {formState === "error" && (
-                            <p className="text-sm text-red-500/70">
-                                Something went wrong. Try WhatsApp directly instead.
-                            </p>
-                        )}
+                        <div aria-live="polite" aria-atomic="true">
+                            {formState === "success" && (
+                                <p className="text-sm text-ink/60">
+                                    Got your brief. You&apos;ll hear from me within 15 minutes on WhatsApp.
+                                </p>
+                            )}
+                            {formState === "error" && (
+                                <p className="text-sm" style={{ color: "rgba(239,68,68,0.70)" }} role="alert">
+                                    Something went wrong. Try WhatsApp directly instead.
+                                </p>
+                            )}
+                        </div>
                     </form>
                 </motion.div>
             </div>
