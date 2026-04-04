@@ -2,7 +2,14 @@
 
 import { motion, type Variants } from "framer-motion";
 
-const processCards = [
+type ProcessCard = {
+    index: string;
+    title: string;
+    body: string;
+    cardStyle: React.CSSProperties;
+};
+
+const processCards: ProcessCard[] = [
     {
         index: "01",
         title: "Direct Lead Capture",
@@ -20,6 +27,7 @@ const processCards = [
             backgroundColor: "#161616",
             border: "1px solid rgba(245,242,242,0.07)",
             borderTop: "2px solid rgba(254,176,93,0.30)",
+            // borderTop intentionally overrides the border shorthand top edge (CSS cascade)
         },
     },
     {
