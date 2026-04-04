@@ -23,56 +23,56 @@ export function Footer() {
 
                     {/* Nav Links & Email (Center) */}
                     <div className="flex flex-col items-center gap-4">
-                        <div className="flex gap-6 md:gap-8">
-                            <a
-                                href="#capabilities"
-                                className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-                            >
-                                Work
-                            </a>
-                            <a
-                                href="#founder"
-                                className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-                            >
-                                About
-                            </a>
-                            <a
-                                href="#contact"
-                                className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-                            >
-                                Contact
-                            </a>
-                        </div>
+                        <nav aria-label="Footer navigation">
+                            <div className="flex gap-6 md:gap-8">
+                                <a
+                                    href="#capabilities"
+                                    className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
+                                >
+                                    Work
+                                </a>
+                                <a
+                                    href="#founder"
+                                    className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
+                                >
+                                    About
+                                </a>
+                                <a
+                                    href="#contact"
+                                    className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
+                                >
+                                    Contact
+                                </a>
+                            </div>
+                        </nav>
                         <a
                             href="mailto:contact@lpwebstudio.co.za"
-                            className="font-mono text-[10px] text-white/50 hover:text-white/80 transition-colors tracking-wide"
+                            className="font-mono text-[10px] text-white/50 hover:text-white/80 transition-colors tracking-[0.2em]"
                         >
                             contact@lpwebstudio.co.za
                         </a>
                     </div>
 
                     {/* Social Icons (Right) */}
-                    <div className="flex flex-col items-center">
-                        <div className="flex gap-8">
-                            <a
-                                href="https://www.instagram.com/lp.web.studio"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-white/60 hover:text-white transition-colors"
-                                aria-label="Instagram"
-                            >
-                                <Instagram className="w-6 h-6" strokeWidth={1.5} />
-                            </a>
-                            <a
-                                href="https://wa.me/27673852286"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-white/60 hover:text-white transition-colors"
-                                aria-label="WhatsApp"
-                            >
-                                <MessageCircle className="w-6 h-6" strokeWidth={1.5} />
-                            </a>
-                        </div>
+                    <div className="flex gap-8">
+                        <a
+                            href="https://www.instagram.com/lp.web.studio"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white/60 hover:text-white transition-colors"
+                            aria-label="Instagram"
+                        >
+                            <Instagram className="w-6 h-6" strokeWidth={1.5} />
+                        </a>
+                        <a
+                            href="https://wa.me/27673852286"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white/60 hover:text-white transition-colors"
+                            aria-label="WhatsApp"
+                        >
+                            <MessageCircle className="w-6 h-6" strokeWidth={1.5} />
+                        </a>
                     </div>
                 </div>
 
