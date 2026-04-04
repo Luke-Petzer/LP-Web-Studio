@@ -1,20 +1,31 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, type Variants } from "framer-motion";
-import { GrainOverlay } from "@/components/atoms/GrainOverlay";
+import { motion, type Variants } from "framer-motion";
 
-/* ─────────────────────────────────────────────────────────────
-   Card entrance variant — slides in from the right
-   Direction is semantically correct: left panel is the anchor,
-   right cards arrive *toward* it.
-───────────────────────────────────────────────────────────── */
+const processCards = [
+    {
+        index: "01",
+        title: "Direct Lead Capture",
+        body: "Traditional forms are dead. We integrate WhatsApp, Telegram, and n8n webhook pipelines to capture, enrich, and route leads directly to your phone in milliseconds.",
+    },
+    {
+        index: "02",
+        title: "Edge Performance",
+        body: "Every millisecond costs money. Your Next.js application runs on Vercel's global CDN — bypassing shared hosting and delivering sub-second load times from Cape Town to London.",
+    },
+    {
+        index: "03",
+        title: "AI Search Visibility",
+        body: "Standard SEO is no longer enough. We engineer your site architecture and llms.txt so AI models like Gemini and ChatGPT accurately recommend your business when customers ask.",
+    },
+];
+
 const cardReveal: Variants = {
-    hidden: { opacity: 0, x: 40 },
+    hidden: { opacity: 0, y: 48 },
     visible: {
         opacity: 1,
-        x: 0,
-        transition: { type: "spring", stiffness: 160, damping: 28 },
+        y: 0,
+        transition: { type: "spring", stiffness: 140, damping: 24 },
     },
 };
 
@@ -28,217 +39,134 @@ const headlineReveal: Variants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { type: "spring", stiffness: 180, damping: 28, delay: 0.1 },
+        transition: { type: "spring", stiffness: 180, damping: 28, delay: 0.08 },
     },
 };
 
-/* ─────────────────────────────────────────────────────────────
-   Process card data
-───────────────────────────────────────────────────────────── */
-const processCards = [
-    {
-        index: "01",
-        title: "Direct Lead Capture",
-        body: "Traditional forms are dead. We integrate WhatsApp, Telegram, and n8n webhook pipelines to capture, enrich, and route leads directly to your phone in milliseconds.",
-    },
-    {
-        index: "02",
-        title: "Vercel Edge Rendering",
-        body: "Every millisecond costs money. We bypass shared hosting. Your Next.js application runs on Vercel's global CDN, delivering sub-second load times.",
-    },
-    {
-        index: "03",
-        title: "Generative Engine Optimization",
-        body: "Standard SEO is no longer enough. We engineer your site architecture and llms.txt files so AI models like Gemini and ChatGPT accurately recommend your business to users.",
-    },
-];
-
-/* ─────────────────────────────────────────────────────────────
-   ProcessCard — individual right-column card
-───────────────────────────────────────────────────────────── */
-/* ─── Corner accent SVG — same L-shape rotated to all 4 corners ─── */
-function CornerMark({ className }: { className: string }) {
-    return (
-        <svg
-            className={`absolute size-[9px] pointer-events-none ${className}`}
-            width="10" height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-            aria-hidden="true"
-        >
-            <path d="M0.5 0.2L0.5 9.2M0.2 0.5L9.2 0.5" stroke="currentColor" strokeWidth="1" />
-        </svg>
-    );
-}
-
-function ProcessCard({
-    card,
-}: {
-    card: (typeof processCards)[number];
-}) {
-    return (
-        <motion.div
-            className="group relative px-12 py-12 rounded-[2rem]
-                       transition-colors duration-300
-                       hover:bg-black/[0.03]"
-            variants={cardReveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-        >
-            {/* Corner accents — opacity-0 at rest, opacity-30 on hover */}
-            <CornerMark className="top-4 left-4 rotate-0    text-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CornerMark className="top-4 right-4 rotate-90  text-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CornerMark className="bottom-4 left-4 -rotate-90 text-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <CornerMark className="bottom-4 right-4 rotate-180 text-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-            {/* Counter */}
-            <p className="font-heading font-bold text-xs uppercase tracking-[0.25em] mb-6">
-                <span className="text-accent text-2xl font-extrabold tracking-[-0.03em] mr-2 leading-none">
-                    {card.index}
-                </span>
-                <span className="text-ink/30">/ 03</span>
-            </p>
-
-            {/* Title */}
-            <h3 className="text-ink font-heading font-bold text-2xl leading-snug mb-4">
-                {card.title}
-            </h3>
-
-            {/* Body */}
-            <p className="text-slate-500 text-base leading-relaxed">
-                {card.body}
-            </p>
-        </motion.div>
-    );
-}
-
-/* ─────────────────────────────────────────────────────────────
-   ProcessSection — Sticky Left / Scrolling Right
-
-   Architecture:
-     Left panel  → CSS position: sticky (zero JS cost, browser compositor)
-     Card reveal → Framer whileInView (fires on scroll entry per card)
-     Progress bar → Framer useScroll scoped to sectionRef
-
-   Mobile: sticky is md:-prefixed — on mobile the left panel
-   renders as a normal block header above stacked cards.
-   No mobile-specific animation logic required.
-───────────────────────────────────────────────────────────── */
 export function ProcessSection() {
-    const sectionRef = useRef<HTMLElement>(null);
-
-    /*
-      Scroll progress scoped to this section only.
-      offset: ["start center", "end center"]
-        → 0% when section top hits viewport center
-        → 100% when section bottom hits viewport center
-      This maps exactly to "user is actively reading this section."
-    */
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start center", "end center"],
-    });
-
-    /* Progress line height: 0% → 100% as user scrolls through section */
-    const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
     return (
         <section
-            ref={sectionRef}
             id="process"
-            className="relative bg-zinc-50 overflow-hidden"
+            className="relative overflow-hidden"
+            style={{ backgroundColor: "#0d0d0d" }}
         >
+            <div className="flex flex-col md:flex-row max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex flex-col md:flex-row gap-0 md:gap-16">
-
-                {/* ── LEFT PANEL — sticky anchor ───────────────────────────
-                    top-[72px]: clears the fixed nav (top-6 + height ≈ 72px)
-                    h-[calc(100vh-72px)]: fills remaining viewport height
-                    flex flex-col justify-center: vertically centers content
-                ────────────────────────────────────────────────────────── */}
+                {/* ── LEFT PANEL — sticky anchor ──────────────────────────
+                    h-screen + sticky top-0: stays pinned while right scrolls.
+                    Mobile: normal block above the cards.
+                ──────────────────────────────────────────────────────────── */}
                 <div
-                    className="md:w-[38%] shrink-0
-                               py-24 md:py-0
-                               md:sticky md:top-[72px]
-                               md:h-[calc(100vh-72px)]
-                               md:flex md:flex-col md:justify-center"
+                    className="
+                        md:w-[42%] shrink-0
+                        py-24 md:py-0
+                        md:sticky md:top-0
+                        md:h-screen
+                        md:flex md:flex-col md:justify-center
+                        md:pr-16
+                    "
                 >
-                    {/* Scroll progress indicator — thin accent line on the left edge */}
-                    <div className="hidden md:block absolute left-6 top-0 bottom-0 w-[2px] bg-black/[0.08]">
-                        <motion.div
-                            className="w-full bg-accent origin-top"
-                            style={{ height: lineHeight }}
-                        />
-                    </div>
+                    <motion.p
+                        className="font-mono text-[11px] uppercase tracking-[0.3em] mb-8"
+                        style={{ color: "rgba(245,242,242,0.35)" }}
+                        variants={labelReveal}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        The Method
+                    </motion.p>
 
-                    {/* Left panel content */}
-                    <div className="md:pl-6">
-                        {/*
-                          Left panel uses animate (not whileInView) because
-                          the panel is sticky — it stays in the viewport the
-                          entire time the user scrolls through the section.
-                          whileInView would either fire immediately or not at
-                          all depending on scroll position. animate fires once
-                          on mount with staggered delays for a clean entrance.
-                        */}
-                        <motion.p
-                            className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-8"
-                            variants={labelReveal}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            The Architecture
-                        </motion.p>
+                    <motion.h2
+                        className="font-heading font-extrabold
+                                   text-[clamp(32px,3.5vw,52px)]
+                                   tracking-[-0.03em] leading-[1.0] mb-6"
+                        style={{ color: "#F5F2F2" }}
+                        variants={headlineReveal}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        Three Systems.{" "}
+                        <br className="hidden lg:block" />
+                        Every Site.
+                    </motion.h2>
 
-                        <motion.h2
-                            className="font-heading font-extrabold text-ink
-                                       text-[clamp(32px,3.5vw,52px)]
-                                       tracking-[-0.03em] leading-[1.0] mb-6"
-                            variants={headlineReveal}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            Engineered for Speed{" "}
-                            <br className="hidden lg:block" />
-                            and Automation.
-                        </motion.h2>
+                    <motion.p
+                        className="text-sm leading-relaxed max-w-xs mb-10"
+                        style={{ color: "rgba(245,242,242,0.40)" }}
+                        variants={headlineReveal}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        Every site we ship runs all three. No exceptions, no shortcuts.
+                    </motion.p>
 
-                        <motion.p
-                            className="text-ink/40 text-sm leading-relaxed max-w-xs mb-8"
-                            variants={headlineReveal}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            Three systems. Every site we ship runs all of them.
-                        </motion.p>
-
-                        {/* Optional CTA */}
-                        <motion.a
-                            href="#contact"
-                            className="inline-flex items-center gap-2 text-accent text-xs
-                                       font-bold uppercase tracking-widest
-                                       hover:opacity-70 transition-opacity duration-200"
-                            variants={headlineReveal}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            Start a project
-                            <span aria-hidden="true">→</span>
-                        </motion.a>
-                    </div>
+                    <motion.a
+                        href="#contact"
+                        className="inline-flex items-center gap-2 font-mono text-xs
+                                   uppercase tracking-widest transition-opacity duration-200 hover:opacity-60"
+                        style={{ color: "#FEB05D" }}
+                        variants={headlineReveal}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        Start a project →
+                    </motion.a>
                 </div>
 
-                {/* ── RIGHT PANEL — scrolling cards ────────────────────────
-                    Cards enter from the right (x: 40 → 0) as user scrolls.
-                    Gap between cards: gap-8 on mobile, gap-12 on desktop.
-                ────────────────────────────────────────────────────────── */}
-                <div className="md:w-[62%] flex flex-col gap-12 md:gap-20 py-32">
+                {/* ── RIGHT PANEL — scrolling cards ─────────────────────────
+                    py-24: top/bottom padding gives breathing room.
+                    Each card is min-h-[75vh], creating the "scroll through"
+                    feel without any JavaScript scroll-locking.
+                ──────────────────────────────────────────────────────────── */}
+                <div className="md:w-[58%] flex flex-col gap-8 py-24">
                     {processCards.map((card) => (
-                        <ProcessCard key={card.title} card={card} />
+                        <motion.div
+                            key={card.index}
+                            className="relative rounded-[2rem] flex flex-col justify-between overflow-hidden"
+                            style={{
+                                backgroundColor: "rgba(245,242,242,0.05)",
+                                border: "1px solid rgba(245,242,242,0.07)",
+                                minHeight: "75vh",
+                                padding: "clamp(2rem, 4vw, 3rem)",
+                            }}
+                            variants={cardReveal}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.25 }}
+                        >
+                            {/* Title — top of card */}
+                            <h3
+                                className="font-heading font-black uppercase
+                                           text-[clamp(22px,3vw,36px)]
+                                           tracking-[-0.02em] leading-tight
+                                           max-w-[80%]"
+                                style={{ color: "#F5F2F2" }}
+                            >
+                                {card.title}
+                            </h3>
+
+                            {/* Number + rule + body — bottom */}
+                            <div>
+                                <p
+                                    className="font-mono text-xs mb-3"
+                                    style={{ color: "#FEB05D" }}
+                                >
+                                    {card.index}
+                                </p>
+                                <div
+                                    className="w-full h-px mb-5"
+                                    style={{ backgroundColor: "rgba(245,242,242,0.08)" }}
+                                />
+                                <p
+                                    className="text-sm md:text-base leading-relaxed max-w-md"
+                                    style={{ color: "rgba(245,242,242,0.50)" }}
+                                >
+                                    {card.body}
+                                </p>
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
-
             </div>
         </section>
     );
