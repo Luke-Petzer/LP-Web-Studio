@@ -7,13 +7,13 @@ import { ArrowRight } from "lucide-react";
 /* ─── Spring Physics (Protocol §3: Luxury Subtle) ─── */
 const spring = { type: "spring" as const, stiffness: 300, damping: 30, mass: 1 };
 
-/**
- * MercuryButton — Client Molecule
- * Owns the magnetic hover physics (direct DOM manipulation for performance).
- * Passed as a child to the HeroSection Server Component.
- * Protocol §4: Molecules are 'use client' for interaction.
- */
-export function MercuryButton() {
+export function MercuryButton({ 
+  primaryText = "Book a Systems Architecture Call",
+  primaryHref = "#contact"
+}: { 
+  primaryText?: string;
+  primaryHref?: string;
+}) {
     const shouldReduceMotion = useReducedMotion();
     const ref = useRef<HTMLAnchorElement>(null);
 
@@ -34,28 +34,18 @@ export function MercuryButton() {
     }, []);
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+        <div className="flex items-center gap-8">
             {/* Primary — Mercury magnetic CTA */}
             <a
                 ref={ref}
                 onMouseMove={onMouseMove}
                 onMouseLeave={onMouseLeave}
-                href="#contact"
-                className="mercury-btn px-[40px] py-[16px] rounded-full text-sm font-bold w-full md:w-auto text-white shadow-xl"
+                href={primaryHref}
+                className="mercury-btn px-[40px] py-[16px] rounded-full text-sm font-bold text-white shadow-xl transition-colors hover:bg-white hover:text-black"
+                style={{ backgroundColor: "#111" }}
             >
-                Run Performance Audit
+                {primaryText}
             </a>
-
-            {/* Secondary — Spring hover, no CSS transition */}
-            <motion.a
-                href="#work"
-                className="text-white/80 px-[32px] py-[16px] text-sm font-bold flex items-center gap-2"
-                whileHover={shouldReduceMotion ? {} : { color: "#ffffff", x: 4 }}
-                transition={spring}
-            >
-                View Case Studies{" "}
-                <ArrowRight className="w-4 h-4" strokeWidth={2} />
-            </motion.a>
         </div>
     );
 }

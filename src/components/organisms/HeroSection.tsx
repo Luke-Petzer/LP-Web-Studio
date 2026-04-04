@@ -2,17 +2,17 @@ import { HeroContent } from "@/components/molecules/HeroContent";
 
 /**
  * HeroSection — Server Component (Organism)
- * Protocol §4: Organisms are Server Components. All Framer Motion animation
- * logic lives in <HeroContent /> (Client Molecule island).
+ * Protocol §4: Organisms are Server Components. All animation logic,
+ * scroll transforms, and depth layer composition live in <HeroContent />
+ * (Client Molecule island).
  *
- * The <section> shell and semantic structure are server-rendered.
+ * Note: HeroContent owns its own <section>-equivalent wrapper (the div
+ * with mesh-transition + min-h-screen) so it can scope useScroll to a ref.
+ * This component is a thin pass-through for the server/client boundary.
  */
 export function HeroSection() {
     return (
-        <section
-            id="hero"
-            className="mesh-transition min-h-screen relative flex items-center justify-center pt-32 pb-32 px-6"
-        >
+        <section id="hero" aria-label="Hero">
             <HeroContent />
         </section>
     );

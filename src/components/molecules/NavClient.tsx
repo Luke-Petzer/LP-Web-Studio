@@ -43,7 +43,7 @@ export function NavClient() {
     }, [isOpen]);
 
     const forceLight = !isHomepage;
-    const isLight = forceLight || scrolled;
+    const isLight = forceLight || isHomepage || scrolled;
 
     /* ─── Hamburger span color ─── */
     const spanBg = isLight ? "bg-ink" : "bg-white";

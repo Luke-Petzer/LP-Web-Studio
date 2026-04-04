@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion, type Variants } from "framer-motion";
 import { GrainOverlay } from "@/components/atoms/GrainOverlay";
+import { ParticleField } from "@/components/atoms/ParticleField";
 import { MercuryButton } from "@/components/molecules/MercuryButton";
 
 const lineContainer: Variants = {
@@ -39,46 +40,6 @@ const ctaReveal: Variants = {
     },
 };
 
-function GhostGeometry() {
-    return (
-        <svg
-            viewBox="0 0 600 600"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            className="w-full h-full"
-        >
-            {[280, 240, 200, 160, 120, 80, 44].map((r, i) => (
-                <circle
-                    key={r}
-                    cx="300" cy="300" r={r}
-                    stroke="white"
-                    strokeWidth={i === 0 ? 0.5 : 0.75}
-                    strokeDasharray={i % 2 === 0 ? "3 8" : "1 12"}
-                    strokeOpacity={0.9 - i * 0.08}
-                />
-            ))}
-            {Array.from({ length: 24 }).map((_, i) => {
-                const angle = (i / 24) * Math.PI * 2;
-                const x2 = 300 + Math.cos(angle) * 278;
-                const y2 = 300 + Math.sin(angle) * 278;
-                return (
-                    <line
-                        key={i}
-                        x1="300" y1="300"
-                        x2={x2} y2={y2}
-                        stroke="white"
-                        strokeWidth="0.5"
-                        strokeOpacity={i % 3 === 0 ? 0.6 : 0.2}
-                    />
-                );
-            })}
-            <circle cx="300" cy="300" r="6" fill="white" fillOpacity="0.5" />
-            <circle cx="300" cy="300" r="14" stroke="white" strokeWidth="1" strokeOpacity="0.4" />
-        </svg>
-    );
-}
-
 export function HeroContent() {
     const heroRef = useRef<HTMLDivElement>(null);
     const shouldReduceMotion = useReducedMotion();
@@ -93,32 +54,29 @@ export function HeroContent() {
         [0, 1],
         shouldReduceMotion ? ["0%", "0%"] : ["0%", "18%"]
     );
-    const objectY = useTransform(
-        scrollYProgress,
-        [0, 1],
-        shouldReduceMotion ? ["0%", "0%"] : ["0%", "42%"]
-    );
 
     return (
         <div
             ref={heroRef}
             className="mesh-transition relative min-h-screen overflow-hidden flex items-center"
         >
-            {/* ── Layer 0: Grain texture ─────────────────────────────── */}
-            <GrainOverlay className="opacity-55" />
+            {/* ── Layer 0: Grain texture — lighter opacity on light bg ── */}
+            <GrainOverlay className="opacity-30" />
 
-            {/* ── Layer 0.5: Right-side radial accent glow ──────────── */}
+            {/* ── Layer 1: Dark ambient particles on light bg ─────────── */}
+            <ParticleField color="dark" />
+
+            {/* ── Layer 2: Warm amber radial glow — bottom-right ──────── */}
             <div
                 aria-hidden="true"
-                className="absolute z-[5] pointer-events-none
-                           right-[-5vw] top-1/2 -translate-y-1/2
-                           w-[50vw] h-[50vw] max-w-[700px] max-h-[700px]"
+                className="absolute z-[2] pointer-events-none inset-0"
                 style={{
-                    background: "radial-gradient(ellipse at center, rgba(30,64,175,0.18) 0%, transparent 70%)",
+                    background:
+                        "radial-gradient(ellipse 55% 50% at 80% 70%, rgba(254,176,93,0.12) 0%, transparent 70%)",
                 }}
             />
 
-            {/* ── Layer 1: Headline (z-10, slow parallax) ────────────── */}
+            {/* ── Layer 3: Headline (slow parallax) ─────────────────── */}
             <motion.div
                 style={{ y: textY }}
                 className="absolute inset-0 z-10 flex flex-col justify-center
@@ -133,28 +91,26 @@ export function HeroContent() {
                     {/* Label */}
                     <motion.p
                         variants={lineReveal}
-                        className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-8"
+                        className="font-mono text-[11px] uppercase tracking-[0.35em] mb-6"
+                        style={{ color: "rgba(43,42,42,0.35)" }}
                     >
-                        Precision Engineering
+                        LP Web Studio — Cape Town
                     </motion.p>
 
-                    {/*
-                      H1 — two lines with different scales.
-                      Line 1: smaller — sets the stage
-                      Line 2: 1.4× larger — the statement
-                    */}
+                    {/* H1 */}
                     <h1 className="font-heading font-extrabold tracking-[-0.04em] leading-[0.93] text-left">
                         <motion.span
                             variants={lineReveal}
-                            className="block text-white text-[clamp(28px,4vw,58px)]"
+                            className="block text-[clamp(28px,4vw,58px)]"
+                            style={{ color: "rgba(43,42,42,0.40)" }}
                         >
-                            Your Website is
+                            Stop Running Your Business
                         </motion.span>
                         <motion.span
                             variants={lineReveal}
                             className="block text-accent text-[clamp(46px,7.5vw,108px)]"
                         >
-                            Leaking Revenue.
+                            on Spreadsheets.
                         </motion.span>
                     </h1>
 
@@ -163,11 +119,13 @@ export function HeroContent() {
                         variants={fadeIn}
                         initial="hidden"
                         animate="visible"
-                        className="text-white/50 text-base md:text-lg
-                                   max-w-sm leading-relaxed mt-8 mb-10"
+                        className="text-base md:text-lg max-w-lg leading-relaxed mt-12 mb-12"
+                        style={{ color: "rgba(43,42,42,0.55)" }}
                     >
-                        Custom-engineered React applications.{" "}
-                        <span className="text-accent font-semibold">Guaranteed 90+ PageSpeed.</span>
+                        We engineer custom B2B ordering portals and automated SaaS systems for scaling businesses.{" "}
+                        <span style={{ color: "#2B2A2A" }} className="font-medium">
+                            High-performance infrastructure designed to eliminate manual admin.
+                        </span>
                     </motion.p>
 
                     {/* CTA row */}
@@ -177,22 +135,12 @@ export function HeroContent() {
                         animate="visible"
                         className="flex flex-col md:flex-row items-start md:items-center gap-4"
                     >
-                        <MercuryButton />
+                        <MercuryButton
+                            primaryText="Book a Systems Architecture Call"
+                            primaryHref="#contact"
+                        />
                     </motion.div>
                 </motion.div>
-            </motion.div>
-
-            {/* ── Layer 2: Ghost geometry (z-20, fast parallax) ────────── */}
-            <motion.div
-                style={{ y: objectY }}
-                className="absolute z-20 pointer-events-none
-                           right-[-8vw] md:right-[-4vw] lg:right-[0vw]
-                           top-1/2 -translate-y-1/2
-                           w-[55vw] md:w-[46vw] lg:w-[40vw]
-                           max-w-[640px]
-                           opacity-[0.14]"
-            >
-                <GhostGeometry />
             </motion.div>
 
             {/* ── Scroll indicator ─────────────────────────────────────── */}
@@ -203,15 +151,16 @@ export function HeroContent() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.6 }}
             >
-                <span className="text-white/30 text-[10px] uppercase tracking-[0.25em] font-bold">
+                <span
+                    className="font-mono text-[10px] uppercase tracking-[0.25em]"
+                    style={{ color: "rgba(43,42,42,0.25)" }}
+                >
                     Scroll
                 </span>
                 <motion.div
-                    className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent"
-                    animate={shouldReduceMotion ? {} : {
-                        scaleY: [1, 0.3, 1],
-                        originY: 0,
-                    }}
+                    className="w-[1px] h-8"
+                    style={{ background: "linear-gradient(to bottom, rgba(43,42,42,0.20), transparent)" }}
+                    animate={shouldReduceMotion ? {} : { scaleY: [1, 0.3, 1], originY: 0 }}
                     transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
                 />
             </motion.div>
