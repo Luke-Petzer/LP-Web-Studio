@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, useMotionValueEvent, useScroll, useReducedMotion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { Zap } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
@@ -11,6 +10,12 @@ const navLinks = [
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
 ];
+
+const CornerMark = ({ className }: { className?: string }) => (
+    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true" className={className}>
+        <path d="M0.5 0.5L0.5 7.5M0.5 0.5L7.5 0.5" stroke="currentColor" strokeWidth="1"/>
+    </svg>
+);
 
 /**
  * NavClient — Client Molecule
@@ -111,16 +116,16 @@ export function NavClient() {
                                 <motion.a
                                     key={link.label}
                                     href={link.href}
-                                    className="text-xs font-medium uppercase tracking-widest"
-                                    animate={{
-                                        color: isActive
-                                            ? "rgb(var(--accent))"
-                                            : isLight ? "#1a1a1a" : "#ffffff",
-                                    }}
+                                    className="group relative text-xs font-medium uppercase tracking-widest overflow-hidden h-[1.2em] flex items-center"
+                                    animate={{ color: isActive ? "rgb(var(--accent))" : isLight ? "#1a1a1a" : "#ffffff" }}
                                     transition={shouldReduceMotion ? { duration: 0 } : morphTransition}
-                                    whileHover={shouldReduceMotion ? {} : { opacity: 0.7 }}
                                 >
-                                    {link.label}
+                                    <span className="block transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:-translate-y-full">
+                                        {link.label}
+                                    </span>
+                                    <span aria-hidden="true" className="absolute block translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:translate-y-0">
+                                        {link.label}
+                                    </span>
                                 </motion.a>
                             );
                         })}
@@ -129,13 +134,16 @@ export function NavClient() {
                     {/* CTA — hidden on mobile */}
                     <motion.a
                         href={isHomepage ? "#contact" : "/contact"}
-                        className="hidden md:inline-flex mercury-btn px-[16px] py-[8px] rounded-full text-xs font-bold uppercase tracking-wider text-white items-center"
+                        className="group hidden md:inline-flex relative mercury-btn px-[16px] py-[8px] rounded-full text-xs font-bold uppercase tracking-wider text-white items-center"
                         whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
                         whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
                         transition={morphTransition}
                     >
-                        <Zap className="inline w-3 h-3 mr-1" strokeWidth={2.5} />
-                        Audit
+                        <CornerMark className="absolute top-0 left-0 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute top-0 right-0 rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute bottom-0 right-0 rotate-180 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute bottom-0 left-0 -rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        Book a Call
                     </motion.a>
 
                     {/* ─── Morphing Hamburger (mobile only) ─── */}
@@ -194,10 +202,9 @@ export function NavClient() {
                             <a
                                 href={isHomepage ? "#contact" : "/contact"}
                                 onClick={() => setIsOpen(false)}
-                                className="mercury-btn px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white inline-flex items-center gap-1 mt-4"
+                                className="mercury-btn px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white inline-flex items-center mt-4"
                             >
-                                <Zap className="w-3 h-3" strokeWidth={2.5} />
-                                Free Audit
+                                Book a Call
                             </a>
                         </motion.div>
                     </motion.div>
