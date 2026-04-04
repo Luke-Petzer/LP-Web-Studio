@@ -120,12 +120,6 @@ export function PricingSection() {
                     >
                         The Performance Packages
                     </h2>
-                    <p
-                        className="text-sm max-w-sm"
-                        style={{ color: "rgba(245,242,242,0.40)" }}
-                    >
-                        Hand-coded performance. Zero compromise. Pick your tier.
-                    </p>
                 </motion.div>
 
                 <motion.p

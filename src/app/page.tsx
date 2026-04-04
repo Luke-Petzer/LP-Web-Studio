@@ -52,7 +52,7 @@ const homepageFaqs = [
   5. Testimonial #F5F2F2  light   TRUST     — warm, human
   6. Founder     #0d0d0d  dark    CONVICTION — the human behind the studio
   7. Pricing     #2B2A2A  dark    DECISION  — serious
-  7. Contact     #F5F2F2  light   ACTION    — open, welcoming
+  8. Contact     #F5F2F2  light   ACTION    — open, welcoming
 */
 export default function HomePage() {
     return (

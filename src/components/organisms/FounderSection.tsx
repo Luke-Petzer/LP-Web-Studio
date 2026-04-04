@@ -26,7 +26,7 @@ const clipReveal: Variants = {
 export function FounderSection() {
     return (
         <section
-            className="relative px-6 md:px-10 lg:px-16 py-32 md:py-40 overflow-hidden"
+            className="relative px-6 md:px-10 lg:px-16 py-32 md:py-40"
             style={{ backgroundColor: "#0d0d0d" }}
         >
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -64,7 +64,7 @@ export function FounderSection() {
                 {/* Right — Conviction statement */}
                 <div className="flex flex-col gap-8">
                     <motion.p
-                        variants={clipReveal}
+                        variants={fadeUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.3 }}
@@ -99,7 +99,7 @@ export function FounderSection() {
                         That is the standard. No exceptions.
                     </motion.p>
 
-                    <motion.footer
+                    <motion.div
                         variants={fadeUp}
                         initial="hidden"
                         whileInView="visible"
@@ -117,7 +117,7 @@ export function FounderSection() {
                         >
                             Founder · LP Web Studio · Cape Town
                         </p>
-                    </motion.footer>
+                    </motion.div>
                 </div>
             </div>
         </section>
