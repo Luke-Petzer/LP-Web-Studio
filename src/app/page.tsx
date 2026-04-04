@@ -6,6 +6,7 @@ import { ProcessSection } from "@/components/organisms/ProcessSection";
 import { CoreCapabilitiesSection } from "@/components/organisms/CoreCapabilitiesSection";
 import { B2BCallout } from "@/components/organisms/B2BCallout";
 import { TestimonialSection } from "@/components/organisms/TestimonialSection";
+import { FounderSection } from "@/components/organisms/FounderSection";
 import { PricingSection } from "@/components/organisms/PricingSection";
 import { ContactPageContent } from "@/components/organisms/ContactPageContent";
 import { Footer } from "@/components/organisms/Footer";
@@ -49,7 +50,8 @@ const homepageFaqs = [
   3. Capabilities #2B2A2A dark   WHAT      — dark continuation
   4. B2BCallout  #FEB05D  amber   PROOF     — amber punctuation
   5. Testimonial #F5F2F2  light   TRUST     — warm, human
-  6. Pricing     #2B2A2A  dark    DECISION  — serious
+  6. Founder     #0d0d0d  dark    CONVICTION — the human behind the studio
+  7. Pricing     #2B2A2A  dark    DECISION  — serious
   7. Contact     #F5F2F2  light   ACTION    — open, welcoming
 */
 export default function HomePage() {
@@ -76,6 +78,9 @@ export default function HomePage() {
                 </Suspense>
                 <Suspense>
                     <TestimonialSection />
+                </Suspense>
+                <Suspense>
+                    <FounderSection />
                 </Suspense>
                 <Suspense>
                     <PricingSection />
