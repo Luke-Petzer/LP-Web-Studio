@@ -108,9 +108,9 @@ const capabilities: Capability[] = [
     },
     {
         index: "02",
-        title: "Legacy Rebuilds & Speed Optimization",
-        body: "Love your current design but losing leads to a slow WordPress backend? We rip out the old engine and rebuild your existing UI on our high-speed React stack.",
-        bg: "#111827",
+        title: "B2B Wholesale Portals",
+        body: "End-to-end ordering systems for manufacturers and distributors. Give your clients a secure portal for live pricing, automated ordering, and real-time WhatsApp notifications via n8n. Zero manual data entry.",
+        bg: "#131313",
         textPrimary: "text-white",
         textBody: "text-white/50",
         borderColor: "border-white/[0.06]",
@@ -118,9 +118,9 @@ const capabilities: Capability[] = [
     },
     {
         index: "03",
-        title: "Technical SEO & GEO",
-        body: "We implement strict JSON-LD schema, Semantic HTML, and Core Web Vitals optimisations — then engineer your llms.txt so AI models like Gemini and ChatGPT recommend your business.",
-        bg: "#1e40af",
+        title: "Technical SEO & Architecture",
+        body: "We implement strict JSON-LD schema, semantic HTML, and Core Web Vitals optimisations — then engineer your site architecture and llms.txt so AI models like Gemini and ChatGPT accurately recommend your business.",
+        bg: "#2B2A2A",
         textPrimary: "text-white",
         textBody: "text-white/70",
         borderColor: "border-white/[0.1]",
@@ -198,7 +198,7 @@ function CapabilityColumn({
                 relative flex flex-col justify-between overflow-hidden
                 border-r last:border-r-0 ${cap.borderColor}
                 cursor-pointer select-none
-                min-h-[480px] md:min-h-[560px]
+                min-h-[520px] md:min-h-[620px]
                 w-full
             `}
             style={{
@@ -206,7 +206,7 @@ function CapabilityColumn({
             }}
             animate={
                 isActive
-                    ? { boxShadow: "inset 0 0 60px rgba(30,64,175,0.08)" }
+                    ? { boxShadow: "inset 0 0 60px rgba(254,176,93,0.08)" }
                     : { boxShadow: "none" }
             }
             onClick={handleToggle}
@@ -236,7 +236,7 @@ function CapabilityColumn({
             </div>
 
             {/* Content — flex-col, space-between fills column height */}
-            <div className="relative z-10 flex flex-col justify-between h-full p-7 md:p-8 gap-6">
+            <div className="relative z-10 flex flex-col justify-between h-full p-10 md:p-12 gap-8">
 
                 {/* TOP: counter */}
                 <p className={`text-[10px] font-bold uppercase tracking-[0.3em] ${cap.textPrimary} opacity-40`}>
@@ -293,21 +293,8 @@ function CapabilityColumn({
 /* ─────────────────────────────────────────────────────────────
    CoreCapabilitiesSection — Horizontal Accordion (desktop)
                              Vertical Accordion (mobile)
-
-   Desktop layout:
-     - 4 columns share full width via flex
-     - Active column: flex-[2.5], inactive: flex-[1]
-     - Framer `layout` prop animates the reflow via FLIP
-     - No reflow on main thread — only transform composited
-
-   Mobile layout:
-     - Columns stack vertically (flex-col)
-     - Each is full width
-     - Body copy still toggles via AnimatePresence
-     - No flex-basis manipulation needed
 ───────────────────────────────────────────────────────────── */
 export function CoreCapabilitiesSection() {
-    /* null = no active column on initial load — user chooses */
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const reducedMotion = useReducedMotion() ?? false;
 
@@ -319,7 +306,7 @@ export function CoreCapabilitiesSection() {
         <section id="capabilities" className="bg-void overflow-hidden">
 
             {/* Section header — sits above the accordion columns */}
-            <div className="relative px-6 md:px-10 lg:px-16 pt-24 pb-16 max-w-7xl mx-auto">
+            <div className="relative px-6 md:px-10 lg:px-16 pt-32 pb-20 max-w-7xl mx-auto">
                 <GrainOverlay className="opacity-40" />
 
                 <div className="relative z-10">
@@ -330,7 +317,7 @@ export function CoreCapabilitiesSection() {
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.5 }}
                     >
-                        Core Capabilities
+                        Capabilities
                     </motion.p>
 
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -389,10 +376,7 @@ export function CoreCapabilitiesSection() {
                 ))}
             </div>
 
-            {/* ── MOBILE: Vertical accordion ───────────────────────────
-                Each card is full-width. Same toggle logic, no flex-basis.
-                Body copy still uses AnimatePresence via CapabilityColumn.
-            ──────────────────────────────────────────────────────────── */}
+            {/* ── MOBILE: Vertical accordion ─────────────────────────── */}
             <div className="flex md:hidden flex-col" aria-label="Core capabilities">
                 {capabilities.map((cap, i) => (
                     <CapabilityColumn
@@ -406,8 +390,8 @@ export function CoreCapabilitiesSection() {
                 ))}
             </div>
 
-            {/* Bottom padding spacer — section has no py-structural to allow flush columns */}
-            <div className="h-28 bg-void" />
+            {/* Bottom padding spacer */}
+            <div className="h-32 bg-void" />
         </section>
     );
 }
