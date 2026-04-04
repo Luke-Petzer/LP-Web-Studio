@@ -98,19 +98,26 @@ export function HeroContent() {
                     </motion.p>
 
                     {/* H1 */}
-                    <h1 className="font-heading font-extrabold tracking-[-0.04em] leading-[0.93] text-left">
+                    <h1 className="font-heading font-black tracking-[-0.04em] leading-[0.93] text-left">
                         <motion.span
                             variants={lineReveal}
-                            className="block text-[clamp(28px,4vw,58px)]"
-                            style={{ color: "rgba(43,42,42,0.40)" }}
+                            className="block text-[clamp(44px,6.5vw,96px)]"
+                            style={{ color: "rgba(43,42,42,0.55)" }}
                         >
-                            Stop Running Your Business
+                            Your business
                         </motion.span>
                         <motion.span
                             variants={lineReveal}
-                            className="block text-accent text-[clamp(46px,7.5vw,108px)]"
+                            className="block text-[clamp(44px,6.5vw,96px)]"
+                            style={{ color: "#2B2A2A" }}
                         >
-                            on Spreadsheets.
+                            runs on manual work.
+                        </motion.span>
+                        <motion.span
+                            variants={lineReveal}
+                            className="block text-accent text-[clamp(44px,6.5vw,96px)]"
+                        >
+                            We fix that.
                         </motion.span>
                     </h1>
 
@@ -122,9 +129,9 @@ export function HeroContent() {
                         className="text-base md:text-lg max-w-lg leading-relaxed mt-12 mb-12"
                         style={{ color: "rgba(43,42,42,0.55)" }}
                     >
-                        We engineer custom B2B ordering portals and automated SaaS systems for scaling businesses.{" "}
+                        Custom systems for businesses that have outgrown manual processes.{" "}
                         <span style={{ color: "#2B2A2A" }} className="font-medium">
-                            High-performance infrastructure designed to eliminate manual admin.
+                            No templates. No shortcuts. No admin overhead.
                         </span>
                     </motion.p>
 
@@ -136,16 +143,46 @@ export function HeroContent() {
                         className="flex flex-col md:flex-row items-start md:items-center gap-4"
                     >
                         <MercuryButton
-                            primaryText="Book a Systems Architecture Call"
+                            primaryText="Book a Call"
                             primaryHref="#contact"
                         />
                     </motion.div>
                 </motion.div>
             </motion.div>
 
+            {/* ── Bottom metadata strip ─────────────────────────── */}
+            <motion.div
+                className="absolute bottom-10 left-6 md:left-12 lg:left-20 z-10
+                           flex items-end gap-8 md:gap-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
+            >
+                {[
+                    { value: "94", label: "avg. PageSpeed" },
+                    { value: "Cape Town, ZA", label: "location" },
+                    { value: "15 min", label: "avg. response" },
+                ].map(({ value, label }) => (
+                    <div key={label} className="flex flex-col gap-1">
+                        <span
+                            className="font-heading font-black text-[clamp(18px,2vw,28px)] tracking-[-0.02em] leading-none"
+                            style={{ color: "#2B2A2A" }}
+                        >
+                            {value}
+                        </span>
+                        <span
+                            className="font-mono text-[9px] uppercase tracking-[0.2em]"
+                            style={{ color: "rgba(43,42,42,0.35)" }}
+                        >
+                            {label}
+                        </span>
+                    </div>
+                ))}
+            </motion.div>
+
             {/* ── Scroll indicator ─────────────────────────────────────── */}
             <motion.div
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10
+                className="absolute bottom-10 right-6 md:right-12 lg:right-20 z-10
                            flex flex-col items-center gap-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
