@@ -77,8 +77,8 @@ export function ParticleField({ color = "light" }: ParticleFieldProps) {
 
         // Use ResizeObserver to handle canvas resizing
         const observer = new ResizeObserver(() => {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+            canvas.width = canvas.offsetWidth || window.innerWidth;
+            canvas.height = canvas.offsetHeight || window.innerHeight;
         });
         observer.observe(canvas);
 
