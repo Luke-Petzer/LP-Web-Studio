@@ -94,7 +94,7 @@ export function ContactPageContent() {
                 transition={{ ...spring, delay: 0.08 }}
             >
 
-                <h1 className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
+                <h1 className="font-heading font-black tracking-[-0.03em] leading-[0.95]
                                text-[clamp(32px,4.5vw,60px)] text-ink mb-4">
                     Let&apos;s talk about your system.
                 </h1>
@@ -187,7 +187,7 @@ export function ContactPageContent() {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ ...spring, delay: 0.2 }}
                 >
-                    <h2 className="text-ink font-heading font-bold text-xl mb-8">
+                    <h2 className="text-ink font-heading font-extrabold text-xl mb-8">
                         Book a Discovery Call
                     </h2>
 

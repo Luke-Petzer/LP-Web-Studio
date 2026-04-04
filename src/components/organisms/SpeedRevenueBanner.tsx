@@ -65,7 +65,7 @@ export function SpeedRevenueBanner() {
                         </div>
 
                         {/* FIXED: clamp() fluid scale, font-black, tight tracking */}
-                        <h2 className="font-heading font-extrabold tracking-[-0.04em] leading-[0.93]
+                        <h2 className="font-heading font-black tracking-[-0.04em] leading-[0.93]
                                        text-[clamp(32px,4vw,56px)] text-white mb-6">
                             Speed is{" "}
                             {/* KEEP: one headline emphasis word = allowed accent role */}

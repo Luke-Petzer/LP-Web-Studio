@@ -122,7 +122,7 @@ export function ConfidentIntermission() {
                     large (1440px) → 88px cap
                 */}
                 <h2
-                    className="font-heading font-extrabold tracking-[-0.04em] leading-[0.92]
+                    className="font-heading font-black tracking-[-0.04em] leading-[0.92]
                                text-[clamp(40px,6.5vw,88px)] mb-14"
                 >
                     <motion.span

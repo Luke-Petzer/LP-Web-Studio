@@ -74,7 +74,7 @@ export function PortfolioSection() {
 
                 {/* FIXED: clamp() fluid scale, font-black, tight tracking */}
                 <motion.h2
-                    className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
+                    className="font-heading font-black tracking-[-0.03em] leading-[0.95]
                                text-[clamp(32px,4vw,56px)] text-ink"
                     variants={fadeUp}
                     initial="hidden"

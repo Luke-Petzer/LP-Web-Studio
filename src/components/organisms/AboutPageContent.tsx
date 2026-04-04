@@ -93,7 +93,7 @@ export function AboutPageContent() {
                 <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
                     About
                 </p>
-                <h1 className="text-ink text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-4">
+                <h1 className="text-ink text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tight mb-4">
                     Cape Town&apos;s{" "}
                     <span className="text-accent">Performance-First</span> Developer.
                 </h1>

@@ -112,7 +112,7 @@ export function PricingSection() {
                     Pricing
                 </motion.p>
                 <motion.h2
-                    className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
+                    className="font-heading font-black tracking-[-0.03em] leading-[0.95]
                                text-[clamp(32px,4vw,56px)] mb-4"
                     style={{ color: "#F5F2F2" }}
                     variants={fadeUp}
@@ -158,7 +158,7 @@ export function PricingSection() {
                                 {/* Name + badge */}
                                 <div className="flex items-start justify-between mb-8">
                                     <h3
-                                        className="font-mono text-[10px] uppercase tracking-[0.25em]"
+                                        className="font-mono font-bold text-[10px] uppercase tracking-[0.25em]"
                                         style={{ color: tier.bodyColor }}
                                     >
                                         {tier.name}

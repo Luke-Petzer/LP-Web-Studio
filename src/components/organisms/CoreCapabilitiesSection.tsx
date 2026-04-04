@@ -248,7 +248,7 @@ function CapabilityColumn({
                 <div>
                     <h3
                         className={`
-                            font-heading font-black leading-tight
+                            font-heading font-bold leading-tight
                             ${isActive ? "text-2xl md:text-3xl mb-4" : "text-xl md:text-2xl mb-0"}
                             ${cap.textPrimary}
                             transition-all duration-300
@@ -310,7 +310,7 @@ export function CoreCapabilitiesSection() {
 
                     <div className="flex flex-col gap-4">
                         <motion.h2
-                            className="font-heading font-extrabold text-white
+                            className="font-heading font-black text-white
                                        text-[clamp(32px,4vw,56px)]
                                        tracking-[-0.03em] leading-[0.95] max-w-2xl"
                             variants={sectionReveal}

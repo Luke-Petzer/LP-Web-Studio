@@ -67,7 +67,7 @@ export function WorkPageContent() {
                 <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
                     Portfolio
                 </p>
-                <h1 className="text-ink text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight mb-4">
+                <h1 className="text-ink text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tight mb-4">
                     We Don&apos;t Just Build.{" "}
                     <span className="text-accent">We Benchmark.</span>
                 </h1>

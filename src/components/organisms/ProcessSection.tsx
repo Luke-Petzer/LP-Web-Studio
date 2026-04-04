@@ -95,7 +95,7 @@ export function ProcessSection() {
                     </motion.p>
 
                     <motion.h2
-                        className="font-heading font-extrabold
+                        className="font-heading font-black
                                    text-[clamp(32px,3.5vw,52px)]
                                    tracking-[-0.03em] leading-[1.0] mb-6"
                         style={{ color: "#F5F2F2" }}
@@ -153,7 +153,7 @@ export function ProcessSection() {
                         >
                             {/* Title — top of card */}
                             <h3
-                                className="font-heading font-black uppercase
+                                className="font-heading font-bold uppercase
                                            text-[clamp(22px,3vw,36px)]
                                            tracking-[-0.02em] leading-tight
                                            max-w-[80%]"
