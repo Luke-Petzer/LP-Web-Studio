@@ -49,7 +49,7 @@ export function B2BCallout() {
                             className="font-mono text-[11px] uppercase tracking-[0.3em] mb-6"
                             style={{ color: "rgba(43,42,42,0.50)" }}
                         >
-                            Proof of System
+                            What We Build
                         </p>
 
                         <h2
@@ -58,7 +58,7 @@ export function B2BCallout() {
                                        tracking-[-0.03em] leading-[0.92] mb-8"
                             style={{ color: "#2B2A2A" }}
                         >
-                            B2B Ordering Platform.
+                            End-to-end ordering. Zero manual admin.
                         </h2>
 
                         <p
@@ -68,6 +68,7 @@ export function B2BCallout() {
                             End-to-end trade ordering system built for repeat B2B operations.
                             Product catalogue, cart flow, order management, and real-time
                             WhatsApp notifications via n8n — all custom-engineered from scratch.
+                            This is the class of system we build.
                         </p>
 
                         {/* Stack tags */}
@@ -87,21 +88,32 @@ export function B2BCallout() {
                         </div>
                     </div>
 
-                    {/* Right — value callout + work link */}
+                    {/* Right — capability list + work link */}
                     <div className="flex flex-col items-start md:items-end gap-8 shrink-0">
                         <div>
                             <p
-                                className="font-mono text-[10px] uppercase tracking-widest mb-2"
+                                className="font-mono text-[10px] uppercase tracking-widest mb-4"
                                 style={{ color: "rgba(43,42,42,0.40)" }}
                             >
-                                Build Value
+                                Included in every build
                             </p>
-                            <p
-                                className="font-heading font-black text-[clamp(32px,4vw,56px)] tracking-[-0.03em]"
-                                style={{ color: "#2B2A2A" }}
-                            >
-                                R18,000+
-                            </p>
+                            <ul className="space-y-2">
+                                {[
+                                    "Live product catalogue",
+                                    "Cart + checkout flow",
+                                    "WhatsApp order notifications",
+                                    "Admin order management",
+                                    "Role-based client access",
+                                ].map((item) => (
+                                    <li
+                                        key={item}
+                                        className="font-mono text-xs"
+                                        style={{ color: "rgba(43,42,42,0.70)" }}
+                                    >
+                                        — {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
                         <a
@@ -115,6 +127,34 @@ export function B2BCallout() {
                         </a>
                     </div>
                 </motion.div>
+
+                {/* Platform screenshot — replace with actual screenshot when available */}
+                <div
+                    className="relative mt-16 w-full overflow-hidden"
+                    style={{ borderRadius: "1.5rem" }}
+                >
+                    {/* Placeholder — swap for <Image> once screenshot asset is provided */}
+                    <div
+                        className="w-full flex items-center justify-center"
+                        style={{
+                            background: "rgba(43,42,42,0.12)",
+                            minHeight: "320px",
+                            borderRadius: "1.5rem",
+                            border: "1px dashed rgba(43,42,42,0.25)",
+                        }}
+                    >
+                        <p
+                            className="font-mono text-xs uppercase tracking-widest text-center"
+                            style={{ color: "rgba(43,42,42,0.40)" }}
+                        >
+                            Platform screenshot — asset pending
+                            <br />
+                            <span style={{ color: "rgba(43,42,42,0.25)" }}>
+                                Drop platform-screenshot.png into /public/ to activate
+                            </span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     );
