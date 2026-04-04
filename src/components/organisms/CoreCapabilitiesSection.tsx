@@ -307,7 +307,7 @@ export function CoreCapabilitiesSection() {
                         The Build
                     </motion.p>
 
-                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                    <div className="flex flex-col gap-4">
                         <motion.h2
                             className="font-heading font-extrabold text-white
                                        text-[clamp(32px,4vw,56px)]
