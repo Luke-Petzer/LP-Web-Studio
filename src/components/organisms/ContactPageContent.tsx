@@ -218,7 +218,7 @@ export function ContactPageContent() {
                             onMouseLeave={submitBtn.onMouseLeave}
                             type="submit"
                             className="mercury-btn px-12 py-5 rounded-full text-sm font-bold
-                                       uppercase tracking-[0.2em] text-white shadow-xl
+                                       uppercase tracking-[0.2em] text-white
                                        w-full md:w-auto self-start cursor-pointer"
                         >
                             Initiate Audit
