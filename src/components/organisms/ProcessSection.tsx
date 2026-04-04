@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { clipReveal } from "@/lib/variants";
 
 type ProcessCard = {
     index: string;
@@ -50,18 +51,6 @@ const cardReveal: Variants = {
     },
 };
 
-const clipReveal: Variants = {
-    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
-    visible: {
-        clipPath: "inset(0 0% 0 0)",
-        opacity: 1,
-        transition: {
-            duration: 0.7,
-            ease: [0.62, 0.16, 0.13, 1.01],
-        },
-    },
-};
-
 const headlineReveal: Variants = {
     hidden: { opacity: 0, y: 16 },
     visible: {
@@ -99,7 +88,8 @@ export function ProcessSection() {
                         style={{ color: "rgba(245,242,242,0.35)" }}
                         variants={clipReveal}
                         initial="hidden"
-                        animate="visible"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
                     >
                         The Method
                     </motion.p>

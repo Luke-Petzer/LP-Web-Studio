@@ -2,24 +2,13 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Check } from "lucide-react";
+import { clipReveal } from "@/lib/variants";
 
 const spring = { type: "spring" as const, stiffness: 160, damping: 26 };
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
     visible: { opacity: 1, y: 0, transition: spring },
-};
-
-const clipReveal: Variants = {
-    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
-    visible: {
-        clipPath: "inset(0 0% 0 0)",
-        opacity: 1,
-        transition: {
-            duration: 0.7,
-            ease: [0.62, 0.16, 0.13, 1.01],
-        },
-    },
 };
 
 const tiers = [
@@ -130,7 +119,7 @@ export function PricingSection() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ delay: 0.08 }}
+                    transition={{ ...spring, delay: 0.08 }}
                 >
                     The Performance Packages
                 </motion.h2>

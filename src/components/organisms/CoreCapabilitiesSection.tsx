@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import { GrainOverlay } from "@/components/atoms/GrainOverlay";
+import { clipReveal } from "@/lib/variants";
 
 /* ─────────────────────────────────────────────────────────────
    UX: prefers-reduced-motion respected globally in this component
@@ -146,18 +147,6 @@ const sectionReveal: Variants = {
     visible: {
         opacity: 1, y: 0,
         transition: { type: "spring", stiffness: 180, damping: 28 },
-    },
-};
-
-const clipReveal: Variants = {
-    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
-    visible: {
-        clipPath: "inset(0 0% 0 0)",
-        opacity: 1,
-        transition: {
-            duration: 0.7,
-            ease: [0.62, 0.16, 0.13, 1.01],
-        },
     },
 };
 

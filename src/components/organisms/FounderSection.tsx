@@ -1,20 +1,13 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { clipReveal } from "@/lib/variants";
 
 const spring = { type: "spring" as const, stiffness: 160, damping: 26 };
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 18 },
     visible: { opacity: 1, y: 0, transition: spring },
-};
-
-const clipReveal: Variants = {
-    hidden: { clipPath: "inset(0 100% 0 0)" },
-    visible: {
-        clipPath: "inset(0 0% 0 0)",
-        transition: { duration: 0.7, ease: [0.62, 0.16, 0.13, 1.01] as [number, number, number, number] },
-    },
 };
 
 /**
