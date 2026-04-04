@@ -107,13 +107,16 @@ export function TestimonialSection() {
                             variants={attributionReveal}
                             className="flex items-center gap-4"
                         >
+                            {/* TODO: Replace placeholder with Cafe Crave logo — drop cafe-crave-logo.svg into /public/ */}
                             {/* Avatar */}
                             <div className="w-11 h-11 rounded-full bg-black/[0.06]
                                             border border-black/[0.08]
-                                            flex items-center justify-center shrink-0">
-                                <span className="text-ink/60 font-heading font-bold text-base">
-                                    G
-                                </span>
+                                            flex items-center justify-center shrink-0 overflow-hidden p-1.5">
+                                {/* Replace with: <Image src="/cafe-crave-logo.svg" alt="Cafe Crave" width={32} height={32} className="w-full h-full object-contain" /> */}
+                                {/* Placeholder until logo asset is provided */}
+                                <div className="w-full h-full rounded-full bg-black/[0.08] flex items-center justify-center">
+                                    <span className="text-ink/40 font-mono text-[8px] uppercase tracking-wider">CC</span>
+                                </div>
                             </div>
 
                             {/* Name + role */}
