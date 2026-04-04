@@ -17,6 +17,18 @@ const fadeUp: Variants = {
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
+const clipReveal: Variants = {
+    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
+    visible: {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.62, 0.16, 0.13, 1.01],
+        },
+    },
+};
+
 /* ─── Mercury Button Hook (unchanged) ─── */
 function useMercuryButton() {
     const ref = useRef<HTMLButtonElement>(null);
@@ -75,17 +87,23 @@ export function ContactPageContent() {
         <section className="min-h-screen pt-32 pb-24 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
 
             {/* Header */}
+            <motion.p
+                className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-5"
+                variants={clipReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+            >
+                Contact
+            </motion.p>
             <motion.div
                 className="max-w-7xl mb-structural"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
+                transition={{ ...spring, delay: 0.08 }}
             >
-                {/* KEEP: section label = allowed accent role */}
-                <p className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-5">
-                    Contact
-                </p>
 
                 <h1 className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
                                text-[clamp(32px,4.5vw,60px)] text-ink mb-4">

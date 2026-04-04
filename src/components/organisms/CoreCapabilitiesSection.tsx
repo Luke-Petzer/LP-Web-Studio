@@ -149,6 +149,18 @@ const sectionReveal: Variants = {
     },
 };
 
+const clipReveal: Variants = {
+    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
+    visible: {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.62, 0.16, 0.13, 1.01],
+        },
+    },
+};
+
 const bodyReveal: Variants = {
     hidden: { opacity: 0, y: 8 },
     visible: {
@@ -299,7 +311,7 @@ export function CoreCapabilitiesSection() {
                 <div className="relative z-10">
                     <motion.p
                         className="text-accent font-bold text-xs uppercase tracking-[0.3em] mb-5"
-                        variants={sectionReveal}
+                        variants={clipReveal}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.5 }}
@@ -316,6 +328,7 @@ export function CoreCapabilitiesSection() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.5 }}
+                            transition={{ delay: 0.08 }}
                         >
                             Four disciplines.{" "}
                             <span className="text-accent">One complete system.</span>

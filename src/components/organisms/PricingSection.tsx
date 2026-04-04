@@ -10,6 +10,18 @@ const fadeUp: Variants = {
     visible: { opacity: 1, y: 0, transition: spring },
 };
 
+const clipReveal: Variants = {
+    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
+    visible: {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.62, 0.16, 0.13, 1.01],
+        },
+    },
+};
+
 const tiers = [
     {
         name: "Starter",
@@ -100,27 +112,28 @@ export function PricingSection() {
             <div className="max-w-7xl mx-auto">
 
                 {/* Header */}
-                <motion.div
-                    className="mb-6"
-                    variants={fadeUp}
+                <motion.p
+                    className="font-mono text-[11px] uppercase tracking-[0.3em] mb-5"
+                    style={{ color: "rgba(254,176,93,0.70)" }}
+                    variants={clipReveal}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
                 >
-                    <p
-                        className="font-mono text-[11px] uppercase tracking-[0.3em] mb-5"
-                        style={{ color: "rgba(254,176,93,0.70)" }}
-                    >
-                        Pricing
-                    </p>
-                    <h2
-                        className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
-                                   text-[clamp(32px,4vw,56px)] mb-4"
-                        style={{ color: "#F5F2F2" }}
-                    >
-                        The Performance Packages
-                    </h2>
-                </motion.div>
+                    Pricing
+                </motion.p>
+                <motion.h2
+                    className="font-heading font-extrabold tracking-[-0.03em] leading-[0.95]
+                               text-[clamp(32px,4vw,56px)] mb-4"
+                    style={{ color: "#F5F2F2" }}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ delay: 0.08 }}
+                >
+                    The Performance Packages
+                </motion.h2>
 
                 <motion.p
                     className="text-sm max-w-lg mt-2 mb-16 md:mb-20"

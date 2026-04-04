@@ -50,9 +50,16 @@ const cardReveal: Variants = {
     },
 };
 
-const labelReveal: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+const clipReveal: Variants = {
+    hidden: { clipPath: "inset(0 100% 0 0)", opacity: 1 },
+    visible: {
+        clipPath: "inset(0 0% 0 0)",
+        opacity: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.62, 0.16, 0.13, 1.01],
+        },
+    },
 };
 
 const headlineReveal: Variants = {
@@ -90,7 +97,7 @@ export function ProcessSection() {
                     <motion.p
                         className="font-mono text-[11px] uppercase tracking-[0.3em] mb-8"
                         style={{ color: "rgba(245,242,242,0.35)" }}
-                        variants={labelReveal}
+                        variants={clipReveal}
                         initial="hidden"
                         animate="visible"
                     >
