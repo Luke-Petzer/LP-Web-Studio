@@ -36,48 +36,58 @@ export function ParticleField({ color = "light" }: ParticleFieldProps) {
 
         let animFrameId: number;
 
-        const setSize = () => {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-        };
-        setSize();
-        window.addEventListener("resize", setSize);
-
-        const COUNT = 55;
-        const particles: Particle[] = Array.from({ length: COUNT }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.22,
-            vy: (Math.random() - 0.5) * 0.22,
-            radius: Math.random() * 1.4 + 0.4,
-            opacity: Math.random() * 0.18 + 0.05,
-        }));
-
         // Dark particles for light bg, white particles for dark bg
         const rgb = color === "dark" ? "43, 42, 42" : "255, 255, 255";
 
-        const tick = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (const p of particles) {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0) p.x = canvas.width;
-                if (p.x > canvas.width) p.x = 0;
-                if (p.y < 0) p.y = canvas.height;
-                if (p.y > canvas.height) p.y = 0;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${rgb}, ${p.opacity})`;
-                ctx.fill();
-            }
-            animFrameId = requestAnimationFrame(tick);
+        const initAndRun = () => {
+            // Set canvas size using offsetWidth/offsetHeight with fallback to window dimensions
+            canvas.width = canvas.offsetWidth || window.innerWidth;
+            canvas.height = canvas.offsetHeight || window.innerHeight;
+
+            // Initialize particles AFTER canvas dimensions are set
+            const COUNT = 55;
+            const particles: Particle[] = Array.from({ length: COUNT }, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.22,
+                vy: (Math.random() - 0.5) * 0.22,
+                radius: Math.random() * 1.4 + 0.4,
+                opacity: Math.random() * 0.18 + 0.05,
+            }));
+
+            const tick = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (const p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${rgb}, ${p.opacity})`;
+                    ctx.fill();
+                }
+                animFrameId = requestAnimationFrame(tick);
+            };
+
+            tick();
         };
 
-        tick();
+        // Use ResizeObserver to handle canvas resizing
+        const observer = new ResizeObserver(() => {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        });
+        observer.observe(canvas);
+
+        // Initialize with correct dimensions
+        initAndRun();
 
         return () => {
             cancelAnimationFrame(animFrameId);
-            window.removeEventListener("resize", setSize);
+            observer.disconnect();
         };
     }, [shouldReduceMotion, color]);
 
