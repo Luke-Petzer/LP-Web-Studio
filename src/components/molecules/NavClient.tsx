@@ -123,7 +123,7 @@ export function NavClient() {
                                     <span className="block transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:-translate-y-full">
                                         {link.label}
                                     </span>
-                                    <span aria-hidden="true" className="absolute block translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:translate-y-0">
+                                    <span aria-hidden="true" className="absolute inset-0 flex items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:translate-y-0">
                                         {link.label}
                                     </span>
                                 </motion.a>
@@ -139,10 +139,10 @@ export function NavClient() {
                         whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
                         transition={morphTransition}
                     >
-                        <CornerMark className="absolute top-0 left-0 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        <CornerMark className="absolute top-0 right-0 rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        <CornerMark className="absolute bottom-0 right-0 rotate-180 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        <CornerMark className="absolute bottom-0 left-0 -rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute top-[3px] left-[3px] text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute top-[3px] right-[3px] rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute bottom-[3px] right-[3px] rotate-180 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
+                        <CornerMark className="absolute bottom-[3px] left-[3px] -rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
                         Book a Call
                     </motion.a>
 
