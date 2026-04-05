@@ -18,7 +18,7 @@ export default function WorkPage() {
     return (
         <>
             <Navigation />
-            <main className="pt-[160px] pb-structural">
+            <main className="pb-structural">
                 <WorkPageContent />
             </main>
             <Footer />
