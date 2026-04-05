@@ -52,7 +52,7 @@ const projects: Project[] = [
     score: "93",
     stack: ["Next.js", "Tailwind", "Railway"],
     siteUrl: "#",
-    videoSrc: "/videos/cafe-crave.mp4",
+    videoSrc: "/videos/CafeCrave.mp4",
   },
   {
     id: "big-six",
@@ -64,7 +64,7 @@ const projects: Project[] = [
     score: "95",
     stack: ["React", "Tailwind CSS", "Vercel"],
     siteUrl: "#",
-    videoSrc: "/videos/big-six.mp4",
+    videoSrc: "/videos/BigSix.mp4",
   },
 ];
 
