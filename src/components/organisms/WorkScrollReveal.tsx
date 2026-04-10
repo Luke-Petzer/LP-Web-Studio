@@ -1,42 +1,68 @@
+// src/components/organisms/WorkScrollReveal.tsx
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 
-const accentStyle: React.CSSProperties = {
-  background: "linear-gradient(135deg, #FF4D00 0%, #B81D1D 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  color: "transparent",
-};
+const lines = [
+  "Every project starts with a problem.",
+  "Every solution leaves a mark.",
+  "This is how we grew.",
+];
 
 export function WorkScrollReveal() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  useEffect(() => {
+    // Respect reduced motion — skip animation
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      lineRefs.current.forEach((el) => {
+        if (el) {
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        }
+      });
+      return;
+    }
 
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.6], [40, 0]);
+    const observers: IntersectionObserver[] = [];
+
+    lineRefs.current.forEach((el, i) => {
+      if (!el) return;
+      // Initial state
+      el.style.opacity = "0";
+      el.style.transform = "translateY(16px)";
+      el.style.transition = `opacity 0.6s ease ${i * 150}ms, transform 0.6s ease ${i * 150}ms`;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   return (
-    <div ref={containerRef} className="relative h-[150vh]">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
-        <motion.p
-          className="font-headline font-black uppercase text-white text-center leading-tight max-w-5xl mx-auto px-8"
-          style={{
-            fontSize: "clamp(1.8rem, 4.5vw, 4.5rem)",
-            opacity,
-            y,
-          }}
+    <section className="py-32 px-8 md:px-16 flex flex-col items-center justify-center text-center gap-4">
+      {lines.map((line, i) => (
+        <span
+          key={i}
+          ref={(el) => { lineRefs.current[i] = el; }}
+          className="block font-headline font-black uppercase text-white leading-snug"
+          style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
         >
-          ENGINEERING AT THE THRESHOLD OF HARDWARE LIMITATION
-          <span style={accentStyle}>.</span>
-        </motion.p>
-      </div>
-    </div>
+          {line}
+        </span>
+      ))}
+    </section>
   );
 }
