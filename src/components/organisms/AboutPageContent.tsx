@@ -153,7 +153,7 @@ export function AboutPageContent() {
                                     <p style={{ color: "#FF4500" }}>$ whoami</p>
                                     <p className="text-white/80">Luke Petzer</p>
                                     <p className="text-white/30 text-xs mt-2">$ cat role.txt</p>
-                                    <p className="text-white/80">Senior Technical Architect</p>
+                                    <p className="text-white/80">Web Developer & Automation Engineer</p>
                                     <p className="text-white/30 text-xs mt-2">$ cat location.txt</p>
                                     <p className="text-white/80">Cape Town, South Africa</p>
                                     <p className="text-white/30 text-xs mt-2">$ cat stack.txt</p>
