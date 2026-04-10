@@ -50,32 +50,31 @@ export function SubpageHero({ breadcrumb, title, subtitle }: SubpageHeroProps) {
           {title}
         </p>
 
-        {/* Title — bottom-left */}
-        <h1
-          className="absolute font-headline font-black uppercase text-white leading-[0.9]"
-          style={{
-            bottom: "clamp(44px, 7vh, 56px)",
-            left: "clamp(20px, 4vw, 32px)",
-            fontSize: "clamp(40px, 8vw, 96px)",
-            letterSpacing: "-0.02em",
-          }}
+        {/* Title + Subtitle — anchored at 60% from top, grounded in lower half */}
+        <div
+          className="absolute flex flex-col gap-2"
+          style={{ top: "60%", left: "clamp(20px, 4vw, 32px)" }}
         >
-          {title}<span>.</span>
-        </h1>
-
-        {/* Subtitle — below title, bottom-left */}
-        <p
-          className="absolute font-headline text-white/55 uppercase"
-          style={{
-            bottom: "clamp(20px, 3.5vh, 28px)",
-            left: "clamp(20px, 4vw, 32px)",
-            fontSize: "11px",
-            letterSpacing: "0.16em",
-            fontWeight: 400,
-          }}
-        >
-          {subtitle}
-        </p>
+          <h1
+            className="font-headline font-black uppercase text-white leading-[0.9]"
+            style={{
+              fontSize: "clamp(40px, 8vw, 96px)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {title}<span>.</span>
+          </h1>
+          <p
+            className="font-headline text-white/55 uppercase"
+            style={{
+              fontSize: "11px",
+              letterSpacing: "0.16em",
+              fontWeight: 400,
+            }}
+          >
+            {subtitle}
+          </p>
+        </div>
 
         {/* Corner bracket — bottom-right, CSS only */}
         <div

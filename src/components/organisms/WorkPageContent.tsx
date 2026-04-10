@@ -54,12 +54,12 @@ export function WorkPageContent() {
       <WorkScrollReveal />
 
       <ChapterHook text="A cafe losing customers before they even walked in." />
-      <div className="mb-20">
+      <div className="mb-[120px]">
         <ProjectSection {...cafeCrave} />
       </div>
 
       <ChapterHook text="Wanting to tell a story that actually stops people scrolling?" />
-      <div className="mb-20">
+      <div className="mb-[120px]">
         <ProjectSection {...theBigSix} />
       </div>
 

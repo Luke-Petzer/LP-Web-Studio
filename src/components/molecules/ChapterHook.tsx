@@ -7,10 +7,10 @@ type ChapterHookProps = {
 
 export function ChapterHook({ text }: ChapterHookProps) {
   return (
-    <div className="py-12 md:py-20 flex items-center justify-center px-8">
+    <div className="flex items-center justify-center px-8" style={{ paddingTop: "clamp(64px, 8vw, 100px)", paddingBottom: "clamp(64px, 8vw, 100px)" }}>
       <p
-        className="font-mono text-white/45 text-center uppercase max-w-xl"
-        style={{ fontSize: "clamp(1.125rem, 2.5vw, 1.375rem)", letterSpacing: "0.06em" }}
+        className="font-mono text-white/65 text-center max-w-[480px]"
+        style={{ fontSize: "clamp(1.125rem, 2.5vw, 1.5rem)", letterSpacing: "0.04em" }}
       >
         {text}
       </p>
