@@ -17,6 +17,30 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Infrastructure Page
+
+**File:** `src/components/organisms/AboutPageContent.tsx`
+**Route:** `/about`
+**Date:** 2026-04-10
+
+### Changes Made
+- **Section 1 (Hero):** SubpageHero already wired in `about/page.tsx` with breadcrumb "LP WEB / INFRASTRUCTURE", title "INFRASTRUCTURE", subtitle "ENGINEERED FOR PERFORMANCE". Removed legacy `pt-[160px]` from main.
+- **Section 2 (Founder Block):** Replaced old header + terminal block with 60/40 split. Left: SYSTEM_OPERATOR label, "THE ARCHITECT." heading, "Luke Petzer" in orange gradient, existing body copy, dark pill tags. Right: rebuilt terminal card with dark bg `#0D0D0D`, border `#222222`, traffic light dots, monospace content.
+- **Section 3 (Philosophy):** Heading replaced with "THE_PHILOSOPHY" (display, all-caps, white). Quote kept with orange left border. Body text white/70. Divider added below.
+- **Section 4 (Tech Stack):** Label "CORE STACK" added (orange). Heading changed to "THE_ENGINE". White cards replaced with dark cards `#111111` / border `#222222` / radius `8px`. Icons changed to `#FF4500`. Hover: border animates to `#FF4500`. Grid: 3 col desktop / 2 tablet / 1 mobile. All existing copy preserved.
+- **Section 5 (Why LP Web):** Label "THE CASE FOR WORKING TOGETHER" added. Heading changed to "WHY_LP_WEB". Icon circles removed, replaced with 2×24px orange accent lines. Column titles all-caps display 18px. Body white/65 15px. No card backgrounds.
+- **Section 6 (Closing CTA):** New full-width section added. "READY TO DEPLOY?" 56px display. Subtext "One engineer. Full stack. No account managers." white/60. "INITIATE PROJECT" primary white button.
+- **Global:** Page background `#0A0A0A` throughout. `1px solid #1A1A1A` dividers between every section. Section padding 96px desktop / 56px mobile. Orange `#FF4500` used only for labels, accent lines, icon colour, one gradient text per section.
+
+### Needs Testing
+- [ ] Hover states on tech stack cards (border colour transition)
+- [ ] Mobile layout: founder block stacks correctly (terminal below left column)
+- [ ] Section spacing at mobile breakpoint
+- [ ] "INITIATE PROJECT" button routes to `/contact`
+- [ ] SubpageHero ghost text clipping correctly on mobile
+
+---
+
 ## Completed Changes
 
 ### 2026-04-10 — Work Page Redesign v2

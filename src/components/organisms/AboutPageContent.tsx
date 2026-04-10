@@ -1,51 +1,56 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
 import {
     Zap,
     Palette,
     Globe,
     Database,
-    User,
     Code2,
     Gauge,
 } from "lucide-react";
 
-/* ─── Spring ─── */
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 0 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { type: "spring", stiffness: 150, damping: 25, mass: 1 },
-    },
+/* ─── Shared style constants ─── */
+const SECTION_PAD = "py-14 md:py-24";
+const DIVIDER = <hr className="border-none border-t-0 h-px bg-[#1A1A1A] w-full" />;
+
+const ORANGE_LABEL: React.CSSProperties = {
+    color: "#FF4500",
+    fontSize: "11px",
+    fontWeight: 700,
+    letterSpacing: "0.15em",
+    textTransform: "uppercase",
+    fontFamily: "var(--font-space-grotesk)",
 };
 
-/* ─── Tech Stack ─── */
+const accentGrad: React.CSSProperties = {
+    background: "linear-gradient(135deg, #FF4D00 0%, #B81D1D 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+    color: "transparent",
+};
+
+/* ─── Data ─── */
 const techStack = [
     {
         icon: Zap,
         name: "Next.js 15",
-        description:
-            "The Ferrari of web frameworks. Renders before the user clicks.",
+        description: "The Ferrari of web frameworks. Renders before the user clicks.",
     },
     {
         icon: Palette,
         name: "Tailwind CSS",
-        description:
-            'Pixel-perfect design without the "heavy" code.',
+        description: 'Pixel-perfect design without the "heavy" code.',
     },
     {
         icon: Globe,
         name: "Vercel Edge Network",
-        description:
-            "Global CDN hosting. Your site lives in Cape Town, not a server in Texas.",
+        description: "Global CDN hosting. Your site lives in Cape Town, not a server in Texas.",
     },
     {
         icon: Database,
         name: "Supabase",
-        description:
-            "Enterprise-grade databases for real customer data.",
+        description: "Enterprise-grade databases for real customer data.",
     },
     {
         icon: Code2,
@@ -61,185 +66,254 @@ const techStack = [
     },
 ];
 
-/* ─── Why Work With Me ─── */
 const reasons = [
     {
-        icon: User,
         title: "Direct Access",
         description: "You speak to Luke Petzer (the developer), not a sales rep.",
     },
     {
-        icon: Code2,
         title: "Code Ownership",
         description: "You own the repository. No lock-in.",
     },
     {
-        icon: Gauge,
         title: "Speed Guarantee",
         description: "If I build it, it scores 90+.",
     },
 ];
 
+import React from "react";
+
 export function AboutPageContent() {
     return (
-        <section className="min-h-screen pt-32 pb-24 max-w-7xl mx-auto px-6">
-            {/* Header */}
-            <motion.div
-                className="max-w-7xl mb-structural"
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-            >
-                <p className="text-accent font-bold text-xs uppercase tracking-widest mb-4">
-                    About
-                </p>
-                <h1 className="text-ink text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tight mb-4">
-                    Cape Town&apos;s{" "}
-                    <span className="text-accent">Performance-First</span> Developer.
-                </h1>
-                <p className="text-slate text-lg">
-                    I build what page-builders can&apos;t.
-                </p>
-            </motion.div>
+        <div className="bg-[#0A0A0A] w-full">
+            <div className="max-w-7xl mx-auto px-6">
 
-            {/* Architect Profile — Terminal Bio Card */}
-            <motion.div
-                className="max-w-7xl mb-structural"
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-            >
-                <div className="rounded-[2rem] bg-void overflow-hidden border border-white/5">
-                    {/* Terminal chrome bar */}
-                    <div className="flex items-center gap-2 px-6 py-4 border-b border-white/5 bg-white/3">
-                        <span className="w-3 h-3 rounded-full bg-red-500/70" />
-                        <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                        <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                        <span className="ml-4 text-white/30 text-xs font-mono">
-                            architect.profile — zsh
-                        </span>
-                    </div>
+                {/* ═══════════════════════════════════════
+                    SECTION 2 — FOUNDER BLOCK
+                ═══════════════════════════════════════ */}
+                <section className={SECTION_PAD} aria-label="Founder">
+                    <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
 
-                    {/* Content */}
-                    <div className="p-8 md:p-12">
-                        <p className="text-accent font-mono text-xs mb-4">
-                            $ whoami
-                        </p>
-                        <h2 className="text-white text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-6">
-                            The Architect:{" "}
-                            <span className="text-accent">Luke Petzer</span>
-                        </h2>
-                        <p className="text-white/60 leading-relaxed max-w-3xl">
-                            I don&apos;t run a bloated agency. I am a senior technical architect
-                            operating out of Cape Town. I manage the entire infrastructure
-                            stack&mdash;from the Next.js React codebase to the n8n autonomous
-                            pipelines. You speak directly to the engineer building your business
-                            engine.
-                        </p>
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            {["Next.js 15", "React", "n8n", "Vercel Edge", "Supabase", "Framer Motion"].map((tag) => (
-                                <span
-                                    key={tag}
-                                    className="text-[10px] font-bold uppercase tracking-widest text-accent bg-accent/10 px-3 py-1.5 rounded-full font-mono"
+                        {/* LEFT 60% */}
+                        <div className="w-full md:w-[60%] flex flex-col gap-6">
+                            <p style={ORANGE_LABEL}>SYSTEM_OPERATOR</p>
+
+                            <div>
+                                <h2
+                                    className="font-headline font-black uppercase text-white leading-none"
+                                    style={{ fontSize: "clamp(2.5rem, 5vw, 3rem)" }}
                                 >
-                                    {tag}
-                                </span>
-                            ))}
+                                    THE ARCHITECT.
+                                </h2>
+                                <p
+                                    className="font-headline font-black uppercase leading-none mt-1"
+                                    style={{ fontSize: "clamp(2rem, 4vw, 2.5rem)", ...accentGrad }}
+                                >
+                                    Luke Petzer
+                                </p>
+                            </div>
+
+                            <p className="text-white/65 leading-relaxed text-base max-w-xl">
+                                I don&apos;t run a bloated agency. I am a senior technical architect
+                                operating out of Cape Town. I manage the entire infrastructure
+                                stack&mdash;from the Next.js React codebase to the n8n autonomous
+                                pipelines. You speak directly to the engineer building your business
+                                engine.
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 mt-2">
+                                {["Next.js 15", "React", "n8n", "Vercel Edge", "Supabase", "Framer Motion"].map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="font-mono text-[10px] uppercase tracking-widest text-white/60 border border-white/10 bg-white/5 px-3 py-1"
+                                        style={{ borderRadius: "4px" }}
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* RIGHT 40% — terminal block */}
+                        <div className="w-full md:w-[40%]">
+                            <div className="rounded-[12px] bg-[#0D0D0D] overflow-hidden border border-[#222222]">
+                                {/* Traffic light bar */}
+                                <div className="flex items-center gap-2 px-5 py-3 border-b border-[#222222]">
+                                    <span className="w-3 h-3 rounded-full bg-red-500/70" />
+                                    <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                                    <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                                    <span className="ml-4 text-white/30 text-xs font-mono">
+                                        architect.profile — zsh
+                                    </span>
+                                </div>
+                                {/* Terminal content */}
+                                <div className="p-6 md:p-8 font-mono text-sm space-y-3">
+                                    <p style={{ color: "#FF4500" }}>$ whoami</p>
+                                    <p className="text-white/80">Luke Petzer</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat role.txt</p>
+                                    <p className="text-white/80">Senior Technical Architect</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat location.txt</p>
+                                    <p className="text-white/80">Cape Town, South Africa</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat stack.txt</p>
+                                    <p className="text-white/80">Next.js · React · n8n · Vercel</p>
+                                    <p className="text-white/30 text-xs mt-2">$ uptime</p>
+                                    <p style={{ color: "#FF4500" }}>SYSTEMS ONLINE ●</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </motion.div>
+                </section>
 
-            {/* Philosophy — Anti-WordPress */}
-            <motion.div
-                className="max-w-7xl mb-structural"
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-            >
-                <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
-                    The Philosophy
-                </h2>
-                <blockquote className="relative pl-8 border-l-4 border-accent mb-8">
-                    <p className="text-ink text-lg leading-relaxed italic">
-                        &ldquo;Most agencies sell you a pre-packaged template and charge you a monthly fee to press &lsquo;update&rsquo;. We build custom software.&rdquo;
+                {DIVIDER}
+
+                {/* ═══════════════════════════════════════
+                    SECTION 3 — PHILOSOPHY
+                ═══════════════════════════════════════ */}
+                <section className={SECTION_PAD} aria-label="Philosophy">
+                    <h2
+                        className="font-headline font-black uppercase text-white mb-8"
+                        style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)" }}
+                    >
+                        THE_PHILOSOPHY
+                    </h2>
+
+                    <blockquote className="pl-6 border-l-[3px] border-[#FF4500] mb-8">
+                        <p className="text-white text-lg leading-relaxed">
+                            &ldquo;Most agencies sell you a pre-packaged template and charge you a
+                            monthly fee to press &lsquo;update&rsquo;. We build custom software.&rdquo;
+                        </p>
+                    </blockquote>
+
+                    <p className="text-white/70 leading-relaxed max-w-3xl">
+                        I believe in <strong className="text-white">hand-coded performance</strong>.
+                        No drag-and-drop bloat. No plugin security vulnerabilities. Just clean,
+                        semantic Next.js code that scores 90+ on Google PageSpeed
+                        Insights&mdash;guaranteed.
                     </p>
-                </blockquote>
-                <p className="text-slate leading-relaxed">
-                    I believe in <strong className="text-ink">hand-coded performance</strong>.
-                    No drag-and-drop bloat. No plugin security vulnerabilities. Just clean, semantic
-                    Next.js code that scores 90+ on Google PageSpeed Insights&mdash;guaranteed.
+                </section>
+
+                {DIVIDER}
+
+                {/* ═══════════════════════════════════════
+                    SECTION 4 — TECH STACK
+                ═══════════════════════════════════════ */}
+                <section className={SECTION_PAD} aria-label="Tech Stack">
+                    <p style={ORANGE_LABEL} className="mb-3">CORE STACK</p>
+                    <h2
+                        className="font-headline font-black uppercase text-white mb-10"
+                        style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)" }}
+                    >
+                        THE_ENGINE
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {techStack.map((tech) => (
+                            <div
+                                key={tech.name}
+                                className="group flex flex-col gap-4 p-6 border transition-colors duration-200"
+                                style={{
+                                    background: "#111111",
+                                    border: "1px solid #222222",
+                                    borderRadius: "8px",
+                                }}
+                                onMouseEnter={(e) => {
+                                    (e.currentTarget as HTMLDivElement).style.borderColor = "#FF4500";
+                                }}
+                                onMouseLeave={(e) => {
+                                    (e.currentTarget as HTMLDivElement).style.borderColor = "#222222";
+                                }}
+                            >
+                                <tech.icon
+                                    style={{ color: "#FF4500" }}
+                                    className="w-6 h-6 shrink-0"
+                                    strokeWidth={1.5}
+                                    aria-hidden="true"
+                                />
+                                <div>
+                                    <h3 className="font-headline font-bold uppercase text-white text-sm tracking-wide mb-2">
+                                        {tech.name}
+                                    </h3>
+                                    <p className="text-white/60 text-sm leading-relaxed">
+                                        {tech.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {DIVIDER}
+
+                {/* ═══════════════════════════════════════
+                    SECTION 5 — WHY LP WEB
+                ═══════════════════════════════════════ */}
+                <section className={SECTION_PAD} aria-label="Why LP Web">
+                    <p style={ORANGE_LABEL} className="mb-3">THE CASE FOR WORKING TOGETHER</p>
+                    <h2
+                        className="font-headline font-black uppercase text-white mb-12"
+                        style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)" }}
+                    >
+                        WHY_LP_WEB
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+                        {reasons.map((reason) => (
+                            <div key={reason.title} className="flex flex-col gap-4">
+                                {/* Orange accent line */}
+                                <div
+                                    style={{
+                                        width: "24px",
+                                        height: "2px",
+                                        background: "#FF4500",
+                                    }}
+                                />
+                                <h3
+                                    className="font-headline font-black uppercase text-white"
+                                    style={{ fontSize: "18px" }}
+                                >
+                                    {reason.title}
+                                </h3>
+                                <p className="text-white/65 leading-relaxed" style={{ fontSize: "15px" }}>
+                                    {reason.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {DIVIDER}
+
+            </div>
+
+            {/* ═══════════════════════════════════════
+                SECTION 6 — CLOSING CTA (full width)
+            ═══════════════════════════════════════ */}
+            <section
+                className="w-full flex flex-col items-center justify-center text-center px-6"
+                style={{ paddingTop: "clamp(64px, 10vw, 120px)", paddingBottom: "clamp(64px, 10vw, 120px)" }}
+                aria-label="Closing CTA"
+            >
+                <h2
+                    className="font-headline font-black uppercase text-white leading-none mb-4"
+                    style={{ fontSize: "clamp(2.5rem, 6vw, 3.5rem)" }}
+                >
+                    READY TO DEPLOY?
+                </h2>
+                <p className="text-white/60 text-base mb-8 max-w-md">
+                    One engineer. Full stack. No account managers.
                 </p>
-            </motion.div>
-
-            {/* Tech Stack Grid */}
-            <motion.div
-                className="mb-structural"
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-            >
-                <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
-                    The Engine
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-sectional">
-                    {techStack.map((tech, i) => (
-                        <motion.div
-                            key={tech.name}
-                            className="p-8 rounded-[2rem] border border-black/5 bg-zinc-50 hover:border-accent hover:shadow-lg transition-all"
-                            variants={fadeUp}
-                            initial="hidden"
-                            animate="visible"
-                            transition={{ delay: i * 0.08 }}
-                        >
-                            <tech.icon
-                                className="w-8 h-8 text-accent mb-4"
-                                strokeWidth={1.5}
-                            />
-                            <h3 className="text-ink text-lg font-heading font-bold mb-2">
-                                {tech.name}
-                            </h3>
-                            <p className="text-slate text-sm leading-relaxed">
-                                {tech.description}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
-            </motion.div>
-
-            {/* Why Work With Me */}
-            <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-            >
-                <h2 className="text-ink text-2xl md:text-3xl font-heading font-extrabold tracking-tight mb-8">
-                    Why Work With Me?
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-sectional">
-                    {reasons.map((reason, i) => (
-                        <motion.div
-                            key={reason.title}
-                            className="p-8 rounded-[2rem] bg-void text-white"
-                            variants={fadeUp}
-                            initial="hidden"
-                            animate="visible"
-                            transition={{ delay: i * 0.1 }}
-                        >
-                            <reason.icon
-                                className="w-8 h-8 text-accent mb-4"
-                                strokeWidth={1.5}
-                            />
-                            <h3 className="text-lg font-heading font-bold mb-2">
-                                {reason.title}
-                            </h3>
-                            <p className="text-white/60 text-sm leading-relaxed">
-                                {reason.description}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
-            </motion.div>
-        </section>
+                <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center bg-white text-black font-headline font-bold uppercase text-sm"
+                    style={{
+                        padding: "14px 32px",
+                        borderRadius: "4px",
+                        letterSpacing: "0.08em",
+                    }}
+                >
+                    INITIATE PROJECT
+                </a>
+            </section>
+        </div>
     );
 }
