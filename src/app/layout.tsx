@@ -30,7 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 /* ─── Global Metadata (SEO Layer 4: AI Meta Tags) ─── */
 export const metadata: Metadata = {
-    metadataBase: new URL("https://www.lpwebstudio.co.za"),
+    metadataBase: new URL("https://lpwebstudio.co.za"),
     title: {
         default: "LP Web Studio | Cape Town High-Performance Web Development",
         template: "%s | LP Web Studio",
