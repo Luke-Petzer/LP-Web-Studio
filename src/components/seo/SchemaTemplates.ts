@@ -5,10 +5,10 @@ export function localBusinessSchema() {
     return {
         "@context": "https://schema.org",
         "@type": ["LocalBusiness", "ProfessionalService"],
-        name: "LP Web Studio",
+        name: SITE_NAME,
         description:
             "Cape Town web development studio specialising in custom Next.js websites, n8n automation systems, and high-performance web applications. Guaranteed 90+ PageSpeed scores.",
-        url: "https://lpwebstudio.co.za",
+        url: SITE_URL,
         telephone: "+27673852286",
         email: "contact@lpwebstudio.co.za",
         address: {
@@ -42,6 +42,7 @@ export function localBusinessSchema() {
                     priceCurrency: "ZAR",
                     description:
                         "1-page high-performance Next.js website with WhatsApp lead capture",
+                    url: SITE_URL,
                 },
                 {
                     "@type": "Offer",
@@ -50,6 +51,7 @@ export function localBusinessSchema() {
                     priceCurrency: "ZAR",
                     description:
                         "3-page custom Next.js website with automated booking integration and 90+ PageSpeed",
+                    url: SITE_URL,
                 },
                 {
                     "@type": "Offer",
@@ -58,6 +60,7 @@ export function localBusinessSchema() {
                     priceCurrency: "ZAR",
                     description:
                         "Full Next.js application with database, n8n automation pipelines, and AI lead generation",
+                    url: SITE_URL,
                 },
             ],
         },
@@ -70,14 +73,6 @@ export function websiteSchema() {
         "@type": "WebSite",
         name: SITE_NAME,
         url: SITE_URL,
-        potentialAction: {
-            "@type": "SearchAction",
-            target: {
-                "@type": "EntryPoint",
-                urlTemplate: `${SITE_URL}/learn?q={search_term_string}`,
-            },
-            "query-input": "required name=search_term_string",
-        },
     };
 }
 
