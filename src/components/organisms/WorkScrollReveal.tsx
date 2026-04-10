@@ -32,7 +32,7 @@ export function WorkScrollReveal() {
       // Initial state
       el.style.opacity = "0";
       el.style.transform = "translateY(16px)";
-      el.style.transition = `opacity 0.6s ease ${i * 150}ms, transform 0.6s ease ${i * 150}ms`;
+      el.style.transition = `opacity 0.8s ease ${i * 200}ms, transform 0.8s ease ${i * 200}ms`;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -52,13 +52,13 @@ export function WorkScrollReveal() {
   }, []);
 
   return (
-    <section className="py-32 px-8 md:px-16 flex flex-col items-center justify-center text-center gap-4">
+    <section className="min-h-screen px-8 md:px-16 flex flex-col items-center justify-center text-center gap-4">
       {lines.map((line, i) => (
         <span
           key={i}
           ref={(el) => { lineRefs.current[i] = el; }}
-          className="block font-headline font-black uppercase text-white leading-snug"
-          style={{ fontSize: "clamp(2rem, 4vw, 4rem)", opacity: 0, transform: "translateY(16px)" }}
+          className="block font-headline font-black uppercase text-white leading-snug max-w-[600px]"
+          style={{ fontSize: "clamp(1.25rem, 3.5vw, 1.75rem)", opacity: 0, transform: "translateY(16px)" }}
         >
           {line}
         </span>

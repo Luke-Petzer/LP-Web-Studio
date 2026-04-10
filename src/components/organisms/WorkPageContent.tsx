@@ -1,9 +1,9 @@
 // src/components/organisms/WorkPageContent.tsx
 import { GeometricCanvas } from "@/components/atoms/GeometricCanvas";
-import { WorkHero } from "@/components/organisms/WorkHero";
 import { WorkScrollReveal } from "@/components/organisms/WorkScrollReveal";
 import { ChapterHook } from "@/components/molecules/ChapterHook";
 import { ProjectSection, type ProjectSectionProps } from "@/components/organisms/ProjectSection";
+import { WorkClosingCTA } from "@/components/organisms/WorkClosingCTA";
 
 const cafeCrave: ProjectSectionProps = {
   ident: "CAFE CRAVE",
@@ -30,7 +30,7 @@ const theBigSix: ProjectSectionProps = {
   status: "ACTIVE_TERMINAL",
   statusActive: true,
   authority: "PREMIUM_TIER",
-  score: 95,
+  score: 91,
   stack: ["REACT", "TAILWIND CSS", "VERCEL"],
   descriptionHeading: "THE_RESTORATION_ARCHIVE",
   descriptionBody:
@@ -45,14 +45,20 @@ export function WorkPageContent() {
   return (
     <div className="relative">
       <GeometricCanvas />
-      <WorkHero />
+      {/* SubpageHero component goes here */}
       <WorkScrollReveal />
 
       <ChapterHook text="A cafe losing customers before they even walked in." />
-      <ProjectSection {...cafeCrave} />
+      <div className="mb-20">
+        <ProjectSection {...cafeCrave} />
+      </div>
 
       <ChapterHook text="Wanting to tell a story that actually stops people scrolling?" />
-      <ProjectSection {...theBigSix} />
+      <div className="mb-20">
+        <ProjectSection {...theBigSix} />
+      </div>
+
+      <WorkClosingCTA />
     </div>
   );
 }
