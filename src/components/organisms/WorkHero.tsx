@@ -15,7 +15,7 @@ export function WorkHero() {
   return (
     <section className="relative flex items-end px-4 md:px-6 pt-4 pb-4" style={{ height: "100svh" }}>
       {/* Floating black container — mirrors homepage hero card, black instead of gradient */}
-      <div className="relative w-full h-[92vh] rounded-[3rem] md:rounded-[5rem] overflow-hidden bg-[#0A0A0A] border border-white/10 flex flex-col justify-end pb-16 px-8 md:px-16">
+      <div className="relative w-full h-[92vh] rounded-[3rem] md:rounded-[5rem] overflow-hidden bg-[#0A0A0A] border border-[#FF4D00]/60 flex flex-col justify-end pb-16 px-8 md:px-16">
 
         {/* Top-left label */}
         <div className="absolute top-8 left-8 md:left-16 z-10 flex items-center gap-4">
