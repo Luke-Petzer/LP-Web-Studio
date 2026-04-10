@@ -1,37 +1,66 @@
-const SITE_URL = "https://www.lpwebstudio.co.za";
+const SITE_URL = "https://lpwebstudio.co.za";
 const SITE_NAME = "LP Web Studio";
 
 export function localBusinessSchema() {
     return {
         "@context": "https://schema.org",
-        "@type": "WebDesignAndDevelopmentBusiness",
-        name: SITE_NAME,
-        url: SITE_URL,
-        logo: `${SITE_URL}/logo.png`,
-        priceRange: "$$",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        name: "LP Web Studio",
         description:
-            "Cape Town's high-performance web agency guaranteeing 90+ Google PageSpeed scores and instant lead generation through WhatsApp.",
+            "Cape Town web development studio specialising in custom Next.js websites, n8n automation systems, and high-performance web applications. Guaranteed 90+ PageSpeed scores.",
+        url: "https://lpwebstudio.co.za",
+        telephone: "+27673852286",
+        email: "contact@lpwebstudio.co.za",
         address: {
             "@type": "PostalAddress",
             addressLocality: "Cape Town",
-            addressRegion: "WC",
+            addressRegion: "Western Cape",
             addressCountry: "ZA",
         },
-        geo: {
-            "@type": "GeoCoordinates",
-            latitude: "-33.9249",
-            longitude: "18.4241",
-        },
-        openingHoursSpecification: {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            opens: "09:00",
-            closes: "17:00",
-        },
-        sameAs: [
-            "https://www.linkedin.com/company/lp-web-studio",
-            "https://github.com/Luke-Petzer",
+        areaServed: [
+            { "@type": "City", name: "Cape Town" },
+            { "@type": "Country", name: "South Africa" },
         ],
+        priceRange: "R5500 - R21500",
+        knowsAbout: [
+            "Next.js development",
+            "React web applications",
+            "n8n automation",
+            "WhatsApp business integration",
+            "Web performance optimisation",
+            "Supabase",
+            "Vercel Edge Network",
+        ],
+        hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Web Development Services",
+            itemListElement: [
+                {
+                    "@type": "Offer",
+                    name: "Starter Website",
+                    price: "5500",
+                    priceCurrency: "ZAR",
+                    description:
+                        "1-page high-performance Next.js website with WhatsApp lead capture",
+                },
+                {
+                    "@type": "Offer",
+                    name: "Professional Website",
+                    price: "12500",
+                    priceCurrency: "ZAR",
+                    description:
+                        "3-page custom Next.js website with automated booking integration and 90+ PageSpeed",
+                },
+                {
+                    "@type": "Offer",
+                    name: "Custom Web Application",
+                    price: "21500",
+                    priceCurrency: "ZAR",
+                    description:
+                        "Full Next.js application with database, n8n automation pipelines, and AI lead generation",
+                },
+            ],
+        },
     };
 }
 
