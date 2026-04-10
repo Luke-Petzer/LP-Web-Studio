@@ -12,12 +12,13 @@ export function WorkClosingCTA() {
         className="font-headline font-black uppercase text-white leading-tight"
         style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}
       >
-        WHAT DOES YOUR BUSINESS LOOK LIKE ONLINE?
+        IS YOUR WEBSITE COSTING YOU CUSTOMERS?
       </h2>
 
       <p className="text-white/60 text-base max-w-md leading-relaxed">
-        Every slow website is a lead that didn&apos;t convert.{" "}
-        Let&apos;s fix that.
+        Every slow website is a lead that didn&apos;t convert.
+        Every generic template is a client that chose someone else.
+        Let&apos;s build something that works.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-4 mt-2">

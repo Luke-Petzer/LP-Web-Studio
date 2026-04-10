@@ -17,7 +17,7 @@ const cafeCrave: ProjectSectionProps = {
   stack: ["REACT", "NEXT.JS", "TAILWIND", "VERCEL"],
   descriptionHeading: "THE_CONVERSION_ENGINE",
   descriptionBody:
-    "Cafe Crave needed more than a menu online. They needed every visitor to feel the space before they arrived. We rebuilt their digital presence from the ground up — a React stack with live Google review integration and a reservation flow that converts.",
+    "Cafe Crave needed more than a menu online. Every visitor needed to feel the space before they arrived. We rebuilt their digital presence on a React and Next.js stack with live Google Reviews integration, a mobile-first layout, and a reservation flow engineered for conversion. The result: a 93/100 PageSpeed score and a site that works as hard as the team behind the counter.",
   videoSrc: "/videos/CafeCrave.mp4",
   images: ["/cafe-crave.webp", "/cafe-crave.webp"],
   imageAlts: ["Cafe Crave website", "Cafe Crave website detail"],
@@ -35,7 +35,7 @@ const theBigSix: ProjectSectionProps = {
   stack: ["REACT", "TAILWIND CSS", "VERCEL"],
   descriptionHeading: "THE_RESTORATION_ARCHIVE",
   descriptionBody:
-    "A restoration worth remembering deserves a site that can tell the story. Immersive brand storytelling with custom CSS masking and automated image optimisation for 4K assets. Premium design that loads in under one second.",
+    "The Big Six is six vintage cars and decades of history. It deserved a landing page that carried that weight. We used immersive typography, custom CSS visual masking, and automated 4K image optimisation to build something that loads in under one second and feels as rare as the collection it represents. 91/100 PageSpeed score. Zero compromise on craft.",
   videoSrc: "/videos/BigSix.mp4",
   images: ["/big-six.webp", "/big-six.webp"],
   imageAlts: ["The Big Six website", "The Big Six website detail"],
@@ -53,12 +53,12 @@ export function WorkPageContent() {
       />
       <WorkScrollReveal />
 
-      <ChapterHook text="A cafe losing customers before they even walked in." />
+      <ChapterHook text="A Cape Town cafe was losing customers before they even walked in." />
       <div className="mb-[120px]">
         <ProjectSection {...cafeCrave} />
       </div>
 
-      <ChapterHook text="Wanting to tell a story that actually stops people scrolling?" />
+      <ChapterHook text="A restoration worth remembering. A website that couldn't tell the story." />
       <div className="mb-[120px]">
         <ProjectSection {...theBigSix} />
       </div>
