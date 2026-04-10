@@ -85,6 +85,7 @@ export function ContactDrawer() {
       {/* Drawer panel */}
       <div
         role="dialog"
+        data-contact-drawer
         aria-modal="true"
         aria-label="Contact LP Web Studio"
         style={{
@@ -119,7 +120,7 @@ export function ContactDrawer() {
             }
           }
         `}</style>
-        <div data-contact-drawer style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+        <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
 
           {/* Header */}
           <div style={{ padding: "32px 32px 24px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
