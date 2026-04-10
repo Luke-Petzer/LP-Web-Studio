@@ -69,15 +69,15 @@ const techStack = [
 const reasons = [
     {
         title: "Direct Access",
-        description: "You speak to Luke Petzer (the developer), not a sales rep.",
+        description: "You speak to Luke Petzer — the developer actually building your system. Not a sales rep, not an account manager. Direct access means faster decisions and no miscommunication.",
     },
     {
         title: "Code Ownership",
-        description: "You own the repository. No lock-in.",
+        description: "Every line of code we write belongs to you. The GitHub repository is transferred to your account on delivery. No monthly retainer required to access your own site.",
     },
     {
         title: "Speed Guarantee",
-        description: "If I build it, it scores 90+.",
+        description: "Every website we build scores 90+ on Google PageSpeed Insights. If it doesn't, we optimise it until it does — at no extra cost. This is not a target. It is a guarantee.",
     },
 ];
 
@@ -116,11 +116,11 @@ export function AboutPageContent() {
                             </div>
 
                             <p className="text-white/65 leading-relaxed text-base max-w-xl">
-                                I don&apos;t run a bloated agency. I am a senior technical architect
-                                operating out of Cape Town. I manage the entire infrastructure
-                                stack&mdash;from the Next.js React codebase to the n8n autonomous
-                                pipelines. You speak directly to the engineer building your business
-                                engine.
+                                I don&apos;t run a bloated agency. I&apos;m a Cape Town-based web
+                                developer and automation engineer managing the entire stack &mdash;
+                                from hand-coded Next.js applications to n8n automation pipelines.
+                                When you work with LP Web Studio you speak directly to the person
+                                writing your code. No sales reps, no account managers, no outsourcing.
                             </p>
 
                             <div className="flex flex-wrap gap-2 mt-2">
@@ -188,9 +188,9 @@ export function AboutPageContent() {
 
                     <p className="text-white/70 leading-relaxed max-w-3xl">
                         I believe in <strong className="text-white">hand-coded performance</strong>.
-                        No drag-and-drop bloat. No plugin security vulnerabilities. Just clean,
-                        semantic Next.js code that scores 90+ on Google PageSpeed
-                        Insights&mdash;guaranteed.
+                        No drag-and-drop page builders. No WordPress plugin vulnerabilities.
+                        Every site I build is custom Next.js code that scores 90+ on Google
+                        PageSpeed Insights &mdash; or I fix it until it does.
                     </p>
                 </section>
 
@@ -207,6 +207,10 @@ export function AboutPageContent() {
                     >
                         THE_ENGINE
                     </h2>
+
+                    <p className="text-white/50 text-sm leading-relaxed mb-8 max-w-2xl">
+                        The same stack powering enterprise applications, running your Cape Town business.
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {techStack.map((tech) => (
