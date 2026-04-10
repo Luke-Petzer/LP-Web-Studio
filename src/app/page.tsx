@@ -28,16 +28,24 @@ export const metadata: Metadata = {
 
 const homepageFaqs = [
     {
-        question: "How long does a custom system take to deploy?",
-        answer: "A standard web application takes 1–2 weeks. Complex B2B portals and automation systems take 2–4 weeks depending on integrations and scope.",
+        question: "What does a custom website cost in Cape Town?",
+        answer: "LP Web Studio offers three packages. A starter 1-page website costs R5,500 once-off plus R350/month hosting. A professional 3-page website with booking automation costs R12,500. Custom web applications start from R21,500.",
     },
     {
-        question: "Do I need to maintain the infrastructure?",
-        answer: "No. Hosting, deployments, and ongoing performance monitoring are handled by us. You focus on the business — we keep the engine running.",
+        question: "How long does a website take to build?",
+        answer: "Standard websites take 1-2 weeks once content and requirements are confirmed. Custom web applications and automation systems take 2-6 weeks depending on complexity.",
     },
     {
-        question: "What happens after I request an audit?",
-        answer: "We schedule a 30-minute discovery call, map your current workflow, identify the biggest bottlenecks, and deliver a written architecture blueprint within 48 hours.",
+        question: "Do you work with businesses outside Cape Town?",
+        answer: "Yes. We work with businesses across South Africa and internationally. Discovery calls are online and projects are delivered remotely.",
+    },
+    {
+        question: "What industries do you work with?",
+        answer: "We work with any business that needs a serious online presence or wants to automate their operations — particularly manufacturing, trade services, hospitality, and B2B companies.",
+    },
+    {
+        question: "What makes LP Web Studio different from other web agencies?",
+        answer: "You speak directly to the engineer building your system — not a sales rep or account manager. Every build is hand-coded in Next.js, comes with a 90+ PageSpeed guarantee, and you own the code outright with no lock-in.",
     },
 ];
 export default function HomePage() {
