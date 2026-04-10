@@ -17,6 +17,45 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Contact Drawer
+
+**Date:** 2026-04-10
+
+### Files Created
+- `src/lib/contact-drawer-context.tsx` — React context (isOpen, openDrawer, closeDrawer), body scroll lock, Escape handler
+- `src/components/organisms/ContactDrawer.tsx` — Slide-in (desktop 460px) / bottom sheet (mobile), architecture selector 2×2, 4 form fields, success state
+- `src/app/api/contact/route.ts` — POST handler with Zod validation, console.log, n8n webhook forwarding
+
+### Files Modified
+- `src/app/layout.tsx` — DrawerProvider wraps body, ContactDrawer mounted at root
+- `src/components/molecules/NavClient.tsx` — "Contact" nav + "Get Started" → openDrawer()
+- `src/components/molecules/HeroContent.tsx` — "Deploy System" → openDrawer()
+- `src/components/organisms/WorkClosingCTA.tsx` — "RUN FREE AUDIT" → openDrawer()
+- `src/components/organisms/AboutPageContent.tsx` — "INITIATE PROJECT" → openDrawer()
+- `src/components/organisms/FinalCTA.tsx` — "Request Audit" → openDrawer()
+- `src/components/organisms/Footer.tsx` — "Contact" footer link → openDrawer()
+- `next.config.ts` — 301 redirect `/contact` → `/`
+
+### Files Deleted
+- `src/app/contact/page.tsx` — replaced by drawer
+
+### Needs Testing
+- [ ] Drawer opens from every CTA entry point (nav, hero, work, about, finalcta, footer)
+- [ ] Escape key closes drawer
+- [ ] Clicking backdrop closes drawer
+- [ ] Body scroll locks when open (no scrollbar jump)
+- [ ] Desktop: slides in from right at 460px
+- [ ] Mobile: slides up from bottom, rounded top corners
+- [ ] Architecture selector toggles active state (white bg when selected)
+- [ ] Form submits to /api/contact (check Network tab + server console.log)
+- [ ] Success state shows after submit ("MESSAGE RECEIVED.")
+- [ ] WhatsApp link opens wa.me/27673852286
+- [ ] Email link opens mailto:contact@lpwebstudio.co.za
+- [ ] /contact URL redirects to /
+- [ ] prefers-reduced-motion: no CSS transition
+
+---
+
 ## Infrastructure Page
 
 **File:** `src/components/organisms/AboutPageContent.tsx`
