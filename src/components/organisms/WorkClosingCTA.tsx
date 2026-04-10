@@ -32,17 +32,19 @@ export function WorkClosingCTA() {
         >
           RUN FREE AUDIT
         </button>
-        <a
-          href="/pricing"
-          className="inline-flex items-center justify-center bg-transparent text-white border border-white font-headline font-bold uppercase text-sm"
+        <button
+          onClick={openDrawer}
+          className="inline-flex items-center justify-center bg-transparent text-white font-headline font-bold uppercase text-sm cursor-pointer"
           style={{
             padding: "14px 28px",
             borderRadius: "4px",
             letterSpacing: "0.08em",
+            border: "1px solid white",
+            background: "transparent",
           }}
         >
           VIEW PRICING
-        </a>
+        </button>
       </div>
     </section>
   );

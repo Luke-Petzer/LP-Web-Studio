@@ -12,7 +12,7 @@ export function Footer() {
 
                 {/* Legal */}
                 <p className="mono-label">
-                    © 2024 LP Web Studio. All rights reserved.
+                    © 2025 LP Web Studio. All rights reserved.
                 </p>
 
                 {/* Nav links */}
