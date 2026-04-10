@@ -25,11 +25,11 @@ export function FinalCTA() {
 
                 {/* Micro-timeline */}
                 <div className="mb-12 flex justify-center items-center flex-wrap gap-3 text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase font-mono">
-                    <span>01 / Discovery Call</span>
+                    <span>01 / Free Discovery Call</span>
                     <span className="text-white/20">→</span>
                     <span>02 / Architecture Blueprint</span>
                     <span className="text-white/20">→</span>
-                    <span>03 / System Build</span>
+                    <span>03 / Your System Is Built</span>
                 </div>
 
                 {/* CTAs */}
