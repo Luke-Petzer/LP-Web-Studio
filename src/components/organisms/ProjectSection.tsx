@@ -1,5 +1,6 @@
 // src/components/organisms/ProjectSection.tsx
 import React from "react";
+import Image from "next/image";
 
 export type ProjectSectionProps = {
   ident: string;
@@ -46,7 +47,7 @@ export function ProjectSection({
   const identLines = ident.split(" ");
 
   return (
-    <section className="flex flex-col md:flex-row py-16 md:py-24 px-6 md:px-16 gap-12 md:gap-16">
+    <section aria-label={`${ident} project`} className="flex flex-col md:flex-row py-16 md:py-24 px-6 md:px-16 gap-12 md:gap-16">
 
       {/* ── LEFT (60%) — Media + Description ── */}
       {/* On mobile: order-2 (below metadata) */}
@@ -91,28 +92,32 @@ export function ProjectSection({
             aria-hidden="true"
           />
 
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full aspect-video object-cover"
-            aria-label={`${ident} project preview`}
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+          <figure>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full aspect-video object-cover"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+            <figcaption className="sr-only">{ident} project preview</figcaption>
+          </figure>
         </div>
 
         {/* Two images side by side */}
         <div className="grid grid-cols-2 gap-4">
           {images.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={imageAlts[i]}
-              className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              loading="lazy"
-            />
+            <div key={i} className="relative aspect-square w-full overflow-hidden">
+              <Image
+                src={src}
+                alt={imageAlts[i]}
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
+              />
+            </div>
           ))}
         </div>
 
@@ -201,6 +206,7 @@ export function ProjectSection({
         {/* CTA */}
         <a
           href={siteUrl}
+          aria-label={`Launch ${ident} experience`}
           target={siteUrl !== "#" ? "_blank" : undefined}
           rel={siteUrl !== "#" ? "noopener noreferrer" : undefined}
           className="w-full flex items-center justify-between px-6 py-5 border border-white/10 hover:border-[#FF4D00]/60 hover:bg-[#FF4D00]/5 transition-all duration-300 font-headline font-black uppercase tracking-widest text-white text-sm"
