@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessSchema, websiteSchema } from "@/components/seo/SchemaTemplates";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import { DrawerProvider } from "@/lib/contact-drawer-context";
+import { ContactDrawer } from "@/components/organisms/ContactDrawer";
 
 /* ─── Font Loading (display: swap prevents FOIT) ─── */
-const jakarta = Plus_Jakarta_Sans({
-    variable: "--font-jakarta",
+const spaceGrotesk = Space_Grotesk({
+    variable: "--font-space-grotesk",
     subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
     display: "swap",
 });
 
@@ -97,7 +100,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${jakarta.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
+            className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
         >
             <head>
                 {/* SEO Layer 3: Global JSON-LD Schemas */}
@@ -105,8 +108,11 @@ export default function RootLayout({
                 <JsonLd data={websiteSchema()} />
             </head>
             <body className="font-body antialiased overflow-x-hidden">
-                {children}
-                <Analytics />
+                <DrawerProvider>
+                    {children}
+                    <ContactDrawer />
+                    <Analytics />
+                </DrawerProvider>
             </body>
         </html>
     );
