@@ -27,6 +27,8 @@ const contactSchema = z.object({
         .max(2000, "Message must be under 2000 characters")
         .trim(),
     website: z.string().url().optional().or(z.literal("")), // honeypot-style optional field
+    arch: z.enum(["web_app", "ecommerce", "automation", "branding"]).optional(),
+    budget: z.string().max(100).trim().optional(),
 });
 
 export type ContactPayload = z.infer<typeof contactSchema>;
@@ -58,6 +60,8 @@ export async function POST(request: Request) {
         console.log("[Contact API] New submission:", {
             name: data.name,
             email: data.email,
+            arch: data.arch,
+            budget: data.budget,
         });
 
         const webhookUrl = process.env.N8N_WEBHOOK_URL;
@@ -66,7 +70,7 @@ export async function POST(request: Request) {
                 await fetch(webhookUrl, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name: data.name, email: data.email, message: data.message }),
+                    body: JSON.stringify({ name: data.name, email: data.email, message: data.message, arch: data.arch, budget: data.budget }),
                 });
             } catch {
                 // Webhook failure should not block the user response

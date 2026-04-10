@@ -1,7 +1,7 @@
 // src/components/organisms/ContactDrawer.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDrawer } from "@/lib/contact-drawer-context";
 import { MessageCircle, Mail, X } from "lucide-react";
 
@@ -36,17 +36,34 @@ export function ContactDrawer() {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError]     = useState(false);
+
+  const [reducedMotion, setReducedMotion] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSending(true);
-    await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ arch, name, email, budget, message }),
-    });
-    setSending(false);
-    setSuccess(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ arch, name, email, budget, message }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setSuccess(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   function handleClose() {
@@ -54,13 +71,10 @@ export function ContactDrawer() {
     // Reset after animation completes
     setTimeout(() => {
       setSuccess(false);
+      setError(false);
       setName(""); setEmail(""); setBudget(""); setMessage(""); setArch(null);
     }, 400);
   }
-
-  const reducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const transition = reducedMotion ? "none" : "transform 0.35s cubic-bezier(0.16,1,0.3,1)";
 
@@ -262,6 +276,12 @@ export function ContactDrawer() {
                     onBlur={(e) => { (e.target as HTMLTextAreaElement).style.borderBottomColor = "rgba(255,255,255,0.12)"; }}
                   />
                 </div>
+
+                {error && (
+                  <p style={{ color: "#FF4500", fontSize: "12px", textAlign: "center" }}>
+                    Something went wrong. Please try again or contact us directly below.
+                  </p>
+                )}
 
                 {/* Submit — corner bracket style */}
                 <div style={{ position: "relative", display: "inline-block", alignSelf: "stretch" }}>

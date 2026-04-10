@@ -8,7 +8,7 @@ import { useDrawer } from "@/lib/contact-drawer-context";
 const navLinks = [
     { label: "Solutions",      href: "/work" },
     { label: "Infrastructure", href: "/about" },
-    { label: "Contact",        href: "/contact" },
+    { label: "Contact",        href: "#" },
 ];
 
 export function NavClient() {
