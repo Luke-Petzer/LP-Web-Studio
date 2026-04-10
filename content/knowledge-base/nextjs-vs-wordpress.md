@@ -1,6 +1,6 @@
 ---
-title: "Next.js vs WordPress: The Performance Gap Explained"
-description: "A detailed comparison of Next.js and WordPress for small business websites, covering speed, security, SEO, and total cost of ownership."
+title: "Next.js vs WordPress for Cape Town Small Businesses"
+description: "Why Cape Town businesses are switching from WordPress to Next.js. Speed comparison, security, SEO impact, and real cost breakdown."
 date: "2026-02-17"
 faq:
   - question: "Is Next.js better than WordPress for small businesses?"

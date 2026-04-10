@@ -1,6 +1,6 @@
 ---
-title: "Why Your Website Needs a 90+ PageSpeed Score"
-description: "Learn why Google PageSpeed matters for your business, how it affects SEO rankings, and what you can do to achieve a 90+ score."
+title: "Why PageSpeed Matters for Cape Town Businesses in 2025"
+description: "How website speed affects your Google ranking and leads in Cape Town. What a 90+ PageSpeed score means for your business and how to achieve it."
 date: "2026-02-17"
 faq:
   - question: "What is a Google PageSpeed Score?"

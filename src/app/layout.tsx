@@ -32,20 +32,22 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
     metadataBase: new URL("https://lpwebstudio.co.za"),
     title: {
-        default: "LP Web Studio | Cape Town High-Performance Web Development",
+        default: "LP Web Studio | Web Development & Automation Cape Town",
         template: "%s | LP Web Studio",
     },
     description:
-        "Fix your slow WordPress website. LP Web Studio builds high-performance Next.js sites in Cape Town with integrated WhatsApp booking systems. See our pricing and speed guarantees.",
+        "LP Web Studio builds custom Next.js websites and n8n automation systems for Cape Town businesses. Hand-coded, no WordPress, guaranteed 90+ PageSpeed scores.",
     keywords: [
-        "website cost South Africa",
-        "slow WordPress website",
-        "fix slow WordPress site",
-        "WhatsApp booking systems",
-        "WhatsApp ordering system setup",
-        "website maintenance cost Cape Town",
-        "Next.js web developer",
-        "high performance website",
+        "web developer Cape Town",
+        "custom website Cape Town",
+        "Next.js developer South Africa",
+        "n8n automation Cape Town",
+        "fast website Cape Town",
+        "website speed optimisation Cape Town",
+        "business automation South Africa",
+        "custom web application Cape Town",
+        "WhatsApp lead capture website",
+        "React developer Cape Town",
     ],
     authors: [{ name: "LP Web Studio" }],
     creator: "LP Web Studio",
@@ -73,8 +75,8 @@ export const metadata: Metadata = {
         locale: "en_ZA",
         url: "https://lpwebstudio.co.za",
         siteName: "LP Web Studio",
-        title: "LP Web Studio | Cape Town High-Performance Web Development",
-        description: "Fix your slow WordPress website. Custom Next.js builds with integrated WhatsApp booking systems.",
+        title: "LP Web Studio | Web Development & Automation Cape Town",
+        description: "Custom Next.js websites and n8n automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed.",
         images: [
             {
                 url: "/og-image.png",
@@ -86,8 +88,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "LP Web Studio | Cape Town High-Performance Web Development",
-        description: "Fix your slow WordPress website. Custom Next.js builds with integrated WhatsApp booking systems.",
+        title: "LP Web Studio | Web Development & Automation Cape Town",
+        description: "Custom Next.js websites and n8n automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed.",
         images: ["/og-image.png"],
     },
 };

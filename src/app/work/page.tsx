@@ -4,13 +4,13 @@ import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 
 export const metadata: Metadata = {
-    title: "Our Work — LP Web Studio",
+    title: "Our Work | Cape Town Web Development Portfolio",
     description:
-        "Real businesses. Real code. 90+ Performance Scores. Explore our portfolio of high-performance websites built for Cape Town small businesses.",
+        "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
     openGraph: {
-        title: "Our Work — LP Web Studio",
+        title: "Our Work | Cape Town Web Development Portfolio",
         description:
-            "We don't just build. We benchmark. Real businesses, real code, 90+ scores.",
+            "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
     },
 };
 
