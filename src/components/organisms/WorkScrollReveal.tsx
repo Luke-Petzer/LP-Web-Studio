@@ -58,7 +58,7 @@ export function WorkScrollReveal() {
           key={i}
           ref={(el) => { lineRefs.current[i] = el; }}
           className="block font-headline font-black uppercase text-white leading-snug"
-          style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}
+          style={{ fontSize: "clamp(2rem, 4vw, 4rem)", opacity: 0, transform: "translateY(16px)" }}
         >
           {line}
         </span>

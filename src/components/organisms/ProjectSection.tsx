@@ -99,6 +99,7 @@ export function ProjectSection({
               loop
               playsInline
               className="w-full aspect-video object-cover"
+              aria-label={`${ident} project video preview`}
             >
               <source src={videoSrc} type="video/mp4" />
             </video>

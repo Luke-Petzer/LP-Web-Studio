@@ -18,8 +18,8 @@ const cafeCrave: ProjectSectionProps = {
   descriptionBody:
     "Cafe Crave needed more than a menu online. They needed every visitor to feel the space before they arrived. We rebuilt their digital presence from the ground up — a React stack with live Google review integration and a reservation flow that converts.",
   videoSrc: "/videos/CafeCrave.mp4",
-  images: ["/images/cafe-crave-1.jpg", "/images/cafe-crave-2.jpg"],
-  imageAlts: ["Cafe Crave mobile UI", "Cafe Crave brand detail"],
+  images: ["/cafe-crave.webp", "/cafe-crave.webp"],
+  imageAlts: ["Cafe Crave website", "Cafe Crave website detail"],
   siteUrl: "#",
 };
 
@@ -36,8 +36,8 @@ const theBigSix: ProjectSectionProps = {
   descriptionBody:
     "A restoration worth remembering deserves a site that can tell the story. Immersive brand storytelling with custom CSS masking and automated image optimisation for 4K assets. Premium design that loads in under one second.",
   videoSrc: "/videos/BigSix.mp4",
-  images: ["/images/big-six-1.jpg", "/images/big-six-2.jpg"],
-  imageAlts: ["The Big Six brand identity", "The Big Six detail shot"],
+  images: ["/big-six.webp", "/big-six.webp"],
+  imageAlts: ["The Big Six website", "The Big Six website detail"],
   siteUrl: "#",
 };
 
