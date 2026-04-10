@@ -9,6 +9,14 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Shared Components
+
+| Component | Path | Props | Used On |
+|---|---|---|---|
+| `SubpageHero` | `src/components/organisms/SubpageHero.tsx` | `breadcrumb`, `title`, `subtitle` | `/work`, `/about` |
+
+---
+
 ## Completed Changes
 
 ### 2026-04-10 — Work Page Redesign v2

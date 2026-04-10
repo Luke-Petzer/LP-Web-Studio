@@ -1,5 +1,6 @@
 // src/components/organisms/WorkPageContent.tsx
 import { GeometricCanvas } from "@/components/atoms/GeometricCanvas";
+import { SubpageHero } from "@/components/organisms/SubpageHero";
 import { WorkScrollReveal } from "@/components/organisms/WorkScrollReveal";
 import { ChapterHook } from "@/components/molecules/ChapterHook";
 import { ProjectSection, type ProjectSectionProps } from "@/components/organisms/ProjectSection";
@@ -45,7 +46,11 @@ export function WorkPageContent() {
   return (
     <div className="relative">
       <GeometricCanvas />
-      {/* SubpageHero component goes here */}
+      <SubpageHero
+        breadcrumb="LP WEB / WORK"
+        title="WORK"
+        subtitle="SELECTED CLIENT ENGAGEMENTS"
+      />
       <WorkScrollReveal />
 
       <ChapterHook text="A cafe losing customers before they even walked in." />

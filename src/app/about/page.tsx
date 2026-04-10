@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AboutPageContent } from "@/components/organisms/AboutPageContent";
+import { SubpageHero } from "@/components/organisms/SubpageHero";
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 
@@ -18,7 +19,12 @@ export default function AboutPage() {
     return (
         <>
             <Navigation />
-            <main className="pt-[160px] pb-structural">
+            <main className="pb-structural">
+                <SubpageHero
+                    breadcrumb="LP WEB / INFRASTRUCTURE"
+                    title="INFRASTRUCTURE"
+                    subtitle="ENGINEERED FOR PERFORMANCE"
+                />
                 <AboutPageContent />
             </main>
             <Footer />
