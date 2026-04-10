@@ -1,94 +1,70 @@
+"use client";
+
 import Image from "next/image";
 import { Instagram, MessageCircle } from "lucide-react";
+import { useDrawer } from "@/lib/contact-drawer-context";
 
 export function Footer() {
+    const { openDrawer } = useDrawer();
     return (
-        <footer className="bg-void py-24 md:py-32 px-6 md:px-10 lg:px-16">
-            <div className="max-w-7xl mx-auto">
-                {/* Main Footer Content */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-12">
-                    {/* Brand Block (Left) */}
-                    <div className="flex flex-col items-center md:items-start">
-                        <Image
-                            src="/My-Logo.png"
-                            alt="LP Web Studio"
-                            width={140}
-                            height={40}
-                            className="h-10 mb-4 brightness-0 invert"
-                        />
-                        <p className="font-mono text-[10px] text-white/40 uppercase tracking-widest">
-                            High-performance systems. Built in Cape Town.
-                        </p>
+        <footer className="bg-obsidian border-t border-white/5 w-full px-8 md:px-12 py-14">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+
+                {/* Legal */}
+                <p className="mono-label">
+                    © 2024 LP Web Studio. All rights reserved.
+                </p>
+
+                {/* Nav links */}
+                <nav aria-label="Footer navigation" className="flex gap-10">
+                    {[
+                        { label: "Work",    href: "/work" },
+                        { label: "About",   href: "/about" },
+                        { label: "Privacy", href: "/privacy" },
+                    ].map(({ label, href }) => (
+                        <a
+                            key={label}
+                            href={href}
+                            className="mono-label hover:text-white transition-colors duration-200"
+                        >
+                            {label}
+                        </a>
+                    ))}
+                    <button
+                        onClick={openDrawer}
+                        className="mono-label hover:text-white transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                    >
+                        Contact
+                    </button>
+                </nav>
+
+                {/* Status + socials */}
+                <div className="flex items-center gap-6">
+                    {/* Systems online indicator */}
+                    <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                        <span className="mono-label">Systems Online</span>
                     </div>
 
-                    {/* Nav Links & Email (Center) */}
-                    <div className="flex flex-col items-center gap-4">
-                        <nav aria-label="Footer navigation">
-                            <div className="flex gap-6 md:gap-8">
-                                <a
-                                    href="#capabilities"
-                                    className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-                                >
-                                    Work
-                                </a>
-                                <a
-                                    href="#founder"
-                                    className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-                                >
-                                    About
-                                </a>
-                                <a
-                                    href="#contact"
-                                    className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white/80 transition-colors"
-                                >
-                                    Contact
-                                </a>
-                            </div>
-                        </nav>
-                        <a
-                            href="mailto:contact@lpwebstudio.co.za"
-                            className="font-mono text-[10px] text-white/50 hover:text-white/80 transition-colors tracking-[0.2em]"
-                        >
-                            contact@lpwebstudio.co.za
-                        </a>
-                    </div>
-
-                    {/* Social Icons (Right) */}
-                    <div className="flex gap-8">
-                        <a
-                            href="https://www.instagram.com/lp.web.studio"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white/60 hover:text-white transition-colors"
-                            aria-label="Instagram"
-                        >
-                            <Instagram className="w-6 h-6" strokeWidth={1.5} />
-                        </a>
-                        <a
-                            href="https://wa.me/27673852286"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white/60 hover:text-white transition-colors"
-                            aria-label="WhatsApp"
-                        >
-                            <MessageCircle className="w-6 h-6" strokeWidth={1.5} />
-                        </a>
-                    </div>
-                </div>
-
-                {/* Legal Section */}
-                <div className="border-t border-white/[0.06] pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-                        <p className="font-mono text-[10px] text-white/30">
-                            © 2026 LP Web Studio. All rights reserved.
-                        </p>
-                        <a
-                            href="/privacy"
-                            className="font-mono text-[10px] text-white/30 hover:text-white/60 transition-colors"
-                        >
-                            Privacy Policy
-                        </a>
-                    </div>
+                    {/* Social icons */}
+                    <a
+                        href="https://www.instagram.com/lp.web.studio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        className="text-white/40 hover:text-white transition-colors duration-200"
+                    >
+                        <Instagram className="w-4 h-4" strokeWidth={1.5} />
+                    </a>
+                    <a
+                        href="https://wa.me/27673852286"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp"
+                        className="text-white/40 hover:text-white transition-colors duration-200"
+                    >
+                        <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+                    </a>
                 </div>
             </div>
         </footer>

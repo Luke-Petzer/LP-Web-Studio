@@ -82,8 +82,10 @@ const reasons = [
 ];
 
 import React from "react";
+import { useDrawer } from "@/lib/contact-drawer-context";
 
 export function AboutPageContent() {
+    const { openDrawer } = useDrawer();
     return (
         <div className="bg-[#0A0A0A] w-full">
             <div className="max-w-7xl mx-auto px-6">
@@ -302,9 +304,9 @@ export function AboutPageContent() {
                 <p className="text-white/60 text-base mb-8 max-w-md">
                     One engineer. Full stack. No account managers.
                 </p>
-                <a
-                    href="/contact"
-                    className="inline-flex items-center justify-center bg-white text-black font-headline font-bold uppercase text-sm"
+                <button
+                    onClick={openDrawer}
+                    className="inline-flex items-center justify-center bg-white text-black font-headline font-bold uppercase text-sm border-none cursor-pointer"
                     style={{
                         padding: "14px 32px",
                         borderRadius: "4px",
@@ -312,7 +314,7 @@ export function AboutPageContent() {
                     }}
                 >
                     INITIATE PROJECT
-                </a>
+                </button>
             </section>
         </div>
     );

@@ -1,215 +1,189 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useMotionValueEvent, useScroll, useReducedMotion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useDrawer } from "@/lib/contact-drawer-context";
 
 const navLinks = [
-    { label: "Work", href: "/work" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Solutions",      href: "/work" },
+    { label: "Infrastructure", href: "/about" },
+    { label: "Contact",        href: "/contact" },
 ];
 
-const CornerMark = ({ className }: { className?: string }) => (
-    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true" className={className}>
-        <path d="M0.5 0.5L0.5 7.5M0.5 0.5L7.5 0.5" stroke="currentColor" strokeWidth="1"/>
-    </svg>
-);
-
-/**
- * NavClient — Client Molecule
- * At top (scroll=0): full-width, transparent, flush to viewport top
- * Scrolled (scroll>80): bubble morphs in — rounded-full, dark-glass, top-4
- * All morphing via Framer Motion animate on <motion.header> + <motion.nav>
- */
 export function NavClient() {
-    const pathname = usePathname();
-    const shouldReduceMotion = useReducedMotion();
+    const pathname   = usePathname();
     const isHomepage = pathname === "/";
-    const [scrolled, setScrolled] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-    const { scrollY } = useScroll();
+    const { openDrawer } = useDrawer();
 
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        setScrolled(latest > 80);
-    });
+    const [scrolled,  setScrolled]  = useState(false); // pill mode
+    const [visible,   setVisible]   = useState(true);  // hide/show on scroll direction
+    const [isOpen,    setIsOpen]    = useState(false);
 
-    /* ─── Lock body scroll when overlay is open ─── */
+    const lastY = useRef(0);
+
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-        return () => {
-            document.body.style.overflow = "";
+        const handler = () => {
+            const y = window.scrollY;
+            const delta = y - lastY.current;
+
+            // Switch to pill after 60px
+            setScrolled(y > 60);
+
+            // Hide when scrolling down (delta > 4), show when scrolling up
+            if (delta > 4 && y > 120) {
+                setVisible(false);
+            } else if (delta < -4) {
+                setVisible(true);
+            }
+
+            lastY.current = y;
         };
+
+        window.addEventListener("scroll", handler, { passive: true });
+        return () => window.removeEventListener("scroll", handler);
+    }, []);
+
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
     }, [isOpen]);
-
-    const forceLight = !isHomepage;
-    const isLight = forceLight || isHomepage || scrolled;
-
-    /* ─── Hamburger span color ─── */
-    const spanBg = isLight ? "bg-ink" : "bg-white";
-
-    const morphTransition = shouldReduceMotion
-        ? { duration: 0 }
-        : { duration: 0.35, ease: [0.62, 0.16, 0.13, 1.01] as [number, number, number, number] };
 
     return (
         <>
-            {/* ─── Header shell: full-width at top, shrinks to bubble on scroll ─── */}
-            <motion.header
-                className="fixed left-1/2 z-50"
-                style={{ x: "-50%" }}
-                animate={{
-                    top: scrolled ? "1rem" : "0px",
-                    width: scrolled ? "calc(100% - 2rem)" : "100%",
-                    maxWidth: scrolled ? "1200px" : "100%",
-                }}
-                transition={morphTransition}
+            <header
+                className={[
+                    "fixed left-1/2 z-50 -translate-x-1/2",
+                    "transition-all duration-300 ease-[cubic-bezier(0.2,0,0.2,1)]",
+                    /* Position: flush top when expanded, top-4 when pill */
+                    scrolled ? "top-4" : "top-0",
+                    /* Width: full when expanded, pill when scrolled */
+                    scrolled ? "w-[calc(100%-2rem)] max-w-3xl" : "w-full max-w-full",
+                    /* Hide/show via translateY */
+                    visible ? "translate-y-0" : "-translate-y-[120%]",
+                ].join(" ")}
+                style={{ transform: `translateX(-50%) translateY(${visible ? "0" : "-120%"})` }}
                 aria-label="Main navigation"
             >
-                <motion.nav
-                    className="flex items-center justify-between"
-                    animate={{
-                        borderRadius: scrolled ? "9999px" : "0px",
-                        paddingLeft: scrolled ? "1.5rem" : "2.5rem",
-                        paddingRight: scrolled ? "1.5rem" : "2.5rem",
-                        paddingTop: scrolled ? "0.5rem" : "1.25rem",
-                        paddingBottom: scrolled ? "0.5rem" : "1.25rem",
-                        backgroundColor: isLight
-                            ? scrolled ? "rgba(255,255,255,0.88)" : "rgba(255,255,255,0.0)"
-                            : scrolled ? "rgba(10,10,10,0.80)" : "rgba(0,0,0,0.0)",
-                        borderColor: isLight
-                            ? scrolled ? "rgba(0,0,0,0.07)" : "rgba(0,0,0,0.0)"
-                            : scrolled ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.0)",
-                        boxShadow: scrolled && isLight
-                            ? "0 10px 30px -10px rgba(0,0,0,0.12)"
-                            : "none",
-                    }}
-                    transition={morphTransition}
-                    style={{
-                        backdropFilter: "blur(12px)",
-                        WebkitBackdropFilter: "blur(12px)",
-                        border: "1px solid",
-                    }}
+                <nav
+                    className={[
+                        "flex items-center justify-between transition-all duration-300",
+                        scrolled
+                            ? "bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-3"
+                            : "bg-transparent px-8 md:px-12 py-6 md:py-8",
+                    ].join(" ")}
                 >
                     {/* Logo */}
-                    <a href="/" className="flex items-center gap-2 group" aria-label="LP Web Studio home">
+                    <a href="/" aria-label="LP Web Studio home" className="flex items-center">
                         <Image
                             src="/my-logo.svg"
                             alt="LP Web Studio"
-                            width={120}
-                            height={32}
+                            width={100}
+                            height={28}
                             priority
-                            className={`h-8 transition-[filter] duration-300 ${!isLight ? "invert brightness-0" : ""}`}
+                            className={[
+                                "w-auto invert transition-all duration-300",
+                                scrolled ? "h-6" : "h-7",
+                            ].join(" ")}
                         />
                     </a>
 
-                    {/* Desktop Links */}
-                    <nav className="hidden md:flex items-center gap-8">
+                    {/* Desktop links */}
+                    <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
                         {navLinks.map((link) => {
                             const isActive = pathname === link.href;
+                            if (link.label === "Contact") {
+                                return (
+                                    <button
+                                        key={link.label}
+                                        onClick={openDrawer}
+                                        className="font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-200 bg-transparent border-none cursor-pointer text-white/50 hover:text-white"
+                                    >
+                                        {link.label}
+                                    </button>
+                                );
+                            }
                             return (
-                                <motion.a
+                                <a
                                     key={link.label}
                                     href={link.href}
-                                    className="group relative text-xs font-medium uppercase tracking-widest overflow-hidden h-[1.2em] flex items-center"
-                                    animate={{ color: isActive ? "rgb(var(--accent))" : isLight ? "#1a1a1a" : "#ffffff" }}
-                                    transition={shouldReduceMotion ? { duration: 0 } : morphTransition}
+                                    className={[
+                                        "font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-200",
+                                        isActive
+                                            ? "text-white border-b border-white pb-0.5"
+                                            : "text-white/50 hover:text-white",
+                                    ].join(" ")}
                                 >
-                                    <span className="block transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:-translate-y-full">
-                                        {link.label}
-                                    </span>
-                                    <span aria-hidden="true" className="absolute inset-0 flex items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.62,0.16,0.13,1.01)] group-hover:translate-y-0">
-                                        {link.label}
-                                    </span>
-                                </motion.a>
+                                    {link.label}
+                                </a>
                             );
                         })}
                     </nav>
 
-                    {/* CTA — hidden on mobile */}
-                    <motion.a
-                        href={isHomepage ? "#contact" : "/contact"}
-                        className="group hidden md:inline-flex relative mercury-btn px-[16px] py-[8px] rounded-full text-xs font-bold uppercase tracking-wider text-white items-center"
-                        whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
-                        whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
-                        transition={morphTransition}
-                    >
-                        <CornerMark className="absolute top-[3px] left-[3px] text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        <CornerMark className="absolute top-[3px] right-[3px] rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        <CornerMark className="absolute bottom-[3px] right-[3px] rotate-180 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        <CornerMark className="absolute bottom-[3px] left-[3px] -rotate-90 text-white/25 group-hover:text-white/50 transition-colors duration-300" />
-                        Book a Call
-                    </motion.a>
-
-                    {/* ─── Morphing Hamburger (mobile only) ─── */}
+                    {/* CTA */}
                     <button
-                        className="flex md:hidden flex-col items-center justify-center gap-[6px] w-10 h-10"
-                        onClick={() => setIsOpen((prev) => !prev)}
+                        onClick={openDrawer}
+                        className={[
+                            "hidden md:inline-flex font-headline font-bold uppercase tracking-widest transition-all duration-200 border-none cursor-pointer",
+                            scrolled
+                                ? "text-[10px] bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90"
+                                : "btn-primary text-[11px] px-6 py-2.5",
+                        ].join(" ")}
+                    >
+                        Get Started
+                    </button>
+
+                    {/* Hamburger */}
+                    <button
+                        className="flex md:hidden flex-col items-center justify-center gap-[5px] w-8 h-8"
+                        onClick={() => setIsOpen((p) => !p)}
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isOpen}
                     >
-                        <span className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "rotate-45 translate-y-[0.4rem]" : ""}`} />
-                        <span className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "opacity-0" : "opacity-100"}`} />
-                        <span className={`block h-[2px] w-6 rounded-full transition-all duration-300 ${spanBg} ${isOpen ? "-rotate-45 -translate-y-[0.4rem]" : ""}`} />
+                        <span className={`block h-[2px] w-5 bg-white transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+                        <span className={`block h-[2px] w-5 bg-white transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`} />
+                        <span className={`block h-[2px] w-5 bg-white transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
                     </button>
-                </motion.nav>
-            </motion.header>
+                </nav>
+            </header>
 
-            {/* ─── Glassmorphic Mobile Overlay ─── */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        className="fixed inset-0 z-40 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                    >
-                        {/* Backdrop */}
-                        <div
-                            className="absolute inset-0 backdrop-blur-md bg-void/60"
-                            onClick={() => setIsOpen(false)}
-                        />
-
-                        {/* Glass Card */}
-                        <motion.div
-                            className="relative z-10 flex flex-col items-center justify-center gap-8 p-8 rounded-2xl bg-white/5 border border-white/10 shadow-accent-glow w-[calc(100%-3rem)] max-w-sm"
-                            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
-                        >
-                            {navLinks.map((link) => {
-                                const isActive = pathname === link.href;
+            {/* Mobile overlay */}
+            {isOpen && (
+                <div className="fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8">
+                    <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
+                    <nav className="relative flex flex-col gap-8">
+                        {navLinks.map((link) => {
+                            if (link.label === "Contact") {
                                 return (
-                                    <a
+                                    <button
                                         key={link.label}
-                                        href={link.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className={`text-2xl font-heading font-bold transition-colors ${isActive ? "text-accent" : "text-white hover:text-accent/70"}`}
+                                        onClick={() => { setIsOpen(false); openDrawer(); }}
+                                        className="font-headline text-3xl font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 bg-transparent border-none cursor-pointer text-left w-full"
                                     >
                                         {link.label}
-                                    </a>
+                                    </button>
                                 );
-                            })}
-
-                            {/* Mobile CTA inside overlay */}
-                            <a
-                                href={isHomepage ? "#contact" : "/contact"}
-                                onClick={() => setIsOpen(false)}
-                                className="mercury-btn px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white inline-flex items-center mt-4"
-                            >
-                                Book a Call
-                            </a>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                            }
+                            return (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="font-headline text-3xl font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6"
+                                >
+                                    {link.label}
+                                </a>
+                            );
+                        })}
+                        <button
+                            onClick={() => { setIsOpen(false); openDrawer(); }}
+                            className="btn-primary mt-4 w-full justify-center text-center border-none cursor-pointer"
+                        >
+                            Get Started
+                        </button>
+                    </nav>
+                </div>
+            )}
         </>
     );
 }
