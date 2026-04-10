@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import { GrainOverlay } from "@/components/atoms/GrainOverlay";
 import { clipReveal } from "@/lib/variants";
+import { useDrawer } from "@/lib/contact-drawer-context";
 
 /* ─────────────────────────────────────────────────────────────
    UX: prefers-reduced-motion respected globally in this component
@@ -285,6 +286,7 @@ function CapabilityColumn({
 export function CoreCapabilitiesSection() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const reducedMotion = useReducedMotion() ?? false;
+    const { openDrawer } = useDrawer();
 
     const handleActivate = useCallback((i: number | null) => {
         setActiveIndex(i);
@@ -377,15 +379,16 @@ export function CoreCapabilitiesSection() {
                 >
                     Ready to scope a project?
                 </p>
-                <a
-                    href="#contact"
+                <button
+                    onClick={openDrawer}
                     className="font-mono text-xs uppercase tracking-widest
                                transition-opacity duration-200 hover:opacity-60
-                               flex items-center gap-2"
-                    style={{ color: "#FEB05D" }}
+                               flex items-center gap-2
+                               border-none cursor-pointer"
+                    style={{ color: "#FEB05D", background: "none" }}
                 >
                     Start a conversation →
-                </a>
+                </button>
             </div>
 
             {/* Bottom padding spacer */}

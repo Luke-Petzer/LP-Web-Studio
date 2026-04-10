@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { clipReveal } from "@/lib/variants";
+import { useDrawer } from "@/lib/contact-drawer-context";
 
 type ProcessCard = {
     index: string;
@@ -61,6 +62,7 @@ const headlineReveal: Variants = {
 };
 
 export function ProcessSection() {
+    const { openDrawer } = useDrawer();
     return (
         <section
             id="process"
@@ -118,17 +120,18 @@ export function ProcessSection() {
                         Every site ships with all three built in. The capabilities section shows you how we deliver each one.
                     </motion.p>
 
-                    <motion.a
-                        href="#contact"
+                    <motion.button
+                        onClick={openDrawer}
                         className="inline-flex items-center gap-2 font-mono text-xs
-                                   uppercase tracking-widest transition-opacity duration-200 hover:opacity-60"
-                        style={{ color: "#FEB05D" }}
+                                   uppercase tracking-widest transition-opacity duration-200 hover:opacity-60
+                                   border-none cursor-pointer"
+                        style={{ color: "#FEB05D", background: "none" }}
                         variants={headlineReveal}
                         initial="hidden"
                         animate="visible"
                     >
                         Start a project →
-                    </motion.a>
+                    </motion.button>
                 </div>
 
                 {/* ── RIGHT PANEL — scrolling cards ─────────────────────────

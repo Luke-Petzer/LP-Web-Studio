@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Check } from "lucide-react";
 import { clipReveal } from "@/lib/variants";
+import { useDrawer } from "@/lib/contact-drawer-context";
 
 const spring = { type: "spring" as const, stiffness: 160, damping: 26 };
 
@@ -92,6 +93,7 @@ const tiers = [
 ];
 
 export function PricingSection() {
+    const { openDrawer } = useDrawer();
     return (
         <section
             id="pricing"
@@ -218,11 +220,12 @@ export function PricingSection() {
                             </div>
 
                             {/* CTA */}
-                            <motion.a
-                                href="#contact"
+                            <motion.button
+                                onClick={openDrawer}
                                 className="block text-center rounded-full font-mono font-bold
                                            uppercase tracking-widest cursor-pointer
-                                           transition-opacity duration-200 hover:opacity-80"
+                                           transition-opacity duration-200 hover:opacity-80
+                                           border-none w-full"
                                 style={{
                                     ...tier.cta_style,
                                     padding: tier.recommended ? "1.25rem 1.5rem" : "1rem 1.5rem",
@@ -233,7 +236,7 @@ export function PricingSection() {
                                 transition={spring}
                             >
                                 {tier.cta}
-                            </motion.a>
+                            </motion.button>
                         </motion.div>
                     ))}
                 </div>
