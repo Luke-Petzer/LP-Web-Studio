@@ -56,6 +56,45 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## SEO Overhaul
+
+**Date:** 2026-04-10
+
+### Files Modified
+- `public/robots.txt` — corrected domain to lpwebstudio.co.za, added /api/ and /_next/ disallows
+- `public/sitemap.xml` — replaced stale sitemap, correct domain, current routes only
+- `public/llms.txt` — full rewrite with accurate pricing, portfolio, and contact
+- `src/app/layout.tsx` — metadataBase set to lpwebstudio.co.za, global title/desc/keywords rewritten
+- `src/app/page.tsx` — homepage metadata + homepageFaqs updated to 5 pricing/value questions
+- `src/app/work/page.tsx` — work page metadata + CreativeWork JSON-LD for Cafe Crave and The Big Six
+- `src/app/about/page.tsx` — about page metadata updated
+- `content/knowledge-base/nextjs-vs-wordpress.md` — frontmatter title + description updated
+- `content/knowledge-base/why-pagespeed-matters.md` — frontmatter title + description updated
+- `src/components/seo/SchemaTemplates.ts` — LocalBusiness schema overhauled (pricing, offerCatalog, knowsAbout, correct domain)
+- `src/components/organisms/FAQSection.tsx` — replaced 3 FAQs with 5 new pricing/value questions
+- `src/components/organisms/CoreInfrastructure.tsx` — heading changed to "Web Development & Automation Services"
+- `src/components/organisms/B2BPlatform.tsx` — label changed to "RECENT WORK"
+- `src/components/organisms/FinalCTA.tsx` — micro-timeline labels updated
+- `src/components/organisms/AboutPageContent.tsx` — founder bio, philosophy body, engine teaser, WHY_LP_WEB descriptions rewritten
+- `src/components/organisms/WorkPageContent.tsx` — chapter hooks and project descriptions rewritten
+- `src/components/organisms/WorkClosingCTA.tsx` — CTA heading and body rewritten, /pricing link removed
+- `src/components/organisms/Footer.tsx` — copyright year updated to 2025
+
+### Files Created
+- `src/app/learn/page.tsx` — /learn index page with article cards
+
+### SEO Changes Summary
+- Domain unified to lpwebstudio.co.za (no www) throughout
+- All page titles target Cape Town / South Africa search intent
+- LocalBusiness schema includes pricing tiers, offerCatalog, knowsAbout
+- CreativeWork schemas added for both portfolio projects
+- FAQ updated with pricing questions that match search intent
+- llms.txt updated for AI citation (ChatGPT, Claude, Perplexity)
+- /learn index page gives the knowledge base a valid route
+- Broken /pricing link removed from WorkClosingCTA
+
+---
+
 ## Infrastructure Page
 
 **File:** `src/components/organisms/AboutPageContent.tsx`
