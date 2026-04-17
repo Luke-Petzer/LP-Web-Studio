@@ -27,10 +27,14 @@ dist-ssr
 .next/
 out/
 build/
+tsconfig.tsbuildinfo
 
 # Environment variables
 .env*.local
 
 # Vercel
 .vercel
+
+# Local-only design references
+inspiration/
 

@@ -21,7 +21,7 @@ const cafeCrave: ProjectSectionProps = {
   videoSrc: "/videos/CafeCrave.mp4",
   images: ["/cafe-crave.webp", "/cafe-crave.webp"],
   imageAlts: ["Cafe Crave website", "Cafe Crave website detail"],
-  siteUrl: "#",
+  siteUrl: "https://cafecravecpt.co.za",
 };
 
 const theBigSix: ProjectSectionProps = {
@@ -39,7 +39,7 @@ const theBigSix: ProjectSectionProps = {
   videoSrc: "/videos/BigSix.mp4",
   images: ["/big-six.webp", "/big-six.webp"],
   imageAlts: ["The Big Six website", "The Big Six website detail"],
-  siteUrl: "#",
+  siteUrl: "https://thebigsix.lpwebstudio.co.za",
 };
 
 export function WorkPageContent() {

@@ -2,14 +2,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { validateRequest } from "@/lib/security";
 
-/**
- * Zero-Trust Contact API Route
- * Protocol §5: All API routes MUST use Zod schema validation.
- * Edge Runtime: cpt1 (Cape Town) — Protocol §7
- */
 export const runtime = "edge";
 
-// ─── Zod Schema ────────────────────────────────────────────────────────────
 const contactSchema = z.object({
     name: z
         .string()
@@ -26,59 +20,75 @@ const contactSchema = z.object({
         .min(10, "Message must be at least 10 characters")
         .max(2000, "Message must be under 2000 characters")
         .trim(),
-    website: z.string().url().optional().or(z.literal("")), // honeypot-style optional field
+    website: z.string().url().optional().or(z.literal("")),
     arch: z.enum(["web_app", "ecommerce", "automation", "branding"]).optional(),
     budget: z.string().max(100).trim().optional(),
 });
 
 export type ContactPayload = z.infer<typeof contactSchema>;
 
-// ─── POST Handler ──────────────────────────────────────────────────────────
+const FALLBACK_EMAIL = "contact@lpwebstudio.co.za";
+
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-
-        // Zero-Trust: validate all input through Zod
         const data = await validateRequest(contactSchema, body);
 
-        // ── Honeypot check (bot trap) ──────────────────────────────────────
         if (data.website && data.website.length > 0) {
-            // Silently accept but do nothing — bot submitted the honeypot field
             return NextResponse.json({ success: true });
         }
 
-        // ── TODO: Wire up email provider (Resend / Nodemailer / Supabase) ──
-        // Example with Resend:
-        // const resend = new Resend(process.env.RESEND_API_KEY);
-        // await resend.emails.send({
-        //   from: 'LP Web Studio <noreply@lpwebstudio.co.za>',
-        //   to: 'luke@lpwebstudio.co.za',
-        //   subject: `New enquiry from ${data.name}`,
-        //   html: `<p>${data.message}</p>`,
-        // });
-
-        console.log("[Contact API] New submission:", {
-            name: data.name,
-            email: data.email,
-            arch: data.arch,
-            budget: data.budget,
-        });
-
         const webhookUrl = process.env.N8N_WEBHOOK_URL;
-        if (webhookUrl) {
-            try {
-                await fetch(webhookUrl, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name: data.name, email: data.email, message: data.message, arch: data.arch, budget: data.budget }),
-                });
-            } catch {
-                // Webhook failure should not block the user response
+
+        if (!webhookUrl) {
+            console.warn("[Contact API] N8N_WEBHOOK_URL not configured — submission logged only");
+            console.log("[Contact API] Submission (unsent):", {
+                name: data.name,
+                email: data.email,
+                arch: data.arch,
+                budget: data.budget,
+            });
+            return NextResponse.json(
+                {
+                    success: false,
+                    error: `The contact form is temporarily unavailable. Please email ${FALLBACK_EMAIL} directly and we'll reply within 24 hours.`,
+                },
+                { status: 503 }
+            );
+        }
+
+        try {
+            const webhookResponse = await fetch(webhookUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    message: data.message,
+                    arch: data.arch,
+                    budget: data.budget,
+                }),
+            });
+
+            if (!webhookResponse.ok) {
+                throw new Error(`Webhook returned ${webhookResponse.status}`);
             }
+        } catch (webhookError) {
+            console.error("[Contact API] Webhook delivery failed:", webhookError);
+            return NextResponse.json(
+                {
+                    success: false,
+                    error: `We couldn't deliver your message right now. Please email ${FALLBACK_EMAIL} directly and we'll reply within 24 hours.`,
+                },
+                { status: 502 }
+            );
         }
 
         return NextResponse.json(
-            { success: true, message: "Your message has been received. We'll be in touch within 24 hours." },
+            {
+                success: true,
+                message: "Your message has been received. We'll be in touch within 24 hours.",
+            },
             { status: 200 }
         );
     } catch (error) {
@@ -97,7 +107,6 @@ export async function POST(request: Request) {
     }
 }
 
-// ─── Method Guard ──────────────────────────────────────────────────────────
 export async function GET() {
     return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
 }

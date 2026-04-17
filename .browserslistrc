@@ -1,4 +1,0 @@
-# Removes legacy JavaScript polyfills (~13.7 KiB savings)
-defaults and fully supports es6-module
-not IE 11
-not op_mini all
