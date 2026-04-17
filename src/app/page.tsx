@@ -10,6 +10,7 @@ import { B2BPlatform } from "@/components/organisms/B2BPlatform";
 import { TestimonialSection } from "@/components/organisms/TestimonialSection";
 import { FounderSection } from "@/components/organisms/FounderSection";
 import { FAQSection } from "@/components/organisms/FAQSection";
+import { LatestWriting } from "@/components/organisms/LatestWriting";
 import { FinalCTA } from "@/components/organisms/FinalCTA";
 import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -80,7 +81,9 @@ export default function HomePage() {
                 <Suspense><FounderSection /></Suspense>
                 {/* 9. FAQ */}
                 <Suspense><FAQSection /></Suspense>
-                {/* 10. Final CTA */}
+                {/* 10. Latest Writing */}
+                <Suspense><LatestWriting /></Suspense>
+                {/* 11. Final CTA */}
                 <Suspense><FinalCTA /></Suspense>
             </main>
 
