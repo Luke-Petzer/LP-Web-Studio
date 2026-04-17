@@ -8,7 +8,11 @@ export const metadata: Metadata = {
     title: "Our Work | Cape Town Web Development Portfolio",
     description:
         "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
+    alternates: {
+        canonical: "https://lpwebstudio.co.za/work",
+    },
     openGraph: {
+        url: "https://lpwebstudio.co.za/work",
         title: "Our Work | Cape Town Web Development Portfolio",
         description:
             "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",

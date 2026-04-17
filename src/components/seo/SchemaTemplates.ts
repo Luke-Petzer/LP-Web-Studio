@@ -136,6 +136,37 @@ interface ArticleSchemaInput {
     slug: string;
 }
 
+export function personSchema() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Luke Petzer",
+        jobTitle: "Web Developer & Automation Engineer",
+        worksFor: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+        url: `${SITE_URL}/about`,
+        address: {
+            "@type": "PostalAddress",
+            addressLocality: "Cape Town",
+            addressRegion: "Western Cape",
+            addressCountry: "ZA",
+        },
+        knowsAbout: [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "n8n automation",
+            "Supabase",
+            "Vercel Edge Network",
+            "Web performance optimisation",
+        ],
+        sameAs: ["https://www.instagram.com/lp.web.studio"],
+    };
+}
+
 export function blogPostingSchema(article: ArticleSchemaInput) {
     return {
         "@context": "https://schema.org",

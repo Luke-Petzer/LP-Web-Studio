@@ -8,7 +8,11 @@ export const metadata: Metadata = {
     title: "Web Development Insights | LP Web Studio",
     description:
         "Practical guides on Next.js, website performance, and digital infrastructure for Cape Town businesses.",
+    alternates: {
+        canonical: "https://lpwebstudio.co.za/learn",
+    },
     openGraph: {
+        url: "https://lpwebstudio.co.za/learn",
         title: "Web Development Insights | LP Web Studio",
         description:
             "Practical guides on Next.js, website performance, and digital infrastructure for Cape Town businesses.",
