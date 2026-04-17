@@ -3,42 +3,25 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════
-   LP WEB STUDIO — Ethereal/Light Global Styles
+   LP WEB STUDIO — Dark System Design Language
    ═══════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    /* ─── Brand Tokens ─── */
-    --accent: 254 176 93;           /* #FEB05D amber */
-    --bg-void: 10 10 10;
-    --bg-carbon: 43 42 42;          /* #2B2A2A warm near-black */
-    --bg-paper: 245 242 242;        /* #F5F2F2 warm off-white */
-    --bg-white: 255 255 255;
-    --ink: 26 26 26;
-    --slate: 148 163 184;
-    --text-ghost: 248 250 252;
+    /* ─── Surface Scale ─── */
+    --obsidian:   #0B0B0B;
+    --slate-dark: #1a1c1e;
+    --card-bg:    #141414;
 
-    /* ─── Exponential Spacing Scale ─── */
-    --spacing-hairline: 4px;
-    --spacing-base: 8px;
-    --spacing-component: 16px;
-    --spacing-sectional: 24px;
-    --spacing-atmospheric: 40px;
-    --spacing-structural: 96px;
-    --spacing-grandeur: 128px;
-    --spacing-epic: 160px;
+    /* ─── Primary Accent (orange-red) ─── */
+    --accent: #FF4D00;
 
-    /* ─── Nav height tokens ─── */
-    --nav-height-expanded: 72px;   /* full-width nav at top */
-    --nav-height-bubble: 64px;     /* bubble nav when scrolled */
+    /* ─── Nav ─── */
+    --nav-height: 80px;
 
-    /* ─── Motion Easing ─── */
-    --easing: cubic-bezier(.62, .16, .13, 1.01);
-
-    /* ─── Glass Tokens ─── */
-    --glass-bg: rgb(var(--bg-white) / 0.05);
-    --glass-border: rgb(var(--bg-white) / 0.1);
-    --glass-border-dim: rgb(var(--bg-white) / 0.05);
+    /* ─── Motion ─── */
+    --easing: cubic-bezier(0.2, 0, 0.2, 1);
+    --easing-spring: cubic-bezier(0.62, 0.16, 0.13, 1.01);
   }
 
   html {
@@ -46,158 +29,181 @@
   }
 
   body {
-    background-color: var(--bg-white);
-    color: var(--ink);
+    background-color: var(--obsidian);
+    color: #e5e2e1;
     font-family: var(--font-inter), system-ui, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* ─── Selection Color ─── */
   ::selection {
-    background-color: rgb(var(--accent) / 0.2);
-    color: rgb(var(--ink));
+    background-color: rgba(255, 77, 0, 0.25);
+    color: #ffffff;
   }
 
-  /* ─── Scrollbar Styling ─── */
-  ::-webkit-scrollbar {
-    width: 4px;
-    /* hairline — Protocol §1 */
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #999;
-  }
+  /* ─── Dark Scrollbar ─── */
+  ::-webkit-scrollbar       { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0B0B0B; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555; }
 }
 
 @layer components {
 
-  /* ─── Grain Overlay (dot-matrix ambient texture for dark sections) ─── */
-  .grain-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px
-    );
-    background-size: 24px 24px;
-    animation: grain-breathe 4s ease-in-out infinite alternate;
-  }
-
-  @keyframes grain-breathe {
-    from { opacity: 0.4; }
-    to   { opacity: 0.7; }
-  }
-
-  /* ─── Mesh Transition (Dark hero — starts from top-0 under transparent nav) ─── */
-  .mesh-transition {
-    background: #F5F2F2;
-  }
-
-  /* ─── Glass Card (for dark sections like hero) ─── */
-  .glass-card {
-    background: var(--glass-bg);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 2rem;
-  }
-
-  .glass-card:hover {
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-
-  /* ─── Light Card (for white sections) ─── */
-  .light-card {
-    background: #ffffff;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 2rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  }
-
-  .light-card:hover {
-    border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-  }
-
-  /* ─── Glow Text (sparingly — headings in dark sections) ─── */
-  .glow-text {
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: rgb(var(--accent));
-  }
-
-  /* ─── Section Container ─── */
-  .section-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: var(--spacing-sectional);
-    padding-right: var(--spacing-sectional);
-  }
-
-  /* ─── Mercury Button (magnetic follow — Framer Motion spring only) ─── */
-  /* Protocol §3: NO CSS transitions. All motion via Framer Motion springs. */
-
-  /* Primary dark — for light backgrounds (hero, contact, footer) */
-  .mercury-btn {
-    position: relative;
-    background: #111111;
+  /* ─── Section Label (e.g. "01 — CAPABILITIES") ─── */
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-size: 0.6875rem;      /* 11px */
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 0.375rem;
   }
 
-  /* Primary amber — for dark backgrounds */
-  .mercury-btn-amber {
-    position: relative;
-    background: linear-gradient(135deg, #feb05d 0%, #e8963a 100%);
-    color: #2B2A2A;
+  /* ─── Card: dark bordered ─── */
+  .dark-card {
+    background-color: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: border-color 0.3s var(--easing),
+                box-shadow    0.3s var(--easing);
   }
 
-  /* ─── Scroll Reveal (CSS fallback for non-JS / prefers-reduced-motion) ─── */
-  /* Protocol §3: CSS transition removed. Framer Motion whileInView handles animation. */
-  /* This class is kept only as a static fallback for SSR/no-JS contexts. */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
+  .dark-card:hover {
+    border-color: rgba(255, 255, 255, 0.20);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
   }
 
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+  /* ─── Infrastructure Card (hover foreground) ─── */
+  .infra-card {
+    background-color: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: box-shadow   0.4s cubic-bezier(0.2, 0, 0.2, 1),
+                border-color 0.4s ease,
+                background-color 0.4s ease;
+  }
+
+  .infra-card:hover {
+    z-index: 50;
+    background-color: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08),
+                0 20px 60px -10px rgba(0, 0, 0, 0.8),
+                0 0 40px -10px rgba(255, 77, 0, 0.08);
+  }
+
+  /* ─── Pill Tag ─── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 9999px;
+    font-size: 0.625rem;       /* 10px */
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.80);
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+  }
+
+  .pill:hover {
+    background: rgba(255, 255, 255, 0.10);
+  }
+
+  /* ─── Primary Button (white on dark) ─── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .btn-primary:hover { background: #e5e5e5; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  /* ─── Ghost Button (bordered on dark) ─── */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    background: transparent;
+    color: #ffffff;
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-ghost:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  /* ─── L-Bracket Corner Accent ─── */
+  .corner-tl {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+  }
+
+  .corner-br {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+  }
+
+  /* ─── Mono Label ─── */
+  .mono-label {
+    font-family: var(--font-jetbrains), monospace;
+    font-size: 0.625rem;      /* 10px */
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.30);
   }
 }
 
 @layer utilities {
   @media (prefers-reduced-motion: reduce) {
-    .grain-overlay {
-      animation: none;
-      opacity: 0.5;
-    }
+    * { animation-duration: 0.01ms !important; }
   }
 
-
-  /* ─── Accent underline ─── */
-  .accent-underline {
-    position: relative;
-  }
-
-  .accent-underline::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, rgb(var(--accent)), transparent);
+  /* ─── Display Heading Utility ─── */
+  .display-heading {
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    line-height: 0.85;
   }
 }

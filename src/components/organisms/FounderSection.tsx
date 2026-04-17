@@ -1,116 +1,47 @@
-"use client";
+import Image from "next/image";
 
-import { motion, type Variants } from "framer-motion";
-import { clipReveal } from "@/lib/variants";
-
-const spring = { type: "spring" as const, stiffness: 160, damping: 26 };
-
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: spring },
-};
-
-/**
- * FounderSection — The human moment.
- * A single dark panel between social proof and pricing.
- * Photo placeholder on the left, conviction statement on the right.
- * Assets: drop luke-petzer.jpg into /public/ to activate the photo.
- */
 export function FounderSection() {
     return (
         <section
-            className="relative px-6 md:px-10 lg:px-16 py-32 md:py-40"
-            style={{ backgroundColor: "#0d0d0d" }}
+            aria-label="Founder"
+            className="py-24 md:py-32 px-8 md:px-12 bg-obsidian border-t border-white/5"
         >
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
 
-                {/* Left — Photo placeholder */}
-                <motion.div
-                    variants={clipReveal}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="relative"
-                >
-                    {/* TODO: Replace with <Image src="/luke-petzer.jpg" ... /> once photo asset is provided */}
-                    <div
-                        className="w-full aspect-[4/5] rounded-[1.5rem] flex items-center justify-center"
-                        style={{
-                            background: "rgba(245,242,242,0.04)",
-                            border: "1px dashed rgba(245,242,242,0.12)",
-                            boxShadow: "0 0 60px rgba(254,176,93,0.06)",
-                        }}
-                    >
-                        <p
-                            className="font-mono text-[10px] uppercase tracking-widest text-center"
-                            style={{ color: "rgba(245,242,242,0.25)" }}
-                        >
-                            Photo placeholder
-                            <br />
-                            <span style={{ color: "rgba(245,242,242,0.15)" }}>
-                                Drop luke-petzer.jpg into /public/
-                            </span>
-                        </p>
+                {/* ── Left: portrait ── */}
+                <div className="md:col-span-4 flex justify-center">
+                    <div className="relative w-full aspect-[4/5] max-w-sm overflow-hidden bg-zinc-900 group">
+                        <Image
+                            src="/founder-portrait.jpg"
+                            alt="Luke Petzer — LP Web Studio"
+                            fill
+                            className="object-cover grayscale brightness-75 contrast-125 transition-transform duration-700 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                        {/* Bottom fade */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60" />
                     </div>
-                </motion.div>
+                </div>
 
-                {/* Right — Conviction statement */}
-                <div className="flex flex-col gap-8">
-                    <motion.p
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        className="font-mono text-[11px] uppercase tracking-[0.3em]"
-                        style={{ color: "rgba(254,176,93,0.70)" }}
-                    >
-                        The Studio
-                    </motion.p>
-
-                    <motion.blockquote
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        className="font-heading font-black leading-[1.1] tracking-[-0.02em]
-                                   text-[clamp(24px,3vw,40px)]"
-                        style={{ color: "#F5F2F2" }}
-                    >
-                        "I build systems that remove the friction between your business and your customers."
-                    </motion.blockquote>
-
-                    <motion.p
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        className="text-sm leading-relaxed max-w-md"
-                        style={{ color: "rgba(245,242,242,0.55)" }}
-                    >
-                        Every site that leaves this studio is performance-tested,
-                        schema-engineered, and built to run without manual intervention.
-                        That is the standard. No exceptions.
-                    </motion.p>
-
-                    <motion.div
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                    >
+                {/* ── Right: conviction quote ── */}
+                <div className="md:col-span-8">
+                    <blockquote className="flex flex-col gap-8">
                         <p
-                            className="font-mono text-[10px] uppercase tracking-widest"
-                            style={{ color: "rgba(245,242,242,0.35)" }}
+                            className="font-headline font-medium text-white leading-tight tracking-tight"
+                            style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
                         >
-                            — Luke Petzer
+                            You don&apos;t need another generic website. You need an engine.
+                            My focus is entirely on engineering the backend systems, client
+                            portals, and automations that let you step out of the daily admin
+                            and actually scale your operations.
                         </p>
-                        <p
-                            className="font-mono text-[10px] uppercase tracking-widest mt-1"
-                            style={{ color: "rgba(245,242,242,0.20)" }}
-                        >
-                            Founder · LP Web Studio · Cape Town
-                        </p>
-                    </motion.div>
+                        <footer className="flex flex-col gap-1">
+                            <cite className="not-italic font-headline font-bold text-white uppercase tracking-widest text-lg">
+                                Luke Petzer
+                            </cite>
+                            <span className="mono-label">Lead Architect</span>
+                        </footer>
+                    </blockquote>
                 </div>
             </div>
         </section>
