@@ -54,7 +54,7 @@ export function FAQSection() {
                                 <h3 className="font-headline font-medium text-white/80 uppercase tracking-tight text-base md:text-lg">
                                     {faq.q}
                                 </h3>
-                                <span className="text-white/40 group-hover:text-white transition-colors duration-200 shrink-0 text-2xl font-light leading-none w-6 text-center">
+                                <span className="text-white/40 group-hover:text-white transition-colors duration-200 shrink-0 text-2xl font-normal leading-none w-6 text-center">
                                     {openIndex === i ? "−" : "+"}
                                 </span>
                             </button>

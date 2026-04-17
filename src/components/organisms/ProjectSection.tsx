@@ -98,6 +98,8 @@ export function ProjectSection({
               muted
               loop
               playsInline
+              preload="metadata"
+              poster={images[0]}
               className="w-full aspect-video object-cover"
               aria-label={`${ident} project video preview`}
             >

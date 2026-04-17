@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessSchema, websiteSchema } from "@/components/seo/SchemaTemplates";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { DrawerProvider } from "@/lib/contact-drawer-context";
 import { ContactDrawer } from "@/components/organisms/ContactDrawer";
@@ -11,7 +12,7 @@ import { ContactDrawer } from "@/components/organisms/ContactDrawer";
 const spaceGrotesk = Space_Grotesk({
     variable: "--font-space-grotesk",
     subsets: ["latin"],
-    weight: ["300", "400", "500", "600", "700"],
+    weight: ["400", "500", "700"],
     display: "swap",
 });
 
@@ -114,6 +115,7 @@ export default function RootLayout({
                     {children}
                     <ContactDrawer />
                     <Analytics />
+                    <SpeedInsights />
                 </DrawerProvider>
             </body>
         </html>
