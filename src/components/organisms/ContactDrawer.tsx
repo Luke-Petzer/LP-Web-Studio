@@ -1,7 +1,7 @@
 // src/components/organisms/ContactDrawer.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDrawer } from "@/lib/contact-drawer-context";
 import { MessageCircle, Mail, X } from "lucide-react";
 
@@ -46,6 +46,48 @@ export function ContactDrawer() {
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
+
+  const panelRef = useRef<HTMLDivElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  // Auto-focus first field on open, restore focus on close, Esc to close, trap Tab.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    triggerRef.current = document.activeElement as HTMLElement;
+    const focusTimer = window.setTimeout(() => firstFieldRef.current?.focus(), 200);
+
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeDrawer();
+        return;
+      }
+      if (e.key !== "Tab" || !panelRef.current) return;
+      const focusables = panelRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", handleKey);
+      triggerRef.current?.focus?.();
+    };
+  }, [isOpen, closeDrawer]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -98,6 +140,7 @@ export function ContactDrawer() {
 
       {/* Drawer panel */}
       <div
+        ref={panelRef}
         role="dialog"
         data-contact-drawer
         aria-modal="true"
@@ -217,6 +260,7 @@ export function ContactDrawer() {
                     NAME
                   </label>
                   <input
+                    ref={firstFieldRef}
                     type="text"
                     required
                     value={name}
