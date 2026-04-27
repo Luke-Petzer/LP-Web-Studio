@@ -47,7 +47,6 @@ export function WorkPageContent() {
     <div className="relative">
       <GeometricCanvas />
       <SubpageHero
-        breadcrumb="LP WEB / WORK"
         title="WORK"
         subtitle="SELECTED CLIENT ENGAGEMENTS"
       />

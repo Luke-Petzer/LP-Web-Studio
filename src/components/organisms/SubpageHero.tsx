@@ -5,7 +5,7 @@
 import React from "react";
 
 export interface SubpageHeroProps {
-  breadcrumb: string; // e.g. "LP WEB / WORK"
+  breadcrumb?: string; // e.g. "LP WEB / WORK"
   title: string;      // e.g. "WORK" — already uppercase
   subtitle: string;   // e.g. "SELECTED CLIENT ENGAGEMENTS"
 }
@@ -22,19 +22,21 @@ export function SubpageHero({ breadcrumb, title, subtitle }: SubpageHeroProps) {
         aria-label={`${title} page hero`}
       >
 
-        {/* Breadcrumb — top-left */}
-        <p
-          className="absolute font-headline text-white/45 uppercase"
-          style={{
-            top: "clamp(16px, 3vh, 24px)",
-            left: "clamp(20px, 4vw, 32px)",
-            fontSize: "10px",
-            letterSpacing: "0.18em",
-            fontWeight: 400,
-          }}
-        >
-          {breadcrumb}
-        </p>
+        {/* Breadcrumb — top-left (optional) */}
+        {breadcrumb && (
+          <p
+            className="absolute font-headline text-white/45 uppercase"
+            style={{
+              top: "clamp(16px, 3vh, 24px)",
+              left: "clamp(20px, 4vw, 32px)",
+              fontSize: "10px",
+              letterSpacing: "0.18em",
+              fontWeight: 400,
+            }}
+          >
+            {breadcrumb}
+          </p>
+        )}
 
         {/* Ghost watermark — right side, vertically centred, bleeds off edge */}
         <p
