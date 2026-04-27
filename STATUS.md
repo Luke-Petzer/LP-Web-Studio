@@ -103,6 +103,38 @@ A11y / BP / SEO match the production Lighthouse baseline recorded in `docs/pre-l
 
 ---
 
+## Batch 2 — Mobile, Copy, CTA Wiring — 2026-04-27
+
+Plan: `docs/superpowers/plans/2026-04-27-batch2-mobile-copy-cta.md`
+Spec: `docs/superpowers/specs/2026-04-27-batch2-mobile-copy-cta-design.md`
+
+### Changes
+1. **Mobile audit + horizontal-overflow fixes** — see `## Mobile audit — 2026-04-27` section above for findings (10 high-severity, 8 fixed in-batch, 2 blocked by pre-existing user WIP)
+2. **`FinalCTA` H2 + `NavClient` mobile menu** root-cause fixes for word-break overflow at 320px
+3. **Module-card content-fit** (`CoreInfrastructure.tsx`) — desktop heading floor `1.5rem→1.25rem`, padding `p-10→p-8 lg:p-10`, `min-h-[420px]→min-h-[360px]`, `gap-8`. Mobile padding `p-8→p-6`, title `text-2xl→text-xl md:text-2xl`.
+4. **Cafe Crave chapter hook** rewritten: `"Real foot traffic. Zero digital footprint."`
+5. **Work closing CTA** — body tightened (3rd sentence dropped); `VIEW PRICING` → `INITIATE PROJECT` (drawer); `RUN FREE AUDIT` now links to `/audit`
+6. **`/audit` page** — new route, `SubpageHero`, 5-area explanation grid, working form (`AuditForm`) with name/email/url + `company_field` honeypot, edge API at `/api/audit`, sitemap entry. Webhook URL is a placeholder pending n8n workflow (see `// TODO` in `route.ts:78`)
+7. **Home FinalCTA wiring** — `Initiate Protocol` opens drawer; `Request Audit` links to `/audit`
+
+### Smoke verification (production build, localhost:3000)
+- `/audit` GET → 200; HTML contains `company_field`, `audit-name`, `audit-email`, `audit-url`, `REQUEST AUDIT`, `FREE PERFORMANCE`
+- `POST /api/audit` valid payload → 502 (placeholder webhook unreachable; correct fallback message in body)
+- `POST /api/audit` already-`https://`-prefixed URL → 502 (no double-prepend; reaches webhook step)
+- `POST /api/audit` honeypot tripped → 200 `{success:true}` (silent reject; no webhook fetch)
+- `POST /api/audit` invalid email → 422 with Zod error
+- `/sitemap.xml` includes `lpwebstudio.co.za/audit`
+- `/work` HTML contains `Real foot traffic.`, `INITIATE PROJECT`, `RUN FREE AUDIT`; no `VIEW PRICING`
+- `/` HTML contains `Initiate Protocol` (button), `Request Audit` (anchor with `href="/audit"`)
+
+### Known limitations
+- `/api/audit` webhook URL is `https://placeholder.lpwebstudio.co.za/api/audit-webhook` — every submission currently 502s with a fallback-email message. One-line swap when the n8n workflow is built: change `webhookUrl` in `src/app/api/audit/route.ts:78`.
+- Pre-existing a11y findings on `/work` deferred to a separate pass per user instruction.
+- `src/app/learn/[slug]/page.tsx` working-tree changes left untouched: high-severity overflow findings on that file (breadcrumb truncate, prose long-URL break-words) are documented in the Mobile audit section above as 🚫 BLOCKED until the user finishes their in-flight work.
+- Lighthouse intentionally not re-run this round; previous baseline (88-89/94-96/96/100) holds barring CWV-affecting changes (none introduced).
+
+---
+
 ## Shared Components
 
 | Component | Path | Props | Used On |
