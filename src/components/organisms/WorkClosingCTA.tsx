@@ -24,25 +24,15 @@ export function WorkClosingCTA() {
       <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
         <button
           onClick={openDrawer}
-          className="inline-flex items-center justify-center bg-white text-black font-headline font-bold uppercase text-sm border-none cursor-pointer"
-          style={{
-            padding: "14px 28px",
-            borderRadius: "4px",
-            letterSpacing: "0.08em",
-          }}
+          className="btn-primary"
+          style={{ padding: "14px 28px", borderRadius: "4px" }}
         >
           RUN FREE AUDIT
         </button>
         <button
           onClick={openDrawer}
-          className="inline-flex items-center justify-center bg-transparent text-white font-headline font-bold uppercase text-sm cursor-pointer"
-          style={{
-            padding: "14px 28px",
-            borderRadius: "4px",
-            letterSpacing: "0.08em",
-            border: "1px solid white",
-            background: "transparent",
-          }}
+          className="btn-ghost"
+          style={{ padding: "14px 28px", borderRadius: "4px" }}
         >
           VIEW PRICING
         </button>
