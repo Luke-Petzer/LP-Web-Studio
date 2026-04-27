@@ -34,7 +34,7 @@ export function FinalCTA() {
 
                 {/* CTAs */}
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <a href="mailto:luke@lpwebstudio.co.za" className="btn-primary px-12 py-5 w-full md:w-auto text-center" style={{ background: "#FF4D00", color: "#ffffff" }}>
+                    <a href="mailto:luke@lpwebstudio.co.za" className="btn-cta-orange px-12 py-5 w-full md:w-auto text-center">
                         Initiate Protocol
                     </a>
                     <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>

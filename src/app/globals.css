@@ -171,6 +171,32 @@
     color: #000000;
   }
 
+  /* ─── Orange CTA Button (signature — slight brighten + brand glow) ─── */
+  .btn-cta-orange {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FF4D00;
+    color: #ffffff;
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 240ms var(--easing),
+                box-shadow 240ms var(--easing),
+                transform  120ms var(--easing);
+  }
+  .btn-cta-orange:hover {
+    background: #FF6020;
+    box-shadow: 0 0 0 1px rgba(255, 96, 32, 0.35),
+                0 12px 32px -8px rgba(255, 77, 0, 0.45),
+                0 0 60px -15px rgba(255, 77, 0, 0.55);
+  }
+  .btn-cta-orange:active { transform: scale(0.98); }
+
   /* ─── L-Bracket Corner Accent ─── */
   .corner-tl {
     position: absolute;
