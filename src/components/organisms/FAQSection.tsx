@@ -59,14 +59,18 @@ export function FAQSection() {
                                 </span>
                             </button>
 
-                            {/* Answer panel */}
-                            {openIndex === i && (
-                                <div className="px-2 pb-8">
-                                    <p className="text-white/60 text-base leading-relaxed max-w-2xl">
+                            {/* Answer panel — smooth height transition */}
+                            <div
+                                className={`grid transition-[grid-template-rows,opacity] duration-[250ms] ease-out ${
+                                    openIndex === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                                }`}
+                            >
+                                <div className="overflow-hidden">
+                                    <p className="text-white/60 text-base leading-relaxed max-w-2xl px-2 pb-8">
                                         {faq.a}
                                     </p>
                                 </div>
-                            )}
+                            </div>
                         </div>
                     ))}
                     {/* Closing border */}
