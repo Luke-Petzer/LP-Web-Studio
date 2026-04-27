@@ -34,13 +34,20 @@ export function FinalCTA() {
 
                 {/* CTAs */}
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <a href="mailto:luke@lpwebstudio.co.za" className="btn-cta-orange px-12 py-5 w-full md:w-auto text-center">
+                    <button
+                        onClick={openDrawer}
+                        className="btn-cta-orange px-12 py-5 w-full md:w-auto text-center"
+                    >
                         Initiate Protocol
-                    </a>
-                    <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>
-                    <button onClick={openDrawer} className="btn-ghost px-12 py-5 w-full md:w-auto text-center border-none cursor-pointer">
-                        Request Audit
                     </button>
+                    <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>
+                    <a
+                        href="/audit"
+                        className="btn-ghost px-12 py-5 w-full md:w-auto text-center"
+                        style={{ textDecoration: "none" }}
+                    >
+                        Request Audit
+                    </a>
                 </div>
             </div>
         </section>
