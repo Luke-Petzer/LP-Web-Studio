@@ -310,12 +310,8 @@ export function AboutPageContent() {
                 </p>
                 <button
                     onClick={openDrawer}
-                    className="inline-flex items-center justify-center bg-white text-black font-headline font-bold uppercase text-sm border-none cursor-pointer"
-                    style={{
-                        padding: "14px 32px",
-                        borderRadius: "4px",
-                        letterSpacing: "0.08em",
-                    }}
+                    className="btn-primary"
+                    style={{ padding: "14px 32px", borderRadius: "4px" }}
                 >
                     INITIATE PROJECT
                 </button>
