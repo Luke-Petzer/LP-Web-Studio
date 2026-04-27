@@ -70,7 +70,7 @@ export function CoreInfrastructure() {
                 {cards.map((card) => (
                     <div
                         key={card.module}
-                        className="infra-card p-10 flex flex-col justify-between min-h-[420px] transition-transform duration-300 ease-out hover:scale-[1.02]"
+                        className="infra-card p-8 lg:p-10 flex flex-col justify-between min-h-[360px] gap-8 transition-transform duration-300 ease-out hover:scale-[1.02]"
                     >
                         {/* Top row */}
                         <div className="flex justify-between items-start">
@@ -84,7 +84,7 @@ export function CoreInfrastructure() {
                         <div>
                             <h3
                                 className="font-headline font-bold uppercase leading-none text-white mb-5 whitespace-pre-line"
-                                style={{ fontSize: "clamp(1.5rem, 1.8vw, 1.875rem)" }}
+                                style={{ fontSize: "clamp(1.25rem, 1.6vw, 1.875rem)" }}
                             >
                                 {card.title}
                             </h3>
@@ -111,7 +111,7 @@ export function CoreInfrastructure() {
             {/* ── Stacked layout (mobile) ── */}
             <div className="flex flex-col gap-4 md:hidden">
                 {cards.map((card) => (
-                    <div key={card.module} className="dark-card p-8 flex flex-col gap-6">
+                    <div key={card.module} className="dark-card p-6 flex flex-col gap-5">
                         <div className="flex justify-between items-start">
                             <span className="material-symbols-outlined text-3xl text-white">
                                 {card.icon}
@@ -119,7 +119,7 @@ export function CoreInfrastructure() {
                             <span className="mono-label">{card.module}</span>
                         </div>
                         <div>
-                            <h3 className="font-headline font-bold uppercase leading-none text-white mb-3 text-2xl whitespace-pre-line">
+                            <h3 className="font-headline font-bold uppercase leading-none text-white mb-3 text-xl md:text-2xl whitespace-pre-line">
                                 {card.title}
                             </h3>
                             <p className="text-white/60 text-sm leading-relaxed">{card.body}</p>
