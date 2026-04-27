@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getAllArticles } from "@/lib/knowledge";
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
+import { SubpageHero } from "@/components/organisms/SubpageHero";
 
 export const metadata: Metadata = {
     title: "Web Development Insights | LP Web Studio",
@@ -25,106 +26,99 @@ export default async function LearnPage() {
     return (
         <>
             <Navigation />
-            <main
-                style={{ background: "#0A0A0A", minHeight: "100vh" }}
-                className="pt-[120px] pb-24 px-6 md:px-12"
-            >
-                <div className="max-w-4xl mx-auto">
-                    {/* Header */}
-                    <div className="mb-16">
-                        <p
-                            style={{
-                                color: "#FF4500",
-                                fontSize: "10px",
-                                fontWeight: 700,
-                                letterSpacing: "0.18em",
-                                textTransform: "uppercase",
-                                fontFamily: "var(--font-space-grotesk)",
-                                marginBottom: "12px",
-                            }}
-                        >
-                            KNOWLEDGE BASE
-                        </p>
-                        <h1
-                            className="font-headline font-black uppercase text-white leading-none"
-                            style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", letterSpacing: "-0.02em" }}
-                        >
-                            WEB DEVELOPMENT<br />INSIGHTS.
-                        </h1>
-                        <p
-                            className="text-white/55 mt-4 max-w-xl leading-relaxed"
-                            style={{ fontSize: "15px", fontFamily: "var(--font-space-grotesk)" }}
-                        >
-                            Practical guides on Next.js, website performance, and digital
-                            infrastructure for Cape Town businesses.
-                        </p>
-                    </div>
+            <main className="pb-structural bg-[#0A0A0A] min-h-screen">
+                <SubpageHero
+                    breadcrumb="LP WEB / LEARN"
+                    title="LEARN"
+                    subtitle="FIELD NOTES ON BUILDING FAST WEBSITES"
+                />
 
-                    {/* Article cards */}
-                    <div className="flex flex-col gap-px border-t border-white/10">
-                        {articles.map((article) => (
-                            <a
-                                key={article.slug}
-                                href={`/learn/${article.slug}`}
-                                style={{ textDecoration: "none" }}
-                                className="group block border-b border-white/10 py-10 transition-colors duration-200 hover:bg-white/[0.02]"
-                            >
-                                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                                    <div className="flex-1">
-                                        <p
-                                            style={{
-                                                color: "#FF4500",
-                                                fontSize: "9px",
-                                                fontWeight: 700,
-                                                letterSpacing: "0.2em",
-                                                textTransform: "uppercase",
-                                                fontFamily: "var(--font-space-grotesk)",
-                                                marginBottom: "10px",
-                                            }}
-                                        >
-                                            {new Date(article.date).toLocaleDateString("en-ZA", {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            })}
-                                        </p>
-                                        <h2
-                                            className="font-headline font-bold uppercase text-white group-hover:text-white/80 transition-colors duration-200"
-                                            style={{
-                                                fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
-                                                letterSpacing: "-0.01em",
-                                                lineHeight: 1.2,
-                                                marginBottom: "10px",
-                                            }}
-                                        >
-                                            {article.title}
-                                        </h2>
-                                        <p
-                                            className="text-white/50 leading-relaxed"
-                                            style={{ fontSize: "14px", maxWidth: "560px" }}
-                                        >
-                                            {article.description}
-                                        </p>
+                {/* ── Field Notes — article index ── */}
+                <section className="py-24 md:py-32 px-6 md:px-12 bg-slate-dark border-t border-white/5 mt-16 md:mt-24">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-20">
+                            <div className="lg:col-span-5">
+                                <span className="section-label">01 — FIELD NOTES</span>
+                                <h2
+                                    className="font-headline font-black uppercase text-white leading-[0.9] mt-8"
+                                    style={{
+                                        fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                                        letterSpacing: "-0.03em",
+                                    }}
+                                >
+                                    RECENT<br />WRITING.
+                                </h2>
+                            </div>
+                            <div className="lg:col-span-7 lg:pt-6">
+                                <p
+                                    className="text-white/55 leading-relaxed"
+                                    style={{ fontSize: "15px" }}
+                                >
+                                    Practical guides on Next.js, website performance, and digital
+                                    infrastructure — written from the studio, for operators who
+                                    care about shipping fast. No tutorials-for-tutorials-sake;
+                                    every piece ties back to work we&rsquo;ve shipped for clients.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Article list — editorial rows */}
+                        <div className="flex flex-col border-t border-white/10">
+                            {articles.map((article) => (
+                                <a
+                                    key={article.slug}
+                                    href={`/learn/${article.slug}`}
+                                    style={{ textDecoration: "none" }}
+                                    className="group block border-b border-white/10 py-10 md:py-12 transition-colors duration-200 hover:bg-white/[0.04]"
+                                >
+                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                                        <div className="lg:col-span-2">
+                                            <p
+                                                style={{
+                                                    color: "#FF4D00",
+                                                    fontSize: "10px",
+                                                    fontWeight: 700,
+                                                    letterSpacing: "0.2em",
+                                                    textTransform: "uppercase",
+                                                    fontFamily: "var(--font-space-grotesk)",
+                                                }}
+                                            >
+                                                {new Date(article.date).toLocaleDateString("en-ZA", {
+                                                    year: "numeric",
+                                                    month: "short",
+                                                    day: "numeric",
+                                                })}
+                                            </p>
+                                        </div>
+                                        <div className="lg:col-span-8">
+                                            <h3
+                                                className="font-headline font-bold uppercase text-white group-hover:text-white/80 transition-colors duration-200 mb-3"
+                                                style={{
+                                                    fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
+                                                    letterSpacing: "-0.02em",
+                                                    lineHeight: 1.15,
+                                                }}
+                                            >
+                                                {article.title}
+                                            </h3>
+                                            <p
+                                                className="text-white/50 leading-relaxed"
+                                                style={{ fontSize: "14px", maxWidth: "560px" }}
+                                            >
+                                                {article.description}
+                                            </p>
+                                        </div>
+                                        <div className="lg:col-span-2 lg:text-right lg:pt-2">
+                                            <span className="read-link">
+                                                READ <span aria-hidden="true">→</span>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="shrink-0 md:pt-1">
-                                        <span
-                                            style={{
-                                                color: "#FF4500",
-                                                fontSize: "11px",
-                                                fontWeight: 700,
-                                                letterSpacing: "0.12em",
-                                                textTransform: "uppercase",
-                                                fontFamily: "var(--font-space-grotesk)",
-                                            }}
-                                        >
-                                            READ →
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        ))}
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </section>
             </main>
             <Footer />
         </>
