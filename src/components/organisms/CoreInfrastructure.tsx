@@ -7,8 +7,6 @@ const cards = [
         title: "Autonomous\nBackends",
         body: "Self-healing infrastructure that eliminates manual admin and scales with your operation.",
         tags: ["Next.js", "Node.js"],
-        zIndex: 10,
-        left: "0%",
     },
     {
         module: "MODULE_02",
@@ -16,8 +14,6 @@ const cards = [
         title: "Precision\nUI",
         body: "Interfaces designed with mathematical rigour for operators who demand clarity and speed.",
         tags: [],
-        zIndex: 20,
-        left: "25%",
     },
     {
         module: "MODULE_03",
@@ -25,8 +21,6 @@ const cards = [
         title: "Data\nStorage",
         body: "Immutable audit trails and highly available relational architectures for mission-critical data.",
         tags: [],
-        zIndex: 30,
-        left: "50%",
     },
     {
         module: "MODULE_04",
@@ -34,8 +28,6 @@ const cards = [
         title: "Global\nPipelines",
         body: "Automated deployment across distributed nodes with zero-downtime execution.",
         tags: [],
-        zIndex: 40,
-        left: "75%",
     },
 ];
 
@@ -73,50 +65,47 @@ export function CoreInfrastructure() {
                 <span className="section-label whitespace-nowrap">01 — Capabilities</span>
             </div>
 
-            {/* ── Overlapping card stack (desktop) ── */}
-            <div className="hidden md:block">
-                <div className="relative w-full" style={{ height: "480px" }}>
-                    {cards.map((card) => (
-                        <div
-                            key={card.module}
-                            className="infra-card group absolute w-[46%] h-full p-12 flex flex-col justify-between"
-                            style={{ left: card.left, zIndex: card.zIndex }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.zIndex = "100"; }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.zIndex = String(card.zIndex); }}
-                        >
-                            {/* Top row */}
-                            <div className="flex justify-between items-start">
-                                <span className="material-symbols-outlined text-4xl text-white">
-                                    {card.icon}
-                                </span>
-                                <span className="mono-label">{card.module}</span>
-                            </div>
-
-                            {/* Bottom content */}
-                            <div>
-                                <h3 className="font-headline font-bold uppercase leading-none text-white mb-5 whitespace-pre-line"
-                                    style={{ fontSize: "clamp(1.75rem, 2.5vw, 2.25rem)" }}>
-                                    {card.title}
-                                </h3>
-                                <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-[260px]">
-                                    {card.body}
-                                </p>
-                                {card.tags.length > 0 && (
-                                    <div className="flex gap-2 flex-wrap">
-                                        {card.tags.map((tag) => (
-                                            <span
-                                                key={tag}
-                                                className="px-3 py-1 bg-obsidian border border-white/10 text-[10px] font-bold tracking-widest uppercase text-white"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
+            {/* ── Grid layout (desktop) — every card behaves identically, no clipping ── */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+                {cards.map((card) => (
+                    <div
+                        key={card.module}
+                        className="infra-card p-10 flex flex-col justify-between min-h-[420px] transition-transform duration-300 ease-out hover:scale-[1.02]"
+                    >
+                        {/* Top row */}
+                        <div className="flex justify-between items-start">
+                            <span className="material-symbols-outlined text-4xl text-white">
+                                {card.icon}
+                            </span>
+                            <span className="mono-label">{card.module}</span>
                         </div>
-                    ))}
-                </div>
+
+                        {/* Bottom content */}
+                        <div>
+                            <h3
+                                className="font-headline font-bold uppercase leading-none text-white mb-5 whitespace-pre-line"
+                                style={{ fontSize: "clamp(1.5rem, 1.8vw, 1.875rem)" }}
+                            >
+                                {card.title}
+                            </h3>
+                            <p className="text-white/60 text-sm leading-relaxed mb-6">
+                                {card.body}
+                            </p>
+                            {card.tags.length > 0 && (
+                                <div className="flex gap-2 flex-wrap">
+                                    {card.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-3 py-1 bg-obsidian border border-white/10 text-[10px] font-bold tracking-widest uppercase text-white"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                ))}
             </div>
 
             {/* ── Stacked layout (mobile) ── */}
