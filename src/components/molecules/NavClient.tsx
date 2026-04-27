@@ -159,7 +159,8 @@ export function NavClient() {
                                     <button
                                         key={link.label}
                                         onClick={() => { setIsOpen(false); openDrawer(); }}
-                                        className="font-headline text-3xl font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 bg-transparent border-none cursor-pointer text-left w-full"
+                                        className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 bg-transparent border-none cursor-pointer text-left w-full break-words"
+                                        style={{ fontSize: "clamp(1.5rem, 6vw, 2rem)" }}
                                     >
                                         {link.label}
                                     </button>
@@ -170,7 +171,8 @@ export function NavClient() {
                                     key={link.label}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="font-headline text-3xl font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6"
+                                    className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 break-words"
+                                    style={{ fontSize: "clamp(1.5rem, 6vw, 2rem)" }}
                                 >
                                     {link.label}
                                 </a>

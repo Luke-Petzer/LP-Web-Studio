@@ -15,12 +15,12 @@ export function FinalCTA() {
             <div className="corner-br" />
 
             <div className="max-w-4xl mx-auto text-center">
-                {/* Headline */}
+                {/* Headline — no hard <br />; words wrap naturally on narrow viewports */}
                 <h2
-                    className="font-headline font-bold uppercase tracking-[-0.05em] leading-none text-white mb-10"
-                    style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
+                    className="font-headline font-bold uppercase tracking-[-0.05em] leading-[0.95] text-white mb-10 break-words"
+                    style={{ fontSize: "clamp(1.875rem, 8vw, 6.5rem)" }}
                 >
-                    Stop Managing.<br />Start Building.
+                    Stop Managing. Start Building.
                 </h2>
 
                 {/* Micro-timeline */}
