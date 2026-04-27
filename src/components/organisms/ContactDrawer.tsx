@@ -20,10 +20,11 @@ const FIELD_STYLE: React.CSSProperties = {
   borderBottom: "1px solid rgba(255,255,255,0.12)",
   color: "#fff",
   width: "100%",
-  padding: "12px 0",
+  padding: "14px 0",
   fontSize: "14px",
   outline: "none",
   fontFamily: "var(--font-space-grotesk)",
+  minHeight: "44px",
 };
 
 export function ContactDrawer() {

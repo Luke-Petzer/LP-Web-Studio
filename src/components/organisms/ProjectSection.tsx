@@ -148,8 +148,8 @@ export function ProjectSection({
         {/* Name + Score row */}
         <div className="flex justify-between items-end gap-4">
           <h2
-            className="font-headline font-black uppercase text-white leading-none"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+            className="font-headline font-black uppercase text-white leading-none min-w-0 break-words"
+            style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}
           >
             {identLines.map((word, i) => (
               <React.Fragment key={i}>

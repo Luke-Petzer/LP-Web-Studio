@@ -9,6 +9,60 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Mobile audit — 2026-04-27
+
+Source: `superpowers:code-reviewer` agent run, viewports 320/375/390/414. `body { overflow-x: hidden }` is in place (`globals.css:36`) — it currently masks any underlying overflow as content-clipping rather than visible page scroll. Findings below are the root causes that the body shortcut is masking.
+
+### Horizontal-overflow findings (must-fix)
+
+| Severity | File:line | Problem | Fix status |
+|---|---|---|---|
+| HIGH | `src/components/organisms/Footer.tsx:19` | `flex gap-10` 4 children → ~280px content overflows 256px usable at 320px | ✅ applied (`flex-wrap gap-x-6 gap-y-2 + py-3` per link) |
+| HIGH | `src/components/molecules/HeroContent.tsx:77` | 3 numbered pillars with `gap-10` overflow at 320px on Android with system font scaling | ✅ applied (`flex-wrap gap-6 sm:gap-10`) |
+| HIGH | `src/components/organisms/WorkScrollReveal.tsx:55` | `min-h-screen` for 3-line text wastes mobile scroll | ✅ applied (`min-h-[60vh] md:min-h-screen`) |
+| HIGH | `src/components/organisms/AboutPageContent.tsx:152` | Terminal `font-mono text-sm` line `"Web Developer & Automation Engineer"` overflows by ~28px at 320px | ✅ applied (`text-xs md:text-sm break-words`) |
+| HIGH | `src/components/organisms/ContactDrawer.tsx:23` | Form inputs `padding: 12px 0` → ~38px total tap height (below 44px) | ✅ applied (`14px 0` + `minHeight: 44px`) |
+| HIGH | `src/components/organisms/ProjectSection.tsx:151` | H2 + score row at 40px floor risks future-content overflow when ident is one long word | ✅ applied (`min-w-0 break-words`, floor lowered to `2rem`) |
+| HIGH | `src/components/organisms/FinalCTA.tsx:19-23` | H2 `clamp(3rem, 8vw, 6.5rem)` with hard `<br />` after `"Managing."` overflows by ~150px at 320px because words can't wrap independently | ⏳ Task 2 (non-trivial — clamp floor + remove `<br />`) |
+| HIGH | `src/components/molecules/NavClient.tsx:153` | Mobile menu links `text-3xl` (~62px floor) + `"Infrastructure"` (14 chars) overflow 256px content area | ⏳ Task 2 (style override needed) |
+| HIGH | `src/components/molecules/NavClient.tsx:139` | Hamburger button `w-8 h-8` (32×32) below 44×44 tap target | ✅ applied (`w-11 h-11`) |
+| HIGH | `src/components/organisms/Footer.tsx:50,59` | Social icon tap targets ~16px | ✅ applied (`w-11 h-11 inline-flex` wrapper) |
+| HIGH | `src/app/learn/[slug]/page.tsx:86` | Breadcrumb truncate fails without `min-w-0 flex-1` on parent | 🚫 BLOCKED — file has pre-existing user WIP, untouched |
+| HIGH | `src/app/learn/[slug]/page.tsx:131` | `prose` markdown lacks `prose-a:break-words` and `prose-pre:overflow-x-auto` for long URLs | 🚫 BLOCKED — same |
+
+### Mobile-scaling findings (advisory — not auto-fixed this round)
+
+- **Tap targets below 44×44**:
+  - Footer `mono-label` text-only links — addressed in Task 1 (`py-3`).
+  - `LatestWriting.tsx` "Read →" decorative within larger `<a>` tap area — OK in practice.
+- **Text size <12px**:
+  - `mono-label` everywhere is 10px — decorative, acceptable.
+  - `LatestWriting.tsx` date pill `9px` is below floor.
+  - `SubpageHero` subtitle `11px` below floor.
+- **Hover-only interactions** (no mobile equivalent):
+  - `infra-card:hover` border/glow reveal
+  - `dark-card:hover` border/shadow reveal
+  - `ProjectSection` image grayscale→colour on hover
+  - `FAQSection` button hover bg
+  - All decorative — no information lost on mobile.
+- **Excessive top spacing (>96px)**:
+  - `/privacy` `pt-[120px]` on main
+  - Home: hero `py-20` + MetricsBanner `py-24` = 176px gap
+- **Suppressed advisory**:
+  - `text-white/40` contrast on `/work` metadata pills — out of scope (separate prompt).
+
+### Applied during audit (Task 1 trivial fixes)
+
+- `src/components/organisms/Footer.tsx` — flex-wrap, py-3 on links, w-11 h-11 wrappers on social icons
+- `src/components/molecules/NavClient.tsx` — hamburger `w-8 h-8` → `w-11 h-11`
+- `src/components/molecules/HeroContent.tsx` — pillars `flex-wrap gap-6 sm:gap-10`
+- `src/components/organisms/WorkScrollReveal.tsx` — `min-h-[60vh] md:min-h-screen`
+- `src/components/organisms/AboutPageContent.tsx` — terminal `text-xs md:text-sm break-words`
+- `src/components/organisms/ContactDrawer.tsx` — input padding `14px 0`, `minHeight: 44px`
+- `src/components/organisms/ProjectSection.tsx` — H2 `min-w-0 break-words`, clamp floor `2rem`
+
+---
+
 ## UI/UX Refinement — 2026-04-27
 
 Plan: `docs/superpowers/plans/2026-04-27-website-uiux-refinement.md`

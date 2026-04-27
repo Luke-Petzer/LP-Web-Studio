@@ -74,7 +74,7 @@ export function HeroContent() {
                         </div>
 
                         {/* Numbered pillars */}
-                        <div className="flex gap-10 text-white/60">
+                        <div className="flex flex-wrap gap-6 sm:gap-10 text-white/60">
                             {[
                                 { num: "01", label: "Infrastructure" },
                                 { num: "02", label: "Automation" },

@@ -16,7 +16,7 @@ export function Footer() {
                 </p>
 
                 {/* Nav links */}
-                <nav aria-label="Footer navigation" className="flex gap-10">
+                <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                     {[
                         { label: "Work",    href: "/work" },
                         { label: "About",   href: "/about" },
@@ -25,14 +25,14 @@ export function Footer() {
                         <a
                             key={label}
                             href={href}
-                            className="mono-label hover:text-white transition-colors duration-200"
+                            className="mono-label hover:text-white transition-colors duration-200 py-3"
                         >
                             {label}
                         </a>
                     ))}
                     <button
                         onClick={openDrawer}
-                        className="mono-label hover:text-white transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                        className="mono-label hover:text-white transition-colors duration-200 bg-transparent border-none cursor-pointer py-3"
                     >
                         Contact
                     </button>
@@ -52,7 +52,7 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Instagram"
-                        className="text-white/40 hover:text-white transition-colors duration-200"
+                        className="text-white/40 hover:text-white transition-colors duration-200 inline-flex items-center justify-center w-11 h-11 -m-2"
                     >
                         <Instagram className="w-4 h-4" strokeWidth={1.5} />
                     </a>
@@ -61,7 +61,7 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="WhatsApp"
-                        className="text-white/40 hover:text-white transition-colors duration-200"
+                        className="text-white/40 hover:text-white transition-colors duration-200 inline-flex items-center justify-center w-11 h-11 -m-2"
                     >
                         <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
                     </a>

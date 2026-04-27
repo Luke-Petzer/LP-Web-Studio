@@ -136,7 +136,7 @@ export function NavClient() {
 
                     {/* Hamburger */}
                     <button
-                        className="flex md:hidden flex-col items-center justify-center gap-[5px] w-8 h-8"
+                        className="flex md:hidden flex-col items-center justify-center gap-[5px] w-11 h-11"
                         onClick={() => setIsOpen((p) => !p)}
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isOpen}

@@ -149,7 +149,7 @@ export function AboutPageContent() {
                                     </span>
                                 </div>
                                 {/* Terminal content */}
-                                <div className="p-6 md:p-8 font-mono text-sm space-y-3">
+                                <div className="p-6 md:p-8 font-mono text-xs md:text-sm space-y-3 break-words">
                                     <p style={{ color: "#FF4500" }}>$ whoami</p>
                                     <p className="text-white/80">Luke Petzer</p>
                                     <p className="text-white/30 text-xs mt-2">$ cat role.txt</p>
