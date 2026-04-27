@@ -5,7 +5,47 @@ A running changelog of all changes made to this website. Newest entries first.
 ---
 
 ## Active Branch
-`dev/main-refresh`
+`pre-launch/cleanup-2026-04-17`
+
+---
+
+## UI/UX Refinement — 2026-04-27
+
+Plan: `docs/superpowers/plans/2026-04-27-website-uiux-refinement.md`
+
+### Changes
+1. FAQ smooth accordion open/close transition (`grid-template-rows` 0fr↔1fr, 250ms eased)
+2. Latest Writing card hover: bg lightens, "Read" gets animated left-to-right underline via shared `.read-link` class
+3. Orange CTA on FinalCTA: signature `.btn-cta-orange` — slight brighten + brand-coloured glow on hover, scale on active
+4. CoreInfrastructure desktop layout: replaced absolute-positioned overlap (which clipped card 4) with 2/4-column grid; identical hover for all cards
+5. SubpageHero `breadcrumb` prop now optional; removed from `/work` (still shown on `/about`, `/learn`)
+6. Work closing CTA buttons: now use canonical `.btn-primary` and `.btn-ghost` for consistent hover
+7. About `READY TO DEPLOY?` button: same `.btn-primary` hover (flagged: spec said "Work page" but section only exists on About)
+8. Learn `RECENT WRITING` card hover: matches Latest Writing — same `.read-link` underline + bg lightening
+
+### Low-risk wins applied
+- Consolidated robots: deleted duplicate `public/robots.txt`, fixed `app/robots.ts` to serve identical content (apex domain + `/api/` and `/_next/` disallows). Eliminates the dev-server 500 conflict on `/robots.txt`. Production response unchanged.
+
+### Lighthouse (production build, headless Chrome, localhost — no CDN/edge)
+| Route   | Perf | A11y | BP | SEO |
+|---------|-----:|-----:|---:|----:|
+| `/`     |   88 |   96 |  96 | 100 |
+| `/work` |   85 |   94 |  96 | 100 |
+| `/about`|   89 |   96 |  96 | 100 |
+| `/learn`|   89 |   96 |  96 | 100 |
+
+A11y / BP / SEO match the production Lighthouse baseline recorded in `docs/pre-launch-summary-2026-04-17.md`. Perf is naturally lower without Vercel's CDN/edge cache (production-deployed run scored 99-100).
+
+### Top remaining issues (per Lighthouse)
+1. `/work` — `color-contrast` on `text-white/40` 10px metadata pills (pre-existing, listed as "optional polish" in pre-launch summary). Not auto-fixed because it changes brand colour values; flag for design review.
+2. `/work` — `heading-order` and `label-content-name-mismatch` on decorative numerals/CTAs (pre-existing).
+3. All routes — `unused-javascript` (~150ms saving). Marginal; defer until a real bundle review.
+4. All routes — `render-blocking-resources` (~36-120ms). Likely Google Fonts. Defer.
+
+### Deferred (not in scope this pass)
+- Mobile-pass beyond visual smoke check
+- Color-contrast on small white/40 labels (visual brand decision)
+- `/og-image.png` and `/founder-portrait.jpg` still missing in `public/` (pre-existing pre-launch flag)
 
 ---
 
