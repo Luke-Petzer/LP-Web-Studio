@@ -52,7 +52,7 @@ export function WorkPageContent() {
       />
       <WorkScrollReveal />
 
-      <ChapterHook text="A Cape Town cafe was losing customers before they even walked in." />
+      <ChapterHook text="Real foot traffic. Zero digital footprint." />
       <div className="mb-[120px]">
         <ProjectSection {...cafeCrave} />
       </div>
