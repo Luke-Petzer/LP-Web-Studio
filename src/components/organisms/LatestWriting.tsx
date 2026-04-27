@@ -46,7 +46,7 @@ export async function LatestWriting() {
                         <a
                             key={article.slug}
                             href={`/learn/${article.slug}`}
-                            className="group block border-b border-white/10 py-8 md:py-10 transition-colors duration-200 hover:bg-white/[0.02]"
+                            className="group block border-b border-white/10 py-8 md:py-10 transition-colors duration-200 hover:bg-white/[0.04]"
                         >
                             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                                 <div className="flex-1 min-w-0">
@@ -84,18 +84,8 @@ export async function LatestWriting() {
                                         {article.description}
                                     </p>
                                 </div>
-                                <span
-                                    style={{
-                                        color: "#FF4500",
-                                        fontSize: "11px",
-                                        fontWeight: 700,
-                                        letterSpacing: "0.12em",
-                                        textTransform: "uppercase",
-                                        fontFamily: "var(--font-space-grotesk)",
-                                    }}
-                                    className="shrink-0 md:pt-1"
-                                >
-                                    Read →
+                                <span className="read-link shrink-0 md:pt-1">
+                                    Read <span aria-hidden="true">→</span>
                                 </span>
                             </div>
                         </a>
