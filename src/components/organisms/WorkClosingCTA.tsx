@@ -18,23 +18,22 @@ export function WorkClosingCTA() {
       <p className="text-white/60 text-base max-w-md leading-relaxed">
         Every slow website is a lead that didn&apos;t convert.
         Every generic template is a client that chose someone else.
-        Let&apos;s build something that works.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
-        <button
-          onClick={openDrawer}
+        <a
+          href="/audit"
           className="btn-primary"
-          style={{ padding: "14px 28px", borderRadius: "4px" }}
+          style={{ padding: "14px 28px", borderRadius: "4px", textDecoration: "none" }}
         >
           RUN FREE AUDIT
-        </button>
+        </a>
         <button
           onClick={openDrawer}
           className="btn-ghost"
           style={{ padding: "14px 28px", borderRadius: "4px" }}
         >
-          VIEW PRICING
+          INITIATE PROJECT
         </button>
       </div>
     </section>
