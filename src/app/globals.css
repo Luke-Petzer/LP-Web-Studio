@@ -202,6 +202,32 @@
     filter: brightness(1.06);
   }
 
+  /* Row hover/focus expansion (desktop ≥1024px only) — :has() drives grid-template-columns. */
+  .panel-row {
+    transition: grid-template-columns 300ms cubic-bezier(0.2, 0, 0.2, 1);
+  }
+  @media (min-width: 1024px) and (hover: hover) {
+    .panel-row:has(.card-panel:nth-child(1):hover),
+    .panel-row:has(.card-panel:nth-child(1):focus-within) {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+    .panel-row:has(.card-panel:nth-child(2):hover),
+    .panel-row:has(.card-panel:nth-child(2):focus-within) {
+      grid-template-columns: 1fr 2fr 1fr 1fr;
+    }
+    .panel-row:has(.card-panel:nth-child(3):hover),
+    .panel-row:has(.card-panel:nth-child(3):focus-within) {
+      grid-template-columns: 1fr 1fr 2fr 1fr;
+    }
+    .panel-row:has(.card-panel:nth-child(4):hover),
+    .panel-row:has(.card-panel:nth-child(4):focus-within) {
+      grid-template-columns: 1fr 1fr 1fr 2fr;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .panel-row { transition-duration: 0ms; }
+  }
+
   /* Column-aware seams: top on mobile, left on desktop, both on 2-col tablet. */
   .card-panel:not(:first-child) {
     border-top: 1px solid rgba(255, 255, 255, 0.08);

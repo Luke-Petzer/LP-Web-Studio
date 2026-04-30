@@ -215,11 +215,13 @@ export function CoreInfrastructure() {
             </div>
 
             {/* Full-bleed panel row */}
-            <div className="-mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {cards.map((card, i) => (
                     <article
                         key={card.module}
                         className="card-panel group relative flex flex-col"
+                        tabIndex={0}
+                        aria-label={`${card.module}: ${card.title.replace("\n", " ")}`}
                         style={{
                             background: card.bg,
                             color: "#ffffff",
