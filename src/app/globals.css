@@ -197,6 +197,11 @@
   }
   .btn-cta-orange:active { transform: scale(0.98); }
 
+  /* ─── Service-card panel hover (subtle brighten, no scale) ─── */
+  .card-panel:hover {
+    filter: brightness(1.06);
+  }
+
   /* ─── L-Bracket Corner Accent ─── */
   .corner-tl {
     position: absolute;
