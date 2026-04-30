@@ -9,6 +9,62 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Responsive Audit — 2026-04-30
+
+Source: `superpowers:code-reviewer` agent run, viewports 320 / 375 / 414 / 768 / 1024 / 1280 / 1440 / 1920 / 2560. Site is dark-only — light/dark check skipped. No Playwright — verification is build/lint/type + server-side HTML grep + reasoning. Visual screenshots not generated this round.
+
+### Phase 1 — trivial fixes applied (1 commit)
+
+| Fix | File:line | Why |
+|---|---|---|
+| `min-h-[90vh] md:min-h-[88vh]` → `dvh` | `HeroContent.tsx:12` | Eliminates iOS Safari URL-bar layout shift |
+| `min-h-[38vh] md:min-h-[48vh]` → `dvh` | `SubpageHero.tsx:20` | Same |
+| `min-h-[60vh] md:min-h-screen` → `min-h-[60dvh] md:min-h-[100dvh]` | `WorkScrollReveal.tsx:55` | Same |
+| `minHeight: "100vh"` → `100dvh` | `privacy/page.tsx:27`, `not-found.tsx:16`, `error.tsx:18` | Same |
+| `top: 8vh` → `8dvh` | `ContactDrawer.tsx:169` | Bottom-sheet doesn't shift on URL-bar collapse |
+| Close button `padding: 4px` → `padding: 12px; margin: -8px` | `ContactDrawer.tsx:197` | Brings hit target to 44×44 (icon position preserved) |
+| Mobile nav overlay added `overflow-y-auto pb-8` | `NavClient.tsx:153` | Short/landscape mobile users can scroll to "Get Started" |
+
+### Phase 2 — pending your decisions
+
+**Critical (real bugs, but each needs a design call):**
+- `HeroContent.tsx:12` mobile `px-8` + `rounded-[3rem]` is tight at 320px. Either reduce mobile padding or reduce mobile radius — your call.
+- `CoreInfrastructure.tsx:229` `minHeight: "520px"` is a tall floor on mobile (4 panels × 520px = 2,080px stacked). Suggested fix: `clamp(360px, 60vw, 520px)`. Confirm shrink is acceptable.
+- `ScaleBanner.tsx:19` H1 lower bound `clamp(3.5rem, 9vw, 7.5rem)` — comfortable but fragile at 320. Lower to `clamp(2.75rem, 9vw, 7.5rem)`?
+
+**Major (visible problems, less-common viewports or specific breakpoints):**
+- AboutPageContent + ProjectSection use 60/40 splits at the `md:` (768) breakpoint that go tight. Worth widening to `md:55/45 lg:60/40` — small content rewrites needed.
+- `<p>` body copy across `B2BPlatform`, `FounderSection`, `TestimonialSection` has no `max-width` cap. On 1920+ monitors lines run past 75ch (reading comprehension drops). Suggested: add `max-w-prose` or `max-w-[65ch]` site-wide on body copy. Touches ~6 files.
+- `TestimonialSection` blockquote shrinks visually on 2560+ because `clamp` ceiling caps at 3rem and container at `max-w-4xl`. Consider raising both.
+- Privacy/error/not-found `pt-[120px]` doesn't scale on mobile — `pt-24 md:pt-[120px]`.
+- `ProjectSection` videos lack explicit `width`/`height` attributes (have `aspect-video` though). Adding `width={1600} height={900}` would prevent any pre-metadata flicker.
+
+**Minor / advisory (modern-CSS opportunities):**
+- Inline `style={{ fontSize: "14px" | "15px" | "17px" }}` in ~6 places bypasses the fluid type scale in `tailwind.config.ts:62`. Migration would unify scaling across viewports.
+- Several spots use arbitrary `mb-[120px]` / `py-[120px]` instead of the `mb-grandeur` / `py-grandeur` tokens already defined.
+- No `xl:` (1280) or `2xl:` (1536) overrides anywhere. Layout caps at `lg:` (1024) and just gains gutters via `max-w-7xl` on ultrawide. Acceptable but `2xl:` overrides would improve framing on ultrawide.
+- Add `letterSpacing.tight: "-0.05em"` token to `tailwind.config.ts` — currently 3 components redeclare `tracking-[-0.05em]` inline.
+- Dead `--nav-height: 80px` CSS variable in `globals.css:20` (defined, never used).
+- `GrainOverlay` atom is unused; references undefined `.grain-overlay` class. Cleanup-only.
+- Add Next 15 `viewport` export to `layout.tsx` — currently uses framework default; explicit export enables future tuning (`viewportFit: "cover"`, etc.).
+
+### Blocked (untouched per standing instruction)
+
+`src/app/learn/[slug]/page.tsx` (your pre-existing WIP) has 3 responsive findings worth tracking when you next touch the file:
+- Line 86: `truncate` on breadcrumb title needs `min-w-0 flex-1` on parent flex (else `truncate` fails silently)
+- Line 131: `prose` body needs `prose-a:break-words prose-pre:overflow-x-auto` for long URL handling
+- Line 103: inline `fontSize: "17px"` bypasses fluid scale
+
+### Out of scope (per standing instructions)
+
+- "Architectural Method" section design (parked)
+- Pre-existing `/work` a11y findings (`text-white/40` contrast, heading-order, label/aria mismatch) — separate batch
+- Missing `/founder-portrait.jpg` and `/og-image.png` — blocked on user
+- Lighthouse re-run — no CWV-affecting changes in Phase 1
+- No Playwright/Vitest setup introduced (would be its own batch if you want pixel-level verification across the 9 viewports)
+
+---
+
 ## Batch 4 — Original Visualizations + Hover Expansion — 2026-04-30
 
 Plan: `docs/superpowers/plans/2026-04-30-batch4-card-viz-and-expand.md`
