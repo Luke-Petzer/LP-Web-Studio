@@ -204,7 +204,6 @@ export function CoreInfrastructure() {
                         style={{
                             background: card.bg,
                             color: "#ffffff",
-                            borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : undefined,
                             transition: "filter 200ms ease",
                             minHeight: "520px",
                         }}

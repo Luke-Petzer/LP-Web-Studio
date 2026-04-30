@@ -197,9 +197,23 @@
   }
   .btn-cta-orange:active { transform: scale(0.98); }
 
-  /* ─── Service-card panel hover (subtle brighten, no scale) ─── */
+  /* ─── Service-card panel ─── */
   .card-panel:hover {
     filter: brightness(1.06);
+  }
+
+  /* Column-aware seams: top on mobile, left on desktop, both on 2-col tablet. */
+  .card-panel:not(:first-child) {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  @media (min-width: 768px) {
+    .card-panel:not(:first-child) { border-top: none; }
+    .card-panel:nth-child(2n)   { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+    .card-panel:nth-child(n+3)  { border-top:  1px solid rgba(255, 255, 255, 0.08); }
+  }
+  @media (min-width: 1024px) {
+    .card-panel:nth-child(n+3)  { border-top: none; }
+    .card-panel:not(:first-child) { border-left: 1px solid rgba(255, 255, 255, 0.08); }
   }
 
   /* ─── L-Bracket Corner Accent ─── */
