@@ -150,7 +150,7 @@ export function NavClient() {
 
             {/* Mobile overlay */}
             {isOpen && (
-                <div className="fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8">
+                <div className="fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8 overflow-y-auto pb-8">
                     <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
                     <nav className="relative flex flex-col gap-8">
                         {navLinks.map((link) => {

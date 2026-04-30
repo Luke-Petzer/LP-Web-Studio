@@ -17,7 +17,7 @@ export function SubpageHero({ breadcrumb, title, subtitle }: SubpageHeroProps) {
     <div className="px-4 md:px-6 pt-4">
       {/* ── Gradient container — same radius + gradient as homepage hero ── */}
       <div
-        className="relative min-h-[38vh] md:min-h-[48vh] rounded-[3rem] md:rounded-[5rem] overflow-hidden"
+        className="relative min-h-[38dvh] md:min-h-[48dvh] rounded-[3rem] md:rounded-[5rem] overflow-hidden"
         style={{ background: "linear-gradient(135deg, #FF4D00 0%, #B81D1D 100%)" }}
         aria-label={`${title} page hero`}
       >

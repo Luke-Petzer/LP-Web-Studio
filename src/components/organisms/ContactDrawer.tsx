@@ -166,7 +166,7 @@ export function ContactDrawer() {
         <style>{`
           @media (max-width: 639px) {
             [data-contact-drawer] {
-              top: 8vh !important;
+              top: 8dvh !important;
               bottom: 0 !important;
               right: 0 !important;
               left: 0 !important;
@@ -194,7 +194,7 @@ export function ContactDrawer() {
               <button
                 onClick={handleClose}
                 aria-label="Close contact drawer"
-                style={{ color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "4px" }}
+                style={{ color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "12px", margin: "-8px" }}
               >
                 <X style={{ width: "20px", height: "20px" }} />
               </button>

@@ -9,7 +9,7 @@ export function HeroContent() {
         <div className="px-4 md:px-6 pt-4">
             {/* ── Gradient Card ── */}
             <div
-                className="relative min-h-[90vh] md:min-h-[88vh] rounded-[3rem] md:rounded-[5rem] overflow-hidden flex items-end md:items-center px-8 md:px-16 lg:px-24 py-20 md:py-0"
+                className="relative min-h-[90dvh] md:min-h-[88dvh] rounded-[3rem] md:rounded-[5rem] overflow-hidden flex items-end md:items-center px-8 md:px-16 lg:px-24 py-20 md:py-0"
                 style={{ background: "linear-gradient(135deg, #FF4D00 0%, #B81D1D 100%)" }}
             >
                 {/* Portrait image */}

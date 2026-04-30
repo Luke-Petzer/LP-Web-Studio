@@ -13,7 +13,7 @@ export default function NotFound() {
         <>
             <Navigation />
             <main
-                style={{ background: "#0A0A0A", minHeight: "100vh" }}
+                style={{ background: "#0A0A0A", minHeight: "100dvh" }}
                 className="flex flex-col items-center justify-center px-6 md:px-12 text-center"
             >
                 <p

@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         <>
             <Navigation />
             <main
-                style={{ background: "#0A0A0A", minHeight: "100vh" }}
+                style={{ background: "#0A0A0A", minHeight: "100dvh" }}
                 className="pt-[120px] pb-24 px-6 md:px-12"
             >
                 <div className="max-w-3xl mx-auto">

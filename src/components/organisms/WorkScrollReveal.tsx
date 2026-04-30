@@ -52,7 +52,7 @@ export function WorkScrollReveal() {
   }, []);
 
   return (
-    <section className="min-h-[60vh] md:min-h-screen px-8 md:px-16 flex flex-col items-center justify-center text-center gap-4">
+    <section className="min-h-[60dvh] md:min-h-[100dvh] px-8 md:px-16 flex flex-col items-center justify-center text-center gap-4">
       {lines.map((line, i) => (
         <span
           key={i}
