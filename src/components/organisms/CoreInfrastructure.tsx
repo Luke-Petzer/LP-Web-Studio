@@ -2,7 +2,7 @@
 
 import React from "react";
 
-type Viz = "grid" | "wave" | "sunburst" | "curve";
+type Viz = "squares" | "crosshair" | "strata" | "flow";
 
 type Card = {
     module: string;
@@ -20,7 +20,7 @@ const cards: Card[] = [
         body: "Self-healing infrastructure that eliminates manual admin and scales with your operation.",
         bg: "#0B0B0B",
         isLight: false,
-        viz: "grid",
+        viz: "squares",
     },
     {
         module: "MODULE_02",
@@ -28,7 +28,7 @@ const cards: Card[] = [
         body: "Interfaces designed with mathematical rigour for operators who demand clarity and speed.",
         bg: "#1a1c1e",
         isLight: false,
-        viz: "wave",
+        viz: "crosshair",
     },
     {
         module: "MODULE_03",
@@ -36,7 +36,7 @@ const cards: Card[] = [
         body: "Immutable audit trails and highly available relational architectures for mission-critical data.",
         bg: "#FF4D00",
         isLight: true,
-        viz: "sunburst",
+        viz: "strata",
     },
     {
         module: "MODULE_04",
@@ -44,30 +44,37 @@ const cards: Card[] = [
         body: "Automated deployment across distributed nodes with zero-downtime execution.",
         bg: "#B81D1D",
         isLight: true,
-        viz: "curve",
+        viz: "flow",
     },
 ];
 
-function VizGrid() {
-    const cols = 14;
-    const rows = 14;
+function VizConcentricSquares() {
+    const center = 100;
+    const ringSizes = [24, 48, 72, 96, 120, 144, 168];
     const dots: React.ReactElement[] = [];
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-            const distance = (r + c) / (rows + cols);
-            const opacity = Math.max(0.1, 1 - distance * 1.1);
+    ringSizes.forEach((size, ringIdx) => {
+        const half = size / 2;
+        const dotsPerSide = Math.max(4, Math.round(size / 8));
+        const opacity = 0.95 - ringIdx * 0.08;
+        for (let i = 0; i <= dotsPerSide; i++) {
+            const x = center - half + (size * i) / dotsPerSide;
             dots.push(
-                <circle
-                    key={`${r}-${c}`}
-                    cx={10 + c * 13}
-                    cy={10 + r * 13}
-                    r={1.4}
-                    fill="currentColor"
-                    opacity={opacity}
-                />
+                <circle key={`r${ringIdx}-t-${i}`} cx={x} cy={center - half} r={1.2} fill="currentColor" opacity={opacity} />
+            );
+            dots.push(
+                <circle key={`r${ringIdx}-b-${i}`} cx={x} cy={center + half} r={1.2} fill="currentColor" opacity={opacity} />
             );
         }
-    }
+        for (let i = 1; i < dotsPerSide; i++) {
+            const y = center - half + (size * i) / dotsPerSide;
+            dots.push(
+                <circle key={`r${ringIdx}-l-${i}`} cx={center - half} cy={y} r={1.2} fill="currentColor" opacity={opacity} />
+            );
+            dots.push(
+                <circle key={`r${ringIdx}-r-${i}`} cx={center + half} cy={y} r={1.2} fill="currentColor" opacity={opacity} />
+            );
+        }
+    });
     return (
         <svg viewBox="0 0 200 200" aria-hidden="true" className="w-full h-full">
             {dots}
@@ -75,28 +82,45 @@ function VizGrid() {
     );
 }
 
-function VizWave() {
-    const cols = 30;
-    const dotsPerCol = 24;
+function VizCrosshair() {
     const dots: React.ReactElement[] = [];
-    for (let c = 0; c < cols; c++) {
-        const x = (c / (cols - 1)) * 200;
-        const phase = (c / cols) * Math.PI * 2;
-        const amplitude = 50;
-        for (let d = 0; d < dotsPerCol; d++) {
-            const y = 100 + Math.sin(phase + d * 0.18) * amplitude * (0.4 + d / dotsPerCol);
-            dots.push(
-                <circle
-                    key={`${c}-${d}`}
-                    cx={x}
-                    cy={y}
-                    r={1.2}
-                    fill="currentColor"
-                    opacity={0.3 + (d / dotsPerCol) * 0.5}
-                />
-            );
-        }
+    for (let i = 0; i <= 40; i++) {
+        const x = (i / 40) * 200;
+        dots.push(
+            <circle key={`h-${i}`} cx={x} cy={100} r={1.2} fill="currentColor" opacity={0.85} />
+        );
     }
+    for (let i = 0; i <= 40; i++) {
+        const y = (i / 40) * 200;
+        dots.push(
+            <circle key={`v-${i}`} cx={100} cy={y} r={1.2} fill="currentColor" opacity={0.85} />
+        );
+    }
+    const corners = [
+        [50, 50],
+        [150, 50],
+        [50, 150],
+        [150, 150],
+    ];
+    corners.forEach(([cx, cy], cornerIdx) => {
+        for (let r = -1; r <= 1; r++) {
+            for (let c = -1; c <= 1; c++) {
+                dots.push(
+                    <circle
+                        key={`c${cornerIdx}-${r}-${c}`}
+                        cx={cx + c * 6}
+                        cy={cy + r * 6}
+                        r={1}
+                        fill="currentColor"
+                        opacity={0.55}
+                    />
+                );
+            }
+        }
+    });
+    dots.push(
+        <circle key="center" cx={100} cy={100} r={2} fill="currentColor" opacity={1} />
+    );
     return (
         <svg viewBox="0 0 200 200" aria-hidden="true" className="w-full h-full">
             {dots}
@@ -104,30 +128,25 @@ function VizWave() {
     );
 }
 
-function VizSunburst() {
-    const rays = 30;
-    const dotsPerRay = 18;
-    const cx = 100;
-    const cy = 100;
+function VizStrata() {
+    const rowYs = Array.from({ length: 12 }, (_, i) => 20 + i * (160 / 11));
+    const dotsPerRow = [38, 22, 38, 26, 38, 18, 38, 30, 38, 22, 38, 28];
+    const opacities = [
+        0.95, 0.95, 0.95,
+        0.65, 0.65, 0.65, 0.65, 0.65, 0.65,
+        0.45, 0.45, 0.45,
+    ];
     const dots: React.ReactElement[] = [];
-    for (let r = 0; r < rays; r++) {
-        const angle = (r / rays) * Math.PI * 2;
-        for (let d = 1; d <= dotsPerRay; d++) {
-            const distance = (d / dotsPerRay) * 95;
-            const x = cx + Math.cos(angle) * distance;
-            const y = cy + Math.sin(angle) * distance;
+    rowYs.forEach((y, rowIdx) => {
+        const count = dotsPerRow[rowIdx];
+        const opacity = opacities[rowIdx];
+        for (let i = 0; i < count; i++) {
+            const x = 10 + (180 * i) / Math.max(count - 1, 1);
             dots.push(
-                <circle
-                    key={`${r}-${d}`}
-                    cx={x}
-                    cy={y}
-                    r={1.2}
-                    fill="currentColor"
-                    opacity={0.25 + (d / dotsPerRay) * 0.6}
-                />
+                <circle key={`s${rowIdx}-${i}`} cx={x} cy={y} r={1.2} fill="currentColor" opacity={opacity} />
             );
         }
-    }
+    });
     return (
         <svg viewBox="0 0 200 200" aria-hidden="true" className="w-full h-full">
             {dots}
@@ -135,26 +154,26 @@ function VizSunburst() {
     );
 }
 
-function VizCurve() {
-    const rows = 22;
-    const dotsPerRow = 26;
+function VizFlowLines() {
+    const lineCount = 8;
+    const dotsPerLine = 30;
     const dots: React.ReactElement[] = [];
-    for (let r = 0; r < rows; r++) {
-        const baseY = 30 + r * 7;
-        for (let d = 0; d < dotsPerRow; d++) {
-            const x = 10 + (d / (dotsPerRow - 1)) * 180;
-            const phase = (d / dotsPerRow) * Math.PI * 2 + r * 0.18;
-            const offset = Math.sin(phase) * 12;
-            const y = baseY + offset;
+    for (let l = 0; l < lineCount; l++) {
+        const perpOffset = (l - (lineCount - 1) / 2) * 18;
+        const perpDx = perpOffset * Math.SQRT1_2;
+        const perpDy = -perpOffset * Math.SQRT1_2;
+        const startX = -20 + perpDx;
+        const startY = -20 + perpDy;
+        const endX = 220 + perpDx;
+        const endY = 220 + perpDy;
+        for (let d = 0; d < dotsPerLine; d++) {
+            const t = d / (dotsPerLine - 1);
+            const x = startX + (endX - startX) * t;
+            const y = startY + (endY - startY) * t;
+            if (x < -2 || x > 202 || y < -2 || y > 202) continue;
+            const opacity = 0.2 + t * 0.75;
             dots.push(
-                <circle
-                    key={`${r}-${d}`}
-                    cx={x}
-                    cy={y}
-                    r={1.2}
-                    fill="currentColor"
-                    opacity={0.25 + ((rows - r) / rows) * 0.55}
-                />
+                <circle key={`f${l}-${d}`} cx={x} cy={y} r={1.2} fill="currentColor" opacity={opacity} />
             );
         }
     }
@@ -166,10 +185,10 @@ function VizCurve() {
 }
 
 function Visualization({ viz }: { viz: Viz }) {
-    if (viz === "grid") return <VizGrid />;
-    if (viz === "wave") return <VizWave />;
-    if (viz === "sunburst") return <VizSunburst />;
-    return <VizCurve />;
+    if (viz === "squares") return <VizConcentricSquares />;
+    if (viz === "crosshair") return <VizCrosshair />;
+    if (viz === "strata") return <VizStrata />;
+    return <VizFlowLines />;
 }
 
 export function CoreInfrastructure() {
