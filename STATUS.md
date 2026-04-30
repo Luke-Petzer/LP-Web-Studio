@@ -9,6 +9,45 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Batch 4 — Original Visualizations + Hover Expansion — 2026-04-30
+
+Plan: `docs/superpowers/plans/2026-04-30-batch4-card-viz-and-expand.md`
+Spec: `docs/superpowers/specs/2026-04-30-batch4-card-viz-and-expand-design.md`
+
+### Changes
+1. **Replaced 4 SVG visualizations** in `CoreInfrastructure.tsx`. The reference-derived `grid` / `wave` / `sunburst` / `curve` patterns from Batch 3 are gone, replaced by:
+   - **Concentric squares** (Autonomous Backends) — 7 nested square outlines, dot-perimeters, falling opacity outer→inner
+   - **Crosshair grid** (Precision UI) — orthogonal axis lines + 4 corner micro-grids + reinforced center
+   - **Stacked strata** (Data Storage) — 12 horizontal rows of dots at varying density, opacity falling top→bottom
+   - **Flow lines** (Global Pipelines) — 8 parallel diagonal dotted streams with directional opacity ramp
+
+   Total dot count dropped from 2028 (Batch 3) to 981 — bundle on `/` reduced.
+
+2. **Hover/focus column expansion** on desktop ≥1024px. Hovering or keyboard-focusing any card grows its column from `1fr` to `2fr`; the other three stay `1fr`. 300ms eased transition on `grid-template-columns` via `:has()` and `:focus-within`. Outer cards (1, 4) stay edge-anchored. Tablet (2×2) and mobile (1-up) get no expansion. `prefers-reduced-motion` snaps the layout instantly.
+
+3. **Keyboard parity** — added `tabIndex={0}` and `aria-label="${module}: ${title}"` to each card `<article>`. Tab cycles focus 1→2→3→4. Each focused card triggers the same expansion as hover.
+
+### Verified server-side
+- `panel-row` class on grid wrapper.
+- 4 elements with `tabindex="0"` (one per card).
+- 4 distinct aria-labels: `MODULE_01: Autonomous Backends`, `MODULE_02: Precision UI`, `MODULE_03: Data Storage`, `MODULE_04: Global Pipelines`.
+- CSS bundle contains the four `:has(.card-panel:nth-child(N):hover)` rules and the `transition: grid-template-columns 300ms` declaration.
+- 981 inline `<circle>` elements (down from 2028) — visualization swap is bundle-positive.
+- Production build clean.
+
+### Browser support
+- `:has()` selector + animatable `grid-template-columns`: Chrome 105+ / Safari 16+ / Firefox 121+. All evergreen as of 2026.
+- `(hover: hover)` guard + `prefers-reduced-motion` honoured.
+
+### Out of scope this batch
+- "02 — Execution / The Architectural Method" section (user still thinking)
+- Pre-existing `/work` a11y findings (separate batch)
+- `M src/app/learn/[slug]/page.tsx` working-tree change (untouched)
+- Test framework setup (no Playwright/Vitest introduced)
+- Lighthouse re-run (no CWV-affecting changes)
+
+---
+
 ## Batch 3 — PageSpeed Metric + Service-Cards Redesign — 2026-04-30
 
 Plan: `docs/superpowers/plans/2026-04-30-batch3-pagespeed-cards.md`
