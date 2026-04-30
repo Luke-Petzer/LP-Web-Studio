@@ -1,6 +1,6 @@
 const metrics = [
     { value: "99.9%", label: "Operational Uptime" },
-    { value: "90+",   label: "PageSpeed Guarantee" },
+    { value: "90+/100", label: "Google PageSpeed Guarantee" },
     { value: "24ms",  label: "Average Latency" },
     { value: "100%",  label: "Custom Next.js" },
 ];
