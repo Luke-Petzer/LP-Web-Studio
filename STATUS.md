@@ -9,6 +9,37 @@ A running changelog of all changes made to this website. Newest entries first.
 
 ---
 
+## Batch 3 — PageSpeed Metric + Service-Cards Redesign — 2026-04-30
+
+Plan: `docs/superpowers/plans/2026-04-30-batch3-pagespeed-cards.md`
+Spec: `docs/superpowers/specs/2026-04-30-batch3-pagespeed-cards-design.md`
+
+### Changes
+1. **MetricsBanner** — `90+ / PageSpeed Guarantee` → `90+/100 / Google PageSpeed Guarantee`. Anchors the unanchored "90+" metric with a denominator and source attribution for non-technical readers.
+2. **CoreInfrastructure (Web Development & Automation Services)** — full rewrite. Four full-bleed colored panels (`#0B0B0B` obsidian, `#1a1c1e` slate-dark, `#FF4D00` orange, `#B81D1D` deep red) replacing the previous bordered grid. Each panel: title-top → SVG visualization (grid / wave / sunburst / curve, hand-built with ~200-720 dots each) → counter `0X / 04` → small caps body. Same `min-h-[520px]` across all four. Subtle 6% brightness hover via new `.card-panel:hover { filter: brightness(1.06) }` in globals.css. Decorative SVG line-accents (the four faint `opacity-[0.045]` strokes) deleted — they were bleeding through the section. `tags` field dropped from card 1 (was the only card with tags — visual inconsistency).
+
+### What's preserved
+- Section `id="capabilities"`, `aria-label="Core Infrastructure"`.
+- Header row layout: `<h2>` "Web Development & Automation Services" + `.section-label` "01 — Capabilities".
+- Body copy verbatim per card.
+- Component public API (`<CoreInfrastructure />`).
+
+### Verified server-side
+- `MetricsBanner` HTML contains `90+/100` and `Google PageSpeed Guarantee`.
+- `CoreInfrastructure` panel row renders 4 `.card-panel` `<article>` elements, each with a unique `background:` style matching the locked palette.
+- 2028 inline `<circle>` elements rendered across the 4 visualizations (matches expected: 196 + 720 + 540 + 572).
+- No `opacity-[0.045]` strokes anywhere in the section.
+- No `Next.js` / `Node.js` tag pills inside `.card-panel` (the `>Next.js<` instances elsewhere are from the B2BPlatform tech-stack pills — pre-existing, unrelated).
+- Production build clean. `/` bundle 5.63 → 6.07 kB (+440 bytes for inline SVG dots). First Load JS unchanged at 114 kB.
+
+### Out of scope this batch
+- "02 — Execution / The Architectural Method" section (user still thinking)
+- Pre-existing `/work` a11y findings (separate batch)
+- `M src/app/learn/[slug]/page.tsx` working-tree change (untouched)
+- Lighthouse re-run (no CWV-affecting changes)
+
+---
+
 ## Mobile audit — 2026-04-27
 
 Source: `superpowers:code-reviewer` agent run, viewports 320/375/390/414. `body { overflow-x: hidden }` is in place (`globals.css:36`) — it currently masks any underlying overflow as content-clipping rather than visible page scroll. Findings below are the root causes that the body shortcut is masking.
