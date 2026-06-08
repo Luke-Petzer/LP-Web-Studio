@@ -243,7 +243,7 @@ export function CoreInfrastructure() {
                 {cards.map((card, i) => (
                     <article
                         key={card.module}
-                        className="card-panel group relative flex flex-col"
+                        className="card-panel group relative flex flex-col min-h-[300px] md:min-h-[524px]"
                         tabIndex={0}
                         aria-label={`${card.module}: ${card.title.replace("\n", " ")}`}
                         onMouseEnter={() => setHoveredIdx(i)}
@@ -254,7 +254,6 @@ export function CoreInfrastructure() {
                             background: card.bg,
                             color: "#ffffff",
                             transition: "filter 500ms ease-in-out",
-                            minHeight: "524px",
                         }}
                     >
                         <div className="flex flex-col h-full p-8 lg:p-10">
