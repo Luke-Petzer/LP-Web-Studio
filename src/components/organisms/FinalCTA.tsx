@@ -8,7 +8,7 @@ export function FinalCTA() {
         <section
             id="contact"
             aria-label="Final call to action"
-            className="relative py-40 md:py-48 px-8 md:px-12 bg-slate-dark overflow-hidden"
+            className="relative py-20 md:py-48 px-8 md:px-12 bg-slate-dark overflow-hidden"
         >
             {/* L-bracket corners */}
             <div className="corner-tl" />
