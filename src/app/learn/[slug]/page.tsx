@@ -9,6 +9,7 @@ import {
 } from "@/components/seo/SchemaTemplates";
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
+import { SubpageHero } from "@/components/organisms/SubpageHero";
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -60,97 +61,116 @@ export default async function LearnArticlePage({ params }: PageProps) {
 
             <Navigation />
 
-            <main className="pt-[120px] pb-structural bg-[#0A0A0A] min-h-screen">
-                <article
-                    className="max-w-3xl mx-auto px-6 md:px-12"
-                    itemScope
-                    itemType="https://schema.org/BlogPosting"
-                >
-                    <nav
-                        className="flex items-center gap-base text-xs font-mono text-white/40 mb-sectional"
-                        aria-label="Breadcrumb"
+            <main className="pb-structural bg-[#0A0A0A] min-h-screen">
+                <SubpageHero
+                    title="LEARN"
+                    subtitle="FIELD NOTES FROM THE STUDIO"
+                />
+
+                {/* ── Article body — landing-page rhythm ── */}
+                <section className="py-20 md:py-28 px-6 md:px-12 bg-slate-dark border-t border-white/5 mt-16 md:mt-24">
+                    <article
+                        className="max-w-3xl mx-auto"
+                        itemScope
+                        itemType="https://schema.org/BlogPosting"
                     >
-                        <a href="/" className="hover:text-white transition-colors">Home</a>
-                        <span>/</span>
-                        <a href="/learn" className="hover:text-white transition-colors">Learn</a>
-                        <span>/</span>
-                        <span className="text-white/60 truncate">{article.title}</span>
-                    </nav>
-
-                    <header className="mb-structural">
-                        <p
-                            style={{
-                                color: "#FF4500",
-                                fontSize: "10px",
-                                fontWeight: 700,
-                                letterSpacing: "0.18em",
-                                textTransform: "uppercase",
-                                fontFamily: "var(--font-space-grotesk)",
-                                marginBottom: "12px",
-                            }}
+                        <nav
+                            className="flex items-center gap-2 text-xs font-mono text-white/40 mb-12"
+                            aria-label="Breadcrumb"
                         >
-                            Knowledge Base
-                        </p>
-                        <h1
-                            className="font-headline font-black uppercase text-white leading-[1.05] mb-component"
-                            style={{ fontSize: "clamp(2rem, 4.5vw, 3rem)", letterSpacing: "-0.02em" }}
-                            itemProp="headline"
-                        >
-                            {article.title}
-                        </h1>
-                        <p className="text-white/70 text-base leading-relaxed mb-component" itemProp="description">
-                            {article.description}
-                        </p>
-                        <p className="text-xs text-white/40 font-mono uppercase tracking-widest">
-                            Published{" "}
-                            <time itemProp="datePublished" dateTime={article.date}>
-                                {new Date(article.date).toLocaleDateString("en-ZA", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                })}
-                            </time>
-                        </p>
-                    </header>
+                            <a href="/" className="hover:text-white transition-colors">Home</a>
+                            <span>/</span>
+                            <a href="/learn" className="hover:text-white transition-colors">Learn</a>
+                            <span>/</span>
+                            <span className="text-white/60 truncate">{article.title}</span>
+                        </nav>
 
-                    <section
-                        itemProp="articleBody"
-                        className="prose prose-invert prose-lg max-w-none
-              prose-headings:font-headline prose-headings:text-white prose-headings:uppercase prose-headings:tracking-tight
-              prose-h2:text-2xl prose-h2:mt-structural prose-h2:mb-component
-              prose-h3:text-xl prose-h3:mt-sectional prose-h3:mb-base
-              prose-p:text-white/70 prose-p:leading-relaxed
-              prose-strong:text-white prose-strong:font-semibold
-              prose-ul:text-white/70 prose-li:marker:text-accent
-              prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-              prose-code:text-accent prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-              prose-blockquote:border-l-[3px] prose-blockquote:border-accent prose-blockquote:text-white prose-blockquote:not-italic"
-                        dangerouslySetInnerHTML={{ __html: article.contentHtml }}
-                    />
+                        <header className="mb-16 md:mb-20">
+                            <span className="section-label mb-6">FIELD NOTE</span>
+                            <h1
+                                className="font-headline font-black uppercase text-white leading-[1.02] mt-6 mb-6"
+                                style={{
+                                    fontSize: "clamp(2rem, 4.5vw, 3rem)",
+                                    letterSpacing: "-0.02em",
+                                }}
+                                itemProp="headline"
+                            >
+                                {article.title}
+                            </h1>
+                            <p
+                                className="text-white/70 leading-relaxed mb-6"
+                                style={{ fontSize: "17px" }}
+                                itemProp="description"
+                            >
+                                {article.description}
+                            </p>
+                            <p
+                                style={{
+                                    color: "#FF4D00",
+                                    fontSize: "10px",
+                                    fontWeight: 700,
+                                    letterSpacing: "0.2em",
+                                    textTransform: "uppercase",
+                                    fontFamily: "var(--font-space-grotesk)",
+                                }}
+                            >
+                                PUBLISHED{" "}
+                                <time itemProp="datePublished" dateTime={article.date}>
+                                    {new Date(article.date).toLocaleDateString("en-ZA", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    })}
+                                </time>
+                            </p>
+                        </header>
 
-                    {article.faq.length > 0 && (
-                        <section className="mt-structural pt-structural border-t border-white/10">
-                            <h2 className="font-headline font-black uppercase text-white text-2xl mb-sectional tracking-tight">
-                                Frequently Asked Questions
-                            </h2>
-                            <div className="flex flex-col gap-sectional">
-                                {article.faq.map((item) => (
-                                    <div
-                                        key={item.question}
-                                        className="p-sectional border border-white/10 bg-white/[0.02] rounded-tight"
-                                    >
-                                        <h3 className="font-headline font-bold text-white mb-base text-lg">
-                                            {item.question}
-                                        </h3>
-                                        <p className="text-white/70 leading-relaxed">
-                                            {item.answer}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    )}
-                </article>
+                        <section
+                            itemProp="articleBody"
+                            className="prose prose-invert prose-lg max-w-none
+                prose-headings:font-headline prose-headings:text-white prose-headings:uppercase prose-headings:tracking-tight
+                prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6
+                prose-h3:text-xl prose-h3:mt-12 prose-h3:mb-4
+                prose-p:text-white/70 prose-p:leading-relaxed
+                prose-strong:text-white prose-strong:font-semibold
+                prose-ul:text-white/70 prose-li:marker:text-accent
+                prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+                prose-code:text-accent prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                prose-blockquote:border-l-[3px] prose-blockquote:border-accent prose-blockquote:text-white prose-blockquote:not-italic"
+                            dangerouslySetInnerHTML={{ __html: article.contentHtml }}
+                        />
+
+                        {article.faq.length > 0 && (
+                            <section className="mt-20 md:mt-24 pt-16 border-t border-white/10">
+                                <span className="section-label mb-6">FAQ</span>
+                                <h2
+                                    className="font-headline font-black uppercase text-white leading-[0.95] mt-6 mb-12"
+                                    style={{
+                                        fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
+                                        letterSpacing: "-0.02em",
+                                    }}
+                                >
+                                    Frequently Asked<br />Questions.
+                                </h2>
+                                <div className="flex flex-col gap-6">
+                                    {article.faq.map((item) => (
+                                        <div
+                                            key={item.question}
+                                            className="dark-card p-8 md:p-10"
+                                        >
+                                            <h3 className="font-headline font-bold uppercase text-white mb-4 text-lg tracking-tight">
+                                                {item.question}
+                                            </h3>
+                                            <p className="text-white/70 leading-relaxed">
+                                                {item.answer}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+                    </article>
+                </section>
             </main>
 
             <Footer />

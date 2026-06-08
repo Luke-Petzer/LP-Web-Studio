@@ -29,7 +29,7 @@ export function ScaleBanner() {
                         ))}
                     </div>
                     <button onClick={openDrawer} className="btn-primary w-full md:w-auto text-center px-12 py-5 border-none cursor-pointer">
-                        Initiate Protocol
+                        Start a Project
                     </button>
                 </div>
             </div>

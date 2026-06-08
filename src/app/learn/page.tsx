@@ -28,7 +28,6 @@ export default async function LearnPage() {
             <Navigation />
             <main className="pb-structural bg-[#0A0A0A] min-h-screen">
                 <SubpageHero
-                    breadcrumb="LP WEB / LEARN"
                     title="LEARN"
                     subtitle="FIELD NOTES ON BUILDING FAST WEBSITES"
                 />

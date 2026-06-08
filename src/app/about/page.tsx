@@ -28,7 +28,6 @@ export default function AboutPage() {
             <Navigation />
             <main className="pb-structural">
                 <SubpageHero
-                    breadcrumb="LP WEB / INFRASTRUCTURE"
                     title="INFRASTRUCTURE"
                     subtitle="ENGINEERED FOR PERFORMANCE"
                 />

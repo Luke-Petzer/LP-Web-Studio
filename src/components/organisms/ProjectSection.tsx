@@ -14,8 +14,9 @@ export type ProjectSectionProps = {
   descriptionHeading: string;
   descriptionBody: string;
   videoSrc: string;
-  images: [string, string];
-  imageAlts: [string, string];
+  posterSrc?: string;
+  images: string[];
+  imageAlts: string[];
   siteUrl: string;
 };
 
@@ -39,6 +40,7 @@ export function ProjectSection({
   descriptionHeading,
   descriptionBody,
   videoSrc,
+  posterSrc,
   images,
   imageAlts,
   siteUrl,
@@ -99,7 +101,7 @@ export function ProjectSection({
               loop
               playsInline
               preload="metadata"
-              poster={images[0]}
+              poster={posterSrc ?? images[0]}
               className="w-full aspect-video object-cover"
               aria-label={`${ident} project video preview`}
             >

@@ -22,8 +22,11 @@ export function B2BPlatform() {
     return (
         <section
             aria-label="B2B Ordering Platform"
-            className="relative py-24 md:py-32 px-8 md:px-12 bg-slate-dark border-t border-white/5"
+            className="relative isolate py-24 md:py-32 px-8 md:px-12 bg-slate-dark border-t border-white/5"
         >
+            {/* Continuously animated geometric lines — full section background */}
+            <div className="section-geo-lines" aria-hidden="true" />
+
             {/* Geometric line accents — top strip */}
             <div className="pointer-events-none absolute top-0 left-0 right-0 overflow-hidden" style={{ height: "160px" }}>
                 <svg aria-hidden="true" className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

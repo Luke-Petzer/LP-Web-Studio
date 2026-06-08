@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 type Viz = "squares" | "crosshair" | "strata" | "flow";
 
@@ -16,8 +16,8 @@ type Card = {
 const cards: Card[] = [
     {
         module: "MODULE_01",
-        title: "Autonomous\nBackends",
-        body: "Self-healing infrastructure that eliminates manual admin and scales with your operation.",
+        title: "Custom\nBackends",
+        body: "Custom backend logic built around how your business operates. No off-the-shelf limitations, no vendor lock-in.",
         bg: "#0B0B0B",
         isLight: false,
         viz: "squares",
@@ -25,7 +25,7 @@ const cards: Card[] = [
     {
         module: "MODULE_02",
         title: "Precision\nUI",
-        body: "Interfaces designed with mathematical rigour for operators who demand clarity and speed.",
+        body: "Interfaces built for clarity and speed. Clean, purposeful design that your team picks up without training.",
         bg: "#1a1c1e",
         isLight: false,
         viz: "crosshair",
@@ -33,15 +33,15 @@ const cards: Card[] = [
     {
         module: "MODULE_03",
         title: "Data\nStorage",
-        body: "Immutable audit trails and highly available relational architectures for mission-critical data.",
+        body: "Structured databases and file storage configured to your needs. Your data is accessible, exportable, and owned by you.",
         bg: "#FF4D00",
         isLight: true,
         viz: "strata",
     },
     {
         module: "MODULE_04",
-        title: "Global\nPipelines",
-        body: "Automated deployment across distributed nodes with zero-downtime execution.",
+        title: "Third-Party\nIntegrations",
+        body: "Connections to the tools your business already uses — payments, accounting, WhatsApp, email, and more — automated end to end.",
         bg: "#B81D1D",
         isLight: true,
         viz: "flow",
@@ -192,6 +192,27 @@ function Visualization({ viz }: { viz: Viz }) {
 }
 
 export function CoreInfrastructure() {
+    const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+    // Only enable expansion on devices that are both ≥1024px and support hover.
+    // Initialises false to avoid SSR/hydration mismatch; set on client mount.
+    const [isLgHover, setIsLgHover] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia("(min-width: 1024px) and (hover: hover)");
+        setIsLgHover(mq.matches);
+        const handler = (e: MediaQueryListEvent) => setIsLgHover(e.matches);
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+    }, []);
+
+    // Inline style drives the transition — always an explicit value so the
+    // browser never has to interpolate from/to a CSS-rule activation boundary.
+    const gridTemplateColumns = isLgHover
+        ? hoveredIdx !== null
+            ? [0, 1, 2, 3].map((i) => (i === hoveredIdx ? "2fr" : "1fr")).join(" ")
+            : "1fr 1fr 1fr 1fr"
+        : undefined;
+
     return (
         <section
             id="capabilities"
@@ -215,18 +236,25 @@ export function CoreInfrastructure() {
             </div>
 
             {/* Full-bleed panel row */}
-            <div className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div
+                className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+                style={gridTemplateColumns ? { gridTemplateColumns } : undefined}
+            >
                 {cards.map((card, i) => (
                     <article
                         key={card.module}
                         className="card-panel group relative flex flex-col"
                         tabIndex={0}
                         aria-label={`${card.module}: ${card.title.replace("\n", " ")}`}
+                        onMouseEnter={() => setHoveredIdx(i)}
+                        onMouseLeave={() => setHoveredIdx(null)}
+                        onFocus={() => setHoveredIdx(i)}
+                        onBlur={() => setHoveredIdx(null)}
                         style={{
                             background: card.bg,
                             color: "#ffffff",
-                            transition: "filter 200ms ease",
-                            minHeight: "520px",
+                            transition: "filter 500ms ease-in-out",
+                            minHeight: "524px",
                         }}
                     >
                         <div className="flex flex-col h-full p-8 lg:p-10">

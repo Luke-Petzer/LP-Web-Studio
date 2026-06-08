@@ -27,7 +27,7 @@ export function FinalCTA() {
                 <div className="mb-12 flex justify-center items-center flex-wrap gap-3 text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase font-mono">
                     <span>01 / Free Discovery Call</span>
                     <span className="text-white/20">→</span>
-                    <span>02 / Architecture Blueprint</span>
+                    <span>02 / Scope & Proposal</span>
                     <span className="text-white/20">→</span>
                     <span>03 / Your System Is Built</span>
                 </div>
@@ -38,7 +38,7 @@ export function FinalCTA() {
                         onClick={openDrawer}
                         className="btn-cta-orange px-12 py-5 w-full md:w-auto text-center"
                     >
-                        Initiate Protocol
+                        Start a Project
                     </button>
                     <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>
                     <a

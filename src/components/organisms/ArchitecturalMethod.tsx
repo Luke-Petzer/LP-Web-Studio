@@ -1,30 +1,33 @@
 const steps = [
     {
-        step: "01 / Schematic",
+        step: "01 / Discover",
         icon: "draw",
-        title: "System Design\n& Audit",
-        body: "We map the entire technical landscape, identifying structural vulnerabilities and designing a blueprint for absolute operational resilience.",
+        title: "Requirements\n& Scope",
+        body: "We start by understanding your business, your goals, and what you actually need. Every project begins with a clear scope and agreed deliverables — no surprises.",
     },
     {
-        step: "02 / Fabricate",
+        step: "02 / Build",
         icon: "construction",
-        title: "Precision\nDeployment",
-        body: "Engineered with surgical accuracy. We translate schematics into high-performance, automated infrastructure built for long-term stability.",
+        title: "Development\n& Testing",
+        body: "We build to the agreed scope using Next.js and modern tooling. Every feature is tested before it ships and you review progress throughout.",
     },
     {
-        step: "03 / Optimize",
+        step: "03 / Optimise",
         icon: "speed",
-        title: "Continuous\nEvolution",
-        body: "Beyond delivery. We implement self-optimizing feedback loops that ensure your systems remain at peak performance as your scale increases.",
+        title: "Launch &\nSupport",
+        body: "After launch we monitor performance, address any issues, and stay available for updates. Your site should get better over time, not stale.",
     },
 ];
 
 export function ArchitecturalMethod() {
     return (
         <section
-            aria-label="The Architectural Method"
-            className="relative py-24 md:py-32 px-8 md:px-12 bg-slate-dark border-t border-white/5"
+            aria-label="How We Build"
+            className="relative isolate py-24 md:py-32 px-8 md:px-12 bg-slate-dark border-t border-white/5"
         >
+            {/* Continuously animated geometric lines — full section background */}
+            <div className="section-geo-lines" aria-hidden="true" />
+
             {/* Geometric line accents — top strip */}
             <div className="pointer-events-none absolute top-0 left-0 right-0 overflow-hidden" style={{ height: "160px" }}>
                 <svg aria-hidden="true" className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -53,10 +56,10 @@ export function ArchitecturalMethod() {
                         className="font-headline font-bold uppercase tracking-[-0.04em] text-white mb-6"
                         style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
                     >
-                        The Architectural Method
+                        How We Build
                     </h2>
                     <p className="font-body text-white/60 text-sm leading-relaxed max-w-sm">
-                        A rigorous, iterative framework designed for high-stakes digital infrastructure. We build systems that don&apos;t break.
+                        A structured process from brief to launch. We scope carefully, build precisely, and deliver on time.
                     </p>
                 </div>
 

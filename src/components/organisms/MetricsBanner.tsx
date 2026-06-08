@@ -1,8 +1,8 @@
 const metrics = [
-    { value: "99.9%", label: "Operational Uptime" },
-    { value: "90+/100", label: "Google PageSpeed Guarantee" },
-    { value: "24ms",  label: "Average Latency" },
-    { value: "100%",  label: "Custom Next.js" },
+    { value: "100%",       label: "Custom Built" },
+    { value: "Next.js",    label: "& React" },
+    { value: "Cape Town",  label: "Based" },
+    { value: "Yours.",     label: "Client-Owned Code" },
 ];
 
 export function MetricsBanner() {

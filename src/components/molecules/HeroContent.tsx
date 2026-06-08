@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useDrawer } from "@/lib/contact-drawer-context";
 
 export function HeroContent() {
@@ -12,19 +11,8 @@ export function HeroContent() {
                 className="relative min-h-[90dvh] md:min-h-[88dvh] rounded-[3rem] md:rounded-[5rem] overflow-hidden flex items-end md:items-center px-8 md:px-16 lg:px-24 py-20 md:py-0"
                 style={{ background: "linear-gradient(135deg, #FF4D00 0%, #B81D1D 100%)" }}
             >
-                {/* Portrait image */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/founder-portrait.jpg"
-                        alt="Luke Petzer — LP Web Studio"
-                        fill
-                        priority
-                        className="object-cover object-center md:object-right grayscale mix-blend-multiply opacity-30"
-                        sizes="100vw"
-                    />
-                    {/* Left-to-right colour bleed */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D00]/70 via-transparent to-transparent" />
-                </div>
+                {/* Left-to-right colour bleed */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D00]/70 via-transparent to-transparent" />
 
                 {/* ── Content grid ── */}
                 <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -42,25 +30,26 @@ export function HeroContent() {
                         {/* H1 */}
                         <h1 className="font-headline font-bold uppercase tracking-[-0.05em] leading-[0.85] text-white mb-10"
                             style={{ fontSize: "clamp(3rem, 8vw, 8.5rem)" }}>
-                            Forging the<br />
-                            Future of<br />
-                            <span className="text-white/40">Systems.</span>
+                            Custom Websites<br />
+                            & Web Platforms<br />
+                            <span className="text-white/40">That Work.</span>
                         </h1>
 
                         {/* CTAs */}
                         <div className="flex flex-col sm:flex-row gap-4">
+                            <a
+                                href="/work"
+                                className="btn-primary px-10 py-5 text-sm border-none cursor-pointer"
+                                style={{ textDecoration: "none" }}
+                            >
+                                See Our Work
+                            </a>
                             <button
                                 onClick={openDrawer}
-                                className="btn-primary px-10 py-5 text-sm border-none cursor-pointer"
-                            >
-                                Deploy System
-                            </button>
-                            <a
-                                href="#capabilities"
                                 className="btn-ghost px-10 py-5 text-sm backdrop-blur-sm"
                             >
-                                View Schematics
-                            </a>
+                                Get Started
+                            </button>
                         </div>
                     </div>
 
@@ -69,7 +58,7 @@ export function HeroContent() {
                         {/* Glass descriptor */}
                         <div className="p-8 border border-white/20 backdrop-blur-md bg-white/5 rounded-tight">
                             <p className="font-body text-sm md:text-base text-white tracking-normal leading-relaxed uppercase font-medium">
-                                Eliminate operational fragility. We engineer high-performance automation systems and custom web applications for businesses ready to scale.
+                                We design and build custom websites and web platforms for Cape Town businesses. From standalone websites to full ordering systems — built to your exact requirements.
                             </p>
                         </div>
 

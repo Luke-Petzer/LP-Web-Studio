@@ -12,7 +12,7 @@ export function FounderSection() {
                 <div className="md:col-span-4 flex justify-center">
                     <div className="relative w-full aspect-[4/5] max-w-sm overflow-hidden bg-zinc-900 group">
                         <Image
-                            src="/founder-portrait.jpg"
+                            src="/luke-petzer.jpg"
                             alt="Luke Petzer — LP Web Studio"
                             fill
                             className="object-cover grayscale brightness-75 contrast-125 transition-transform duration-700 group-hover:scale-105"
