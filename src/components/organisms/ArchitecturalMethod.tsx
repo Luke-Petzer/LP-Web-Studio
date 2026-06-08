@@ -68,7 +68,7 @@ export function ArchitecturalMethod() {
                     {steps.map((s) => (
                         <div
                             key={s.step}
-                            className="group dark-card relative p-12 md:p-16 min-h-[360px] flex flex-col justify-between overflow-hidden"
+                            className="group dark-card relative p-8 md:p-16 min-h-[240px] md:min-h-[360px] flex flex-col justify-between overflow-hidden"
                         >
                             {/* Step label + rule */}
                             <div>
