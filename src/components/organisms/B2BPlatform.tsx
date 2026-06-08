@@ -52,7 +52,7 @@ export function B2BPlatform() {
                 {/* ── Left: scrolling problem/solution/impact cards ── */}
                 <div className="lg:col-span-6 flex flex-col gap-6">
                     {cards.map((card) => (
-                        <div key={card.label} className="dark-card p-10 md:p-12 min-h-[320px] flex flex-col justify-between">
+                        <div key={card.label} className="dark-card p-6 md:p-12 md:min-h-[320px] flex flex-col justify-between">
                             <div>
                                 <span className="mono-label">{card.label}</span>
                                 <div className="w-10 h-px bg-white/20 mt-3" />
