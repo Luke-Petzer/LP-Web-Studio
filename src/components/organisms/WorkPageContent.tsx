@@ -12,9 +12,7 @@ const cafeCrave: ProjectSectionProps = {
   timeline: "Q4_2023 – PRESENT",
   status: "ACTIVE_TERMINAL",
   statusActive: true,
-  authority: "ELITE_TIER",
   score: 93,
-  stack: ["REACT", "NEXT.JS", "TAILWIND", "VERCEL"],
   descriptionHeading: "THE_CONVERSION_ENGINE",
   descriptionBody:
     "Cafe Crave needed more than a menu online. Every visitor needed to feel the space before they arrived. We rebuilt their digital presence on a React and Next.js stack with live Google Reviews integration, a mobile-first layout, and a reservation flow engineered for conversion. The result: a 93/100 PageSpeed score and a site that works as hard as the team behind the counter.",

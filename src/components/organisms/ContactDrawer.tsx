@@ -6,10 +6,11 @@ import { useDrawer } from "@/lib/contact-drawer-context";
 import { MessageCircle, Mail, X } from "lucide-react";
 
 const ARCH_OPTIONS = [
-  { id: "web_app",    label: "WEB_APP",     sub: "Custom build" },
-  { id: "ecommerce",  label: "E_COMMERCE",  sub: "Shop" },
-  { id: "automation", label: "AUTOMATION",  sub: "n8n pipelines" },
-  { id: "branding",   label: "BRANDING",    sub: "Identity" },
+  { id: "ordering_portal", label: "Ordering portal", sub: "Take orders online" },
+  { id: "client_platform", label: "Client platform", sub: "Logins & self-serve" },
+  { id: "automation",      label: "Automation",      sub: "Replace manual admin" },
+  { id: "mobile_app",      label: "Mobile app",      sub: "iOS / Android" },
+  { id: "other",           label: "Something else",  sub: "Tell us more" },
 ] as const;
 
 type ArchId = typeof ARCH_OPTIONS[number]["id"];
@@ -185,7 +186,7 @@ export function ContactDrawer() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
               <div>
                 <p style={{ color: "#FF4500", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "8px" }}>
-                  PROJECT INITIATION
+                  GET IN TOUCH
                 </p>
                 <h2 style={{ color: "#fff", fontFamily: "var(--font-space-grotesk)", fontWeight: 900, fontSize: "clamp(1.75rem, 4vw, 2.25rem)", lineHeight: 1, textTransform: "uppercase", letterSpacing: "-0.02em" }}>
                   LET&apos;S BUILD.
@@ -223,7 +224,7 @@ export function ContactDrawer() {
                 {/* Architecture selector */}
                 <div>
                   <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
-                    ARCHITECTURE TYPE
+                    WHAT DO YOU NEED?
                   </p>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
                     {ARCH_OPTIONS.map((opt) => {
@@ -299,7 +300,7 @@ export function ContactDrawer() {
                     type="text"
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
-                    placeholder="e.g. R15,000 – R50,000"
+                    placeholder="e.g. R35,000+"
                     style={{ ...FIELD_STYLE }}
                     onFocus={(e) => { (e.target as HTMLInputElement).style.borderBottomColor = "#FF4500"; }}
                     onBlur={(e) => { (e.target as HTMLInputElement).style.borderBottomColor = "rgba(255,255,255,0.12)"; }}

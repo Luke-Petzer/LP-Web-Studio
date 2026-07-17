@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Why PageSpeed Matters for Cape Town Businesses in 2025"
 description: "How website speed affects your Google ranking and leads in Cape Town. What a 90+ PageSpeed score means for your business and how to achieve it."
 date: "2026-02-17"

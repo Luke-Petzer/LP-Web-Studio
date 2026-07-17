@@ -1,6 +1,6 @@
 const metrics = [
     { value: "100%",       label: "Custom Built" },
-    { value: "Next.js",    label: "& React" },
+    { value: "Zero",       label: "Manual Order Entry" },
     { value: "Cape Town",  label: "Based" },
     { value: "Yours.",     label: "Client-Owned Code" },
 ];

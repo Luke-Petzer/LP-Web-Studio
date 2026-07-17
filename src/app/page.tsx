@@ -15,40 +15,19 @@ import { FinalCTA } from "@/components/organisms/FinalCTA";
 import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema } from "@/components/seo/SchemaTemplates";
+import { homepageFaqs } from "@/lib/faq-data";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-    title: "LP Web Studio | Custom Websites & Automation Systems Cape Town",
-    description: "We build high-performance Next.js websites and automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed, real results.",
+    title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
+    description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
     openGraph: {
-        title: "LP Web Studio | Custom Websites & Automation Systems Cape Town",
-        description: "We build high-performance Next.js websites and automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed, real results.",
+        title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
+        description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
     },
 };
 
-const homepageFaqs = [
-    {
-        question: "What does a custom website cost in Cape Town?",
-        answer: "LP Web Studio offers three packages. A starter 1-page website costs R5,500 once-off plus R350/month hosting. A professional 3-page website with booking automation costs R12,500. Custom web applications start from R21,500.",
-    },
-    {
-        question: "How long does a website take to build?",
-        answer: "Standard websites take 1-2 weeks once content and requirements are confirmed. Custom web applications and automation systems take 2-6 weeks depending on complexity.",
-    },
-    {
-        question: "Do you work with businesses outside Cape Town?",
-        answer: "Yes. We work with businesses across South Africa and internationally. Discovery calls are online and projects are delivered remotely.",
-    },
-    {
-        question: "What industries do you work with?",
-        answer: "We work with any business that needs a serious online presence or wants to automate their operations — particularly manufacturing, trade services, hospitality, and B2B companies.",
-    },
-    {
-        question: "What makes LP Web Studio different from other web agencies?",
-        answer: "You speak directly to the engineer building your system — not a sales rep or account manager. Every build is hand-coded in Next.js, comes with a 90+ PageSpeed guarantee, and you own the code outright with no lock-in.",
-    },
-];
 export default function HomePage() {
     return (
         <>

@@ -9,13 +9,13 @@ const steps = [
         step: "02 / Build",
         icon: "construction",
         title: "Development\n& Testing",
-        body: "We build to the agreed scope using Next.js and modern tooling. Every feature is tested before it ships and you review progress throughout.",
+        body: "We build to the agreed scope and test everything before it ships. You review progress throughout — no surprises at delivery.",
     },
     {
         step: "03 / Optimise",
         icon: "speed",
         title: "Launch &\nSupport",
-        body: "After launch we monitor performance, address any issues, and stay available for updates. Your site should get better over time, not stale.",
+        body: "After launch we monitor performance, fix anything that comes up, and stay available for updates. Your system should get better over time — that's what the care plan is for.",
     },
 ];
 

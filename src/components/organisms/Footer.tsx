@@ -12,15 +12,16 @@ export function Footer() {
 
                 {/* Legal */}
                 <p className="mono-label">
-                    © 2025 LP Web Studio. All rights reserved.
+                    © 2026 LP Web Studio. All rights reserved.
                 </p>
 
                 {/* Nav links */}
                 <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                     {[
-                        { label: "Work",    href: "/work" },
-                        { label: "About",   href: "/about" },
-                        { label: "Privacy", href: "/privacy" },
+                        { label: "Work",     href: "/work" },
+                        { label: "Products", href: "/products" },
+                        { label: "About",    href: "/about" },
+                        { label: "Privacy",  href: "/privacy" },
                     ].map(({ label, href }) => (
                         <a
                             key={label}

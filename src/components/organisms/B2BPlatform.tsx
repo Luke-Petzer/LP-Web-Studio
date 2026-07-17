@@ -12,11 +12,9 @@ const cards = [
     {
         label: "03 / The Impact",
         title: "End-to-end automation. Orders sync instantly with zero human touchpoints.",
-        body: "The moment a client clicks \"Submit,\" the order routes instantly to the warehouse and accounting software without a single staff member touching a keyboard. Process 10x the volume with 100% accuracy.",
+        body: "The moment a client clicks \"Submit,\" the order routes instantly to the warehouse and accounting software — no staff member touches a keyboard, and nothing gets lost in a chat thread.",
     },
 ];
-
-const tags = ["PostgreSQL", "Next.js", "n8n", "WhatsApp API"];
 
 export function B2BPlatform() {
     return (
@@ -74,7 +72,7 @@ export function B2BPlatform() {
 
                 {/* ── Right: sticky headline ── */}
                 <div className="lg:col-span-6 lg:sticky lg:top-32 h-fit flex flex-col gap-6">
-                    <span className="mono-label">RECENT WORK</span>
+                    <span className="mono-label">FEATURED CASE STUDY</span>
 
                     <h2
                         className="font-headline font-bold uppercase tracking-[-0.04em] text-white"
@@ -90,12 +88,6 @@ export function B2BPlatform() {
                         Zero Manual Entry
                     </p>
 
-                    {/* Tech stack pills */}
-                    <div className="flex flex-wrap gap-3 mt-4">
-                        {tags.map((tag) => (
-                            <span key={tag} className="pill">{tag}</span>
-                        ))}
-                    </div>
                 </div>
             </div>
         </section>

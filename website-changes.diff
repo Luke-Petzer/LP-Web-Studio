@@ -1,0 +1,1891 @@
+diff --git a/content/knowledge-base/nextjs-vs-wordpress.md b/content/knowledge-base/nextjs-vs-wordpress.md
+index 2119b8d..f4e12d8 100644
+--- a/content/knowledge-base/nextjs-vs-wordpress.md
++++ b/content/knowledge-base/nextjs-vs-wordpress.md
+@@ -1,4 +1,5 @@
+ ---
++draft: true
+ title: "Next.js vs WordPress for Cape Town Small Businesses"
+ description: "Why Cape Town businesses are switching from WordPress to Next.js. Speed comparison, security, SEO impact, and real cost breakdown."
+ date: "2026-02-17"
+diff --git a/content/knowledge-base/what-a-b2b-ordering-system-replaces.md b/content/knowledge-base/what-a-b2b-ordering-system-replaces.md
+new file mode 100644
+index 0000000..5825c6a
+--- /dev/null
++++ b/content/knowledge-base/what-a-b2b-ordering-system-replaces.md
+@@ -0,0 +1,37 @@
++---
++title: "What a B2B Ordering System Actually Replaces"
++description: "A B2B ordering system isn't one new tool — it's a pile of manual work that quietly disappears. Here's exactly what it takes off your plate."
++date: "2026-06-25"
++faq:
++  - question: "What does a B2B ordering system replace?"
++    answer: "The manual admin around orders: re-typing WhatsApp and email orders into a spreadsheet, keeping PDF price lists up to date, chasing stock levels by phone, and copying orders into accounting. A good system absorbs all of it."
++  - question: "Is a B2B ordering system just an online shop?"
++    answer: "No. A B2B system handles per-client pricing, account-based logins, credit terms, and order routing into your existing warehouse and accounting tools. A consumer shop assumes one price for everyone and a card at checkout — B2B rarely works that way."
++  - question: "Do I own the ordering system you build?"
++    answer: "Yes. Every system is yours outright — full code ownership, no lock-in, and no monthly licence fee to keep using what you paid for. Optional care plans cover updates and support after launch."
++---
++
++## It's not a tool. It's a pile of work that disappears.
++
++When people picture a "B2B ordering system," they picture a new screen to learn. That's the least interesting part. The interesting part is everything it quietly removes.
++
++### The manual work it absorbs
++
++- **Re-typing orders.** Every order that came in over WhatsApp or email got copied into a spreadsheet by hand. That job stops existing.
++- **Maintaining price lists.** No more emailing a new PDF every time a price changes. Pricing lives in one place and updates everywhere at once.
++- **Answering "is it in stock?"** Clients see live availability instead of phoning to ask.
++- **Copying orders into accounting.** The order arrives already structured, ready to route — no double entry.
++
++## Why it isn't just an online shop
++
++A consumer shop assumes one price for everyone and a card at the checkout. B2B is different:
++
++- Each client sees **their own** negotiated pricing.
++- Orders sit against accounts with credit terms, not one-off card payments.
++- Everything routes into the warehouse and accounting tools you already use.
++
++That's why off-the-shelf shop software rarely fits — it's built for a model your business doesn't run on.
++
++## What you're left with
++
++When the manual work is gone, what remains is a business that can take more orders without hiring more admin. That's the whole point: not a shinier screen, but a lighter load.
+diff --git a/content/knowledge-base/whatsapp-orders-stop-scaling.md b/content/knowledge-base/whatsapp-orders-stop-scaling.md
+new file mode 100644
+index 0000000..92d6662
+--- /dev/null
++++ b/content/knowledge-base/whatsapp-orders-stop-scaling.md
+@@ -0,0 +1,41 @@
++---
++title: "When WhatsApp Orders Stop Scaling"
++description: "WhatsApp is a great way to take your first orders — and a terrible way to take your thousandth. Here's where it breaks, and what to move to."
++date: "2026-06-18"
++faq:
++  - question: "What's wrong with taking orders on WhatsApp?"
++    answer: "Nothing, until volume grows. Orders get buried in chat threads, someone has to re-type every one into a spreadsheet, pricing arguments happen in DMs, and there's no single place to see what's outstanding. It works for ten orders a week and quietly falls apart at a hundred."
++  - question: "What do you replace WhatsApp ordering with?"
++    answer: "A custom ordering portal: clients log in, see their own pricing, browse a live catalogue, and place orders that route straight to your warehouse and accounting — no re-typing, no lost messages."
++  - question: "Do my customers have to change how they order?"
++    answer: "They move from messaging you to placing orders in a portal built around how they already buy. Most teams find it faster than WhatsApp once they've done it twice, and you can keep WhatsApp for support."
++---
++
++## The point where WhatsApp breaks
++
++Every wholesaler and distributor we've worked with started the same way: orders came in over WhatsApp. It's free, everyone has it, and for your first handful of customers it's genuinely the right tool.
++
++Then you grow.
++
++### The symptoms
++
++- Orders sit in a chat thread and someone has to **re-type each one** into a spreadsheet or accounting package.
++- A message gets missed, and an order simply doesn't happen.
++- Custom pricing lives in someone's head, so quotes get argued out in DMs.
++- Nobody can answer "what's outstanding right now?" without scrolling.
++
++None of these are WhatsApp's fault. It was never built to be an ordering system. It's a messaging app doing a job it was never designed for.
++
++## What replaces it
++
++A custom ordering portal takes the same relationship — your clients, your pricing, your catalogue — and gives it structure:
++
++- Clients log in and see **their own** pricing, not a generic list.
++- They order from a live catalogue that reflects real stock.
++- The moment they submit, the order routes to the warehouse and accounting automatically.
++
++The order stops being a message someone has to act on and becomes a record the system acts on.
++
++## When to make the move
++
++If you're spending real hours a week re-typing orders, or you've lost an order in a thread in the last month, you're already past the point WhatsApp scales to. That's the signal it's time for a system.
+diff --git a/content/knowledge-base/why-pagespeed-matters.md b/content/knowledge-base/why-pagespeed-matters.md
+index 9fcec0c..77b23b1 100644
+--- a/content/knowledge-base/why-pagespeed-matters.md
++++ b/content/knowledge-base/why-pagespeed-matters.md
+@@ -1,4 +1,5 @@
+ ---
++draft: true
+ title: "Why PageSpeed Matters for Cape Town Businesses in 2025"
+ description: "How website speed affects your Google ranking and leads in Cape Town. What a 90+ PageSpeed score means for your business and how to achieve it."
+ date: "2026-02-17"
+diff --git a/public/llms.txt b/public/llms.txt
+index d8a8250..3eff296 100644
+--- a/public/llms.txt
++++ b/public/llms.txt
+@@ -1,15 +1,14 @@
+ # LP Web Studio
+ 
+-> Cape Town web development studio specialising in custom
+-Next.js websites, n8n business automation, and high-performance
+-web applications. Founded by Luke Petzer.
++> Cape Town systems studio building custom ordering portals,
++client platforms, and business automation that replace manual
++admin for South African businesses. Founded by Luke Petzer.
+ 
+ ## Services
+-- Custom Next.js websites: R5,500 – R21,500 once-off
+-- n8n business automation and WhatsApp integration
+-- B2B ordering portals and custom web applications
+-- Performance audits and WordPress-to-Next.js migrations
+-- Guaranteed 90+ Google PageSpeed scores
++- Custom ordering portals and client platforms (from R35,000)
++- Business automation and WhatsApp-to-system migration
++- Custom web applications and business systems
++- Monthly care plans (from R1,950/month)
+ 
+ ## Location
+ Cape Town, South Africa. Serves clients nationally and
+@@ -21,12 +20,9 @@ Email: contact@lpwebstudio.co.za
+ Website: https://lpwebstudio.co.za
+ 
+ ## Portfolio
+-- Cafe Crave (cafecravecpt.co.za) — hospitality, 93/100 PageSpeed
+-- The Big Six (thebigsix.lpwebstudio.co.za) — editorial, 91/100
+-
+-## Technology Stack
+-Next.js 15, React, TypeScript, Tailwind CSS, Supabase,
+-Vercel Edge Network, n8n automation, Framer Motion
++- B2B ordering platform — live in production, replaces WhatsApp
++  and spreadsheet order-taking with a role-based self-serve portal
++- Cafe Crave (cafecravecpt.co.za) — hospitality website, 93/100 PageSpeed
+ 
+ ## Optional
+ Full sitemap: https://lpwebstudio.co.za/sitemap.xml
+diff --git a/src/app/about/page.tsx b/src/app/about/page.tsx
+index b613d62..4f7c465 100644
+--- a/src/app/about/page.tsx
++++ b/src/app/about/page.tsx
+@@ -7,17 +7,17 @@ import { JsonLd } from "@/components/seo/JsonLd";
+ import { personSchema } from "@/components/seo/SchemaTemplates";
+ 
+ export const metadata: Metadata = {
+-    title: "About | Cape Town Next.js Developer — Luke Petzer",
++    title: "About | Luke Petzer, Systems Builder — Cape Town",
+     description:
+-        "Luke Petzer is a Cape Town-based web developer and automation engineer. Custom Next.js builds, n8n pipelines, and 90+ PageSpeed scores guaranteed. No agencies, no bloat.",
++        "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses. Honours computer science background, ships production systems solo.",
+     alternates: {
+         canonical: "https://lpwebstudio.co.za/about",
+     },
+     openGraph: {
+         url: "https://lpwebstudio.co.za/about",
+-        title: "About | Cape Town Next.js Developer — Luke Petzer",
++        title: "About | Luke Petzer, Systems Builder — Cape Town",
+         description:
+-            "Luke Petzer is a Cape Town-based web developer and automation engineer. Custom Next.js builds, n8n pipelines, and 90+ PageSpeed scores guaranteed.",
++            "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses.",
+     },
+ };
+ 
+@@ -28,8 +28,8 @@ export default function AboutPage() {
+             <Navigation />
+             <main className="pb-structural">
+                 <SubpageHero
+-                    title="INFRASTRUCTURE"
+-                    subtitle="ENGINEERED FOR PERFORMANCE"
++                    title="ABOUT"
++                    subtitle="THE PERSON BUILDING YOUR SYSTEM"
+                 />
+                 <AboutPageContent />
+             </main>
+diff --git a/src/app/api/audit/route.ts b/src/app/api/audit/route.ts
+deleted file mode 100644
+index 11326e5..0000000
+--- a/src/app/api/audit/route.ts
++++ /dev/null
+@@ -1,116 +0,0 @@
+-import { NextResponse } from "next/server";
+-import { z } from "zod";
+-
+-export const runtime = "edge";
+-
+-const auditSchema = z.object({
+-    name: z
+-        .string()
+-        .min(2, "Name must be at least 2 characters")
+-        .max(100, "Name must be under 100 characters")
+-        .trim(),
+-    email: z
+-        .string()
+-        .email("Please provide a valid email address")
+-        .max(254, "Email address is too long")
+-        .toLowerCase(),
+-    url: z
+-        .string()
+-        .min(1, "Website URL is required")
+-        .max(2048, "URL is too long")
+-        .trim(),
+-});
+-
+-const FALLBACK_EMAIL = "contact@lpwebstudio.co.za";
+-
+-function normaliseUrl(input: string): string {
+-    const trimmed = input.trim();
+-    if (/^https?:\/\//i.test(trimmed)) return trimmed;
+-    return `https://${trimmed}`;
+-}
+-
+-export async function POST(request: Request) {
+-    let body: unknown;
+-    try {
+-        body = await request.json();
+-    } catch {
+-        return NextResponse.json(
+-            { success: false, error: "Invalid request body." },
+-            { status: 400 }
+-        );
+-    }
+-
+-    if (
+-        body &&
+-        typeof body === "object" &&
+-        "company_field" in body &&
+-        typeof (body as Record<string, unknown>).company_field === "string" &&
+-        ((body as Record<string, string>).company_field).trim().length > 0
+-    ) {
+-        return NextResponse.json({ success: true });
+-    }
+-
+-    const parsed = auditSchema.safeParse(body);
+-    if (!parsed.success) {
+-        return NextResponse.json(
+-            {
+-                success: false,
+-                error: parsed.error.errors[0]?.message ?? "Invalid submission.",
+-            },
+-            { status: 422 }
+-        );
+-    }
+-
+-    const { name, email, url } = parsed.data;
+-    const normalisedUrl = normaliseUrl(url);
+-
+-    try {
+-        new URL(normalisedUrl);
+-    } catch {
+-        return NextResponse.json(
+-            { success: false, error: "That doesn't look like a valid website address." },
+-            { status: 422 }
+-        );
+-    }
+-
+-    // TODO: Replace with actual n8n webhook URL once n8n workflow is built
+-    const webhookUrl = "https://placeholder.lpwebstudio.co.za/api/audit-webhook";
+-
+-    try {
+-        const webhookResponse = await fetch(webhookUrl, {
+-            method: "POST",
+-            headers: { "Content-Type": "application/json" },
+-            body: JSON.stringify({
+-                name,
+-                email,
+-                url: normalisedUrl,
+-                timestamp: new Date().toISOString(),
+-            }),
+-        });
+-        if (!webhookResponse.ok) {
+-            throw new Error(`Webhook returned ${webhookResponse.status}`);
+-        }
+-    } catch (webhookError) {
+-        console.error("[Audit API] Webhook delivery failed:", webhookError);
+-        return NextResponse.json(
+-            {
+-                success: false,
+-                error: `We couldn't submit your audit request right now. Please email ${FALLBACK_EMAIL} with your URL and we'll send the report manually.`,
+-            },
+-            { status: 502 }
+-        );
+-    }
+-
+-    return NextResponse.json(
+-        {
+-            success: true,
+-            message:
+-                "Audit requested. Your report will arrive within 1-2 business days.",
+-        },
+-        { status: 200 }
+-    );
+-}
+-
+-export async function GET() {
+-    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
+-}
+diff --git a/src/app/audit/page.tsx b/src/app/audit/page.tsx
+deleted file mode 100644
+index 94c7a7e..0000000
+--- a/src/app/audit/page.tsx
++++ /dev/null
+@@ -1,107 +0,0 @@
+-import type { Metadata } from "next";
+-import { Navigation } from "@/components/organisms/Navigation";
+-import { Footer } from "@/components/organisms/Footer";
+-import { SubpageHero } from "@/components/organisms/SubpageHero";
+-import { AuditForm } from "@/components/organisms/AuditForm";
+-
+-export const metadata: Metadata = {
+-    title: "Free Website Audit | LP Web Studio",
+-    description:
+-        "Free 5-point website audit — page speed, mobile, SEO, accessibility. Cape Town web development. Report emailed within 1-2 business days.",
+-    alternates: {
+-        canonical: "https://lpwebstudio.co.za/audit",
+-    },
+-    openGraph: {
+-        url: "https://lpwebstudio.co.za/audit",
+-        title: "Free Website Audit | LP Web Studio",
+-        description:
+-            "Free 5-point website audit — page speed, mobile, SEO, accessibility.",
+-    },
+-};
+-
+-const AUDIT_AREAS: Array<{ label: string; body: string }> = [
+-    {
+-        label: "PAGE_SPEED",
+-        body: "Core Web Vitals (LCP, INP, CLS), mobile load times, render-blocking resources",
+-    },
+-    {
+-        label: "MOBILE",
+-        body: "responsive breakpoints, touch targets, layout stability",
+-    },
+-    {
+-        label: "SEO",
+-        body: "meta tags, schema markup, indexing status, canonical URLs",
+-    },
+-    {
+-        label: "ACCESSIBILITY",
+-        body: "colour contrast, keyboard navigation, ARIA basics",
+-    },
+-    {
+-        label: "DELIVERY",
+-        body: "emailed within 1-2 business days. No spam.",
+-    },
+-];
+-
+-export default function AuditPage() {
+-    return (
+-        <>
+-            <Navigation />
+-            <main className="pb-structural bg-[#0A0A0A] min-h-screen">
+-                <SubpageHero
+-                    title="AUDIT"
+-                    subtitle="FREE PERFORMANCE & VISIBILITY REPORT"
+-                />
+-
+-                <section
+-                    aria-label="What the audit covers"
+-                    className="px-6 md:px-12 py-20 md:py-28"
+-                >
+-                    <div className="max-w-3xl mx-auto">
+-                        <p className="text-white/70 leading-relaxed mb-12 text-base md:text-lg">
+-                            Submit your URL. Within 1-2 business days, you&apos;ll receive a
+-                            written report covering five areas:
+-                        </p>
+-
+-                        <div className="flex flex-col border-t border-white/10">
+-                            {AUDIT_AREAS.map((area) => (
+-                                <div
+-                                    key={area.label}
+-                                    className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-6 border-b border-white/10"
+-                                >
+-                                    <p
+-                                        className="md:col-span-3 mono-label"
+-                                        style={{ color: "rgba(255,255,255,0.35)" }}
+-                                    >
+-                                        {area.label}
+-                                    </p>
+-                                    <p className="md:col-span-9 text-white/70 text-sm md:text-base leading-relaxed">
+-                                        {area.body}
+-                                    </p>
+-                                </div>
+-                            ))}
+-                        </div>
+-                    </div>
+-                </section>
+-
+-                <section
+-                    aria-label="Audit request form"
+-                    className="px-6 md:px-12 pb-24 md:pb-32"
+-                >
+-                    <div className="max-w-xl mx-auto">
+-                        <h2
+-                            className="font-headline font-black uppercase text-white leading-none mb-8"
+-                            style={{
+-                                fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+-                                letterSpacing: "-0.02em",
+-                            }}
+-                        >
+-                            REQUEST<br />YOUR AUDIT.
+-                        </h2>
+-                        <AuditForm />
+-                    </div>
+-                </section>
+-            </main>
+-            <Footer />
+-        </>
+-    );
+-}
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index 27fcd72..a9e3eab 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -33,22 +33,22 @@ const jetbrainsMono = JetBrains_Mono({
+ export const metadata: Metadata = {
+     metadataBase: new URL("https://lpwebstudio.co.za"),
+     title: {
+-        default: "LP Web Studio | Web Development & Automation Cape Town",
++        default: "LP Web Studio | Custom Ordering Systems & Business Automation Cape Town",
+         template: "%s | LP Web Studio",
+     },
+     description:
+-        "LP Web Studio builds custom Next.js websites and n8n automation systems for Cape Town businesses. Hand-coded, no WordPress, guaranteed 90+ PageSpeed scores.",
++        "LP Web Studio builds the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom-built for Cape Town and South African businesses.",
+     keywords: [
+-        "web developer Cape Town",
+-        "custom website Cape Town",
+-        "Next.js developer South Africa",
+-        "n8n automation Cape Town",
+-        "fast website Cape Town",
+-        "website speed optimisation Cape Town",
+-        "business automation South Africa",
++        "custom ordering system South Africa",
++        "B2B client portal",
++        "business automation Cape Town",
+         "custom web application Cape Town",
+-        "WhatsApp lead capture website",
+-        "React developer Cape Town",
++        "ordering portal developer South Africa",
++        "replace WhatsApp orders with a system",
++        "client portal development Cape Town",
++        "business systems developer South Africa",
++        "n8n automation Cape Town",
++        "custom software Cape Town",
+     ],
+     authors: [{ name: "LP Web Studio" }],
+     creator: "LP Web Studio",
+@@ -76,21 +76,21 @@ export const metadata: Metadata = {
+         locale: "en_ZA",
+         url: "https://lpwebstudio.co.za",
+         siteName: "LP Web Studio",
+-        title: "LP Web Studio | Web Development & Automation Cape Town",
+-        description: "Custom Next.js websites and n8n automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed.",
++        title: "LP Web Studio | Custom Ordering Systems & Business Automation Cape Town",
++        description: "The systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom-built for South African businesses.",
+         images: [
+             {
+                 url: "/og-image.png",
+                 width: 1200,
+                 height: 630,
+-                alt: "LP Web Studio - High-Performance Web Architecture",
++                alt: "LP Web Studio — Custom Ordering Systems & Business Automation",
+             },
+         ],
+     },
+     twitter: {
+         card: "summary_large_image",
+-        title: "LP Web Studio | Web Development & Automation Cape Town",
+-        description: "Custom Next.js websites and n8n automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed.",
++        title: "LP Web Studio | Custom Ordering Systems & Business Automation Cape Town",
++        description: "The systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom-built for South African businesses.",
+         images: ["/og-image.png"],
+     },
+ };
+diff --git a/src/app/learn/page.tsx b/src/app/learn/page.tsx
+index 5288930..3d122ac 100644
+--- a/src/app/learn/page.tsx
++++ b/src/app/learn/page.tsx
+@@ -6,17 +6,17 @@ import { Footer } from "@/components/organisms/Footer";
+ import { SubpageHero } from "@/components/organisms/SubpageHero";
+ 
+ export const metadata: Metadata = {
+-    title: "Web Development Insights | LP Web Studio",
++    title: "Systems & Automation Insights | LP Web Studio",
+     description:
+-        "Practical guides on Next.js, website performance, and digital infrastructure for Cape Town businesses.",
++        "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
+     alternates: {
+         canonical: "https://lpwebstudio.co.za/learn",
+     },
+     openGraph: {
+         url: "https://lpwebstudio.co.za/learn",
+-        title: "Web Development Insights | LP Web Studio",
++        title: "Systems & Automation Insights | LP Web Studio",
+         description:
+-            "Practical guides on Next.js, website performance, and digital infrastructure for Cape Town businesses.",
++            "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
+     },
+ };
+ 
+@@ -29,7 +29,7 @@ export default async function LearnPage() {
+             <main className="pb-structural bg-[#0A0A0A] min-h-screen">
+                 <SubpageHero
+                     title="LEARN"
+-                    subtitle="FIELD NOTES ON BUILDING FAST WEBSITES"
++                    subtitle="FIELD NOTES ON BUILDING BUSINESS SYSTEMS"
+                 />
+ 
+                 {/* ── Field Notes — article index ── */}
+@@ -53,9 +53,9 @@ export default async function LearnPage() {
+                                     className="text-white/55 leading-relaxed"
+                                     style={{ fontSize: "15px" }}
+                                 >
+-                                    Practical guides on Next.js, website performance, and digital
+-                                    infrastructure — written from the studio, for operators who
+-                                    care about shipping fast. No tutorials-for-tutorials-sake;
++                                    Practical guides on ordering systems, automation, and replacing
++                                    manual admin — written from the studio, for operators who care
++                                    about running a tighter business. No tutorials-for-tutorials-sake;
+                                     every piece ties back to work we&rsquo;ve shipped for clients.
+                                 </p>
+                             </div>
+diff --git a/src/app/manifest.ts b/src/app/manifest.ts
+index 9fbe4b9..7c484b6 100644
+--- a/src/app/manifest.ts
++++ b/src/app/manifest.ts
+@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
+         name: "LP Web Studio",
+         short_name: "LP Web",
+         description:
+-            "Custom Next.js websites and n8n automation systems for Cape Town businesses.",
++            "Ordering systems, client platforms, and business automation for South African businesses.",
+         start_url: "/",
+         display: "standalone",
+         background_color: "#0B0B0B",
+diff --git a/src/app/page.tsx b/src/app/page.tsx
+index bdbae02..25387e7 100644
+--- a/src/app/page.tsx
++++ b/src/app/page.tsx
+@@ -15,40 +15,19 @@ import { FinalCTA } from "@/components/organisms/FinalCTA";
+ import { Footer } from "@/components/organisms/Footer";
+ import { JsonLd } from "@/components/seo/JsonLd";
+ import { faqPageSchema } from "@/components/seo/SchemaTemplates";
++import { homepageFaqs } from "@/lib/faq-data";
+ 
+ export const revalidate = 3600;
+ 
+ export const metadata: Metadata = {
+-    title: "LP Web Studio | Custom Websites & Automation Systems Cape Town",
+-    description: "We build high-performance Next.js websites and automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed, real results.",
++    title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
++    description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
+     openGraph: {
+-        title: "LP Web Studio | Custom Websites & Automation Systems Cape Town",
+-        description: "We build high-performance Next.js websites and automation systems for Cape Town businesses. Hand-coded, 90+ PageSpeed guaranteed, real results.",
++        title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
++        description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
+     },
+ };
+ 
+-const homepageFaqs = [
+-    {
+-        question: "What does a custom website cost in Cape Town?",
+-        answer: "LP Web Studio offers three packages. A starter 1-page website costs R5,500 once-off plus R350/month hosting. A professional 3-page website with booking automation costs R12,500. Custom web applications start from R21,500.",
+-    },
+-    {
+-        question: "How long does a website take to build?",
+-        answer: "Standard websites take 1-2 weeks once content and requirements are confirmed. Custom web applications and automation systems take 2-6 weeks depending on complexity.",
+-    },
+-    {
+-        question: "Do you work with businesses outside Cape Town?",
+-        answer: "Yes. We work with businesses across South Africa and internationally. Discovery calls are online and projects are delivered remotely.",
+-    },
+-    {
+-        question: "What industries do you work with?",
+-        answer: "We work with any business that needs a serious online presence or wants to automate their operations — particularly manufacturing, trade services, hospitality, and B2B companies.",
+-    },
+-    {
+-        question: "What makes LP Web Studio different from other web agencies?",
+-        answer: "You speak directly to the engineer building your system — not a sales rep or account manager. Every build is hand-coded in Next.js, comes with a 90+ PageSpeed guarantee, and you own the code outright with no lock-in.",
+-    },
+-];
+ export default function HomePage() {
+     return (
+         <>
+diff --git a/src/app/privacy/page.tsx b/src/app/privacy/page.tsx
+index 3f690c2..1d791f6 100644
+--- a/src/app/privacy/page.tsx
++++ b/src/app/privacy/page.tsx
+@@ -5,7 +5,7 @@ import { Footer } from "@/components/organisms/Footer";
+ export const metadata: Metadata = {
+     title: "Privacy Notice | LP Web Studio",
+     description:
+-        "How LP Web Studio handles contact form data, analytics, and your privacy. Cape Town web development studio — no ad tracking, no third-party data sales.",
++        "How LP Web Studio handles contact form data, analytics, and your privacy. Cape Town systems studio — no ad tracking, no third-party data sales.",
+     alternates: {
+         canonical: "https://lpwebstudio.co.za/privacy",
+     },
+@@ -72,10 +72,9 @@ export default function PrivacyPage() {
+                             title="THE STUDIO"
+                         >
+                             <p>
+-                                LP Web Studio is a Cape Town-based web development and
+-                                automation studio operated by Luke Petzer. We build custom
+-                                Next.js websites and n8n automation systems for South African
+-                                businesses.
++                                LP Web Studio is a Cape Town-based systems studio operated by
++                                Luke Petzer. We build custom ordering platforms, client portals,
++                                and automation systems for South African businesses.
+                             </p>
+                             <p>
+                                 Questions about this notice or your data can be sent to{" "}
+diff --git a/src/app/sitemap.ts b/src/app/sitemap.ts
+index 2c40255..458c83e 100644
+--- a/src/app/sitemap.ts
++++ b/src/app/sitemap.ts
+@@ -20,22 +20,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
+             priority: 0.9,
+         },
+         {
+-            url: `${SITE_URL}/about`,
++            url: `${SITE_URL}/products`,
+             lastModified: now,
+             changeFrequency: "monthly",
+             priority: 0.8,
+         },
+         {
+-            url: `${SITE_URL}/learn`,
++            url: `${SITE_URL}/about`,
+             lastModified: now,
+             changeFrequency: "monthly",
+-            priority: 0.7,
++            priority: 0.8,
+         },
+         {
+-            url: `${SITE_URL}/audit`,
++            url: `${SITE_URL}/learn`,
+             lastModified: now,
+             changeFrequency: "monthly",
+-            priority: 0.8,
++            priority: 0.7,
+         },
+         {
+             url: `${SITE_URL}/privacy`,
+diff --git a/src/app/work/page.tsx b/src/app/work/page.tsx
+index 4e78417..6de6a1a 100644
+--- a/src/app/work/page.tsx
++++ b/src/app/work/page.tsx
+@@ -5,17 +5,17 @@ import { Footer } from "@/components/organisms/Footer";
+ import { JsonLd } from "@/components/seo/JsonLd";
+ 
+ export const metadata: Metadata = {
+-    title: "Our Work | Cape Town Web Development Portfolio",
++    title: "Case Studies | Custom Ordering Systems & Client Platforms",
+     description:
+-        "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
++        "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
+     alternates: {
+         canonical: "https://lpwebstudio.co.za/work",
+     },
+     openGraph: {
+         url: "https://lpwebstudio.co.za/work",
+-        title: "Our Work | Cape Town Web Development Portfolio",
++        title: "Case Studies | Custom Ordering Systems & Client Platforms",
+         description:
+-            "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
++            "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
+     },
+ };
+ 
+@@ -28,7 +28,7 @@ const cafeCraveSchema = {
+     url: "https://cafecravecpt.co.za",
+     creator: { "@type": "Organization", name: "LP Web Studio" },
+     keywords:
+-        "restaurant website Cape Town, cafe website, Next.js, React, Google Reviews integration",
++        "restaurant website Cape Town, cafe website, Google Reviews integration",
+ };
+ 
+ export default function WorkPage() {
+diff --git a/src/components/molecules/HeroContent.tsx b/src/components/molecules/HeroContent.tsx
+index 64a4238..d00d0fd 100644
+--- a/src/components/molecules/HeroContent.tsx
++++ b/src/components/molecules/HeroContent.tsx
+@@ -30,9 +30,9 @@ export function HeroContent() {
+                         {/* H1 */}
+                         <h1 className="font-headline font-bold uppercase tracking-[-0.05em] leading-[0.85] text-white mb-10"
+                             style={{ fontSize: "clamp(3rem, 8vw, 8.5rem)" }}>
+-                            Custom Websites<br />
+-                            & Web Platforms<br />
+-                            <span className="text-white/40">That Work.</span>
++                            Systems That<br />
++                            Run<br />
++                            <span className="text-white/40">Your Business.</span>
+                         </h1>
+ 
+                         {/* CTAs */}
+@@ -48,7 +48,7 @@ export function HeroContent() {
+                                 onClick={openDrawer}
+                                 className="btn-ghost px-10 py-5 text-sm backdrop-blur-sm"
+                             >
+-                                Get Started
++                                Book a Discovery Call
+                             </button>
+                         </div>
+                     </div>
+@@ -58,16 +58,16 @@ export function HeroContent() {
+                         {/* Glass descriptor */}
+                         <div className="p-8 border border-white/20 backdrop-blur-md bg-white/5 rounded-tight">
+                             <p className="font-body text-sm md:text-base text-white tracking-normal leading-relaxed uppercase font-medium">
+-                                We design and build custom websites and web platforms for Cape Town businesses. From standalone websites to full ordering systems — built to your exact requirements.
++                                We build ordering portals, client platforms, and automations that replace manual admin — custom systems built to how your business actually runs.
+                             </p>
+                         </div>
+ 
+                         {/* Numbered pillars */}
+                         <div className="flex flex-wrap gap-6 sm:gap-10 text-white/60">
+                             {[
+-                                { num: "01", label: "Infrastructure" },
+-                                { num: "02", label: "Automation" },
+-                                { num: "03", label: "Scalability" },
++                                { num: "01", label: "Ordering Portals" },
++                                { num: "02", label: "Client Platforms" },
++                                { num: "03", label: "Automation" },
+                             ].map(({ num, label }) => (
+                                 <div key={num} className="flex flex-col gap-1">
+                                     <span className="font-headline text-2xl font-bold text-white">{num}</span>
+diff --git a/src/components/molecules/NavClient.tsx b/src/components/molecules/NavClient.tsx
+index db4b290..1ef06ed 100644
+--- a/src/components/molecules/NavClient.tsx
++++ b/src/components/molecules/NavClient.tsx
+@@ -6,10 +6,11 @@ import Image from "next/image";
+ import { useDrawer } from "@/lib/contact-drawer-context";
+ 
+ const navLinks = [
+-    { label: "Solutions",      href: "/work" },
+-    { label: "Infrastructure", href: "/about" },
+-    { label: "Learn",          href: "/learn" },
+-    { label: "Contact",        href: "#" },
++    { label: "Solutions", href: "/work" },
++    { label: "Products",  href: "/products" },
++    { label: "About",     href: "/about" },
++    { label: "Learn",     href: "/learn" },
++    { label: "Contact",   href: "#" },
+ ];
+ 
+ export function NavClient() {
+@@ -131,7 +132,7 @@ export function NavClient() {
+                                 : "btn-primary text-[11px] px-6 py-2.5",
+                         ].join(" ")}
+                     >
+-                        Get Started
++                        Book a Discovery Call
+                     </button>
+ 
+                     {/* Hamburger */}
+@@ -182,7 +183,7 @@ export function NavClient() {
+                             onClick={() => { setIsOpen(false); openDrawer(); }}
+                             className="btn-primary mt-4 w-full justify-center text-center border-none cursor-pointer"
+                         >
+-                            Get Started
++                            Book a Discovery Call
+                         </button>
+                     </nav>
+                 </div>
+diff --git a/src/components/organisms/AboutPageContent.tsx b/src/components/organisms/AboutPageContent.tsx
+index e6e17ab..65eed04 100644
+--- a/src/components/organisms/AboutPageContent.tsx
++++ b/src/components/organisms/AboutPageContent.tsx
+@@ -1,14 +1,5 @@
+ "use client";
+ 
+-import {
+-    Zap,
+-    Palette,
+-    Globe,
+-    Database,
+-    Code2,
+-    Gauge,
+-} from "lucide-react";
+-
+ /* ─── Shared style constants ─── */
+ const SECTION_PAD = "py-14 md:py-24";
+ const DIVIDER = <hr className="border-none border-t-0 h-px bg-[#1A1A1A] w-full" />;
+@@ -31,41 +22,6 @@ const accentGrad: React.CSSProperties = {
+ };
+ 
+ /* ─── Data ─── */
+-const techStack = [
+-    {
+-        icon: Zap,
+-        name: "Next.js 15",
+-        description: "The Ferrari of web frameworks. Renders before the user clicks.",
+-    },
+-    {
+-        icon: Palette,
+-        name: "Tailwind CSS",
+-        description: 'Pixel-perfect design without the "heavy" code.',
+-    },
+-    {
+-        icon: Globe,
+-        name: "Vercel Edge Network",
+-        description: "Global CDN hosting. Your site lives in Cape Town, not a server in Texas.",
+-    },
+-    {
+-        icon: Database,
+-        name: "Supabase",
+-        description: "Enterprise-grade databases for real customer data.",
+-    },
+-    {
+-        icon: Code2,
+-        name: "n8n & Gemini 2.0",
+-        description:
+-            "Autonomous pipelines that audit leads, enrich data, and route high-value targets to your sales channels.",
+-    },
+-    {
+-        icon: Gauge,
+-        name: "Generative Engine Optimization",
+-        description:
+-            "Structuring data so LLMs natively understand and recommend your services.",
+-    },
+-];
+-
+ const reasons = [
+     {
+         title: "Direct Access",
+@@ -73,11 +29,11 @@ const reasons = [
+     },
+     {
+         title: "Code Ownership",
+-        description: "Every line of code we write belongs to you. The GitHub repository is transferred to your account on delivery. No monthly retainer required to access your own site.",
++        description: "Every line of code we write belongs to you. The repository is transferred to your account on delivery. No monthly retainer required to access your own system.",
+     },
+     {
+-        title: "Speed Guarantee",
+-        description: "Every website we build scores 90+ on Google PageSpeed Insights. If it doesn't, we optimise it until it does — at no extra cost. This is not a target. It is a guarantee.",
++        title: "Built to Last",
++        description: "You're not locked into a template that breaks when your business changes. Every system is built for how you actually operate — and built to grow with you.",
+     },
+ ];
+ 
+@@ -98,14 +54,14 @@ export function AboutPageContent() {
+ 
+                         {/* LEFT 60% */}
+                         <div className="w-full md:w-[60%] flex flex-col gap-6">
+-                            <p style={ORANGE_LABEL}>SYSTEM_OPERATOR</p>
++                            <p style={ORANGE_LABEL}>FOUNDER</p>
+ 
+                             <div>
+                                 <h2
+                                     className="font-headline font-black uppercase text-white leading-none"
+                                     style={{ fontSize: "clamp(2.5rem, 5vw, 3rem)" }}
+                                 >
+-                                    THE ARCHITECT.
++                                    THE BUILDER.
+                                 </h2>
+                                 <p
+                                     className="font-headline font-black uppercase leading-none mt-1"
+@@ -116,24 +72,15 @@ export function AboutPageContent() {
+                             </div>
+ 
+                             <p className="text-white/65 leading-relaxed text-base max-w-xl">
+-                                I don&apos;t run a bloated agency. I&apos;m a Cape Town-based web
+-                                developer and automation engineer managing the entire stack &mdash;
+-                                from hand-coded Next.js applications to n8n automation pipelines.
+-                                When you work with LP Web Studio you speak directly to the person
+-                                writing your code. No sales reps, no account managers, no outsourcing.
++                                I don&apos;t run a bloated agency. I build the systems that run your
++                                business &mdash; ordering portals, client platforms, and the automations
++                                that replace manual admin &mdash; end to end, solo. Honours computer
++                                science background, AI-accelerated delivery, and production systems
++                                shipped without a team behind me. When you work with LP Web Studio you
++                                speak directly to the person building your system. No sales reps, no
++                                account managers, no outsourcing.
+                             </p>
+ 
+-                            <div className="flex flex-wrap gap-2 mt-2">
+-                                {["Next.js 15", "React", "n8n", "Vercel Edge", "Supabase", "Framer Motion"].map((tag) => (
+-                                    <span
+-                                        key={tag}
+-                                        className="font-mono text-[10px] uppercase tracking-widest text-white/60 border border-white/10 bg-white/5 px-3 py-1"
+-                                        style={{ borderRadius: "4px" }}
+-                                    >
+-                                        {tag}
+-                                    </span>
+-                                ))}
+-                            </div>
+                         </div>
+ 
+                         {/* RIGHT 40% — terminal block */}
+@@ -145,7 +92,7 @@ export function AboutPageContent() {
+                                     <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                                     <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                                     <span className="ml-4 text-white/30 text-xs font-mono">
+-                                        architect.profile — zsh
++                                        founder.profile — zsh
+                                     </span>
+                                 </div>
+                                 {/* Terminal content */}
+@@ -153,11 +100,11 @@ export function AboutPageContent() {
+                                     <p style={{ color: "#FF4500" }}>$ whoami</p>
+                                     <p className="text-white/80">Luke Petzer</p>
+                                     <p className="text-white/30 text-xs mt-2">$ cat role.txt</p>
+-                                    <p className="text-white/80">Web Developer & Automation Engineer</p>
++                                    <p className="text-white/80">Systems Builder</p>
+                                     <p className="text-white/30 text-xs mt-2">$ cat location.txt</p>
+                                     <p className="text-white/80">Cape Town, South Africa</p>
+                                     <p className="text-white/30 text-xs mt-2">$ cat stack.txt</p>
+-                                    <p className="text-white/80">Next.js · React · n8n · Vercel</p>
++                                    <p className="text-white/80">Ordering portals · Client platforms · Automation</p>
+                                     <p className="text-white/30 text-xs mt-2">$ uptime</p>
+                                     <p style={{ color: "#FF4500" }}>SYSTEMS ONLINE ●</p>
+                                 </div>
+@@ -187,68 +134,14 @@ export function AboutPageContent() {
+                     </blockquote>
+ 
+                     <p className="text-white/70 leading-relaxed max-w-3xl">
+-                        I believe in <strong className="text-white">hand-coded performance</strong>.
+-                        No drag-and-drop page builders. No WordPress plugin vulnerabilities.
+-                        Every site I build is custom Next.js code that scores 90+ on Google
+-                        PageSpeed Insights &mdash; or I fix it until it does.
++                        I believe in <strong className="text-white">building things properly</strong>.
++                        No templates, no page builders bolted onto a generic theme &mdash; every
++                        system is built for how your business actually operates, and built to last.
+                     </p>
+                 </section>
+ 
+                 {DIVIDER}
+ 
+-                {/* ═══════════════════════════════════════
+-                    SECTION 4 — TECH STACK
+-                ═══════════════════════════════════════ */}
+-                <section className={SECTION_PAD} aria-label="Tech Stack">
+-                    <p style={ORANGE_LABEL} className="mb-3">CORE STACK</p>
+-                    <h2
+-                        className="font-headline font-black uppercase text-white mb-10"
+-                        style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)" }}
+-                    >
+-                        THE_ENGINE
+-                    </h2>
+-
+-                    <p className="text-white/50 text-sm leading-relaxed mb-8 max-w-2xl">
+-                        The same stack powering enterprise applications, running your Cape Town business.
+-                    </p>
+-
+-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+-                        {techStack.map((tech) => (
+-                            <div
+-                                key={tech.name}
+-                                className="group flex flex-col gap-4 p-6 border transition-colors duration-200"
+-                                style={{
+-                                    background: "#111111",
+-                                    border: "1px solid #222222",
+-                                    borderRadius: "8px",
+-                                }}
+-                                onMouseEnter={(e) => {
+-                                    (e.currentTarget as HTMLDivElement).style.borderColor = "#FF4500";
+-                                }}
+-                                onMouseLeave={(e) => {
+-                                    (e.currentTarget as HTMLDivElement).style.borderColor = "#222222";
+-                                }}
+-                            >
+-                                <tech.icon
+-                                    style={{ color: "#FF4500" }}
+-                                    className="w-6 h-6 shrink-0"
+-                                    strokeWidth={1.5}
+-                                    aria-hidden="true"
+-                                />
+-                                <div>
+-                                    <h3 className="font-headline font-bold uppercase text-white text-sm tracking-wide mb-2">
+-                                        {tech.name}
+-                                    </h3>
+-                                    <p className="text-white/60 text-sm leading-relaxed">
+-                                        {tech.description}
+-                                    </p>
+-                                </div>
+-                            </div>
+-                        ))}
+-                    </div>
+-                </section>
+-
+-                {DIVIDER}
+ 
+                 {/* ═══════════════════════════════════════
+                     SECTION 5 — WHY LP WEB
+@@ -306,14 +199,14 @@ export function AboutPageContent() {
+                     READY TO DEPLOY?
+                 </h2>
+                 <p className="text-white/60 text-base mb-8 max-w-md">
+-                    One engineer. Full stack. No account managers.
++                    One engineer. Start to finish. No account managers.
+                 </p>
+                 <button
+                     onClick={openDrawer}
+                     className="btn-primary"
+                     style={{ padding: "14px 32px", borderRadius: "4px" }}
+                 >
+-                    INITIATE PROJECT
++                    BOOK A DISCOVERY CALL
+                 </button>
+             </section>
+         </div>
+diff --git a/src/components/organisms/ArchitecturalMethod.tsx b/src/components/organisms/ArchitecturalMethod.tsx
+index 54a2d13..56e25bb 100644
+--- a/src/components/organisms/ArchitecturalMethod.tsx
++++ b/src/components/organisms/ArchitecturalMethod.tsx
+@@ -9,13 +9,13 @@ const steps = [
+         step: "02 / Build",
+         icon: "construction",
+         title: "Development\n& Testing",
+-        body: "We build to the agreed scope using Next.js and modern tooling. Every feature is tested before it ships and you review progress throughout.",
++        body: "We build to the agreed scope and test everything before it ships. You review progress throughout — no surprises at delivery.",
+     },
+     {
+         step: "03 / Optimise",
+         icon: "speed",
+         title: "Launch &\nSupport",
+-        body: "After launch we monitor performance, address any issues, and stay available for updates. Your site should get better over time, not stale.",
++        body: "After launch we monitor performance, fix anything that comes up, and stay available for updates. Your system should get better over time — that's what the care plan is for.",
+     },
+ ];
+ 
+diff --git a/src/components/organisms/AuditForm.tsx b/src/components/organisms/AuditForm.tsx
+deleted file mode 100644
+index 2a41c98..0000000
+--- a/src/components/organisms/AuditForm.tsx
++++ /dev/null
+@@ -1,242 +0,0 @@
+-"use client";
+-
+-import React, { useState } from "react";
+-
+-const FIELD_STYLE: React.CSSProperties = {
+-    background: "transparent",
+-    border: "none",
+-    borderBottom: "1px solid rgba(255,255,255,0.12)",
+-    color: "#fff",
+-    width: "100%",
+-    padding: "14px 0",
+-    fontSize: "14px",
+-    outline: "none",
+-    fontFamily: "var(--font-space-grotesk)",
+-    minHeight: "44px",
+-};
+-
+-const HONEYPOT_STYLE: React.CSSProperties = {
+-    position: "absolute",
+-    left: "-9999px",
+-    width: "1px",
+-    height: "1px",
+-    overflow: "hidden",
+-};
+-
+-const LABEL_STYLE: React.CSSProperties = {
+-    color: "rgba(255,255,255,0.35)",
+-    fontSize: "10px",
+-    fontWeight: 700,
+-    letterSpacing: "0.18em",
+-    textTransform: "uppercase",
+-    fontFamily: "var(--font-space-grotesk)",
+-    display: "block",
+-    marginBottom: "4px",
+-};
+-
+-function focusOrange(e: React.FocusEvent<HTMLInputElement>) {
+-    e.target.style.borderBottomColor = "#FF4500";
+-}
+-function blurDefault(e: React.FocusEvent<HTMLInputElement>) {
+-    e.target.style.borderBottomColor = "rgba(255,255,255,0.12)";
+-}
+-
+-export function AuditForm() {
+-    const [name, setName] = useState("");
+-    const [email, setEmail] = useState("");
+-    const [url, setUrl] = useState("");
+-    const [companyField, setCompanyField] = useState("");
+-    const [sending, setSending] = useState(false);
+-    const [success, setSuccess] = useState(false);
+-    const [errorMsg, setErrorMsg] = useState<string | null>(null);
+-
+-    async function handleSubmit(e: React.FormEvent) {
+-        e.preventDefault();
+-        setErrorMsg(null);
+-
+-        if (companyField.trim().length > 0) {
+-            setSuccess(true);
+-            return;
+-        }
+-
+-        setSending(true);
+-        try {
+-            const res = await fetch("/api/audit", {
+-                method: "POST",
+-                headers: { "Content-Type": "application/json" },
+-                body: JSON.stringify({ name, email, url }),
+-            });
+-            const data = (await res.json()) as { success: boolean; error?: string };
+-            if (!res.ok || !data.success) {
+-                setErrorMsg(
+-                    data.error ??
+-                        "Something went wrong. Please try again or email contact@lpwebstudio.co.za directly."
+-                );
+-                return;
+-            }
+-            setSuccess(true);
+-        } catch {
+-            setErrorMsg(
+-                "Network error. Please try again or email contact@lpwebstudio.co.za directly."
+-            );
+-        } finally {
+-            setSending(false);
+-        }
+-    }
+-
+-    if (success) {
+-        return (
+-            <div
+-                role="status"
+-                style={{
+-                    display: "flex",
+-                    flexDirection: "column",
+-                    alignItems: "center",
+-                    justifyContent: "center",
+-                    minHeight: "240px",
+-                    gap: "16px",
+-                    textAlign: "center",
+-                }}
+-            >
+-                <div
+-                    style={{
+-                        width: "48px",
+-                        height: "48px",
+-                        borderRadius: "50%",
+-                        background: "rgba(255,69,0,0.12)",
+-                        border: "1px solid #FF4500",
+-                        display: "flex",
+-                        alignItems: "center",
+-                        justifyContent: "center",
+-                    }}
+-                >
+-                    <span style={{ color: "#FF4500", fontSize: "20px" }}>✓</span>
+-                </div>
+-                <p
+-                    style={{
+-                        color: "#fff",
+-                        fontFamily: "var(--font-space-grotesk)",
+-                        fontWeight: 700,
+-                        fontSize: "18px",
+-                        textTransform: "uppercase",
+-                        letterSpacing: "0.06em",
+-                    }}
+-                >
+-                    AUDIT REQUESTED.
+-                </p>
+-                <p
+-                    style={{
+-                        color: "rgba(255,255,255,0.5)",
+-                        fontSize: "13px",
+-                        maxWidth: "300px",
+-                        lineHeight: 1.6,
+-                    }}
+-                >
+-                    Your report will arrive by email within 1-2 business days.
+-                </p>
+-            </div>
+-        );
+-    }
+-
+-    return (
+-        <form
+-            onSubmit={handleSubmit}
+-            style={{ display: "flex", flexDirection: "column", gap: "28px" }}
+-            noValidate
+-        >
+-            <div style={HONEYPOT_STYLE} aria-hidden="true">
+-                <label htmlFor="company_field">Company (leave blank)</label>
+-                <input
+-                    id="company_field"
+-                    name="company_field"
+-                    type="text"
+-                    tabIndex={-1}
+-                    autoComplete="off"
+-                    value={companyField}
+-                    onChange={(e) => setCompanyField(e.target.value)}
+-                />
+-            </div>
+-
+-            <div>
+-                <label htmlFor="audit-name" style={LABEL_STYLE}>NAME</label>
+-                <input
+-                    id="audit-name"
+-                    type="text"
+-                    required
+-                    minLength={2}
+-                    maxLength={100}
+-                    value={name}
+-                    onChange={(e) => setName(e.target.value)}
+-                    placeholder="Your name"
+-                    style={FIELD_STYLE}
+-                    onFocus={focusOrange}
+-                    onBlur={blurDefault}
+-                    autoComplete="name"
+-                />
+-            </div>
+-
+-            <div>
+-                <label htmlFor="audit-email" style={LABEL_STYLE}>EMAIL</label>
+-                <input
+-                    id="audit-email"
+-                    type="email"
+-                    required
+-                    maxLength={254}
+-                    value={email}
+-                    onChange={(e) => setEmail(e.target.value)}
+-                    placeholder="you@company.com"
+-                    style={FIELD_STYLE}
+-                    onFocus={focusOrange}
+-                    onBlur={blurDefault}
+-                    autoComplete="email"
+-                />
+-            </div>
+-
+-            <div>
+-                <label htmlFor="audit-url" style={LABEL_STYLE}>WEBSITE URL</label>
+-                <input
+-                    id="audit-url"
+-                    type="text"
+-                    inputMode="url"
+-                    required
+-                    maxLength={2048}
+-                    value={url}
+-                    onChange={(e) => setUrl(e.target.value)}
+-                    placeholder="example.com"
+-                    style={FIELD_STYLE}
+-                    onFocus={focusOrange}
+-                    onBlur={blurDefault}
+-                    autoComplete="url"
+-                />
+-            </div>
+-
+-            {errorMsg && (
+-                <p
+-                    role="alert"
+-                    style={{
+-                        color: "#FF4500",
+-                        fontSize: "13px",
+-                        lineHeight: 1.5,
+-                    }}
+-                >
+-                    {errorMsg}
+-                </p>
+-            )}
+-
+-            <button
+-                type="submit"
+-                disabled={sending}
+-                aria-busy={sending}
+-                className="btn-cta-orange"
+-                style={{
+-                    padding: "16px 32px",
+-                    borderRadius: "4px",
+-                    cursor: sending ? "not-allowed" : "pointer",
+-                    opacity: sending ? 0.6 : 1,
+-                }}
+-            >
+-                {sending ? "SUBMITTING…" : "REQUEST AUDIT"}
+-            </button>
+-        </form>
+-    );
+-}
+diff --git a/src/components/organisms/B2BPlatform.tsx b/src/components/organisms/B2BPlatform.tsx
+index 03c5bd2..59b0cce 100644
+--- a/src/components/organisms/B2BPlatform.tsx
++++ b/src/components/organisms/B2BPlatform.tsx
+@@ -12,12 +12,10 @@ const cards = [
+     {
+         label: "03 / The Impact",
+         title: "End-to-end automation. Orders sync instantly with zero human touchpoints.",
+-        body: "The moment a client clicks \"Submit,\" the order routes instantly to the warehouse and accounting software without a single staff member touching a keyboard. Process 10x the volume with 100% accuracy.",
++        body: "The moment a client clicks \"Submit,\" the order routes instantly to the warehouse and accounting software — no staff member touches a keyboard, and nothing gets lost in a chat thread.",
+     },
+ ];
+ 
+-const tags = ["PostgreSQL", "Next.js", "n8n", "WhatsApp API"];
+-
+ export function B2BPlatform() {
+     return (
+         <section
+@@ -74,7 +72,7 @@ export function B2BPlatform() {
+ 
+                 {/* ── Right: sticky headline ── */}
+                 <div className="lg:col-span-6 lg:sticky lg:top-32 h-fit flex flex-col gap-6">
+-                    <span className="mono-label">RECENT WORK</span>
++                    <span className="mono-label">FEATURED CASE STUDY</span>
+ 
+                     <h2
+                         className="font-headline font-bold uppercase tracking-[-0.04em] text-white"
+@@ -90,12 +88,6 @@ export function B2BPlatform() {
+                         Zero Manual Entry
+                     </p>
+ 
+-                    {/* Tech stack pills */}
+-                    <div className="flex flex-wrap gap-3 mt-4">
+-                        {tags.map((tag) => (
+-                            <span key={tag} className="pill">{tag}</span>
+-                        ))}
+-                    </div>
+                 </div>
+             </div>
+         </section>
+diff --git a/src/components/organisms/ContactDrawer.tsx b/src/components/organisms/ContactDrawer.tsx
+index 07e2090..7b23b39 100644
+--- a/src/components/organisms/ContactDrawer.tsx
++++ b/src/components/organisms/ContactDrawer.tsx
+@@ -6,10 +6,11 @@ import { useDrawer } from "@/lib/contact-drawer-context";
+ import { MessageCircle, Mail, X } from "lucide-react";
+ 
+ const ARCH_OPTIONS = [
+-  { id: "web_app",    label: "WEB_APP",     sub: "Custom build" },
+-  { id: "ecommerce",  label: "E_COMMERCE",  sub: "Shop" },
+-  { id: "automation", label: "AUTOMATION",  sub: "n8n pipelines" },
+-  { id: "branding",   label: "BRANDING",    sub: "Identity" },
++  { id: "ordering_portal", label: "Ordering portal", sub: "Take orders online" },
++  { id: "client_platform", label: "Client platform", sub: "Logins & self-serve" },
++  { id: "automation",      label: "Automation",      sub: "Replace manual admin" },
++  { id: "mobile_app",      label: "Mobile app",      sub: "iOS / Android" },
++  { id: "other",           label: "Something else",  sub: "Tell us more" },
+ ] as const;
+ 
+ type ArchId = typeof ARCH_OPTIONS[number]["id"];
+@@ -185,7 +186,7 @@ export function ContactDrawer() {
+             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+               <div>
+                 <p style={{ color: "#FF4500", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "8px" }}>
+-                  PROJECT INITIATION
++                  GET IN TOUCH
+                 </p>
+                 <h2 style={{ color: "#fff", fontFamily: "var(--font-space-grotesk)", fontWeight: 900, fontSize: "clamp(1.75rem, 4vw, 2.25rem)", lineHeight: 1, textTransform: "uppercase", letterSpacing: "-0.02em" }}>
+                   LET&apos;S BUILD.
+@@ -223,7 +224,7 @@ export function ContactDrawer() {
+                 {/* Architecture selector */}
+                 <div>
+                   <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
+-                    ARCHITECTURE TYPE
++                    WHAT DO YOU NEED?
+                   </p>
+                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+                     {ARCH_OPTIONS.map((opt) => {
+@@ -299,7 +300,7 @@ export function ContactDrawer() {
+                     type="text"
+                     value={budget}
+                     onChange={(e) => setBudget(e.target.value)}
+-                    placeholder="e.g. R15,000 – R50,000"
++                    placeholder="e.g. R35,000+"
+                     style={{ ...FIELD_STYLE }}
+                     onFocus={(e) => { (e.target as HTMLInputElement).style.borderBottomColor = "#FF4500"; }}
+                     onBlur={(e) => { (e.target as HTMLInputElement).style.borderBottomColor = "rgba(255,255,255,0.12)"; }}
+diff --git a/src/components/organisms/CoreInfrastructure.tsx b/src/components/organisms/CoreInfrastructure.tsx
+index 2ac72e2..7202d0f 100644
+--- a/src/components/organisms/CoreInfrastructure.tsx
++++ b/src/components/organisms/CoreInfrastructure.tsx
+@@ -16,36 +16,28 @@ type Card = {
+ const cards: Card[] = [
+     {
+         module: "MODULE_01",
+-        title: "Custom\nBackends",
+-        body: "Custom backend logic built around how your business operates. No off-the-shelf limitations, no vendor lock-in.",
++        title: "Orders Without\nAdmin",
++        body: "Customers place orders through a portal, not a WhatsApp thread. No re-typing, no lost messages, no spreadsheet.",
+         bg: "#0B0B0B",
+         isLight: false,
+         viz: "squares",
+     },
+     {
+         module: "MODULE_02",
+-        title: "Precision\nUI",
+-        body: "Interfaces built for clarity and speed. Clean, purposeful design that your team picks up without training.",
++        title: "One Source\nof Truth",
++        body: "Stock, pricing, and orders live in one place your whole team can see — not scattered across chats and paper.",
+         bg: "#1a1c1e",
+         isLight: false,
+         viz: "crosshair",
+     },
+     {
+         module: "MODULE_03",
+-        title: "Data\nStorage",
+-        body: "Structured databases and file storage configured to your needs. Your data is accessible, exportable, and owned by you.",
++        title: "Automations\nWhile You Sleep",
++        body: "Orders route to the warehouse, invoices go out, and stock updates — automatically, without anyone touching a keyboard.",
+         bg: "#FF4D00",
+         isLight: true,
+         viz: "strata",
+     },
+-    {
+-        module: "MODULE_04",
+-        title: "Third-Party\nIntegrations",
+-        body: "Connections to the tools your business already uses — payments, accounting, WhatsApp, email, and more — automated end to end.",
+-        bg: "#B81D1D",
+-        isLight: true,
+-        viz: "flow",
+-    },
+ ];
+ 
+ function VizConcentricSquares() {
+@@ -209,8 +201,8 @@ export function CoreInfrastructure() {
+     // browser never has to interpolate from/to a CSS-rule activation boundary.
+     const gridTemplateColumns = isLgHover
+         ? hoveredIdx !== null
+-            ? [0, 1, 2, 3].map((i) => (i === hoveredIdx ? "2fr" : "1fr")).join(" ")
+-            : "1fr 1fr 1fr 1fr"
++            ? [0, 1, 2].map((i) => (i === hoveredIdx ? "2fr" : "1fr")).join(" ")
++            : "1fr 1fr 1fr"
+         : undefined;
+ 
+     return (
+@@ -226,10 +218,10 @@ export function CoreInfrastructure() {
+                         className="font-headline font-bold uppercase tracking-[-0.04em] text-white mb-3"
+                         style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}
+                     >
+-                        Web Development & Automation Services
++                        What We Build
+                     </h2>
+                     <p className="font-body text-white/50 max-w-md text-sm leading-relaxed">
+-                        Proprietary methodologies engineered for scale and absolute structural integrity.
++                        Three outcomes, one system: orders without admin, one source of truth, automations while you sleep.
+                     </p>
+                 </div>
+                 <span className="section-label whitespace-nowrap">01 — Capabilities</span>
+@@ -237,7 +229,7 @@ export function CoreInfrastructure() {
+ 
+             {/* Full-bleed panel row */}
+             <div
+-                className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
++                className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-3"
+                 style={gridTemplateColumns ? { gridTemplateColumns } : undefined}
+             >
+                 {cards.map((card, i) => (
+@@ -282,7 +274,7 @@ export function CoreInfrastructure() {
+                                         : "rgba(255,255,255,0.4)",
+                                 }}
+                             >
+-                                {String(i + 1).padStart(2, "0")} / 04
++                                {String(i + 1).padStart(2, "0")} / 03
+                             </p>
+ 
+                             <p
+diff --git a/src/components/organisms/FAQSection.tsx b/src/components/organisms/FAQSection.tsx
+index 5837694..7d50843 100644
+--- a/src/components/organisms/FAQSection.tsx
++++ b/src/components/organisms/FAQSection.tsx
+@@ -1,29 +1,7 @@
+ "use client";
+ 
+ import { useState } from "react";
+-
+-const faqs = [
+-    {
+-        q: "What does a custom website cost in Cape Town?",
+-        a: "LP Web Studio offers three packages. A starter 1-page website costs R5,500 once-off plus R350/month hosting. A professional 3-page website with booking automation costs R12,500. Custom web applications start from R21,500.",
+-    },
+-    {
+-        q: "How long does a website take to build?",
+-        a: "Standard websites take 1-2 weeks once content and requirements are confirmed. Custom web applications and automation systems take 2-6 weeks depending on complexity.",
+-    },
+-    {
+-        q: "Do you work with businesses outside Cape Town?",
+-        a: "Yes. We work with businesses across South Africa and internationally. Discovery calls are online and projects are delivered remotely.",
+-    },
+-    {
+-        q: "What industries do you work with?",
+-        a: "We work with any business that needs a serious online presence or wants to automate their operations — particularly manufacturing, trade services, hospitality, and B2B companies.",
+-    },
+-    {
+-        q: "What makes LP Web Studio different from other web agencies?",
+-        a: "You speak directly to the engineer building your system — not a sales rep or account manager. Every build is hand-coded in Next.js, comes with a 90+ PageSpeed guarantee, and you own the code outright with no lock-in.",
+-    },
+-];
++import { homepageFaqs as faqs } from "@/lib/faq-data";
+ 
+ export function FAQSection() {
+     const [openIndex, setOpenIndex] = useState<number | null>(null);
+@@ -44,7 +22,7 @@ export function FAQSection() {
+                 {/* FAQ rows */}
+                 <div className="flex flex-col">
+                     {faqs.map((faq, i) => (
+-                        <div key={faq.q} className="border-t border-white/10">
++                        <div key={faq.question} className="border-t border-white/10">
+                             {/* Question row */}
+                             <button
+                                 onClick={() => toggle(i)}
+@@ -52,7 +30,7 @@ export function FAQSection() {
+                                 className="w-full flex items-center justify-between gap-6 py-8 px-2 text-left group cursor-pointer hover:bg-white/5 transition-colors duration-200"
+                             >
+                                 <h3 className="font-headline font-medium text-white/80 uppercase tracking-tight text-base md:text-lg">
+-                                    {faq.q}
++                                    {faq.question}
+                                 </h3>
+                                 <span className="text-white/40 group-hover:text-white transition-colors duration-200 shrink-0 text-2xl font-normal leading-none w-6 text-center">
+                                     {openIndex === i ? "−" : "+"}
+@@ -67,7 +45,7 @@ export function FAQSection() {
+                             >
+                                 <div className="overflow-hidden">
+                                     <p className="text-white/60 text-base leading-relaxed max-w-2xl px-2 pb-8">
+-                                        {faq.a}
++                                        {faq.answer}
+                                     </p>
+                                 </div>
+                             </div>
+diff --git a/src/components/organisms/FinalCTA.tsx b/src/components/organisms/FinalCTA.tsx
+index 775f67e..343a694 100644
+--- a/src/components/organisms/FinalCTA.tsx
++++ b/src/components/organisms/FinalCTA.tsx
+@@ -41,13 +41,12 @@ export function FinalCTA() {
+                         Start a Project
+                     </button>
+                     <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>
+-                    <a
+-                        href="/audit"
++                    <button
++                        onClick={openDrawer}
+                         className="btn-ghost px-12 py-5 w-full md:w-auto text-center"
+-                        style={{ textDecoration: "none" }}
+                     >
+-                        Request Audit
+-                    </a>
++                        Book a Discovery Call
++                    </button>
+                 </div>
+             </div>
+         </section>
+diff --git a/src/components/organisms/Footer.tsx b/src/components/organisms/Footer.tsx
+index 189eb20..3c496b7 100644
+--- a/src/components/organisms/Footer.tsx
++++ b/src/components/organisms/Footer.tsx
+@@ -12,15 +12,16 @@ export function Footer() {
+ 
+                 {/* Legal */}
+                 <p className="mono-label">
+-                    © 2025 LP Web Studio. All rights reserved.
++                    © 2026 LP Web Studio. All rights reserved.
+                 </p>
+ 
+                 {/* Nav links */}
+                 <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                     {[
+-                        { label: "Work",    href: "/work" },
+-                        { label: "About",   href: "/about" },
+-                        { label: "Privacy", href: "/privacy" },
++                        { label: "Work",     href: "/work" },
++                        { label: "Products", href: "/products" },
++                        { label: "About",    href: "/about" },
++                        { label: "Privacy",  href: "/privacy" },
+                     ].map(({ label, href }) => (
+                         <a
+                             key={label}
+diff --git a/src/components/organisms/MetricsBanner.tsx b/src/components/organisms/MetricsBanner.tsx
+index 014cbe9..02e4101 100644
+--- a/src/components/organisms/MetricsBanner.tsx
++++ b/src/components/organisms/MetricsBanner.tsx
+@@ -1,6 +1,6 @@
+ const metrics = [
+     { value: "100%",       label: "Custom Built" },
+-    { value: "Next.js",    label: "& React" },
++    { value: "Zero",       label: "Manual Order Entry" },
+     { value: "Cape Town",  label: "Based" },
+     { value: "Yours.",     label: "Client-Owned Code" },
+ ];
+diff --git a/src/components/organisms/ProjectSection.tsx b/src/components/organisms/ProjectSection.tsx
+index d84c636..a3ba493 100644
+--- a/src/components/organisms/ProjectSection.tsx
++++ b/src/components/organisms/ProjectSection.tsx
+@@ -8,9 +8,7 @@ export type ProjectSectionProps = {
+   timeline: string;
+   status: string;
+   statusActive: boolean;
+-  authority: string;
+   score: number;
+-  stack: string[];
+   descriptionHeading: string;
+   descriptionBody: string;
+   videoSrc: string;
+@@ -34,9 +32,7 @@ export function ProjectSection({
+   timeline,
+   status,
+   statusActive,
+-  authority,
+   score,
+-  stack,
+   descriptionHeading,
+   descriptionBody,
+   videoSrc,
+@@ -143,8 +139,8 @@ export function ProjectSection({
+ 
+         {/* Label row */}
+         <div className="flex justify-between items-start">
+-          <span className="mono-label">PROJECT_IDENT</span>
+-          <span className="mono-label">PERFORMANCE</span>
++          <span className="mono-label">PROJECT</span>
++          <span className="mono-label">SCORE</span>
+         </div>
+ 
+         {/* Name + Score row */}
+@@ -191,21 +187,6 @@ export function ProjectSection({
+               {status}
+             </p>
+           </div>
+-          <div>
+-            <p className="mono-label mb-1">AUTHORITY</p>
+-            <p className="font-headline font-bold uppercase text-white text-sm md:text-base">
+-              {authority}
+-            </p>
+-          </div>
+-        </div>
+-
+-        {/* Tech stack pills */}
+-        <div className="flex flex-wrap gap-2">
+-          {stack.map((tech) => (
+-            <span key={tech} className="pill">
+-              {tech}
+-            </span>
+-          ))}
+         </div>
+ 
+         {/* CTA */}
+@@ -216,7 +197,7 @@ export function ProjectSection({
+           rel={siteUrl !== "#" ? "noopener noreferrer" : undefined}
+           className="w-full flex items-center justify-between px-6 py-5 border border-white/10 hover:border-[#FF4D00]/60 hover:bg-[#FF4D00]/5 transition-all duration-300 font-headline font-black uppercase tracking-widest text-white text-sm"
+         >
+-          LAUNCH_EXPERIENCE
++          VIEW LIVE SITE
+           <span aria-hidden="true">↗</span>
+         </a>
+       </div>
+diff --git a/src/components/organisms/WorkClosingCTA.tsx b/src/components/organisms/WorkClosingCTA.tsx
+index bdae3a2..3a3e423 100644
+--- a/src/components/organisms/WorkClosingCTA.tsx
++++ b/src/components/organisms/WorkClosingCTA.tsx
+@@ -12,28 +12,21 @@ export function WorkClosingCTA() {
+         className="font-headline font-black uppercase text-white leading-tight"
+         style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}
+       >
+-        IS YOUR WEBSITE COSTING YOU CUSTOMERS?
++        IS MANUAL ADMIN COSTING YOU GROWTH?
+       </h2>
+ 
+       <p className="text-white/60 text-base max-w-md leading-relaxed">
+-        Every slow website is a lead that didn&apos;t convert.
+-        Every generic template is a client that chose someone else.
++        Every order taken over WhatsApp is a mistake waiting to happen.
++        Every manual spreadsheet is time you&apos;re not spending on the business.
+       </p>
+ 
+       <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
+-        <a
+-          href="/audit"
+-          className="btn-primary"
+-          style={{ padding: "14px 28px", borderRadius: "4px", textDecoration: "none" }}
+-        >
+-          RUN FREE AUDIT
+-        </a>
+         <button
+           onClick={openDrawer}
+-          className="btn-ghost"
++          className="btn-primary"
+           style={{ padding: "14px 28px", borderRadius: "4px" }}
+         >
+-          INITIATE PROJECT
++          BOOK A DISCOVERY CALL
+         </button>
+       </div>
+     </section>
+diff --git a/src/components/organisms/WorkPageContent.tsx b/src/components/organisms/WorkPageContent.tsx
+index 1511f8c..b438d4d 100644
+--- a/src/components/organisms/WorkPageContent.tsx
++++ b/src/components/organisms/WorkPageContent.tsx
+@@ -12,9 +12,7 @@ const cafeCrave: ProjectSectionProps = {
+   timeline: "Q4_2023 – PRESENT",
+   status: "ACTIVE_TERMINAL",
+   statusActive: true,
+-  authority: "ELITE_TIER",
+   score: 93,
+-  stack: ["REACT", "NEXT.JS", "TAILWIND", "VERCEL"],
+   descriptionHeading: "THE_CONVERSION_ENGINE",
+   descriptionBody:
+     "Cafe Crave needed more than a menu online. Every visitor needed to feel the space before they arrived. We rebuilt their digital presence on a React and Next.js stack with live Google Reviews integration, a mobile-first layout, and a reservation flow engineered for conversion. The result: a 93/100 PageSpeed score and a site that works as hard as the team behind the counter.",
+diff --git a/src/components/seo/SchemaTemplates.ts b/src/components/seo/SchemaTemplates.ts
+index 4c2e84b..192abb0 100644
+--- a/src/components/seo/SchemaTemplates.ts
++++ b/src/components/seo/SchemaTemplates.ts
+@@ -7,7 +7,7 @@ export function localBusinessSchema() {
+         "@type": ["LocalBusiness", "ProfessionalService"],
+         name: SITE_NAME,
+         description:
+-            "Cape Town web development studio specialising in custom Next.js websites, n8n automation systems, and high-performance web applications. Guaranteed 90+ PageSpeed scores.",
++            "Cape Town systems studio building custom ordering portals, client platforms, and business automation that replace manual admin for South African businesses.",
+         url: SITE_URL,
+         telephone: "+27673852286",
+         email: "contact@lpwebstudio.co.za",
+@@ -21,45 +21,51 @@ export function localBusinessSchema() {
+             { "@type": "City", name: "Cape Town" },
+             { "@type": "Country", name: "South Africa" },
+         ],
+-        priceRange: "R5500 - R21500",
++        priceRange: "R35000+",
+         knowsAbout: [
+-            "Next.js development",
+-            "React web applications",
+-            "n8n automation",
++            "Custom ordering systems",
++            "B2B client portals",
++            "Business automation",
+             "WhatsApp business integration",
+-            "Web performance optimisation",
+-            "Supabase",
+-            "Vercel Edge Network",
++            "Custom web applications",
++            "Custom software development",
+         ],
+         hasOfferCatalog: {
+             "@type": "OfferCatalog",
+-            name: "Web Development Services",
++            name: "Custom Systems & Automation",
+             itemListElement: [
+                 {
+                     "@type": "Offer",
+-                    name: "Starter Website",
+-                    price: "5500",
++                    name: "Ordering Portal",
+                     priceCurrency: "ZAR",
++                    priceSpecification: {
++                        "@type": "PriceSpecification",
++                        minPrice: "35000",
++                        priceCurrency: "ZAR",
++                    },
+                     description:
+-                        "1-page high-performance Next.js website with WhatsApp lead capture",
++                        "Custom B2B ordering portal with role-based logins, live catalogue, and automated order routing",
+                     url: SITE_URL,
+                 },
+                 {
+                     "@type": "Offer",
+-                    name: "Professional Website",
+-                    price: "12500",
++                    name: "Client Platform",
+                     priceCurrency: "ZAR",
++                    priceSpecification: {
++                        "@type": "PriceSpecification",
++                        minPrice: "35000",
++                        priceCurrency: "ZAR",
++                    },
+                     description:
+-                        "3-page custom Next.js website with automated booking integration and 90+ PageSpeed",
++                        "Custom client platform that replaces email chains and spreadsheets with a single source of truth",
+                     url: SITE_URL,
+                 },
+                 {
+                     "@type": "Offer",
+-                    name: "Custom Web Application",
+-                    price: "21500",
++                    name: "Business Automation",
+                     priceCurrency: "ZAR",
+                     description:
+-                        "Full Next.js application with database, n8n automation pipelines, and AI lead generation",
++                        "Automations that replace manual admin — order routing, invoicing, and stock updates without a keyboard",
+                     url: SITE_URL,
+                 },
+             ],
+@@ -141,7 +147,7 @@ export function personSchema() {
+         "@context": "https://schema.org",
+         "@type": "Person",
+         name: "Luke Petzer",
+-        jobTitle: "Web Developer & Automation Engineer",
++        jobTitle: "Systems Builder",
+         worksFor: {
+             "@type": "Organization",
+             name: SITE_NAME,
+@@ -155,13 +161,11 @@ export function personSchema() {
+             addressCountry: "ZA",
+         },
+         knowsAbout: [
+-            "Next.js",
+-            "React",
+-            "TypeScript",
+-            "n8n automation",
+-            "Supabase",
+-            "Vercel Edge Network",
+-            "Web performance optimisation",
++            "Custom ordering systems",
++            "B2B client portals",
++            "Business automation",
++            "Custom web applications",
++            "Custom software development",
+         ],
+         sameAs: ["https://www.instagram.com/lp.web.studio"],
+     };
+diff --git a/src/lib/faq-data.ts b/src/lib/faq-data.ts
+new file mode 100644
+index 0000000..009b9db
+--- /dev/null
++++ b/src/lib/faq-data.ts
+@@ -0,0 +1,36 @@
++/**
++ * Single source of truth for the homepage FAQ.
++ * Consumed by both `page.tsx` (drives JSON-LD FAQ schema) and
++ * `FAQSection.tsx` (drives the visible accordion).
++ */
++export interface Faq {
++    question: string;
++    answer: string;
++}
++
++export const homepageFaqs: Faq[] = [
++    {
++        question: "What does a system cost?",
++        answer: "Custom systems start at R35,000. Ongoing care plans start at R1,950/month for updates, monitoring, and support after launch. You'll get an exact quote after a free discovery call.",
++    },
++    {
++        question: "How long does a system take to build?",
++        answer: "Most custom systems take 4-8 weeks from discovery call to launch, depending on scope — ordering portals and client platforms are usually on the longer end, single automations on the shorter end. You'll get a firm timeline after the discovery call.",
++    },
++    {
++        question: "Do I own the system?",
++        answer: "Yes. Every system we build is yours outright — full code ownership, no lock-in, no monthly licence fees to keep using what you paid for.",
++    },
++    {
++        question: "What happens after launch?",
++        answer: "You can go it alone, or move onto a care plan from R1,950/month — we handle updates, monitoring, and changes so the system keeps running without you thinking about it.",
++    },
++    {
++        question: "What industries do you work with?",
++        answer: "Any business drowning in manual admin — wholesalers and distributors taking orders over WhatsApp, trade and hospitality businesses juggling spreadsheets, and B2B companies that need a client portal instead of email chains.",
++    },
++    {
++        question: "Do you work with businesses outside Cape Town?",
++        answer: "Yes. We work with businesses across South Africa and internationally. Discovery calls are online and projects are delivered remotely.",
++    },
++];
+diff --git a/src/lib/knowledge.ts b/src/lib/knowledge.ts
+index a95c320..33a794e 100644
+--- a/src/lib/knowledge.ts
++++ b/src/lib/knowledge.ts
+@@ -22,11 +22,24 @@ export interface KnowledgeArticle {
+     contentHtml: string;
+ }
+ 
++/**
++ * Returns true when an article's frontmatter marks it as unpublished
++ * (either `draft: true` or `published: false`).
++ */
++function isDraft(data: Record<string, unknown>): boolean {
++    return data.draft === true || data.published === false;
++}
++
+ export function getAllSlugs(): string[] {
+     if (!fs.existsSync(KNOWLEDGE_DIR)) return [];
+     return fs
+         .readdirSync(KNOWLEDGE_DIR)
+         .filter((file) => file.endsWith(".md"))
++        .filter((file) => {
++            const raw = fs.readFileSync(path.join(KNOWLEDGE_DIR, file), "utf-8");
++            const { data } = matter(raw);
++            return !isDraft(data);
++        })
+         .map((file) => file.replace(/\.md$/, ""));
+ }
+ 
+@@ -38,6 +51,9 @@ export async function getArticle(slug: string): Promise<KnowledgeArticle | null>
+     const fileContent = fs.readFileSync(filePath, "utf-8");
+     const { data, content } = matter(fileContent);
+ 
++    // Unpublished (draft) articles are hidden everywhere.
++    if (isDraft(data)) return null;
++
+     const processedContent = await remark().use(html).process(content);
+     const contentHtml = processedContent.toString();
+ 

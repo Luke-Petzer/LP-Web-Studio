@@ -12,28 +12,21 @@ export function WorkClosingCTA() {
         className="font-headline font-black uppercase text-white leading-tight"
         style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}
       >
-        IS YOUR WEBSITE COSTING YOU CUSTOMERS?
+        IS MANUAL ADMIN COSTING YOU GROWTH?
       </h2>
 
       <p className="text-white/60 text-base max-w-md leading-relaxed">
-        Every slow website is a lead that didn&apos;t convert.
-        Every generic template is a client that chose someone else.
+        Every order taken over WhatsApp is a mistake waiting to happen.
+        Every manual spreadsheet is time you&apos;re not spending on the business.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
-        <a
-          href="/audit"
-          className="btn-primary"
-          style={{ padding: "14px 28px", borderRadius: "4px", textDecoration: "none" }}
-        >
-          RUN FREE AUDIT
-        </a>
         <button
           onClick={openDrawer}
-          className="btn-ghost"
+          className="btn-primary"
           style={{ padding: "14px 28px", borderRadius: "4px" }}
         >
-          INITIATE PROJECT
+          BOOK A DISCOVERY CALL
         </button>
       </div>
     </section>

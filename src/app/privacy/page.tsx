@@ -5,7 +5,7 @@ import { Footer } from "@/components/organisms/Footer";
 export const metadata: Metadata = {
     title: "Privacy Notice | LP Web Studio",
     description:
-        "How LP Web Studio handles contact form data, analytics, and your privacy. Cape Town web development studio — no ad tracking, no third-party data sales.",
+        "How LP Web Studio handles contact form data, analytics, and your privacy. Cape Town systems studio — no ad tracking, no third-party data sales.",
     alternates: {
         canonical: "https://lpwebstudio.co.za/privacy",
     },
@@ -72,10 +72,9 @@ export default function PrivacyPage() {
                             title="THE STUDIO"
                         >
                             <p>
-                                LP Web Studio is a Cape Town-based web development and
-                                automation studio operated by Luke Petzer. We build custom
-                                Next.js websites and n8n automation systems for South African
-                                businesses.
+                                LP Web Studio is a Cape Town-based systems studio operated by
+                                Luke Petzer. We build custom ordering platforms, client portals,
+                                and automation systems for South African businesses.
                             </p>
                             <p>
                                 Questions about this notice or your data can be sent to{" "}

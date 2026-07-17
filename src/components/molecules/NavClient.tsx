@@ -6,10 +6,11 @@ import Image from "next/image";
 import { useDrawer } from "@/lib/contact-drawer-context";
 
 const navLinks = [
-    { label: "Solutions",      href: "/work" },
-    { label: "Infrastructure", href: "/about" },
-    { label: "Learn",          href: "/learn" },
-    { label: "Contact",        href: "#" },
+    { label: "Solutions", href: "/work" },
+    { label: "Products",  href: "/products" },
+    { label: "About",     href: "/about" },
+    { label: "Learn",     href: "/learn" },
+    { label: "Contact",   href: "#" },
 ];
 
 export function NavClient() {
@@ -131,7 +132,7 @@ export function NavClient() {
                                 : "btn-primary text-[11px] px-6 py-2.5",
                         ].join(" ")}
                     >
-                        Get Started
+                        Book a Discovery Call
                     </button>
 
                     {/* Hamburger */}
@@ -182,7 +183,7 @@ export function NavClient() {
                             onClick={() => { setIsOpen(false); openDrawer(); }}
                             className="btn-primary mt-4 w-full justify-center text-center border-none cursor-pointer"
                         >
-                            Get Started
+                            Book a Discovery Call
                         </button>
                     </nav>
                 </div>

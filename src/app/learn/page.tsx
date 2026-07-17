@@ -6,17 +6,17 @@ import { Footer } from "@/components/organisms/Footer";
 import { SubpageHero } from "@/components/organisms/SubpageHero";
 
 export const metadata: Metadata = {
-    title: "Web Development Insights | LP Web Studio",
+    title: "Systems & Automation Insights | LP Web Studio",
     description:
-        "Practical guides on Next.js, website performance, and digital infrastructure for Cape Town businesses.",
+        "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
     alternates: {
         canonical: "https://lpwebstudio.co.za/learn",
     },
     openGraph: {
         url: "https://lpwebstudio.co.za/learn",
-        title: "Web Development Insights | LP Web Studio",
+        title: "Systems & Automation Insights | LP Web Studio",
         description:
-            "Practical guides on Next.js, website performance, and digital infrastructure for Cape Town businesses.",
+            "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
     },
 };
 
@@ -29,7 +29,7 @@ export default async function LearnPage() {
             <main className="pb-structural bg-[#0A0A0A] min-h-screen">
                 <SubpageHero
                     title="LEARN"
-                    subtitle="FIELD NOTES ON BUILDING FAST WEBSITES"
+                    subtitle="FIELD NOTES ON BUILDING BUSINESS SYSTEMS"
                 />
 
                 {/* ── Field Notes — article index ── */}
@@ -53,9 +53,9 @@ export default async function LearnPage() {
                                     className="text-white/55 leading-relaxed"
                                     style={{ fontSize: "15px" }}
                                 >
-                                    Practical guides on Next.js, website performance, and digital
-                                    infrastructure — written from the studio, for operators who
-                                    care about shipping fast. No tutorials-for-tutorials-sake;
+                                    Practical guides on ordering systems, automation, and replacing
+                                    manual admin — written from the studio, for operators who care
+                                    about running a tighter business. No tutorials-for-tutorials-sake;
                                     every piece ties back to work we&rsquo;ve shipped for clients.
                                 </p>
                             </div>

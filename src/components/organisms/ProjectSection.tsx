@@ -8,9 +8,7 @@ export type ProjectSectionProps = {
   timeline: string;
   status: string;
   statusActive: boolean;
-  authority: string;
   score: number;
-  stack: string[];
   descriptionHeading: string;
   descriptionBody: string;
   videoSrc: string;
@@ -34,9 +32,7 @@ export function ProjectSection({
   timeline,
   status,
   statusActive,
-  authority,
   score,
-  stack,
   descriptionHeading,
   descriptionBody,
   videoSrc,
@@ -143,8 +139,8 @@ export function ProjectSection({
 
         {/* Label row */}
         <div className="flex justify-between items-start">
-          <span className="mono-label">PROJECT_IDENT</span>
-          <span className="mono-label">PERFORMANCE</span>
+          <span className="mono-label">PROJECT</span>
+          <span className="mono-label">SCORE</span>
         </div>
 
         {/* Name + Score row */}
@@ -191,21 +187,6 @@ export function ProjectSection({
               {status}
             </p>
           </div>
-          <div>
-            <p className="mono-label mb-1">AUTHORITY</p>
-            <p className="font-headline font-bold uppercase text-white text-sm md:text-base">
-              {authority}
-            </p>
-          </div>
-        </div>
-
-        {/* Tech stack pills */}
-        <div className="flex flex-wrap gap-2">
-          {stack.map((tech) => (
-            <span key={tech} className="pill">
-              {tech}
-            </span>
-          ))}
         </div>
 
         {/* CTA */}
@@ -216,7 +197,7 @@ export function ProjectSection({
           rel={siteUrl !== "#" ? "noopener noreferrer" : undefined}
           className="w-full flex items-center justify-between px-6 py-5 border border-white/10 hover:border-[#FF4D00]/60 hover:bg-[#FF4D00]/5 transition-all duration-300 font-headline font-black uppercase tracking-widest text-white text-sm"
         >
-          LAUNCH_EXPERIENCE
+          VIEW LIVE SITE
           <span aria-hidden="true">↗</span>
         </a>
       </div>

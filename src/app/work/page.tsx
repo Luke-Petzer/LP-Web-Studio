@@ -5,17 +5,17 @@ import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-    title: "Our Work | Cape Town Web Development Portfolio",
+    title: "Case Studies | Custom Ordering Systems & Client Platforms",
     description:
-        "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
+        "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
     alternates: {
         canonical: "https://lpwebstudio.co.za/work",
     },
     openGraph: {
         url: "https://lpwebstudio.co.za/work",
-        title: "Our Work | Cape Town Web Development Portfolio",
+        title: "Case Studies | Custom Ordering Systems & Client Platforms",
         description:
-            "Case studies from LP Web Studio — custom React websites for Cape Town businesses including Cafe Crave and The Big Six. Real projects, real PageSpeed scores.",
+            "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
     },
 };
 
@@ -28,7 +28,7 @@ const cafeCraveSchema = {
     url: "https://cafecravecpt.co.za",
     creator: { "@type": "Organization", name: "LP Web Studio" },
     keywords:
-        "restaurant website Cape Town, cafe website, Next.js, React, Google Reviews integration",
+        "restaurant website Cape Town, cafe website, Google Reviews integration",
 };
 
 export default function WorkPage() {

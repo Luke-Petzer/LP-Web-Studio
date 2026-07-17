@@ -22,11 +22,24 @@ export interface KnowledgeArticle {
     contentHtml: string;
 }
 
+/**
+ * Returns true when an article's frontmatter marks it as unpublished
+ * (either `draft: true` or `published: false`).
+ */
+function isDraft(data: Record<string, unknown>): boolean {
+    return data.draft === true || data.published === false;
+}
+
 export function getAllSlugs(): string[] {
     if (!fs.existsSync(KNOWLEDGE_DIR)) return [];
     return fs
         .readdirSync(KNOWLEDGE_DIR)
         .filter((file) => file.endsWith(".md"))
+        .filter((file) => {
+            const raw = fs.readFileSync(path.join(KNOWLEDGE_DIR, file), "utf-8");
+            const { data } = matter(raw);
+            return !isDraft(data);
+        })
         .map((file) => file.replace(/\.md$/, ""));
 }
 
@@ -37,6 +50,9 @@ export async function getArticle(slug: string): Promise<KnowledgeArticle | null>
 
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
+
+    // Unpublished (draft) articles are hidden everywhere.
+    if (isDraft(data)) return null;
 
     const processedContent = await remark().use(html).process(content);
     const contentHtml = processedContent.toString();
