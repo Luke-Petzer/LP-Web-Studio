@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Next.js vs WordPress for Cape Town Small Businesses"
 description: "Why Cape Town businesses are switching from WordPress to Next.js. Speed comparison, security, SEO impact, and real cost breakdown."
 date: "2026-02-17"

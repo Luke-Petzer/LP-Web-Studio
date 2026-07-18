@@ -318,7 +318,7 @@ Spec: `docs/superpowers/specs/2026-04-27-batch2-mobile-copy-cta-design.md`
 - `public/llms.txt` — full rewrite with accurate pricing, portfolio, and contact
 - `src/app/layout.tsx` — metadataBase set to lpwebstudio.co.za, global title/desc/keywords rewritten
 - `src/app/page.tsx` — homepage metadata + homepageFaqs updated to 5 pricing/value questions
-- `src/app/work/page.tsx` — work page metadata + CreativeWork JSON-LD for Cafe Crave and The Big Six
+- `src/app/work/page.tsx` — work page metadata + CreativeWork JSON-LD for Cafe Crave
 - `src/app/about/page.tsx` — about page metadata updated
 - `content/knowledge-base/nextjs-vs-wordpress.md` — frontmatter title + description updated
 - `content/knowledge-base/why-pagespeed-matters.md` — frontmatter title + description updated
@@ -339,7 +339,7 @@ Spec: `docs/superpowers/specs/2026-04-27-batch2-mobile-copy-cta-design.md`
 - Domain unified to lpwebstudio.co.za (no www) throughout
 - All page titles target Cape Town / South Africa search intent
 - LocalBusiness schema includes pricing tiers, offerCatalog, knowsAbout
-- CreativeWork schemas added for both portfolio projects
+- CreativeWork schema added for the Cafe Crave portfolio project
 - FAQ updated with pricing questions that match search intent
 - llms.txt updated for AI citation (ChatGPT, Claude, Perplexity)
 - /learn index page gives the knowledge base a valid route
@@ -382,21 +382,20 @@ Spec: `docs/superpowers/specs/2026-04-27-batch2-mobile-copy-cta-design.md`
 - `WorkStickyArchive.tsx` — deleted (replaced by chapter + project layout)
 - `ChapterHook.tsx` — new molecule: narrative inter-section text hooks
 - `ProjectSection.tsx` — new organism: 60/40 split-screen project display (Quantum Studio reference)
-- `WorkPageContent.tsx` — updated compositor with two projects (Cafe Crave, The Big Six) and chapter hooks
+- `WorkPageContent.tsx` — updated compositor with the Cafe Crave project and chapter hooks
 - `STATUS.md` — this file, project-root site changelog
 
 #### Needs Testing
-- [ ] Video playback on mobile (Safari iOS, Chrome Android) — `CafeCrave.mp4`, `BigSix.mp4`
+- [ ] Video playback on mobile (Safari iOS, Chrome Android) — `CafeCrave.mp4`
 - [ ] Scroll reveal animation fires correctly at all scroll speeds
 - [ ] `prefers-reduced-motion` — lines should appear immediately without animation
 - [ ] Sticky right column on desktop — confirm it stays in view while scrolling left column
 - [ ] CTA hover state (orange-red border + tint)
 - [ ] Mobile stacked layout — right col (metadata) appears above left col (video)
-- [ ] Image placeholders — replace `/images/cafe-crave-1.jpg`, `/images/cafe-crave-2.jpg`, `/images/big-six-1.jpg`, `/images/big-six-2.jpg` with real assets
+- [ ] Image placeholders — replace `/images/cafe-crave-1.jpg`, `/images/cafe-crave-2.jpg` with real assets
 
 #### Known Issues / Compromises
 - Project images use placeholder paths that don't exist yet — broken `<img>` tags will render as empty space until real images are added to `public/images/`
-- The Big Six metadata (timeline, authority) uses placeholder values — update when confirmed
 - Cafe Crave description body is placeholder — copy to be rewritten
 - `siteUrl` for both projects is `"#"` — update when live URLs are confirmed
 
@@ -408,7 +407,6 @@ Spec: `docs/superpowers/specs/2026-04-27-batch2-mobile-copy-cta-design.md`
 - [x] Page title set (`Our Work — LP Web Studio`)
 - [x] Meta description set
 - [ ] JSON-LD structured data added for Cafe Crave project
-- [ ] JSON-LD structured data added for The Big Six project
 - [x] Videos have accessible descriptions (`<figcaption class="sr-only">`)
 - [x] Images have `alt` text
 - [x] Videos use `autoPlay muted loop playsInline` (no autoplay audio)

@@ -94,7 +94,7 @@ eb30a17 wip: carry uncommitted design work from dev/main-refresh
 - Legacy public assets: `Logo.png`, `Me1.JPG`, `Portfolio-Page.png`, `Services-Page.png`, `Profile-headshot.png`, `My-Logo.png`, `img_1.png`, `nova-studio.webp`, `whatsapp-logo.jpg`, `contact-form.php`, `_redirects`, `.htaccess`.
 - Legacy scaffolding: `_UNUSED_FILES_BACKUP/`, `out/`, `dist.zip`, `GEMINI.md`, `.browserslistrc`, `.superdesign_draft_output.txt`.
 - `.gitignore`: added `inspiration/` + `tsconfig.tsbuildinfo`; untracked `tsbuildinfo`.
-- **WorkPageContent siteUrl fix**: `cafeCrave → https://cafecravecpt.co.za`, `theBigSix → https://thebigsix.lpwebstudio.co.za`.
+- **WorkPageContent siteUrl fix**: `cafeCrave → https://cafecravecpt.co.za`.
 - **`/api/contact` hardening**: removed Resend TODO; returns 503 with explicit fallback-email message if `N8N_WEBHOOK_URL` is unset; 502 with fallback message on webhook delivery error; no more silent swallow.
 - New `.env.example` documenting `N8N_WEBHOOK_URL` as currently unconfigured.
 

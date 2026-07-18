@@ -41,13 +41,12 @@ export function FinalCTA() {
                         Start a Project
                     </button>
                     <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>
-                    <a
-                        href="/audit"
+                    <button
+                        onClick={openDrawer}
                         className="btn-ghost px-12 py-5 w-full md:w-auto text-center"
-                        style={{ textDecoration: "none" }}
                     >
-                        Request Audit
-                    </a>
+                        Book a Discovery Call
+                    </button>
                 </div>
             </div>
         </section>

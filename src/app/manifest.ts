@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
         name: "LP Web Studio",
         short_name: "LP Web",
         description:
-            "Custom Next.js websites and n8n automation systems for Cape Town businesses.",
+            "Ordering systems, client platforms, and business automation for South African businesses.",
         start_url: "/",
         display: "standalone",
         background_color: "#0B0B0B",

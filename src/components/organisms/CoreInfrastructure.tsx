@@ -16,35 +16,27 @@ type Card = {
 const cards: Card[] = [
     {
         module: "MODULE_01",
-        title: "Custom\nBackends",
-        body: "Custom backend logic built around how your business operates. No off-the-shelf limitations, no vendor lock-in.",
+        title: "Orders Without\nAdmin",
+        body: "Customers place orders through a portal, not a WhatsApp thread. No re-typing, no lost messages, no spreadsheet.",
         bg: "#0B0B0B",
         isLight: false,
         viz: "squares",
     },
     {
         module: "MODULE_02",
-        title: "Precision\nUI",
-        body: "Interfaces built for clarity and speed. Clean, purposeful design that your team picks up without training.",
+        title: "One Source\nof Truth",
+        body: "Stock, pricing, and orders live in one place your whole team can see — not scattered across chats and paper.",
         bg: "#1a1c1e",
         isLight: false,
         viz: "crosshair",
     },
     {
         module: "MODULE_03",
-        title: "Data\nStorage",
-        body: "Structured databases and file storage configured to your needs. Your data is accessible, exportable, and owned by you.",
+        title: "Automations\nWhile You Sleep",
+        body: "Orders route to the warehouse, invoices go out, and stock updates — automatically, without anyone touching a keyboard.",
         bg: "#FF4D00",
         isLight: true,
         viz: "strata",
-    },
-    {
-        module: "MODULE_04",
-        title: "Third-Party\nIntegrations",
-        body: "Connections to the tools your business already uses — payments, accounting, WhatsApp, email, and more — automated end to end.",
-        bg: "#B81D1D",
-        isLight: true,
-        viz: "flow",
     },
 ];
 
@@ -209,8 +201,8 @@ export function CoreInfrastructure() {
     // browser never has to interpolate from/to a CSS-rule activation boundary.
     const gridTemplateColumns = isLgHover
         ? hoveredIdx !== null
-            ? [0, 1, 2, 3].map((i) => (i === hoveredIdx ? "2fr" : "1fr")).join(" ")
-            : "1fr 1fr 1fr 1fr"
+            ? [0, 1, 2].map((i) => (i === hoveredIdx ? "2fr" : "1fr")).join(" ")
+            : "1fr 1fr 1fr"
         : undefined;
 
     return (
@@ -226,10 +218,10 @@ export function CoreInfrastructure() {
                         className="font-headline font-bold uppercase tracking-[-0.04em] text-white mb-3"
                         style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}
                     >
-                        Web Development & Automation Services
+                        What We Build
                     </h2>
                     <p className="font-body text-white/50 max-w-md text-sm leading-relaxed">
-                        Proprietary methodologies engineered for scale and absolute structural integrity.
+                        Three outcomes, one system: orders without admin, one source of truth, automations while you sleep.
                     </p>
                 </div>
                 <span className="section-label whitespace-nowrap">01 — Capabilities</span>
@@ -237,7 +229,7 @@ export function CoreInfrastructure() {
 
             {/* Full-bleed panel row */}
             <div
-                className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+                className="panel-row -mx-8 md:-mx-12 grid grid-cols-1 md:grid-cols-3"
                 style={gridTemplateColumns ? { gridTemplateColumns } : undefined}
             >
                 {cards.map((card, i) => (
@@ -282,7 +274,7 @@ export function CoreInfrastructure() {
                                         : "rgba(255,255,255,0.4)",
                                 }}
                             >
-                                {String(i + 1).padStart(2, "0")} / 04
+                                {String(i + 1).padStart(2, "0")} / 03
                             </p>
 
                             <p

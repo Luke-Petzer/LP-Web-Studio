@@ -7,17 +7,17 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema } from "@/components/seo/SchemaTemplates";
 
 export const metadata: Metadata = {
-    title: "About | Cape Town Next.js Developer — Luke Petzer",
+    title: "About | Luke Petzer, Systems Builder — Cape Town",
     description:
-        "Luke Petzer is a Cape Town-based web developer and automation engineer. Custom Next.js builds, n8n pipelines, and 90+ PageSpeed scores guaranteed. No agencies, no bloat.",
+        "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses. Honours computer science background, ships production systems solo.",
     alternates: {
         canonical: "https://lpwebstudio.co.za/about",
     },
     openGraph: {
         url: "https://lpwebstudio.co.za/about",
-        title: "About | Cape Town Next.js Developer — Luke Petzer",
+        title: "About | Luke Petzer, Systems Builder — Cape Town",
         description:
-            "Luke Petzer is a Cape Town-based web developer and automation engineer. Custom Next.js builds, n8n pipelines, and 90+ PageSpeed scores guaranteed.",
+            "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses.",
     },
 };
 
@@ -28,8 +28,8 @@ export default function AboutPage() {
             <Navigation />
             <main className="pb-structural">
                 <SubpageHero
-                    title="INFRASTRUCTURE"
-                    subtitle="ENGINEERED FOR PERFORMANCE"
+                    title="ABOUT"
+                    subtitle="THE PERSON BUILDING YOUR SYSTEM"
                 />
                 <AboutPageContent />
             </main>

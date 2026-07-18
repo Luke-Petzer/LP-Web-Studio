@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:webflow.com)",
+      "WebFetch(domain:www.typewolf.com)",
+      "Bash(bash /Users/lukepetzer/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/start-server.sh --project-dir /Users/lukepetzer/LP-Web-Studio/Admin/Website/LP-Web-Studio)",
+      "Bash(grep -rn \"font-heading\\\\|font-body\" /Users/lukepetzer/LP-Web-Studio/Admin/Website/LP-Web-Studio/tailwind.config*)",
+      "Bash(ls /Users/lukepetzer/LP-Web-Studio/Admin/Website/LP-Web-Studio/tailwind*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

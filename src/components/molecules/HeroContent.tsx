@@ -30,9 +30,9 @@ export function HeroContent() {
                         {/* H1 */}
                         <h1 className="font-headline font-bold uppercase tracking-[-0.05em] leading-[0.85] text-white mb-10"
                             style={{ fontSize: "clamp(3rem, 8vw, 8.5rem)" }}>
-                            Custom Websites<br />
-                            & Web Platforms<br />
-                            <span className="text-white/40">That Work.</span>
+                            Systems That<br />
+                            Run<br />
+                            <span className="text-white/40">Your Business.</span>
                         </h1>
 
                         {/* CTAs */}
@@ -48,7 +48,7 @@ export function HeroContent() {
                                 onClick={openDrawer}
                                 className="btn-ghost px-10 py-5 text-sm backdrop-blur-sm"
                             >
-                                Get Started
+                                Book a Discovery Call
                             </button>
                         </div>
                     </div>
@@ -58,16 +58,16 @@ export function HeroContent() {
                         {/* Glass descriptor */}
                         <div className="p-8 border border-white/20 backdrop-blur-md bg-white/5 rounded-tight">
                             <p className="font-body text-sm md:text-base text-white tracking-normal leading-relaxed uppercase font-medium">
-                                We design and build custom websites and web platforms for Cape Town businesses. From standalone websites to full ordering systems — built to your exact requirements.
+                                We build ordering portals, client platforms, and automations that replace manual admin — custom systems built to how your business actually runs.
                             </p>
                         </div>
 
                         {/* Numbered pillars */}
                         <div className="flex flex-wrap gap-6 sm:gap-10 text-white/60">
                             {[
-                                { num: "01", label: "Infrastructure" },
-                                { num: "02", label: "Automation" },
-                                { num: "03", label: "Scalability" },
+                                { num: "01", label: "Ordering Portals" },
+                                { num: "02", label: "Client Platforms" },
+                                { num: "03", label: "Automation" },
                             ].map(({ num, label }) => (
                                 <div key={num} className="flex flex-col gap-1">
                                     <span className="font-headline text-2xl font-bold text-white">{num}</span>
