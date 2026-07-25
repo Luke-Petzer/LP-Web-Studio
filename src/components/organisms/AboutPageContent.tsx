@@ -24,16 +24,16 @@ const accentGrad: React.CSSProperties = {
 /* ─── Data ─── */
 const reasons = [
     {
-        title: "Direct Access",
-        description: "You speak to Luke Petzer — the developer actually building your system. Not a sales rep, not an account manager. Direct access means faster decisions and no miscommunication.",
+        title: "You Talk To The Builder",
+        description: "You explain the problem once, to the person who is going to solve it. No account manager translating in both directions, no scope getting lost between the person who heard it and the person who builds it. Changes get discussed and priced in the same conversation.",
     },
     {
-        title: "Code Ownership",
-        description: "Every line of code we write belongs to you. The repository is transferred to your account on delivery. No monthly retainer required to access your own system.",
+        title: "The Code Is Yours",
+        description: "On delivery the repository transfers to your account — source code, database, deployment config, all of it. A care plan keeps me maintaining it, but it is optional. If you ever want to hand the system to another developer, you can, and you do not need my permission to do it.",
     },
     {
-        title: "Built to Last",
-        description: "You're not locked into a template that breaks when your business changes. Every system is built for how you actually operate — and built to grow with you.",
+        title: "Built Around Your Workflow",
+        description: "Nothing here is a template with your logo on it. If your pricing is per-client and your reps quote off a printed list, the system does that — not the generic version of that. Your team should not have to be retrained into somebody else's process.",
     },
 ];
 
@@ -72,13 +72,21 @@ export function AboutPageContent() {
                             </div>
 
                             <p className="text-white/65 leading-relaxed text-base max-w-xl">
-                                I don&apos;t run a bloated agency. I build the systems that run your
-                                business &mdash; ordering portals, client platforms, and the automations
-                                that replace manual admin &mdash; end to end, solo. Honours computer
-                                science background, AI-accelerated delivery, and production systems
-                                shipped without a team behind me. When you work with LP Web Studio you
-                                speak directly to the person building your system. No sales reps, no
-                                account managers, no outsourcing.
+                                I build the systems businesses run on &mdash; ordering portals, client
+                                platforms, and the automations that take manual admin off your team.
+                                One person, start to finish. I take the scoping call, write the code,
+                                run the deployment, and pick up the phone when something needs
+                                changing. That is not a caveat I am apologising for: it means the
+                                person who understands your workflow is the same person changing it,
+                                usually in the same week you ask.
+                            </p>
+
+                            <p className="text-white/65 leading-relaxed text-base max-w-xl">
+                                Computer science through to honours, then straight into building
+                                things people actually put work through. The ordering platform on the
+                                Products page is live and taking real orders &mdash; not a concept, not
+                                a mock-up. I am based in Cape Town and work with businesses across
+                                South Africa.
                             </p>
 
                         </div>
@@ -98,15 +106,17 @@ export function AboutPageContent() {
                                 {/* Terminal content */}
                                 <div className="p-6 md:p-8 font-mono text-xs md:text-sm space-y-3 break-words">
                                     <p style={{ color: "#FF4500" }}>$ whoami</p>
-                                    <p className="text-white/80">Luke Petzer</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat role.txt</p>
-                                    <p className="text-white/80">Systems Builder</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat location.txt</p>
-                                    <p className="text-white/80">Cape Town, South Africa</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat stack.txt</p>
-                                    <p className="text-white/80">Ordering portals · Client platforms · Automation</p>
-                                    <p className="text-white/30 text-xs mt-2">$ uptime</p>
-                                    <p style={{ color: "#FF4500" }}>SYSTEMS ONLINE ●</p>
+                                    <p className="text-white/80">Luke Petzer — founder, and the one writing the code</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat what-i-build.txt</p>
+                                    <p className="text-white/80">Ordering portals · Client platforms · Automations</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat who-for.txt</p>
+                                    <p className="text-white/80">Wholesalers, distributors, and service businesses buried in manual admin</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat where.txt</p>
+                                    <p className="text-white/80">Cape Town — clients across South Africa</p>
+                                    <p className="text-white/30 text-xs mt-2">$ cat you-own.txt</p>
+                                    <p className="text-white/80">Source code, database, deployment — transferred to you on delivery</p>
+                                    <p className="text-white/30 text-xs mt-2">$ availability</p>
+                                    <p style={{ color: "#FF4500" }}>TAKING ON NEW PROJECTS ●</p>
                                 </div>
                             </div>
                         </div>
@@ -123,20 +133,24 @@ export function AboutPageContent() {
                         className="font-headline font-black uppercase text-white mb-8"
                         style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)" }}
                     >
-                        THE_PHILOSOPHY
+                        HOW_I_WORK
                     </h2>
 
                     <blockquote className="pl-6 border-l-[3px] border-[#FF4500] mb-8">
                         <p className="text-white text-lg leading-relaxed">
-                            &ldquo;Most agencies sell you a pre-packaged template and charge you a
-                            monthly fee to press &lsquo;update&rsquo;. We build custom software.&rdquo;
+                            &ldquo;A system is only worth building if it removes work. If your team
+                            still has to re-type an order after it arrives, I built the wrong
+                            thing.&rdquo;
                         </p>
                     </blockquote>
 
                     <p className="text-white/70 leading-relaxed max-w-3xl">
-                        I believe in <strong className="text-white">building things properly</strong>.
-                        No templates, no page builders bolted onto a generic theme &mdash; every
-                        system is built for how your business actually operates, and built to last.
+                        So the first conversation is not about features or which framework I use.
+                        It is about <strong className="text-white">where the work actually piles
+                        up</strong> &mdash; who re-types what, who chases which spreadsheet, what
+                        breaks when three orders land at once and two people are on leave. I build
+                        for that, and I leave out the rest. Anything that does not take work off
+                        someone&apos;s desk does not need to exist.
                     </p>
                 </section>
 
@@ -147,7 +161,7 @@ export function AboutPageContent() {
                     SECTION 5 — WHY LP WEB
                 ═══════════════════════════════════════ */}
                 <section className={SECTION_PAD} aria-label="Why LP Web">
-                    <p style={ORANGE_LABEL} className="mb-3">THE CASE FOR WORKING TOGETHER</p>
+                    <p style={ORANGE_LABEL} className="mb-3">WHY WORK WITH ONE PERSON</p>
                     <h2
                         className="font-headline font-black uppercase text-white mb-12"
                         style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)" }}
@@ -196,10 +210,12 @@ export function AboutPageContent() {
                     className="font-headline font-black uppercase text-white leading-none mb-4"
                     style={{ fontSize: "clamp(2.5rem, 6vw, 3.5rem)" }}
                 >
-                    READY TO DEPLOY?
+                    STILL READING?
                 </h2>
-                <p className="text-white/60 text-base mb-8 max-w-md">
-                    One engineer. Start to finish. No account managers.
+                <p className="text-white/60 text-base mb-8 max-w-lg">
+                    Then something in your process has probably outgrown WhatsApp and a
+                    spreadsheet. Give me twenty minutes and I will tell you straight whether
+                    a system is worth building for it.
                 </p>
                 <button
                     onClick={openDrawer}
