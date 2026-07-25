@@ -188,7 +188,8 @@ export function blogPostingSchema(article: ArticleSchemaInput) {
             name: SITE_NAME,
             logo: {
                 "@type": "ImageObject",
-                url: `${SITE_URL}/logo.png`,
+                // /logo.png does not exist — public/ ships logo.svg.
+                url: `${SITE_URL}/logo.svg`,
             },
         },
         mainEntityOfPage: {

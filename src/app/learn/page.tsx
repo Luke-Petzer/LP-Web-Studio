@@ -6,7 +6,8 @@ import { Footer } from "@/components/organisms/Footer";
 import { SubpageHero } from "@/components/organisms/SubpageHero";
 
 export const metadata: Metadata = {
-    title: "Systems & Automation Insights | LP Web Studio",
+    // Bare title — the root layout template appends "| LP Web Studio".
+    title: "Systems & Automation Insights",
     description:
         "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
     alternates: {

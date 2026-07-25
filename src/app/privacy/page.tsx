@@ -3,7 +3,8 @@ import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 
 export const metadata: Metadata = {
-    title: "Privacy Notice | LP Web Studio",
+    // Bare title — the root layout template appends "| LP Web Studio".
+    title: "Privacy Notice",
     description:
         "How LP Web Studio handles contact form data, analytics, and your privacy. Cape Town systems studio — no ad tracking, no third-party data sales.",
     alternates: {

@@ -10,6 +10,25 @@ admin for South African businesses. Founded by Luke Petzer.
 - Custom web applications and business systems
 - Monthly care plans (from R1,950/month)
 
+LP Web Studio does not build standalone marketing websites.
+
+## Products
+- B2B Ordering Platform — branded ordering portal for wholesalers
+  and distributors. Live catalogue, per-client pricing, credit or
+  EFT checkout, admin dashboard, installable on customers' phones.
+  From R12,500 setup + R1,950/month. Optional payments add-on from
+  R6,500 setup + R450/month.
+- lp-os — internal business command centre for clients, projects,
+  and admin. Currently in a limited pilot programme.
+
+## Key pages
+- https://lpwebstudio.co.za/ — systems overview and pricing floor
+- https://lpwebstudio.co.za/products — B2B ordering platform and lp-os
+- https://lpwebstudio.co.za/work — case studies
+- https://lpwebstudio.co.za/about — Luke Petzer, systems builder
+- https://lpwebstudio.co.za/learn — guides on ordering systems and automation
+- https://lpwebstudio.co.za/privacy — privacy notice
+
 ## Location
 Cape Town, South Africa. Serves clients nationally and
 internationally.
@@ -22,7 +41,8 @@ Website: https://lpwebstudio.co.za
 ## Portfolio
 - B2B ordering platform — live in production, replaces WhatsApp
   and spreadsheet order-taking with a role-based self-serve portal
-- Cafe Crave (cafecravecpt.co.za) — hospitality website, 93/100 PageSpeed
+- Cafe Crave (cafecravecpt.co.za) — earlier client engagement,
+  hospitality, still live
 
 ## Optional
 Full sitemap: https://lpwebstudio.co.za/sitemap.xml
