@@ -89,7 +89,7 @@ export function ProductsPageContent() {
             ═══════════════════════════════════════ */}
             <section
                 aria-label="B2B Ordering Platform"
-                className="relative isolate py-24 md:py-32 px-8 md:px-12 bg-slate-dark border-t border-white/5"
+                className="relative isolate mt-14 md:mt-24 py-24 md:py-32 px-8 md:px-12 bg-slate-dark border-t border-white/5"
             >
                 <div className="section-geo-lines" aria-hidden="true" />
 
