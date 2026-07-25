@@ -6,8 +6,8 @@ const cards = [
     },
     {
         label: "02 / The Solution",
-        title: "A centralized, role-based ordering portal built for your exact operational workflow.",
-        body: "Clients get secure logins with custom pricing. They browse a live, synced catalog and place orders through an automated 24/7 self-serve engine.",
+        title: "A centralised, role-based ordering portal built for your exact operational workflow.",
+        body: "Clients get secure logins with custom pricing. They browse a live, synced catalogue and place orders through an automated 24/7 self-serve engine.",
     },
     {
         label: "03 / The Impact",
