@@ -82,8 +82,9 @@ export function AboutPageContent() {
                             </p>
 
                             <p className="text-white/65 leading-relaxed text-base max-w-xl">
-                                Computer science through to honours, then straight into building
-                                things people actually put work through. The ordering platform on the
+                                Formally trained in software development through to honours level,
+                                then straight into building things people actually put work through.
+                                The ordering platform on the
                                 Products page is live and taking real orders &mdash; not a concept, not
                                 a mock-up. I am based in Cape Town and work with businesses across
                                 South Africa.
