@@ -20,7 +20,8 @@ import { homepageFaqs } from "@/lib/faq-data";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-    title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
+    // `absolute` — the root layout template already appends "| LP Web Studio".
+    title: { absolute: "LP Web Studio | Ordering Systems, Client Portals & Business Automation" },
     description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
     openGraph: {
         title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",

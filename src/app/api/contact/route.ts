@@ -21,7 +21,17 @@ const contactSchema = z.object({
         .max(2000, "Message must be under 2000 characters")
         .trim(),
     website: z.string().url().optional().or(z.literal("")),
-    arch: z.enum(["web_app", "ecommerce", "automation", "branding"]).optional(),
+    // Must stay in sync with ARCH_OPTIONS in ContactDrawer.tsx.
+    // `.nullish()` because the drawer posts `arch: null` when no chip is picked.
+    arch: z
+        .enum([
+            "ordering_portal",
+            "client_platform",
+            "automation",
+            "mobile_app",
+            "other",
+        ])
+        .nullish(),
     budget: z.string().max(100).trim().optional(),
 });
 
