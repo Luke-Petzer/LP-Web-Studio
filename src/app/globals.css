@@ -21,7 +21,13 @@
 
     /* ─── Motion ─── */
     --easing: cubic-bezier(0.2, 0, 0.2, 1);
-    --easing-spring: cubic-bezier(0.62, 0.16, 0.13, 1.01);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-press: 120ms;
+    --dur-hover: 200ms;
+    --dur-panel: 250ms;
+    --dur-drawer: 350ms;
   }
 
   html {
@@ -93,7 +99,7 @@
     background-color: #141414;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    transition: box-shadow   0.4s cubic-bezier(0.2, 0, 0.2, 1),
+    transition: box-shadow   0.4s var(--easing),
                 border-color 0.4s ease,
                 background-color 0.4s ease;
   }
