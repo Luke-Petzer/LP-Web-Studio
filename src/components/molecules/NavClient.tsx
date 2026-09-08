@@ -56,7 +56,7 @@ export function NavClient() {
             <header
                 className={[
                     "fixed left-1/2 z-50 -translate-x-1/2",
-                    "transition-[transform,top,width,max-width] duration-panel ease-out",
+                    "transition-[transform,width,max-width] duration-panel ease-out",
                     /* Position: flush top when expanded, top-4 when pill */
                     scrolled ? "top-4" : "top-0",
                     /* Width: full when expanded, pill when scrolled */
@@ -84,8 +84,8 @@ export function NavClient() {
                             height={28}
                             priority
                             className={[
-                                "w-auto invert transition-[height] duration-panel ease-out",
-                                scrolled ? "h-6" : "h-7",
+                                "w-auto h-7 invert origin-left transition-transform duration-panel ease-out",
+                                scrolled ? "scale-[0.857]" : "scale-100",
                             ].join(" ")}
                         />
                     </a>
@@ -126,10 +126,10 @@ export function NavClient() {
                     <button
                         onClick={openDrawer}
                         className={[
-                            "hidden md:inline-flex font-headline font-bold uppercase tracking-widest transition-[font-size,padding,background-color,color] duration-hover border-none cursor-pointer",
+                            "hidden md:inline-flex font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-hover border-none cursor-pointer",
                             scrolled
-                                ? "text-[10px] bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90"
-                                : "btn-primary text-[11px] px-6 py-2.5",
+                                ? "bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90"
+                                : "btn-primary px-6 py-2.5",
                         ].join(" ")}
                     >
                         Book a Discovery Call
