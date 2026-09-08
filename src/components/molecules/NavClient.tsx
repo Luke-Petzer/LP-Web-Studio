@@ -164,52 +164,63 @@ export function NavClient() {
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isOpen}
                     >
-                        <span className={`block h-[2px] w-5 bg-white transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-                        <span className={`block h-[2px] w-5 bg-white transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`} />
-                        <span className={`block h-[2px] w-5 bg-white transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+                        <span className={`block h-[2px] w-5 bg-white transition-transform duration-panel ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+                        <span className={`block h-[2px] w-5 bg-white transition-opacity duration-panel ${isOpen ? "opacity-0" : "opacity-100"}`} />
+                        <span className={`block h-[2px] w-5 bg-white transition-transform duration-panel ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
                     </button>
                 </nav>
             </header>
 
-            {/* Mobile overlay */}
-            {isOpen && (
-                <div className="fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8 overflow-y-auto pb-8">
-                    <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
-                    <nav className="relative flex flex-col gap-8">
-                        {navLinks.map((link) => {
-                            if (link.label === "Contact") {
-                                return (
-                                    <button
-                                        key={link.label}
-                                        onClick={() => { setIsOpen(false); openDrawer(); }}
-                                        className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 bg-transparent border-none cursor-pointer text-left w-full break-words"
-                                        style={{ fontSize: "clamp(1.5rem, 6vw, 2rem)" }}
-                                    >
-                                        {link.label}
-                                    </button>
-                                );
-                            }
+            {/* Mobile overlay — mounted always, so it can leave the way it arrived */}
+            <div
+                aria-hidden={!isOpen}
+                inert={!isOpen}
+                className={[
+                    "fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8 overflow-y-auto pb-8",
+                    isOpen ? "" : "pointer-events-none",
+                    reducedMotion
+                        ? "motion-keep-fade transition-opacity duration-drawer ease-out"
+                        : "transition-transform duration-drawer ease-drawer",
+                    reducedMotion
+                        ? (isOpen ? "opacity-100" : "opacity-0")
+                        : (isOpen ? "translate-y-0" : "translate-y-full"),
+                ].join(" ")}
+            >
+                <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
+                <nav className="relative flex flex-col gap-8">
+                    {navLinks.map((link) => {
+                        if (link.label === "Contact") {
                             return (
-                                <a
+                                <button
                                     key={link.label}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 break-words"
+                                    onClick={() => { setIsOpen(false); openDrawer(); }}
+                                    className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 bg-transparent border-none cursor-pointer text-left w-full break-words pressable"
                                     style={{ fontSize: "clamp(1.5rem, 6vw, 2rem)" }}
                                 >
                                     {link.label}
-                                </a>
+                                </button>
                             );
-                        })}
-                        <button
-                            onClick={() => { setIsOpen(false); openDrawer(); }}
-                            className="btn-primary mt-4 w-full justify-center text-center border-none cursor-pointer"
-                        >
-                            Book a Discovery Call
-                        </button>
-                    </nav>
-                </div>
-            )}
+                        }
+                        return (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                onClick={() => setIsOpen(false)}
+                                className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 break-words"
+                                style={{ fontSize: "clamp(1.5rem, 6vw, 2rem)" }}
+                            >
+                                {link.label}
+                            </a>
+                        );
+                    })}
+                    <button
+                        onClick={() => { setIsOpen(false); openDrawer(); }}
+                        className="btn-primary pressable mt-4 w-full justify-center text-center border-none cursor-pointer"
+                    >
+                        Book a Discovery Call
+                    </button>
+                </nav>
+            </div>
         </>
     );
 }
