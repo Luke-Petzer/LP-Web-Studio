@@ -56,7 +56,7 @@ export function NavClient() {
             <header
                 className={[
                     "fixed left-1/2 z-50 -translate-x-1/2",
-                    "transition-all duration-300 ease-[cubic-bezier(0.2,0,0.2,1)]",
+                    "transition-[transform,top,width,max-width] duration-panel ease-out",
                     /* Position: flush top when expanded, top-4 when pill */
                     scrolled ? "top-4" : "top-0",
                     /* Width: full when expanded, pill when scrolled */
@@ -69,7 +69,7 @@ export function NavClient() {
             >
                 <nav
                     className={[
-                        "flex items-center justify-between transition-all duration-300",
+                        "flex items-center justify-between transition-[background-color,border-color,border-radius,padding] duration-panel ease-out",
                         scrolled
                             ? "bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-3"
                             : "bg-transparent px-8 md:px-12 py-6 md:py-8",
@@ -84,7 +84,7 @@ export function NavClient() {
                             height={28}
                             priority
                             className={[
-                                "w-auto invert transition-all duration-300",
+                                "w-auto invert transition-[height] duration-panel ease-out",
                                 scrolled ? "h-6" : "h-7",
                             ].join(" ")}
                         />
@@ -99,7 +99,7 @@ export function NavClient() {
                                     <button
                                         key={link.label}
                                         onClick={openDrawer}
-                                        className="font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-200 bg-transparent border-none cursor-pointer text-white/50 hover:text-white"
+                                        className="font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-hover bg-transparent border-none cursor-pointer text-white/50 hover:text-white"
                                     >
                                         {link.label}
                                     </button>
@@ -110,7 +110,7 @@ export function NavClient() {
                                     key={link.label}
                                     href={link.href}
                                     className={[
-                                        "font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-200",
+                                        "font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-hover",
                                         isActive
                                             ? "text-white border-b border-white pb-0.5"
                                             : "text-white/50 hover:text-white",
@@ -126,7 +126,7 @@ export function NavClient() {
                     <button
                         onClick={openDrawer}
                         className={[
-                            "hidden md:inline-flex font-headline font-bold uppercase tracking-widest transition-all duration-200 border-none cursor-pointer",
+                            "hidden md:inline-flex font-headline font-bold uppercase tracking-widest transition-[font-size,padding,background-color,color] duration-hover border-none cursor-pointer",
                             scrolled
                                 ? "text-[10px] bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90"
                                 : "btn-primary text-[11px] px-6 py-2.5",
