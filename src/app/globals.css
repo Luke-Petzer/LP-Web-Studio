@@ -21,11 +21,19 @@
 
     /* ─── Motion ─── */
     --easing: cubic-bezier(0.2, 0, 0.2, 1);
-    --easing-spring: cubic-bezier(0.62, 0.16, 0.13, 1.01);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-press: 120ms;
+    --dur-hover: 200ms;
+    --dur-panel: 250ms;
+    --dur-drawer: 350ms;
   }
 
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -79,13 +87,15 @@
     background-color: #141414;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    transition: border-color 0.3s var(--easing),
-                box-shadow    0.3s var(--easing);
+    transition: border-color var(--dur-hover) var(--easing),
+                box-shadow    var(--dur-hover) var(--easing);
   }
 
-  .dark-card:hover {
-    border-color: rgba(255, 255, 255, 0.20);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  @media (hover: hover) and (pointer: fine) {
+    .dark-card:hover {
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
   }
 
   /* ─── Infrastructure Card (hover foreground) ─── */
@@ -93,18 +103,20 @@
     background-color: #141414;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    transition: box-shadow   0.4s cubic-bezier(0.2, 0, 0.2, 1),
-                border-color 0.4s ease,
-                background-color 0.4s ease;
+    transition: box-shadow   var(--dur-hover) var(--easing),
+                border-color var(--dur-hover) var(--easing),
+                background-color var(--dur-hover) var(--easing);
   }
 
-  .infra-card:hover {
-    z-index: 50;
-    background-color: #1a1a1a;
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08),
-                0 20px 60px -10px rgba(0, 0, 0, 0.8),
-                0 0 40px -10px rgba(255, 77, 0, 0.08);
+  @media (hover: hover) and (pointer: fine) {
+    .infra-card:hover {
+      z-index: 50;
+      background-color: #1a1a1a;
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08),
+                  0 20px 60px -10px rgba(0, 0, 0, 0.8),
+                  0 0 40px -10px rgba(255, 77, 0, 0.08);
+    }
   }
 
   /* ─── Pill Tag ─── */
@@ -142,11 +154,12 @@
     text-transform: uppercase;
     border: none;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background var(--dur-hover) ease,
+                transform  var(--dur-press) var(--ease-out);
   }
 
   .btn-primary:hover { background: #e5e5e5; }
-  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:active { transform: scale(0.97); }
 
   /* ─── Ghost Button (bordered on dark) ─── */
   .btn-ghost {
@@ -163,13 +176,15 @@
     text-transform: uppercase;
     border: 1px solid rgba(255, 255, 255, 0.20);
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform  var(--dur-press) var(--ease-out);
   }
 
   .btn-ghost:hover {
     background: #ffffff;
     color: #000000;
   }
+  .btn-ghost:active { transform: scale(0.97); }
 
   /* ─── Orange CTA Button (signature — slight brighten + brand glow) ─── */
   .btn-cta-orange {
@@ -198,16 +213,18 @@
   .btn-cta-orange:active { transform: scale(0.98); }
 
   /* ─── Service-card panel ─── */
-  .card-panel:hover {
-    filter: brightness(1.06);
+  .card-panel {
+    transition: filter var(--dur-hover) ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card-panel:hover {
+      filter: brightness(1.06);
+    }
   }
 
   /* Row hover/focus expansion — transition only; columns driven by inline style via React state. */
   .panel-row {
-    transition: grid-template-columns 450ms ease-in-out;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .panel-row { transition-duration: 0ms; }
+    transition: grid-template-columns var(--dur-panel) var(--ease-in-out);
   }
 
   /* Column-aware seams: top on mobile, left on desktop, both on 2-col tablet. */
@@ -321,7 +338,14 @@
 
 @layer utilities {
   @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    /* comprehension-aiding fades survive: opacity/colour only, short */
+    .motion-keep-fade { transition-duration: var(--dur-hover) !important; transition-property: opacity, color, background-color, border-color !important; }
   }
 
   /* ─── Display Heading Utility ─── */
@@ -333,3 +357,16 @@
     line-height: 0.85;
   }
 }
+
+/* ─── Press feedback (shared) ───
+   Deliberately outside @layer: Tailwind's cascade layers put ALL @layer
+   content below unlayered CSS, so this always wins over `transition-colors`
+   (or any other Tailwind transition utility) applied to the same element —
+   regardless of source order. Must stay a COMPLETE transition-property list
+   so consumers can drop their own transition utilities entirely. */
+.pressable {
+  transition-property: transform, color, background-color, border-color, box-shadow, opacity;
+  transition-duration: var(--dur-press), var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-hover);
+  transition-timing-function: var(--ease-out), ease, ease, ease, ease, ease;
+}
+.pressable:active { transform: scale(0.97); }
