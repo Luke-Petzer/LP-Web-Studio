@@ -91,7 +91,7 @@ export function ArchitecturalMethod() {
 
                             {/* Corner icon — fades in on hover */}
                             <span
-                                className="material-symbols-outlined absolute bottom-10 right-10 text-6xl text-white opacity-10 group-hover:opacity-40 transition-opacity duration-500"
+                                className="material-symbols-outlined absolute bottom-10 right-10 text-6xl text-white opacity-10 group-hover:opacity-40 transition-opacity duration-hover"
                             >
                                 {s.icon}
                             </span>

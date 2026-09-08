@@ -27,13 +27,17 @@ export function FAQSection() {
                             <button
                                 onClick={() => toggle(i)}
                                 aria-expanded={openIndex === i}
-                                className="w-full flex items-center justify-between gap-6 py-8 px-2 text-left group cursor-pointer hover:bg-white/5 transition-colors duration-200"
+                                className="pressable w-full flex items-center justify-between gap-6 py-8 px-2 text-left group cursor-pointer hover:bg-white/5"
                             >
                                 <h3 className="font-headline font-medium text-white/80 uppercase tracking-tight text-base md:text-lg">
                                     {faq.question}
                                 </h3>
-                                <span className="text-white/40 group-hover:text-white transition-colors duration-200 shrink-0 text-2xl font-normal leading-none w-6 text-center">
-                                    {openIndex === i ? "−" : "+"}
+                                <span
+                                    className={`text-white/40 group-hover:text-white transition-[color,transform] duration-panel ease-out shrink-0 text-2xl font-normal leading-none w-6 text-center ${
+                                        openIndex === i ? "rotate-45" : ""
+                                    }`}
+                                >
+                                    +
                                 </span>
                             </button>
 
