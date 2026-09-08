@@ -186,14 +186,6 @@
   }
   .btn-ghost:active { transform: scale(0.97); }
 
-  /* ─── Press feedback (shared) ─── */
-  .pressable {
-    transition: transform var(--dur-press) var(--ease-out);
-  }
-  .pressable:active {
-    transform: scale(0.97);
-  }
-
   /* ─── Orange CTA Button (signature — slight brighten + brand glow) ─── */
   .btn-cta-orange {
     display: inline-flex;
@@ -354,7 +346,6 @@
     }
     /* comprehension-aiding fades survive: opacity/colour only, short */
     .motion-keep-fade { transition-duration: var(--dur-hover) !important; transition-property: opacity, color, background-color, border-color !important; }
-    .panel-row { transition-duration: 0ms; }
   }
 
   /* ─── Display Heading Utility ─── */
@@ -366,3 +357,16 @@
     line-height: 0.85;
   }
 }
+
+/* ─── Press feedback (shared) ───
+   Deliberately outside @layer: Tailwind's cascade layers put ALL @layer
+   content below unlayered CSS, so this always wins over `transition-colors`
+   (or any other Tailwind transition utility) applied to the same element —
+   regardless of source order. Must stay a COMPLETE transition-property list
+   so consumers can drop their own transition utilities entirely. */
+.pressable {
+  transition-property: transform, color, background-color, border-color, box-shadow, opacity;
+  transition-duration: var(--dur-press), var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-hover);
+  transition-timing-function: var(--ease-out), ease, ease, ease, ease, ease;
+}
+.pressable:active { transform: scale(0.97); }
