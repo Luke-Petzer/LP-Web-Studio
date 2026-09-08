@@ -87,13 +87,15 @@
     background-color: #141414;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    transition: border-color 0.3s var(--easing),
-                box-shadow    0.3s var(--easing);
+    transition: border-color var(--dur-hover) var(--easing),
+                box-shadow    var(--dur-hover) var(--easing);
   }
 
-  .dark-card:hover {
-    border-color: rgba(255, 255, 255, 0.20);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  @media (hover: hover) and (pointer: fine) {
+    .dark-card:hover {
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
   }
 
   /* ─── Infrastructure Card (hover foreground) ─── */
@@ -101,18 +103,20 @@
     background-color: #141414;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    transition: box-shadow   0.4s var(--easing),
-                border-color 0.4s ease,
-                background-color 0.4s ease;
+    transition: box-shadow   var(--dur-hover) var(--easing),
+                border-color var(--dur-hover) var(--easing),
+                background-color var(--dur-hover) var(--easing);
   }
 
-  .infra-card:hover {
-    z-index: 50;
-    background-color: #1a1a1a;
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08),
-                0 20px 60px -10px rgba(0, 0, 0, 0.8),
-                0 0 40px -10px rgba(255, 77, 0, 0.08);
+  @media (hover: hover) and (pointer: fine) {
+    .infra-card:hover {
+      z-index: 50;
+      background-color: #1a1a1a;
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08),
+                  0 20px 60px -10px rgba(0, 0, 0, 0.8),
+                  0 0 40px -10px rgba(255, 77, 0, 0.08);
+    }
   }
 
   /* ─── Pill Tag ─── */
@@ -217,13 +221,18 @@
   .btn-cta-orange:active { transform: scale(0.98); }
 
   /* ─── Service-card panel ─── */
-  .card-panel:hover {
-    filter: brightness(1.06);
+  .card-panel {
+    transition: filter var(--dur-hover) ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card-panel:hover {
+      filter: brightness(1.06);
+    }
   }
 
   /* Row hover/focus expansion — transition only; columns driven by inline style via React state. */
   .panel-row {
-    transition: grid-template-columns 450ms ease-in-out;
+    transition: grid-template-columns var(--dur-panel) var(--ease-in-out);
   }
 
   /* Column-aware seams: top on mobile, left on desktop, both on 2-col tablet. */
