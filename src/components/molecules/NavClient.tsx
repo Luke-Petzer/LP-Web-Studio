@@ -147,9 +147,13 @@ export function NavClient() {
                     <button
                         onClick={openDrawer}
                         className={[
-                            "hidden md:inline-flex font-headline text-[11px] font-bold uppercase tracking-widest transition-colors duration-hover border-none cursor-pointer",
+                            "hidden md:inline-flex font-headline text-[11px] font-bold uppercase tracking-widest border-none cursor-pointer",
                             scrolled
-                                ? "bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90"
+                                /* transition-colors lives in the pill branch only: on the
+                                   expanded branch .btn-primary owns the transition list
+                                   (background + the press transform), and a utility here
+                                   would out-layer it and kill the press. */
+                                ? "bg-white text-black px-4 py-1.5 rounded-full hover:bg-white/90 transition-colors duration-hover"
                                 : "btn-primary px-6 py-2.5",
                         ].join(" ")}
                     >
