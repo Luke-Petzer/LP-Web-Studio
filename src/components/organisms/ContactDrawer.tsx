@@ -254,7 +254,6 @@ export function ContactDrawer() {
                             padding: "12px 14px",
                             textAlign: "left",
                             cursor: "pointer",
-                            transition: "background-color 150ms ease, border-color 150ms ease",
                           }}
                         >
                           <p style={{ color: active ? "#000" : "rgba(255,255,255,0.8)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", fontFamily: "var(--font-space-grotesk)" }}>
