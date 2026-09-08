@@ -15,7 +15,6 @@ const navLinks = [
 
 export function NavClient() {
     const pathname   = usePathname();
-    const isHomepage = pathname === "/";
     const { openDrawer } = useDrawer();
 
     const [scrolled,  setScrolled]  = useState(false); // pill mode
@@ -215,7 +214,7 @@ export function NavClient() {
                     })}
                     <button
                         onClick={() => { setIsOpen(false); openDrawer(); }}
-                        className="btn-primary pressable mt-4 w-full justify-center text-center border-none cursor-pointer"
+                        className="btn-primary mt-4 w-full justify-center text-center border-none cursor-pointer"
                     >
                         Book a Discovery Call
                     </button>
