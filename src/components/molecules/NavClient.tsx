@@ -23,27 +23,50 @@ export function NavClient() {
     const [isOpen,    setIsOpen]    = useState(false);
 
     const lastY = useRef(0);
+    const frame = useRef<number | null>(null);
+
+    /* Reduced motion: read once, follow changes (same pattern as ContactDrawer) */
+    const [reducedMotion, setReducedMotion] = useState(false);
+    useEffect(() => {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setReducedMotion(mq.matches);
+        const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+    }, []);
 
     useEffect(() => {
+        /* One pending frame at a time — scroll events are far denser than paints */
         const handler = () => {
-            const y = window.scrollY;
-            const delta = y - lastY.current;
+            if (frame.current !== null) return;
+            frame.current = requestAnimationFrame(() => {
+                frame.current = null;
 
-            // Switch to pill after 60px
-            setScrolled(y > 60);
+                const y = window.scrollY;
+                const delta = y - lastY.current;
 
-            // Hide when scrolling down (delta > 4), show when scrolling up
-            if (delta > 4 && y > 120) {
-                setVisible(false);
-            } else if (delta < -4) {
-                setVisible(true);
-            }
+                // Switch to pill after 60px
+                setScrolled(y > 60);
 
-            lastY.current = y;
+                // Hide when scrolling down (delta > 4), show when scrolling up
+                if (delta > 4 && y > 120) {
+                    setVisible(false);
+                } else if (delta < -4) {
+                    setVisible(true);
+                }
+
+                lastY.current = y;
+            });
         };
 
         window.addEventListener("scroll", handler, { passive: true });
-        return () => window.removeEventListener("scroll", handler);
+        return () => {
+            window.removeEventListener("scroll", handler);
+            if (frame.current !== null) {
+                cancelAnimationFrame(frame.current);
+                frame.current = null;
+            }
+        };
     }, []);
 
     useEffect(() => {
@@ -55,16 +78,15 @@ export function NavClient() {
         <>
             <header
                 className={[
-                    "fixed left-1/2 z-50 -translate-x-1/2",
+                    "fixed left-1/2 z-50",
                     "transition-[transform,width,max-width] duration-panel ease-out",
                     /* Position: flush top when expanded, top-4 when pill */
                     scrolled ? "top-4" : "top-0",
                     /* Width: full when expanded, pill when scrolled */
                     scrolled ? "w-[calc(100%-2rem)] max-w-3xl" : "w-full max-w-full",
-                    /* Hide/show via translateY */
-                    visible ? "translate-y-0" : "-translate-y-[120%]",
                 ].join(" ")}
-                style={{ transform: `translateX(-50%) translateY(${visible ? "0" : "-120%"})` }}
+                /* Hide/show via translateY — pinned under reduced motion */
+                style={{ transform: `translateX(-50%) translateY(${visible || reducedMotion ? "0" : "-120%"})` }}
                 aria-label="Main navigation"
             >
                 <nav
