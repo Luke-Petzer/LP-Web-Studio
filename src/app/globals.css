@@ -30,8 +30,10 @@
     --dur-drawer: 350ms;
   }
 
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -212,9 +214,6 @@
   .panel-row {
     transition: grid-template-columns 450ms ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .panel-row { transition-duration: 0ms; }
-  }
 
   /* Column-aware seams: top on mobile, left on desktop, both on 2-col tablet. */
   .card-panel:not(:first-child) {
@@ -327,7 +326,15 @@
 
 @layer utilities {
   @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    /* comprehension-aiding fades survive: opacity/colour only, short */
+    .motion-keep-fade { transition-duration: var(--dur-hover) !important; transition-property: opacity, color, background-color, border-color !important; }
+    .panel-row { transition-duration: 0ms; }
   }
 
   /* ─── Display Heading Utility ─── */
