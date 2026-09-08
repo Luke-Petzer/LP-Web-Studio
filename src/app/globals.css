@@ -150,11 +150,12 @@
     text-transform: uppercase;
     border: none;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background var(--dur-hover) ease,
+                transform  var(--dur-press) var(--ease-out);
   }
 
   .btn-primary:hover { background: #e5e5e5; }
-  .btn-primary:active { transform: scale(0.98); }
+  .btn-primary:active { transform: scale(0.97); }
 
   /* ─── Ghost Button (bordered on dark) ─── */
   .btn-ghost {
@@ -171,12 +172,22 @@
     text-transform: uppercase;
     border: 1px solid rgba(255, 255, 255, 0.20);
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform  var(--dur-press) var(--ease-out);
   }
 
   .btn-ghost:hover {
     background: #ffffff;
     color: #000000;
+  }
+  .btn-ghost:active { transform: scale(0.97); }
+
+  /* ─── Press feedback (shared) ─── */
+  .pressable {
+    transition: transform var(--dur-press) var(--ease-out);
+  }
+  .pressable:active {
+    transform: scale(0.97);
   }
 
   /* ─── Orange CTA Button (signature — slight brighten + brand glow) ─── */
