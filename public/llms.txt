@@ -10,7 +10,8 @@ admin for South African businesses. Founded by Luke Petzer.
 - Custom web applications and business systems
 - Monthly care plans (from R1,950/month)
 
-LP Web Studio does not build standalone marketing websites.
+LP Web Studio does not build standalone marketing websites or run SEO
+retainers.
 
 ## Products
 - B2B Ordering Platform — branded ordering portal for wholesalers
@@ -22,12 +23,12 @@ LP Web Studio does not build standalone marketing websites.
   and admin. Currently in a limited pilot programme.
 
 ## Key pages
-- https://lpwebstudio.co.za/ — systems overview and pricing floor
-- https://lpwebstudio.co.za/products — B2B ordering platform and lp-os
-- https://lpwebstudio.co.za/work — case studies
-- https://lpwebstudio.co.za/about — Luke Petzer, systems builder
-- https://lpwebstudio.co.za/learn — guides on ordering systems and automation
-- https://lpwebstudio.co.za/privacy — privacy notice
+- https://www.lpwebstudio.co.za/ — systems overview and pricing floor
+- https://www.lpwebstudio.co.za/products — B2B ordering platform and lp-os
+- https://www.lpwebstudio.co.za/work — case studies
+- https://www.lpwebstudio.co.za/about — Luke Petzer, systems builder
+- https://www.lpwebstudio.co.za/learn — guides on ordering systems and automation
+- https://www.lpwebstudio.co.za/privacy — privacy notice
 
 ## Location
 Cape Town, South Africa. Serves clients nationally and
@@ -36,13 +37,13 @@ internationally.
 ## Contact
 WhatsApp: +27673852286
 Email: contact@lpwebstudio.co.za
-Website: https://lpwebstudio.co.za
+Website: https://www.lpwebstudio.co.za
 
 ## Portfolio
 - B2B ordering platform — live in production, replaces WhatsApp
   and spreadsheet order-taking with a role-based self-serve portal
-- Cafe Crave (cafecravecpt.co.za) — earlier client engagement,
-  hospitality, still live
+- Cafe Crave (cafecravecpt.co.za) — hospitality website, a narrow
+  exception to current work, kept on an ongoing care plan
 
 ## Optional
-Full sitemap: https://lpwebstudio.co.za/sitemap.xml
+Full sitemap: https://www.lpwebstudio.co.za/sitemap.xml

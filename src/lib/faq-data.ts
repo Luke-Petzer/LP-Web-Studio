@@ -30,6 +30,10 @@ export const homepageFaqs: Faq[] = [
         answer: "Any business drowning in manual admin — wholesalers and distributors taking orders over WhatsApp, trade and hospitality businesses juggling spreadsheets, and B2B companies that need a client portal instead of email chains.",
     },
     {
+        question: "Do you build marketing websites or offer SEO services?",
+        answer: "No. We build custom software and internal systems from R35,000, a white-label ordering platform, and the care plans that keep them running after launch. We don't build template marketing websites or run SEO retainers — if that's what you're after, we're not the right fit, and we'd rather say so upfront than take the work.",
+    },
+    {
         question: "Do you work with businesses outside Cape Town?",
         answer: "Yes. We work with businesses across South Africa and internationally. Discovery calls are online and projects are delivered remotely.",
     },

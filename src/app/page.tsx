@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
         description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
+        images: ["/og-image.png"],
     },
 };
 
