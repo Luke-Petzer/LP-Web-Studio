@@ -3,16 +3,17 @@ import { WorkPageContent } from "@/components/organisms/WorkPageContent";
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
     title: "Case Studies | Custom Ordering Systems & Client Platforms",
     description:
         "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
     alternates: {
-        canonical: "https://lpwebstudio.co.za/work",
+        canonical: `${SITE_URL}/work`,
     },
     openGraph: {
-        url: "https://lpwebstudio.co.za/work",
+        url: `${SITE_URL}/work`,
         title: "Case Studies | Custom Ordering Systems & Client Platforms",
         description:
             "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",

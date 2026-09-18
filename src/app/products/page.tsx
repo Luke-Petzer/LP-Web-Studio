@@ -3,16 +3,17 @@ import { ProductsPageContent } from "@/components/organisms/ProductsPageContent"
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
     title: "Products | B2B Ordering Platform & lp-os",
     description:
         "The B2B ordering platform that replaces WhatsApp order chaos with a self-serve portal, and lp-os — the business command centre LP Web Studio runs on. See a live demo and current pricing.",
     alternates: {
-        canonical: "https://lpwebstudio.co.za/products",
+        canonical: `${SITE_URL}/products`,
     },
     openGraph: {
-        url: "https://lpwebstudio.co.za/products",
+        url: `${SITE_URL}/products`,
         title: "Products | B2B Ordering Platform & lp-os",
         description:
             "The B2B ordering platform that replaces WhatsApp order chaos with a self-serve portal, and lp-os — the business command centre LP Web Studio runs on.",

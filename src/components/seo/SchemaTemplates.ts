@@ -1,4 +1,5 @@
-const SITE_URL = "https://lpwebstudio.co.za";
+import { SITE_URL } from "@/lib/site";
+
 const SITE_NAME = "LP Web Studio";
 
 export function localBusinessSchema() {

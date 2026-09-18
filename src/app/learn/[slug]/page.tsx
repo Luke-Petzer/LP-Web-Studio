@@ -10,6 +10,7 @@ import {
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 import { SubpageHero } from "@/components/organisms/SubpageHero";
+import { SITE_URL } from "@/lib/site";
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -29,13 +30,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: article.title,
         description: article.description,
         alternates: {
-            canonical: `https://lpwebstudio.co.za/learn/${slug}`,
+            canonical: `${SITE_URL}/learn/${slug}`,
         },
         openGraph: {
             title: article.title,
             description: article.description,
             type: "article",
-            url: `https://lpwebstudio.co.za/learn/${slug}`,
+            url: `${SITE_URL}/learn/${slug}`,
             publishedTime: article.date,
         },
     };
@@ -48,9 +49,9 @@ export default async function LearnArticlePage({ params }: PageProps) {
     if (!article) notFound();
 
     const breadcrumbs = [
-        { name: "Home", url: "https://www.lpwebstudio.co.za" },
-        { name: "Learn", url: "https://www.lpwebstudio.co.za/learn" },
-        { name: article.title, url: `https://www.lpwebstudio.co.za/learn/${slug}` },
+        { name: "Home", url: SITE_URL },
+        { name: "Learn", url: `${SITE_URL}/learn` },
+        { name: article.title, url: `${SITE_URL}/learn/${slug}` },
     ];
 
     return (

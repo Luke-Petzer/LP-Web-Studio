@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
     // Bare title — the root layout template appends "| LP Web Studio".
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
     description:
         "How LP Web Studio handles contact form data, analytics, and your privacy. Cape Town systems studio — no ad tracking, no third-party data sales.",
     alternates: {
-        canonical: "https://lpwebstudio.co.za/privacy",
+        canonical: `${SITE_URL}/privacy`,
     },
     openGraph: {
-        url: "https://lpwebstudio.co.za/privacy",
+        url: `${SITE_URL}/privacy`,
         title: "Privacy Notice | LP Web Studio",
         description:
             "How LP Web Studio handles contact form data, analytics, and your privacy.",
