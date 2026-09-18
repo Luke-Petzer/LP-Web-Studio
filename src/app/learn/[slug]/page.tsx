@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getArticle, getAllSlugs } from "@/lib/knowledge";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
-    qaPageSchema,
+    faqPageSchema,
     breadcrumbSchema,
     blogPostingSchema,
 } from "@/components/seo/SchemaTemplates";
@@ -56,7 +56,7 @@ export default async function LearnArticlePage({ params }: PageProps) {
 
     return (
         <>
-            <JsonLd data={qaPageSchema(article.faq)} />
+            <JsonLd data={faqPageSchema(article.faq)} />
             <JsonLd data={breadcrumbSchema(breadcrumbs)} />
             <JsonLd data={blogPostingSchema({ ...article, slug })} />
 

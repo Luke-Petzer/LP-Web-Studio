@@ -22,7 +22,7 @@ export function localBusinessSchema() {
             { "@type": "City", name: "Cape Town" },
             { "@type": "Country", name: "South Africa" },
         ],
-        priceRange: "R35000+",
+        priceRange: "R35000-R100000",
         knowsAbout: [
             "Custom ordering systems",
             "B2B client portals",
