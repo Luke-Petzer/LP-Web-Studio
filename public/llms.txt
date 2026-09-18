@@ -42,8 +42,8 @@ Website: https://www.lpwebstudio.co.za
 ## Portfolio
 - B2B ordering platform — live in production, replaces WhatsApp
   and spreadsheet order-taking with a role-based self-serve portal
-- Cafe Crave (cafecravecpt.co.za) — earlier client engagement,
-  hospitality, still live
+- Cafe Crave (cafecravecpt.co.za) — hospitality website, a narrow
+  exception to current work, kept on an ongoing care plan
 
 ## Optional
 Full sitemap: https://www.lpwebstudio.co.za/sitemap.xml

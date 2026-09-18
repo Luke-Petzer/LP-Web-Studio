@@ -25,11 +25,9 @@ const cafeCraveSchema = {
     "@type": "CreativeWork",
     name: "Cafe Crave Website",
     description:
-        "Custom React and Next.js website built for Cafe Crave, a Cape Town specialty coffee shop. Features live Google Reviews integration, mobile-first design, and a 93/100 PageSpeed score.",
+        "Custom React and Next.js hospitality website built for Cafe Crave, a Cape Town specialty coffee shop, with live Google Reviews integration and a mobile-first design — a narrow exception to LP Web Studio's current work, kept on an ongoing care plan.",
     url: "https://cafecravecpt.co.za",
     creator: { "@type": "Organization", name: "LP Web Studio" },
-    keywords:
-        "restaurant website Cape Town, cafe website, Google Reviews integration",
 };
 
 export default function WorkPage() {
