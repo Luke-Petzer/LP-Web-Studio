@@ -10,7 +10,8 @@ admin for South African businesses. Founded by Luke Petzer.
 - Custom web applications and business systems
 - Monthly care plans (from R1,950/month)
 
-LP Web Studio does not build standalone marketing websites.
+LP Web Studio does not build standalone marketing websites or run SEO
+retainers.
 
 ## Products
 - B2B Ordering Platform — branded ordering portal for wholesalers
