@@ -15,7 +15,7 @@ const cafeCrave: ProjectSectionProps = {
   score: 93,
   descriptionHeading: "THE_NARROW_EXCEPTION",
   descriptionBody:
-    "Cafe Crave is a hospitality website, not a systems build — the one exception to how LP Web Studio works today. We rebuilt it on React and Next.js with live Google Reviews integration, a mobile-first layout, and a reservation flow, then moved it onto the same ongoing care plan every current build exits into. It isn't a preview of what we'd build you now — for custom systems and the ordering platform, see /products.",
+    "Cafe Crave is a hospitality website, not a systems build — the one exception to how LP Web Studio works today. We rebuilt it in React with live Google Reviews integration, a mobile-first layout and a menu the owner never has to touch, then moved it onto the same ongoing care plan every current build exits into. It isn't a preview of what we'd build you now — for custom systems and the ordering platform, see /products.",
   videoSrc: "/videos/CafeCrave.mp4",
   posterSrc: "/cafe-crave.webp",
   images: ["/cafe-crave-menu.jpg", "/cafe-crave-vinyl.jpg"],
