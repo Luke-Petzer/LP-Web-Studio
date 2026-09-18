@@ -19,6 +19,7 @@ export const metadata: Metadata = {
         title: "Systems & Automation Insights | LP Web Studio",
         description:
             "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
+        images: ["/og-image.png"],
     },
 };
 

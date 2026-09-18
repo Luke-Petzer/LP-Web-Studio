@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             type: "article",
             url: `${SITE_URL}/learn/${slug}`,
             publishedTime: article.date,
+            images: ["/og-image.png"],
         },
     };
 }

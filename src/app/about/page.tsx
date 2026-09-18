@@ -19,6 +19,7 @@ export const metadata: Metadata = {
         title: "About | Luke Petzer, Systems Builder — Cape Town",
         description:
             "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses.",
+        images: ["/og-image.png"],
     },
 };
 

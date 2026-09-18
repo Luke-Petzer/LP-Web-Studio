@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         title: "Case Studies | Custom Ordering Systems & Client Platforms",
         description:
             "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
+        images: ["/og-image.png"],
     },
 };
 

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         title: "Products | B2B Ordering Platform & lp-os",
         description:
             "The B2B ordering platform that replaces WhatsApp order chaos with a self-serve portal, and lp-os — the business command centre LP Web Studio runs on.",
+        images: ["/og-image.png"],
     },
 };
 

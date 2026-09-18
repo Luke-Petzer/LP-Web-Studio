@@ -16,6 +16,7 @@ export const metadata: Metadata = {
         title: "Privacy Notice | LP Web Studio",
         description:
             "How LP Web Studio handles contact form data, analytics, and your privacy.",
+        images: ["/og-image.png"],
     },
 };
 
