@@ -245,7 +245,6 @@ export function CoreInfrastructure() {
                         style={{
                             background: card.bg,
                             color: "#ffffff",
-                            transition: "filter 500ms ease-in-out",
                         }}
                     >
                         <div className="flex flex-col h-full p-8 lg:p-10">

@@ -1,0 +1,47 @@
+# playwright: /Users/lukepetzer/.npm/_npx/e41f203b7505f1fb/node_modules/playwright/index.js
+# feel-home computed-style probe
+# target: http://localhost:3101
+# 2026-09-08T16:44:54.720Z
+
+## desktop 1440x900, motion allowed
+FAIL  .btn-primary transition-property includes "transform"
+      expected: a list containing "transform"
+      actual:   all
+FAIL  .btn-primary transition-duration includes "0.12s"
+      expected: a list containing "0.12s" (--dur-press)
+      actual:   0.2s
+FAIL  .btn-ghost transition-property includes "transform"
+      expected: a list containing "transform"
+      actual:   background, color
+FAIL  .btn-ghost transition-duration includes "0.12s"
+      expected: a list containing "0.12s" (--dur-press)
+      actual:   0.2s, 0.2s
+FAIL  .panel-row transition-duration === "0.25s"
+      expected: "0.25s" (--dur-panel)
+      actual:   0.45s
+FAIL  header transition-property contains no "all" and no "top"
+      expected: an explicit property list without "all" or "top"
+      actual:   all  (position: fixed)
+FAIL  .pressable transition-property starts with "transform"
+      expected: a list whose first entry is "transform"
+      actual:   element not found (no .pressable in the DOM)
+
+## desktop 1440x900, prefers-reduced-motion: reduce
+FAIL  .panel-row transition-duration is near-zero under reduce
+      expected: 0.01ms | 0.00001s | 1e-05s
+      actual:   0s
+FAIL  .animate-pulse animation-iteration-count === "1" under reduce
+      expected: "1" (the pulse must stop, not just run fast)
+      actual:   infinite (duration 1e-05s)
+FAIL  documentElement scroll-behavior !== "smooth" under reduce
+      expected: "auto"
+      actual:   smooth
+
+## touch context 375x812 (hasTouch, isMobile) — hover gating
+FAIL  .dark-card background/border/shadow unchanged after hover() on touch
+      expected: identical values (hover behind @media (hover: hover) and (pointer: fine))
+      actual:   backgroundColor: rgb(20, 20, 20) -> rgb(20, 20, 20)
+                borderTopColor: rgba(255, 255, 255, 0.05) -> rgba(255, 255, 255, 0.2)
+                boxShadow: none -> rgba(0, 0, 0, 0.7) 0px 25px 50px -12px
+
+RESULT: 11 assertion(s) FAILED

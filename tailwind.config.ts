@@ -6,6 +6,9 @@ const config: Config = {
     "./src/app/**/*.{ts,tsx}",
     "./src/components/**/*.{ts,tsx}",
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       /* ─── Color Tokens ─── */
@@ -94,18 +97,27 @@ const config: Config = {
 
       /* ─── Animations ─── */
       keyframes: {
-        fadeIn: {
-          "0%":   { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
         pulse: {
           "0%, 100%": { opacity: "1" },
           "50%":      { opacity: "0.4" },
         },
       },
       animation: {
-        "fade-in": "fadeIn 0.6s ease-out forwards",
-        pulse:     "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite",
+        pulse: "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite",
+      },
+
+      /* ─── Motion Tokens ─── */
+      transitionTimingFunction: {
+        out: "var(--ease-out)",
+        "in-out": "var(--ease-in-out)",
+        drawer: "var(--ease-drawer)",
+        house: "var(--easing)",
+      },
+      transitionDuration: {
+        press: "var(--dur-press)",
+        hover: "var(--dur-hover)",
+        panel: "var(--dur-panel)",
+        drawer: "var(--dur-drawer)",
       },
     },
   },

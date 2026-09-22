@@ -15,6 +15,10 @@ const ARCH_OPTIONS = [
 
 type ArchId = typeof ARCH_OPTIONS[number]["id"];
 
+// Matches --dur-drawer — keeps the post-close reset in sync with the panel's
+// own transition instead of drifting from it (previously a hand-typed 400).
+const DRAWER_MS = 350;
+
 const FIELD_STYLE: React.CSSProperties = {
   background: "transparent",
   border: "none",
@@ -133,15 +137,21 @@ export function ContactDrawer() {
 
   function handleClose() {
     closeDrawer();
-    // Reset after animation completes
-    setTimeout(() => {
+    const reset = () => {
       setSuccess(false);
       setError(null);
       setName(""); setEmail(""); setBudget(""); setMessage(""); setArch(null);
-    }, 400);
+    };
+    if (reducedMotion) {
+      // No transition is playing, so there is nothing to wait out.
+      reset();
+      return;
+    }
+    // Reset after animation completes
+    setTimeout(reset, DRAWER_MS);
   }
 
-  const transition = reducedMotion ? "none" : "transform 0.35s cubic-bezier(0.16,1,0.3,1)";
+  const transition = reducedMotion ? "none" : "transform var(--dur-drawer) var(--ease-drawer)";
 
   return (
     <>
@@ -149,6 +159,7 @@ export function ContactDrawer() {
       <div
         onClick={handleClose}
         aria-hidden="true"
+        className="motion-keep-fade"
         style={{
           position: "fixed",
           inset: 0,
@@ -157,7 +168,7 @@ export function ContactDrawer() {
           backdropFilter: "blur(4px)",
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? "auto" : "none",
-          transition: reducedMotion ? "none" : "opacity 0.3s ease",
+          transition: reducedMotion ? "none" : "opacity var(--dur-drawer) var(--ease-out)",
         }}
       />
 
@@ -216,6 +227,7 @@ export function ContactDrawer() {
               <button
                 onClick={handleClose}
                 aria-label="Close contact drawer"
+                className="pressable"
                 style={{ color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "12px", margin: "-8px" }}
               >
                 <X style={{ width: "20px", height: "20px" }} />
@@ -255,6 +267,7 @@ export function ContactDrawer() {
                           key={opt.id}
                           type="button"
                           onClick={() => setArch(opt.id)}
+                          className="pressable"
                           style={{
                             background: active ? "#fff" : "transparent",
                             border: active ? "1px solid #fff" : "1px solid rgba(255,255,255,0.12)",
@@ -262,7 +275,6 @@ export function ContactDrawer() {
                             padding: "12px 14px",
                             textAlign: "left",
                             cursor: "pointer",
-                            transition: "all 0.15s ease",
                           }}
                         >
                           <p style={{ color: active ? "#000" : "rgba(255,255,255,0.8)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", fontFamily: "var(--font-space-grotesk)" }}>

@@ -15,7 +15,7 @@ export function FounderSection() {
                             src="/luke-petzer.jpg"
                             alt="Luke Petzer — LP Web Studio"
                             fill
-                            className="object-cover grayscale brightness-75 contrast-125 transition-transform duration-700 group-hover:scale-105"
+                            className="object-cover grayscale brightness-75 contrast-125 transition-transform duration-hover ease group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         {/* Bottom fade */}
