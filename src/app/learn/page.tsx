@@ -4,6 +4,7 @@ import { getAllArticles } from "@/lib/knowledge";
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 import { SubpageHero } from "@/components/organisms/SubpageHero";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
     // Bare title — the root layout template appends "| LP Web Studio".
@@ -11,13 +12,14 @@ export const metadata: Metadata = {
     description:
         "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
     alternates: {
-        canonical: "https://lpwebstudio.co.za/learn",
+        canonical: `${SITE_URL}/learn`,
     },
     openGraph: {
-        url: "https://lpwebstudio.co.za/learn",
+        url: `${SITE_URL}/learn`,
         title: "Systems & Automation Insights | LP Web Studio",
         description:
             "Practical guides on ordering systems, business automation, and replacing manual admin — for Cape Town and South African businesses.",
+        images: ["/og-image.png"],
     },
 };
 

@@ -38,7 +38,7 @@ export function ContactDrawer() {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError]     = useState(false);
+  const [error, setError]     = useState<string | null>(null);
 
   const [reducedMotion, setReducedMotion] = useState(false);
   useEffect(() => {
@@ -91,23 +91,44 @@ export function ContactDrawer() {
     };
   }, [isOpen, closeDrawer]);
 
+  const GENERIC_ERROR =
+    "Something went wrong. Please try again or reach us directly below.";
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSending(true);
-    setError(false);
+    setError(null);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ arch, name, email, budget, message }),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      // Try to surface the server's own explanation (e.g. validation reason).
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok || !data?.success) {
+        setError(cleanError(data?.error) ?? GENERIC_ERROR);
+        return;
+      }
       setSuccess(true);
     } catch {
-      setError(true);
+      setError(GENERIC_ERROR);
     } finally {
       setSending(false);
     }
+  }
+
+  // Zod errors arrive as a JSON blob ("Validation failed: [...]"). Pull out the
+  // first human-readable message so the visitor sees "Message must be at least
+  // 10 characters" rather than a wall of JSON — or nothing at all.
+  function cleanError(raw: unknown): string | null {
+    if (typeof raw !== "string" || raw.length === 0) return null;
+    const match = raw.match(/"message"\s*:\s*"([^"]+)"/);
+    if (match) return match[1];
+    if (raw.startsWith("Validation failed")) return null; // fall back to generic
+    return raw;
   }
 
   function handleClose() {
@@ -115,7 +136,7 @@ export function ContactDrawer() {
     // Reset after animation completes
     setTimeout(() => {
       setSuccess(false);
-      setError(false);
+      setError(null);
       setName(""); setEmail(""); setBudget(""); setMessage(""); setArch(null);
     }, 400);
   }
@@ -265,6 +286,8 @@ export function ContactDrawer() {
                     ref={firstFieldRef}
                     type="text"
                     required
+                    minLength={2}
+                    maxLength={100}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
@@ -314,9 +337,12 @@ export function ContactDrawer() {
                   </label>
                   <textarea
                     rows={4}
+                    required
+                    minLength={10}
+                    maxLength={2000}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell me about your project"
+                    placeholder="Tell me about your project (a sentence or two)"
                     style={{ ...FIELD_STYLE, resize: "none" }}
                     onFocus={(e) => { (e.target as HTMLTextAreaElement).style.borderBottomColor = "#FF4500"; }}
                     onBlur={(e) => { (e.target as HTMLTextAreaElement).style.borderBottomColor = "rgba(255,255,255,0.12)"; }}
@@ -324,8 +350,8 @@ export function ContactDrawer() {
                 </div>
 
                 {error && (
-                  <p style={{ color: "#FF4500", fontSize: "12px", textAlign: "center" }}>
-                    Something went wrong. Please try again or contact us directly below.
+                  <p role="alert" style={{ color: "#FF4500", fontSize: "12px", textAlign: "center" }}>
+                    {error}
                   </p>
                 )}
 

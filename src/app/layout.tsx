@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessSchema, websiteSchema } from "@/components/seo/SchemaTemplates";
+import { SITE_URL } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -31,7 +32,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 /* ─── Global Metadata (SEO Layer 4: AI Meta Tags) ─── */
 export const metadata: Metadata = {
-    metadataBase: new URL("https://lpwebstudio.co.za"),
+    metadataBase: new URL(SITE_URL),
     title: {
         default: "LP Web Studio | Custom Ordering Systems & Business Automation Cape Town",
         template: "%s | LP Web Studio",
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: "https://lpwebstudio.co.za",
+        canonical: SITE_URL,
     },
     icons: {
         icon: "/icon.svg",
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         locale: "en_ZA",
-        url: "https://lpwebstudio.co.za",
+        url: SITE_URL,
         siteName: "LP Web Studio",
         title: "LP Web Studio | Custom Ordering Systems & Business Automation Cape Town",
         description: "The systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom-built for South African businesses.",

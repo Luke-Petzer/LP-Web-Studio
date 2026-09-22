@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
             // Googlebot fetching the JS/CSS it needs to render the pages.
             disallow: ["/api/"],
         },
-        sitemap: "https://lpwebstudio.co.za/sitemap.xml",
+        sitemap: `${SITE_URL}/sitemap.xml`,
     };
 }

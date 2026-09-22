@@ -5,19 +5,21 @@ import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema } from "@/components/seo/SchemaTemplates";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
     title: "About | Luke Petzer, Systems Builder — Cape Town",
     description:
         "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses. Honours computer science background, ships production systems solo.",
     alternates: {
-        canonical: "https://lpwebstudio.co.za/about",
+        canonical: `${SITE_URL}/about`,
     },
     openGraph: {
-        url: "https://lpwebstudio.co.za/about",
+        url: `${SITE_URL}/about`,
         title: "About | Luke Petzer, Systems Builder — Cape Town",
         description:
             "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses.",
+        images: ["/og-image.png"],
     },
 };
 
