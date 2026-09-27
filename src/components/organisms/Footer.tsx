@@ -22,6 +22,7 @@ export function Footer() {
                         { label: "Products", href: "/products" },
                         { label: "About",    href: "/about" },
                         { label: "Privacy",  href: "/privacy" },
+                        { label: "Accessibility", href: "/accessibility" },
                     ].map(({ label, href }) => (
                         <a
                             key={label}
