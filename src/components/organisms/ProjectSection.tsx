@@ -48,30 +48,32 @@ export function ProjectSection({
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Respect prefers-reduced-motion: skip autoplay and hold the first frame
-  // (or the poster) instead of looping, reacting live if the OS setting
-  // changes mid-visit. No `autoPlay` attribute on the element itself —
-  // playback is only ever started here, so a reduced-motion visitor never
-  // sees so much as a flash of motion before this effect runs.
+  // Respect prefers-reduced-motion. The <video> keeps its native `autoPlay`
+  // (script-started playback gets paused by Chrome in background tabs, native
+  // autoplay doesn't), so for most visitors nothing changes. If the visitor
+  // prefers reduced motion we pause on the first frame / poster, and we react
+  // live if the OS setting changes mid-visit.
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const applyMotionPreference = (reduced: boolean) => {
+    const holdStill = () => {
       const video = videoRef.current;
       if (!video) return;
-      if (reduced) {
-        video.pause();
-        video.currentTime = 0; // hold on the first frame / poster
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    if (mq.matches) holdStill();
+
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        holdStill();
       } else {
-        video.play().catch(() => {
-          // Autoplay can still be refused by the browser; the poster/first
-          // frame is a reasonable static fallback if so.
+        videoRef.current?.play().catch(() => {
+          // The browser may still refuse; the poster/first frame is a fine fallback.
         });
       }
     };
-
-    applyMotionPreference(mq.matches);
-    const handler = (e: MediaQueryListEvent) => applyMotionPreference(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -125,6 +127,7 @@ export function ProjectSection({
           <figure>
             <video
               ref={videoRef}
+              autoPlay
               muted
               loop
               playsInline
