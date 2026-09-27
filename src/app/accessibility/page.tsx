@@ -136,9 +136,10 @@ export default function AccessibilityPage() {
                                 <li>
                                     <strong className="text-white">Reduced-motion handling.</strong>{" "}
                                     If your system is set to reduce motion, page transitions,
-                                    hover animations, and the navigation/contact-drawer
-                                    animations are shortened to effectively nothing. (One
-                                    exception is listed under limitations below.)
+                                    hover animations, the navigation/contact-drawer animations,
+                                    and the Work page&rsquo;s project-preview video are all
+                                    shortened or stopped &mdash; the video holds on its first
+                                    frame instead of autoplaying.
                                 </li>
                                 <li>
                                     <strong className="text-white">Body text contrast.</strong>{" "}
@@ -146,6 +147,16 @@ export default function AccessibilityPage() {
                                     byline on pages like this one meet or exceed the 4.5:1
                                     contrast ratio WCAG AA requires for normal text against the
                                     site&rsquo;s near-black background.
+                                </li>
+                                <li>
+                                    <strong className="text-white">Low-contrast labels raised.</strong>{" "}
+                                    Several small-print text styles (form field labels, footer
+                                    copyright text, small uppercase tags) used to render as low
+                                    as roughly 2.6:1 against the site&rsquo;s dark backgrounds.
+                                    We raised the white text used for these labels from
+                                    30&ndash;40% opacity to 50%, which measures 5.17&ndash;5.34:1
+                                    across every dark background we use it on &mdash; comfortably
+                                    clear of the 4.5:1 AA minimum for normal text.
                                 </li>
             </ul>
                         </Section>
@@ -161,24 +172,24 @@ export default function AccessibilityPage() {
                             <ul className="flex flex-col gap-3 pl-5 list-disc marker:text-white/30">
                                 <li>
                                     <strong className="text-white">
-                                        Some secondary text is too low-contrast.
+                                        One low-contrast label remains.
                                     </strong>{" "}
-                                    Several muted label styles used for small print (field
-                                    labels, footer copyright text, small uppercase tags) fall
-                                    below the 4.5:1 ratio WCAG AA requires for normal-size text.
-                                    We measured the actual colours used: white text at 40%
-                                    opacity on our dark background comes out to roughly 3.8:1,
-                                    35% to roughly 3.2:1, and the faintest label style we use
-                                    (30% opacity) to roughly 2.6:1 — all below the 4.5:1 bar.
+                                    We found and raised several low-contrast label styles
+                                    across the site (see section 02), but one is still below
+                                    the 4.5:1 bar: the small &ldquo;or reach us directly&rdquo;
+                                    label inside the contact drawer, set at 25% white opacity,
+                                    which measures roughly 2.2:1 against its background. It is
+                                    on our list to fix.
                                 </li>
                                 <li>
                                     <strong className="text-white">
                                         Autoplaying video with no pause control.
                                     </strong>{" "}
-                                    The project-preview videos on the Work page autoplay,
-                                    loop, and are muted, but there is no visible button to
-                                    pause them, and they keep playing even if you have asked
-                                    your system to reduce motion.
+                                    The project-preview videos on the Work page still autoplay,
+                                    loop, and are muted, with no visible button to pause them,
+                                    for anyone who has not asked their device to reduce motion.
+                                    If your system is set to reduce motion, though, the video
+                                    no longer autoplays — it holds on its first frame instead.
                                 </li>
                                 <li>
                                     <strong className="text-white">

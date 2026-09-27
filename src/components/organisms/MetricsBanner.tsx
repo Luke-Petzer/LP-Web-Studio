@@ -22,7 +22,7 @@ export function MetricsBanner() {
                               style={{ fontSize: "clamp(1.5rem, 5vw, 3.75rem)" }}>
                             {value}
                         </span>
-                        <span className="font-body text-[10px] font-bold tracking-[0.18em] uppercase text-white/40">
+                        <span className="font-body text-[10px] font-bold tracking-[0.18em] uppercase text-white/50">
                             {label}
                         </span>
                     </div>

@@ -393,7 +393,7 @@ function LegalRow({ label, value, isEmail = false }: LegalRowProps) {
     return (
         <div className="flex flex-col sm:flex-row sm:gap-4">
             <dt
-                className="text-white/40 shrink-0"
+                className="text-white/50 shrink-0"
                 style={{
                     fontSize: "11px",
                     fontFamily: "var(--font-space-grotesk)",

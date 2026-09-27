@@ -201,7 +201,7 @@ export function ProductsPageContent() {
                                 </div>
                             ))}
                         </div>
-                        <p className="text-white/40 text-xs mt-6 max-w-2xl leading-relaxed">
+                        <p className="text-white/50 text-xs mt-6 max-w-2xl leading-relaxed">
                             You own your data — full export on exit. Setup + monthly figures
                             above are current pricing; final quote confirmed on your discovery
                             call once we know your catalogue size and workflow.

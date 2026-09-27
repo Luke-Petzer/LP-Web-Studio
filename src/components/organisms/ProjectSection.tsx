@@ -1,5 +1,7 @@
 // src/components/organisms/ProjectSection.tsx
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 
 export type ProjectSectionProps = {
@@ -43,6 +45,36 @@ export function ProjectSection({
 }: ProjectSectionProps) {
   // Split ident into words so each line is large — e.g. "CAFE\nCRAVE"
   const identLines = ident.split(" ");
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Respect prefers-reduced-motion: skip autoplay and hold the first frame
+  // (or the poster) instead of looping, reacting live if the OS setting
+  // changes mid-visit. No `autoPlay` attribute on the element itself —
+  // playback is only ever started here, so a reduced-motion visitor never
+  // sees so much as a flash of motion before this effect runs.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const applyMotionPreference = (reduced: boolean) => {
+      const video = videoRef.current;
+      if (!video) return;
+      if (reduced) {
+        video.pause();
+        video.currentTime = 0; // hold on the first frame / poster
+      } else {
+        video.play().catch(() => {
+          // Autoplay can still be refused by the browser; the poster/first
+          // frame is a reasonable static fallback if so.
+        });
+      }
+    };
+
+    applyMotionPreference(mq.matches);
+    const handler = (e: MediaQueryListEvent) => applyMotionPreference(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
     <section aria-label={`${ident} project`} className="flex flex-col md:flex-row py-16 md:py-24 px-6 md:px-16 gap-12 md:gap-16">
@@ -92,7 +124,7 @@ export function ProjectSection({
 
           <figure>
             <video
-              autoPlay
+              ref={videoRef}
               muted
               loop
               playsInline

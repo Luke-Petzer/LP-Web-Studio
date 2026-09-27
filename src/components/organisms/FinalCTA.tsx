@@ -24,7 +24,7 @@ export function FinalCTA() {
                 </h2>
 
                 {/* Micro-timeline */}
-                <div className="mb-12 flex justify-center items-center flex-wrap gap-3 text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase font-mono">
+                <div className="mb-12 flex justify-center items-center flex-wrap gap-3 text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase font-mono">
                     <span>01 / Free Discovery Call</span>
                     <span className="text-white/20">→</span>
                     <span>02 / Scope & Proposal</span>
@@ -40,7 +40,7 @@ export function FinalCTA() {
                     >
                         Start a Project
                     </button>
-                    <span className="font-mono text-xs text-white/40 uppercase tracking-widest hidden md:block">or</span>
+                    <span className="font-mono text-xs text-white/50 uppercase tracking-widest hidden md:block">or</span>
                     <button
                         onClick={openDrawer}
                         className="btn-ghost px-12 py-5 w-full md:w-auto text-center"
