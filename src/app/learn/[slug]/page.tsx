@@ -77,7 +77,7 @@ export default async function LearnArticlePage({ params }: PageProps) {
                         itemType="https://schema.org/BlogPosting"
                     >
                         <nav
-                            className="flex items-center gap-2 text-xs font-mono text-white/40 mb-12"
+                            className="flex items-center gap-2 text-xs font-mono text-white/50 mb-12"
                             aria-label="Breadcrumb"
                         >
                             <a href="/" className="hover:text-white transition-colors">Home</a>

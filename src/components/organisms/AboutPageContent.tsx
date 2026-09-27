@@ -100,7 +100,7 @@ export function AboutPageContent() {
                                     <span className="w-3 h-3 rounded-full bg-red-500/70" />
                                     <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                                     <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                                    <span className="ml-4 text-white/30 text-xs font-mono">
+                                    <span className="ml-4 text-white/50 text-xs font-mono">
                                         founder.profile — zsh
                                     </span>
                                 </div>
@@ -108,15 +108,15 @@ export function AboutPageContent() {
                                 <div className="p-6 md:p-8 font-mono text-xs md:text-sm space-y-3 break-words">
                                     <p style={{ color: "#FF4500" }}>$ whoami</p>
                                     <p className="text-white/80">Luke Petzer — founder, and the one writing the code</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat what-i-build.txt</p>
+                                    <p className="text-white/50 text-xs mt-2">$ cat what-i-build.txt</p>
                                     <p className="text-white/80">Ordering portals · Client platforms · Automations</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat who-for.txt</p>
+                                    <p className="text-white/50 text-xs mt-2">$ cat who-for.txt</p>
                                     <p className="text-white/80">Wholesalers, distributors, and service businesses buried in manual admin</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat where.txt</p>
+                                    <p className="text-white/50 text-xs mt-2">$ cat where.txt</p>
                                     <p className="text-white/80">Cape Town — clients across South Africa</p>
-                                    <p className="text-white/30 text-xs mt-2">$ cat you-own.txt</p>
+                                    <p className="text-white/50 text-xs mt-2">$ cat you-own.txt</p>
                                     <p className="text-white/80">Source code, database, deployment — transferred to you on delivery</p>
-                                    <p className="text-white/30 text-xs mt-2">$ availability</p>
+                                    <p className="text-white/50 text-xs mt-2">$ availability</p>
                                     <p style={{ color: "#FF4500" }}>TAKING ON NEW PROJECTS ●</p>
                                 </div>
                             </div>

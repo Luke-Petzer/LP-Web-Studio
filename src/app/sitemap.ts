@@ -23,6 +23,7 @@ const STATIC_LAST_MODIFIED: Record<string, string> = {
     "/about": "2026-07-17",
     "/learn": "2026-07-25",
     "/privacy": "2026-09-05",
+    "/accessibility": "2026-09-27",
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -60,6 +61,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         {
             url: `${SITE_URL}/privacy`,
             lastModified: STATIC_LAST_MODIFIED["/privacy"],
+            changeFrequency: "yearly",
+            priority: 0.3,
+        },
+        {
+            url: `${SITE_URL}/accessibility`,
+            lastModified: STATIC_LAST_MODIFIED["/accessibility"],
             changeFrequency: "yearly",
             priority: 0.3,
         },

@@ -270,7 +270,7 @@ export function CoreInfrastructure() {
                                     fontSize: "10px",
                                     color: card.isLight
                                         ? "rgba(255,255,255,0.7)"
-                                        : "rgba(255,255,255,0.4)",
+                                        : "rgba(255,255,255,0.5)",
                                 }}
                             >
                                 {String(i + 1).padStart(2, "0")} / 03

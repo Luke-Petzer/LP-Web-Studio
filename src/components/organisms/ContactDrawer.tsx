@@ -256,7 +256,7 @@ export function ContactDrawer() {
 
                 {/* Architecture selector */}
                 <div>
-                  <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
                     WHAT DO YOU NEED?
                   </p>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
@@ -280,7 +280,7 @@ export function ContactDrawer() {
                           <p style={{ color: active ? "#000" : "rgba(255,255,255,0.8)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", fontFamily: "var(--font-space-grotesk)" }}>
                             {opt.label}
                           </p>
-                          <p style={{ color: active ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.35)", fontSize: "10px", marginTop: "2px", fontFamily: "var(--font-space-grotesk)" }}>
+                          <p style={{ color: active ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.5)", fontSize: "10px", marginTop: "2px", fontFamily: "var(--font-space-grotesk)" }}>
                             {opt.sub}
                           </p>
                         </button>
@@ -291,7 +291,7 @@ export function ContactDrawer() {
 
                 {/* Name */}
                 <div>
-                  <label style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
+                  <label style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
                     NAME
                   </label>
                   <input
@@ -311,7 +311,7 @@ export function ContactDrawer() {
 
                 {/* Email */}
                 <div>
-                  <label style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
+                  <label style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
                     EMAIL
                   </label>
                   <input
@@ -328,7 +328,7 @@ export function ContactDrawer() {
 
                 {/* Budget */}
                 <div>
-                  <label style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
+                  <label style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
                     BUDGET
                   </label>
                   <input
@@ -344,7 +344,7 @@ export function ContactDrawer() {
 
                 {/* Message */}
                 <div>
-                  <label style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
+                  <label style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", display: "block", marginBottom: "4px" }}>
                     MESSAGE
                   </label>
                   <textarea
@@ -402,7 +402,7 @@ export function ContactDrawer() {
 
           {/* Footer — direct contact */}
           <div style={{ padding: "20px 32px 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
               OR REACH US DIRECTLY
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
