@@ -402,7 +402,7 @@ export function ContactDrawer() {
 
           {/* Footer — direct contact */}
           <div style={{ padding: "20px 32px 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-space-grotesk)", marginBottom: "12px" }}>
               OR REACH US DIRECTLY
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>

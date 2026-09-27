@@ -152,9 +152,9 @@ export default function AccessibilityPage() {
                                     <strong className="text-white">Low-contrast labels raised.</strong>{" "}
                                     Several small-print text styles (form field labels, footer
                                     copyright text, small uppercase tags) used to render as low
-                                    as roughly 2.6:1 against the site&rsquo;s dark backgrounds.
+                                    as roughly 2.2:1 against the site&rsquo;s dark backgrounds.
                                     We raised the white text used for these labels from
-                                    30&ndash;40% opacity to 50%, which measures 5.17&ndash;5.34:1
+                                    25&ndash;40% opacity to 50%, which measures 5.17&ndash;5.34:1
                                     across every dark background we use it on &mdash; comfortably
                                     clear of the 4.5:1 AA minimum for normal text.
                                 </li>
@@ -170,17 +170,6 @@ export default function AccessibilityPage() {
                                 than we can back up:
                             </p>
                             <ul className="flex flex-col gap-3 pl-5 list-disc marker:text-white/30">
-                                <li>
-                                    <strong className="text-white">
-                                        One low-contrast label remains.
-                                    </strong>{" "}
-                                    We found and raised several low-contrast label styles
-                                    across the site (see section 02), but one is still below
-                                    the 4.5:1 bar: the small &ldquo;or reach us directly&rdquo;
-                                    label inside the contact drawer, set at 25% white opacity,
-                                    which measures roughly 2.2:1 against its background. It is
-                                    on our list to fix.
-                                </li>
                                 <li>
                                     <strong className="text-white">
                                         Autoplaying video with no pause control.
