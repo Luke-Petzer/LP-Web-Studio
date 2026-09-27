@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     // Bare title — the root layout template appends "| LP Web Studio".
     title: "Accessibility Statement",
     description:
-        "LP Web Studio's accessibility statement — what the site does to meet WCAG 2.2 AA, what's in place today, known limitations, and how to report a problem.",
+        "LP Web Studio's accessibility statement — how the site aims to meet WCAG 2.2 AA, what's in place today, known limitations, and how to report a problem.",
     alternates: {
         canonical: `${SITE_URL}/accessibility`,
     },
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/accessibility`,
         title: "Accessibility Statement | LP Web Studio",
         description:
-            "What this site does to meet WCAG 2.2 AA, what's in place, and known limitations.",
+            "How this site aims to meet WCAG 2.2 AA, what's in place, and known limitations.",
         images: ["/og-image.png"],
     },
 };
@@ -193,7 +193,7 @@ export default function AccessibilityPage() {
                                         No formal accessibility audit.
                                     </strong>{" "}
                                     Everything above comes from our own review, not an
-                                    independent audit. We plan to have one done.
+                                    independent audit.
                                 </li>
                             </ul>
                         </Section>
