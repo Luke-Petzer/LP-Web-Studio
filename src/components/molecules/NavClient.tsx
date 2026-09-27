@@ -13,6 +13,8 @@ const navLinks = [
     { label: "Contact",   href: "#" },
 ];
 
+const MOBILE_MENU_ID = "mobile-menu";
+
 export function NavClient() {
     const pathname   = usePathname();
     const { openDrawer } = useDrawer();
@@ -23,6 +25,19 @@ export function NavClient() {
 
     const lastY = useRef(0);
     const frame = useRef<number | null>(null);
+
+    /* Mirrors `isOpen` for the scroll handler below, which is set up once
+       (empty dep array) and can't close over the state value directly. */
+    const isOpenRef = useRef(false);
+    useEffect(() => {
+        isOpenRef.current = isOpen;
+    }, [isOpen]);
+
+    const logoRef       = useRef<HTMLAnchorElement>(null);
+    const burgerRef     = useRef<HTMLButtonElement>(null);
+    const overlayRef    = useRef<HTMLDivElement>(null);
+    const firstLinkRef  = useRef<HTMLAnchorElement>(null);
+    const scrollYRef    = useRef(0);
 
     /* Reduced motion: read once, follow changes (same pattern as ContactDrawer) */
     const [reducedMotion, setReducedMotion] = useState(false);
@@ -37,6 +52,12 @@ export function NavClient() {
     useEffect(() => {
         /* One pending frame at a time — scroll events are far denser than paints */
         const handler = () => {
+            // While the menu is open the body is locked with position:fixed,
+            // which clamps window.scrollY to ~0 and can fire a spurious
+            // 'scroll' event — ignore it so the pill/hide state doesn't
+            // misfire off a scroll position that never actually changed.
+            if (isOpenRef.current) return;
+
             if (frame.current !== null) return;
             frame.current = requestAnimationFrame(() => {
                 frame.current = null;
@@ -68,9 +89,93 @@ export function NavClient() {
         };
     }, []);
 
+    /* iOS-safe scroll lock: position:fixed + top offset instead of
+       overflow:hidden, which Safari ignores on the body. Restores the exact
+       scroll position on close. */
     useEffect(() => {
-        document.body.style.overflow = isOpen ? "hidden" : "";
-        return () => { document.body.style.overflow = ""; };
+        if (!isOpen) return;
+
+        const y = window.scrollY;
+        scrollYRef.current = y;
+        lastY.current = y; // keep the scroll-hide tracker's baseline in sync
+
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${y}px`;
+        document.body.style.left = "0";
+        document.body.style.width = "100%";
+
+        return () => {
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.width = "";
+            window.scrollTo(0, scrollYRef.current);
+        };
+    }, [isOpen]);
+
+    /* Inert the page content behind the overlay (main + footer are siblings
+       of this component's own header/overlay, rendered by the page — reach
+       them directly rather than restructuring every page's layout). The
+       header itself, including the burger, stays interactive. */
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const targets = document.querySelectorAll<HTMLElement>("body > main, body > footer");
+        targets.forEach((el) => el.setAttribute("inert", ""));
+
+        return () => {
+            targets.forEach((el) => el.removeAttribute("inert"));
+        };
+    }, [isOpen]);
+
+    /* Escape to close, initial focus, Tab/Shift+Tab trap across the overlay
+       + the burger button, and focus restore on close (mirrors the same
+       pattern already used by ContactDrawer). If a link click closes the
+       menu, the browser is navigating to a new page (plain <a> tags, no
+       client-side router) — the restore-focus call below is then a no-op. */
+    useEffect(() => {
+        if (!isOpen) return;
+
+        firstLinkRef.current?.focus({ preventScroll: true });
+
+        function handleKeyDown(e: KeyboardEvent) {
+            if (e.key === "Escape") {
+                e.preventDefault();
+                setIsOpen(false);
+                return;
+            }
+            if (e.key !== "Tab") return;
+
+            const panel = overlayRef.current;
+            const burger = burgerRef.current;
+            if (!panel || !burger) return;
+
+            const panelFocusables = Array.from(
+                panel.querySelectorAll<HTMLElement>(
+                    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                )
+            );
+            const focusables = [burger, ...panelFocusables];
+            if (focusables.length === 0) return;
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            const active = document.activeElement as HTMLElement | null;
+
+            if (e.shiftKey && active === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && active === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            burgerRef.current?.focus({ preventScroll: true });
+        };
     }, [isOpen]);
 
     return (
@@ -97,7 +202,13 @@ export function NavClient() {
                     ].join(" ")}
                 >
                     {/* Logo */}
-                    <a href="/" aria-label="LP Web Studio home" className="flex items-center">
+                    <a
+                        ref={logoRef}
+                        href="/"
+                        aria-label="LP Web Studio home"
+                        className="flex items-center"
+                        tabIndex={isOpen ? -1 : undefined}
+                    >
                         <Image
                             src="/my-logo.svg"
                             alt="LP Web Studio"
@@ -162,10 +273,12 @@ export function NavClient() {
 
                     {/* Hamburger */}
                     <button
+                        ref={burgerRef}
                         className="flex md:hidden flex-col items-center justify-center gap-[5px] w-11 h-11"
                         onClick={() => setIsOpen((p) => !p)}
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isOpen}
+                        aria-controls={MOBILE_MENU_ID}
                     >
                         <span className={`block h-[2px] w-5 bg-white transition-transform duration-panel ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
                         <span className={`block h-[2px] w-5 bg-white transition-opacity duration-panel ${isOpen ? "opacity-0" : "opacity-100"}`} />
@@ -176,10 +289,15 @@ export function NavClient() {
 
             {/* Mobile overlay — mounted always, so it can leave the way it arrived */}
             <div
+                ref={overlayRef}
+                id={MOBILE_MENU_ID}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menu"
                 aria-hidden={!isOpen}
                 inert={!isOpen}
                 className={[
-                    "fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8 overflow-y-auto pb-8",
+                    "fixed inset-0 z-40 flex flex-col bg-obsidian pt-24 px-8 overflow-y-auto overscroll-contain pb-8",
                     isOpen ? "" : "pointer-events-none",
                     reducedMotion
                         ? "motion-keep-fade transition-opacity duration-drawer ease-out"
@@ -191,7 +309,7 @@ export function NavClient() {
             >
                 <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
                 <nav className="relative flex flex-col gap-8">
-                    {navLinks.map((link) => {
+                    {navLinks.map((link, index) => {
                         if (link.label === "Contact") {
                             return (
                                 <button
@@ -204,12 +322,18 @@ export function NavClient() {
                                 </button>
                             );
                         }
+                        const isActive = pathname === link.href;
                         return (
                             <a
                                 key={link.label}
+                                ref={index === 0 ? firstLinkRef : undefined}
                                 href={link.href}
                                 onClick={() => setIsOpen(false)}
-                                className="font-headline font-bold uppercase tracking-tight text-white border-b border-white/10 pb-6 break-words"
+                                aria-current={isActive ? "page" : undefined}
+                                className={[
+                                    "font-headline font-bold uppercase tracking-tight text-white pb-6 break-words",
+                                    isActive ? "border-b border-white" : "border-b border-white/10",
+                                ].join(" ")}
                                 style={{ fontSize: "clamp(1.5rem, 6vw, 2rem)" }}
                             >
                                 {link.label}
