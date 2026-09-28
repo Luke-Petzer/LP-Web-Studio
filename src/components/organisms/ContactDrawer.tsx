@@ -327,13 +327,18 @@ export function ContactDrawer() {
                     spam scripts skip), out of tab order. Humans never see or
                     fill this; anything that does gets a fake success. */}
                 <div style={{ position: "absolute", left: "-9999px", top: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}>
-                  <label htmlFor="website">Company website — leave blank</label>
+                  {/* Deliberately non-semantic id/name/label so browser autofill
+                      never recognises it (an autofilled "website" field would
+                      make a real visitor look like a bot). */}
+                  <label htmlFor="lpws-hp-field">Leave this field empty</label>
                   <input
-                    id="website"
-                    name="website"
+                    id="lpws-hp-field"
+                    name="lpws-hp-field"
                     type="text"
                     tabIndex={-1}
                     autoComplete="off"
+                    data-lpignore="true"
+                    data-1p-ignore="true"
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}
                   />

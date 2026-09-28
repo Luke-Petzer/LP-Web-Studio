@@ -139,7 +139,10 @@ export async function POST(request: Request) {
         }
 
         // Time-trap: too fast to be a human filling four fields.
-        if (typeof data.elapsedMs !== "number" || data.elapsedMs < MIN_ELAPSED_MS) {
+        // Only trap when a timing was actually sent. A missing value (e.g. a
+        // visitor still running the pre-deploy bundle) must never be treated
+        // as spam - silently dropping a real enquiry is the bug being fixed.
+        if (typeof data.elapsedMs === "number" && data.elapsedMs < MIN_ELAPSED_MS) {
             console.warn(
                 `[Contact API] time-trap triggered (elapsedMs=${data.elapsedMs ?? "missing"}) — no RPC call made`
             );
