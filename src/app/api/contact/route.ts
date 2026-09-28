@@ -252,7 +252,9 @@ export async function POST(request: Request) {
         }
 
         return NextResponse.json(
-            { success: true, message: SUCCESS_MESSAGE, id: newId },
+            // Identical to fakeSuccess(): a bot must not be able to tell a
+            // honeypot/time-trap response from a real one (no id leaked).
+            { success: true, message: SUCCESS_MESSAGE },
             { status: 200 }
         );
     } catch (error) {
