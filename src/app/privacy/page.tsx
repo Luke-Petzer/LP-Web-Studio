@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     },
 };
 
-const LAST_UPDATED = "28 July 2026";
+const LAST_UPDATED = "28 September 2026";
 
 /**
  * ⚠️ FILL THESE BEFORE DEPLOYING — every value marked TODO renders on the live page.
@@ -59,11 +59,12 @@ const BUSINESS = {
      */
     informationOfficer: "Luke Petzer",
     /**
-     * TODO: CONFIRM. The contact form posts to a self-hosted n8n instance
-     * (n8n.lpwebstudio.co.za). If that VPS is with netcup, the country is Germany.
-     * This drives the POPIA s72 cross-border disclosure below — get it right.
+     * The contact form's database (Supabase, part of LP Web Studio's own
+     * lp-os platform) is hosted on AWS in this region — confirmed via the
+     * Supabase dashboard (eu-west-1). Drives the POPIA s72 cross-border
+     * disclosure below.
      */
-    workflowServerCountry: "Germany",
+    databaseCountry: "Ireland",
     /** How long contact-form enquiries are kept. POPIA s14: no longer than necessary. */
     enquiryRetention: "24 months",
 } as const;
@@ -253,14 +254,19 @@ export default function PrivacyPage() {
                                     website and runs the form endpoint.
                                 </li>
                                 <li>
-                                    <strong className="text-white">Our workflow server</strong>{" "}
-                                    — a self-hosted n8n instance that receives the submission
-                                    and forwards it to us by email. It is located in{" "}
-                                    {BUSINESS.workflowServerCountry}.
+                                    <strong className="text-white">Supabase</strong> — stores
+                                    your enquiry in our own database. It is located in{" "}
+                                    {BUSINESS.databaseCountry}.
                                 </li>
                                 <li>
-                                    <strong className="text-white">Zoho Mail</strong> — delivers
-                                    that email to our inbox.
+                                    <strong className="text-white">Telegram</strong> — where
+                                    we&rsquo;ve enabled it, sends us a notification that your
+                                    enquiry has arrived, so we see it quickly.
+                                </li>
+                                <li>
+                                    <strong className="text-white">Zoho Mail</strong> — hosts
+                                    our contact@lpwebstudio.co.za inbox, which we use when we
+                                    reply to you by email.
                                 </li>
                             </ul>
                             <p>
