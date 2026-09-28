@@ -3,7 +3,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useDrawer } from "@/lib/contact-drawer-context";
-import { MessageCircle, Mail, X } from "lucide-react";
+import { MessageCircle, Mail, Phone, X } from "lucide-react";
+
+const WHATSAPP_NUMBER = "27673852286";
+const CONTACT_EMAIL = "contact@lpwebstudio.co.za";
+const CONTACT_PHONE_TEL = "+27673852286";
 
 const ARCH_OPTIONS = [
   { id: "ordering_portal", label: "Ordering portal", sub: "Take orders online" },
@@ -18,6 +22,33 @@ type ArchId = typeof ARCH_OPTIONS[number]["id"];
 // Matches --dur-drawer — keeps the post-close reset in sync with the panel's
 // own transition instead of drifting from it (previously a hand-typed 400).
 const DRAWER_MS = 350;
+
+const ERROR_CONTACT_BUTTON_STYLE: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  minHeight: "44px",
+  padding: "10px 16px",
+  border: "1px solid rgba(255,255,255,0.15)",
+  borderRadius: "6px",
+  color: "#fff",
+  fontSize: "13px",
+  fontWeight: 700,
+  fontFamily: "var(--font-space-grotesk)",
+  textDecoration: "none",
+};
+
+const DIRECT_CONTACT_LINK_STYLE: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+  minHeight: "44px",
+  padding: "6px 0",
+  color: "rgba(255,255,255,0.65)",
+  textDecoration: "none",
+  fontSize: "13px",
+};
 
 const FIELD_STYLE: React.CSSProperties = {
   background: "transparent",
@@ -40,9 +71,16 @@ export function ContactDrawer() {
   const [email, setEmail]     = useState("");
   const [budget, setBudget]   = useState("");
   const [message, setMessage] = useState("");
+  // Honeypot — a real field, but off-screen and out of tab order. A human
+  // never fills this in; anything that does gets a fake success below.
+  const [website, setWebsite] = useState("");
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError]     = useState<string | null>(null);
+
+  // Time-trap: when the drawer opened, so the API can reject submissions
+  // faster than any human could fill four fields.
+  const openTimeRef = useRef<number | null>(null);
 
   const [reducedMotion, setReducedMotion] = useState(false);
   useEffect(() => {
@@ -61,6 +99,7 @@ export function ContactDrawer() {
   useEffect(() => {
     if (!isOpen) return;
 
+    openTimeRef.current = Date.now();
     triggerRef.current = document.activeElement as HTMLElement;
     const focusTimer = window.setTimeout(() => firstFieldRef.current?.focus(), 200);
 
@@ -103,10 +142,11 @@ export function ContactDrawer() {
     setSending(true);
     setError(null);
     try {
+      const elapsedMs = openTimeRef.current !== null ? Date.now() - openTimeRef.current : 0;
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ arch, name, email, budget, message }),
+        body: JSON.stringify({ arch, name, email, budget, message, website, elapsedMs }),
       });
 
       // Try to surface the server's own explanation (e.g. validation reason).
@@ -140,7 +180,7 @@ export function ContactDrawer() {
     const reset = () => {
       setSuccess(false);
       setError(null);
-      setName(""); setEmail(""); setBudget(""); setMessage(""); setArch(null);
+      setName(""); setEmail(""); setBudget(""); setMessage(""); setArch(null); setWebsite("");
     };
     if (reducedMotion) {
       // No transition is playing, so there is nothing to wait out.
@@ -250,9 +290,54 @@ export function ContactDrawer() {
                 <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px", maxWidth: "260px", lineHeight: 1.6 }}>
                   Luke will review and respond within 24 hours.
                 </p>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                    `Hi Luke, I've just sent an enquiry through your website — ${name}.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pressable"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    minHeight: "44px",
+                    padding: "10px 20px",
+                    marginTop: "4px",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    borderRadius: "999px",
+                    color: "#fff",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                    fontFamily: "var(--font-space-grotesk)",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MessageCircle style={{ width: "14px", height: "14px" }} />
+                  Want a faster reply? WhatsApp us
+                </a>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+
+                {/* Honeypot — real field, off-screen (not display:none, which
+                    spam scripts skip), out of tab order. Humans never see or
+                    fill this; anything that does gets a fake success. */}
+                <div style={{ position: "absolute", left: "-9999px", top: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}>
+                  <label htmlFor="website">Company website — leave blank</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                </div>
 
                 {/* Architecture selector */}
                 <div>
@@ -362,9 +447,39 @@ export function ContactDrawer() {
                 </div>
 
                 {error && (
-                  <p role="alert" style={{ color: "#FF4500", fontSize: "12px", textAlign: "center" }}>
-                    {error}
-                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                    <p role="alert" style={{ color: "#FF4500", fontSize: "12px", textAlign: "center" }}>
+                      {error}
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                      <a
+                        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pressable"
+                        style={ERROR_CONTACT_BUTTON_STYLE}
+                      >
+                        <MessageCircle style={{ width: "14px", height: "14px" }} />
+                        WhatsApp us
+                      </a>
+                      <a
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="pressable"
+                        style={ERROR_CONTACT_BUTTON_STYLE}
+                      >
+                        <Mail style={{ width: "14px", height: "14px" }} />
+                        Email us
+                      </a>
+                      <a
+                        href={`tel:${CONTACT_PHONE_TEL}`}
+                        className="pressable"
+                        style={ERROR_CONTACT_BUTTON_STYLE}
+                      >
+                        <Phone style={{ width: "14px", height: "14px" }} />
+                        Call us
+                      </a>
+                    </div>
+                  </div>
                 )}
 
                 {/* Submit — corner bracket style */}
@@ -407,24 +522,33 @@ export function ContactDrawer() {
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <a
-                href="https://wa.me/27673852286"
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.65)", textDecoration: "none", fontSize: "13px" }}
+                style={DIRECT_CONTACT_LINK_STYLE}
               >
-                <span style={{ width: "32px", height: "32px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ width: "32px", height: "32px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <MessageCircle style={{ width: "14px", height: "14px" }} />
                 </span>
                 WhatsApp
               </a>
               <a
-                href="mailto:contact@lpwebstudio.co.za"
-                style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.65)", textDecoration: "none", fontSize: "13px" }}
+                href={`mailto:${CONTACT_EMAIL}`}
+                style={DIRECT_CONTACT_LINK_STYLE}
               >
-                <span style={{ width: "32px", height: "32px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ width: "32px", height: "32px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <Mail style={{ width: "14px", height: "14px" }} />
                 </span>
-                contact@lpwebstudio.co.za
+                {CONTACT_EMAIL}
+              </a>
+              <a
+                href={`tel:${CONTACT_PHONE_TEL}`}
+                style={DIRECT_CONTACT_LINK_STYLE}
+              >
+                <span style={{ width: "32px", height: "32px", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Phone style={{ width: "14px", height: "14px" }} />
+                </span>
+                +27 67 385 2286
               </a>
             </div>
           </div>

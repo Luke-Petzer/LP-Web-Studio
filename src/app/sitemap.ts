@@ -22,7 +22,7 @@ const STATIC_LAST_MODIFIED: Record<string, string> = {
     "/products": "2026-07-17",
     "/about": "2026-07-17",
     "/learn": "2026-07-25",
-    "/privacy": "2026-09-05",
+    "/privacy": "2026-09-28",
     "/accessibility": "2026-09-27",
 };
 
