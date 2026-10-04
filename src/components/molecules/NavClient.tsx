@@ -209,14 +209,22 @@ export function NavClient() {
                         className="flex items-center"
                         tabIndex={isOpen ? -1 : undefined}
                     >
+                        {/* Pre-sized white-on-transparent PNG (234x84 = 3x the 28px render
+                            height), ~4 KB. It replaced a 290 KB "SVG" that was really two
+                            base64 PNGs and needed `invert` to turn white. Served as-is
+                            (`unoptimized`), so no /_next/image round trip. `loading="eager"`
+                            because it is above the fold on every page; no `priority` prop,
+                            as a preload no longer buys anything for a file this small
+                            (React still hints the first eager <img>, at 4 KB that is fine). */}
                         <Image
-                            src="/my-logo.svg"
+                            src="/logo-wordmark.png"
                             alt="LP Web Studio"
-                            width={100}
-                            height={28}
-                            priority
+                            width={234}
+                            height={84}
+                            unoptimized
+                            loading="eager"
                             className={[
-                                "w-auto h-7 invert origin-left transition-transform duration-panel ease-out",
+                                "w-auto h-7 origin-left transition-transform duration-panel ease-out",
                                 scrolled ? "scale-[0.857]" : "scale-100",
                             ].join(" ")}
                         />
