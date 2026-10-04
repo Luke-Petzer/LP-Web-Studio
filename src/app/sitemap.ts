@@ -78,13 +78,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     ];
 
-    // Each published article's own frontmatter date — real per-article
-    // freshness instead of a blanket timestamp (seo-audit-2026-09, H4).
+    // Each published article's own date (its `updated` date when it has one)
+    // — real per-article freshness instead of a blanket timestamp
+    // (seo-audit-2026-09, H4).
     // Drafts never reach this list: getAllArticles() filters them out.
     const articles = await getAllArticles();
     const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
         url: `${SITE_URL}/learn/${article.slug}`,
-        lastModified: article.date,
+        lastModified: article.updated ?? article.date,
         changeFrequency: "monthly",
         priority: 0.6,
     }));

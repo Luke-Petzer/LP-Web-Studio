@@ -1,7 +1,7 @@
 ---
 title: "What a B2B Ordering System Actually Replaces"
 description: "A B2B ordering system isn't one new tool — it's a pile of manual work that quietly disappears. Here's exactly what it takes off your plate."
-date: "2026-06-25"
+date: "2026-07-17"
 faq:
   - question: "What does a B2B ordering system replace?"
     answer: "The manual admin around orders: re-typing WhatsApp and email orders into a spreadsheet, keeping PDF price lists up to date, chasing stock levels by phone, and copying orders into accounting. A good system absorbs all of it."

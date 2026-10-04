@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getArticle, getAllSlugs } from "@/lib/knowledge";
+import { getArticle, getAllArticles, getAllSlugs } from "@/lib/knowledge";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
     faqPageSchema,
@@ -10,7 +10,17 @@ import {
 import { Navigation } from "@/components/organisms/Navigation";
 import { Footer } from "@/components/organisms/Footer";
 import { SubpageHero } from "@/components/organisms/SubpageHero";
+import { ArticleCTA } from "@/components/organisms/ArticleCTA";
 import { SITE_URL } from "@/lib/site";
+
+const AUTHOR_NAME = "Luke Petzer";
+
+const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString("en-ZA", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -29,6 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title: article.title,
         description: article.description,
+        authors: [{ name: AUTHOR_NAME, url: `${SITE_URL}/about` }],
         alternates: {
             canonical: `${SITE_URL}/learn/${slug}`,
         },
@@ -38,6 +49,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             type: "article",
             url: `${SITE_URL}/learn/${slug}`,
             publishedTime: article.date,
+            modifiedTime: article.updated ?? article.date,
+            authors: [AUTHOR_NAME],
             images: ["/og-image.png"],
         },
     };
@@ -48,6 +61,12 @@ export default async function LearnArticlePage({ params }: PageProps) {
     const article = await getArticle(slug);
 
     if (!article) notFound();
+
+    // Other published articles, newest first — a contextual link between
+    // articles (the list is already filtered of drafts and sorted).
+    const related = (await getAllArticles())
+        .filter((a) => a.slug !== slug)
+        .slice(0, 2);
 
     const breadcrumbs = [
         { name: "Home", url: SITE_URL },
@@ -64,6 +83,8 @@ export default async function LearnArticlePage({ params }: PageProps) {
             <Navigation />
 
             <main className="pb-structural bg-[#0A0A0A] min-h-screen">
+                {/* No `heading`: the hero renders no <h1> here, so the article
+                    title below is the page's only one. */}
                 <SubpageHero
                     title="LEARN"
                     subtitle="FIELD NOTES FROM THE STUDIO"
@@ -71,11 +92,7 @@ export default async function LearnArticlePage({ params }: PageProps) {
 
                 {/* ── Article body — landing-page rhythm ── */}
                 <section className="py-20 md:py-28 px-6 md:px-12 bg-slate-dark border-t border-white/5 mt-16 md:mt-24">
-                    <article
-                        className="max-w-3xl mx-auto"
-                        itemScope
-                        itemType="https://schema.org/BlogPosting"
-                    >
+                    <article className="max-w-3xl mx-auto">
                         <nav
                             className="flex items-center gap-2 text-xs font-mono text-white/50 mb-12"
                             aria-label="Breadcrumb"
@@ -95,14 +112,12 @@ export default async function LearnArticlePage({ params }: PageProps) {
                                     fontSize: "clamp(2rem, 4.5vw, 3rem)",
                                     letterSpacing: "-0.02em",
                                 }}
-                                itemProp="headline"
                             >
                                 {article.title}
                             </h1>
                             <p
                                 className="text-white/70 leading-relaxed mb-6"
                                 style={{ fontSize: "17px" }}
-                                itemProp="description"
                             >
                                 {article.description}
                             </p>
@@ -116,19 +131,30 @@ export default async function LearnArticlePage({ params }: PageProps) {
                                     fontFamily: "var(--font-space-grotesk)",
                                 }}
                             >
+                                BY{" "}
+                                <a
+                                    href="/about"
+                                    rel="author"
+                                    className="underline underline-offset-4 hover:text-white transition-colors"
+                                >
+                                    {AUTHOR_NAME}
+                                </a>
+                                <span aria-hidden="true"> · </span>
                                 PUBLISHED{" "}
-                                <time itemProp="datePublished" dateTime={article.date}>
-                                    {new Date(article.date).toLocaleDateString("en-ZA", {
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                    })}
-                                </time>
+                                <time dateTime={article.date}>{formatDate(article.date)}</time>
+                                {article.updated && article.updated !== article.date && (
+                                    <>
+                                        <span aria-hidden="true"> · </span>
+                                        UPDATED{" "}
+                                        <time dateTime={article.updated}>
+                                            {formatDate(article.updated)}
+                                        </time>
+                                    </>
+                                )}
                             </p>
                         </header>
 
                         <section
-                            itemProp="articleBody"
                             className="prose prose-invert prose-lg max-w-none
                 prose-headings:font-headline prose-headings:text-white prose-headings:uppercase prose-headings:tracking-tight
                 prose-h2:text-2xl prose-h2:mt-16 prose-h2:mb-6
@@ -170,6 +196,43 @@ export default async function LearnArticlePage({ params }: PageProps) {
                                     ))}
                                 </div>
                             </section>
+                        )}
+
+                        <ArticleCTA />
+
+                        {related.length > 0 && (
+                            <aside
+                                aria-label="More from the studio"
+                                className="mt-20 md:mt-24 pt-16 border-t border-white/10"
+                            >
+                                <span className="section-label mb-8">KEEP READING</span>
+                                <ul className="flex flex-col border-t border-white/10 mt-8">
+                                    {related.map((item) => (
+                                        <li key={item.slug} className="border-b border-white/10">
+                                            <a
+                                                href={`/learn/${item.slug}`}
+                                                className="group block py-6 transition-colors duration-200 hover:bg-white/[0.04]"
+                                            >
+                                                <span className="font-headline font-bold uppercase text-white group-hover:text-white/80 text-lg tracking-tight block mb-2">
+                                                    {item.title}
+                                                </span>
+                                                <span className="text-white/50 leading-relaxed text-sm block mb-3">
+                                                    {item.description}
+                                                </span>
+                                                <span className="read-link">
+                                                    READ <span aria-hidden="true">→</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <a
+                                    href="/learn"
+                                    className="font-headline text-[11px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors inline-block mt-6"
+                                >
+                                    All articles →
+                                </a>
+                            </aside>
                         )}
                     </article>
                 </section>

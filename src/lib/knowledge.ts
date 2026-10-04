@@ -17,7 +17,10 @@ export interface KnowledgeArticle {
     slug: string;
     title: string;
     description: string;
+    /** First publication date, YYYY-MM-DD. Must be the real date — never backdate. */
     date: string;
+    /** Optional YYYY-MM-DD of the last substantive edit; drives dateModified. */
+    updated?: string;
     faq: FaqItem[];
     contentHtml: string;
 }
@@ -28,6 +31,15 @@ export interface KnowledgeArticle {
  */
 function isDraft(data: Record<string, unknown>): boolean {
     return data.draft === true || data.published === false;
+}
+
+/**
+ * Frontmatter dates come back from gray-matter as strings when quoted and as
+ * Date objects when not. Normalise both to YYYY-MM-DD ("" when absent).
+ */
+function toDateString(value: unknown): string {
+    if (value instanceof Date) return value.toISOString().slice(0, 10);
+    return typeof value === "string" ? value : "";
 }
 
 export function getAllSlugs(): string[] {
@@ -61,7 +73,8 @@ export async function getArticle(slug: string): Promise<KnowledgeArticle | null>
         slug,
         title: data.title ?? "",
         description: data.description ?? "",
-        date: data.date ?? "",
+        date: toDateString(data.date),
+        updated: data.updated ? toDateString(data.updated) : undefined,
         faq: (data.faq as FaqItem[]) ?? [],
         contentHtml,
     };
@@ -70,5 +83,8 @@ export async function getArticle(slug: string): Promise<KnowledgeArticle | null>
 export async function getAllArticles(): Promise<KnowledgeArticle[]> {
     const slugs = getAllSlugs();
     const articles = await Promise.all(slugs.map((slug) => getArticle(slug)));
-    return articles.filter((a): a is KnowledgeArticle => a !== null);
+    // Newest first; slug breaks ties so the order is stable across builds.
+    return articles
+        .filter((a): a is KnowledgeArticle => a !== null)
+        .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 }
