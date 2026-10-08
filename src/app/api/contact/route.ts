@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { validateRequest } from "@/lib/security";
+import {
+    describeTelegramFailure,
+    readTelegramConfig,
+    redactSecrets,
+} from "@/lib/telegram";
 
 export const runtime = "edge";
 
@@ -87,8 +92,11 @@ function invalidFieldMessage(code: string): string {
 }
 
 /** Best-effort Telegram ping. Never throws — a failure here must never change
- *  the response already promised to the visitor. Silently skipped if the two
- *  env vars aren't set (owner hasn't created the bot yet). */
+ *  the response already promised to the visitor. Silently skipped if neither
+ *  env var is set (owner hasn't created the bot yet). Anything else that stops
+ *  the alert from landing (one var missing, Telegram rejecting it, a timeout)
+ *  is logged — never silent — and never includes the token, chat id or any of
+ *  the visitor's details. */
 async function notifyTelegram(data: {
     name: string;
     email: string;
@@ -96,9 +104,20 @@ async function notifyTelegram(data: {
     budget?: string;
     message: string;
 }): Promise<void> {
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-    if (!token || !chatId) return;
+    const config = readTelegramConfig({
+        TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
+        TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID,
+    });
+    if (config.state === "disabled") return;
+    if (config.state === "partial") {
+        // Only the variable NAME is logged, never a value.
+        console.error(
+            `[Contact API] Telegram alert not sent: ${config.missing} is not set ` +
+                "(half-configured; set both TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID, or neither)"
+        );
+        return;
+    }
+    const { token, chatId } = config;
 
     const summaryLines = [
         "New contact-form enquiry",
@@ -113,7 +132,7 @@ async function notifyTelegram(data: {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), TELEGRAM_TIMEOUT_MS);
     try {
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -122,6 +141,30 @@ async function notifyTelegram(data: {
             }),
             signal: controller.signal,
         });
+        if (!res.ok) {
+            // Telegram answers e.g. 404 (malformed token), 401 (bad token),
+            // 400 (chat not found), 403 (bot not started). Without this the
+            // alert fails completely silently. Read inside the try so the
+            // existing 3s abort still bounds the body read.
+            const errBody: unknown = await res.json().catch(() => null);
+            console.error(
+                "[Contact API] Telegram rejected the alert:",
+                res.status,
+                describeTelegramFailure(res.status, errBody, [token, chatId])
+            );
+        }
+    } catch (error) {
+        // Network error or the 3s abort. Logged here (not thrown) so the cause
+        // is visible; the message is scrubbed because some runtimes put the
+        // request URL, which contains the bot token, in fetch errors.
+        console.error(
+            "[Contact API] Telegram alert failed:",
+            controller.signal.aborted
+                ? `timed out after ${TELEGRAM_TIMEOUT_MS}ms`
+                : error instanceof Error
+                  ? redactSecrets(error.message, [token, chatId])
+                  : "unknown"
+        );
     } finally {
         clearTimeout(timeout);
     }
