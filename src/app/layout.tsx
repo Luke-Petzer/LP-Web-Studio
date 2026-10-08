@@ -68,9 +68,15 @@ export const metadata: Metadata = {
     alternates: {
         canonical: SITE_URL,
     },
+    // Real, pre-sized PNGs (0.7 KB / 2.9 KB) instead of a 170 KB base64-in-SVG.
+    // iOS ignores SVG apple-touch-icons, so `apple` points at the 180x180 PNG
+    // that src/app/apple-icon.tsx already renders.
     icons: {
-        icon: "/icon.svg",
-        apple: "/icon.svg",
+        icon: [
+            { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+            { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        ],
+        apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
     },
     openGraph: {
         type: "website",

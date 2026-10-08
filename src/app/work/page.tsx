@@ -6,17 +6,18 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-    title: "Case Studies | Custom Ordering Systems & Client Platforms",
+    // Matches what the page holds: one hospitality site, labelled the narrow exception.
+    title: "Client Work | Cafe Crave Website Case Study",
     description:
-        "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
+        "Cafe Crave website rebuild: React, live Google Reviews and a menu the owner never has to touch. Our one hospitality exception; for systems, see Products.",
     alternates: {
         canonical: `${SITE_URL}/work`,
     },
     openGraph: {
         url: `${SITE_URL}/work`,
-        title: "Case Studies | Custom Ordering Systems & Client Platforms",
+        title: "Client Work | Cafe Crave Website Case Study",
         description:
-            "How LP Web Studio replaces manual admin with real systems — including a B2B ordering platform live in production and the Cafe Crave rebuild.",
+            "Cafe Crave website rebuild: React, live Google Reviews and a menu the owner never has to touch. Our one hospitality exception; for systems, see Products.",
         images: ["/og-image.png"],
     },
 };

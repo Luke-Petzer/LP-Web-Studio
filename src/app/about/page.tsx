@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
     title: "About | Luke Petzer, Systems Builder — Cape Town",
     description:
-        "Luke Petzer builds the ordering portals, client platforms, and automations that replace manual admin for South African businesses. Honours computer science background, ships production systems solo.",
+        "Luke Petzer builds ordering portals, client platforms and automations for South African businesses. Honours-trained, one person from scope to launch.",
     alternates: {
         canonical: `${SITE_URL}/about`,
     },
@@ -31,6 +31,7 @@ export default function AboutPage() {
             <main className="pb-structural">
                 <SubpageHero
                     title="ABOUT"
+                    heading="Luke Petzer, Cape Town systems builder"
                     subtitle="THE PERSON BUILDING YOUR SYSTEM"
                 />
                 <AboutPageContent />

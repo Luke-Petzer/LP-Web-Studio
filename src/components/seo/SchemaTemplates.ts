@@ -139,7 +139,10 @@ export function breadcrumbSchema(items: BreadcrumbItem[]) {
 interface ArticleSchemaInput {
     title: string;
     description: string;
+    /** First publication date (YYYY-MM-DD) — the real one, never backdated. */
     date: string;
+    /** Last substantive edit (YYYY-MM-DD); falls back to `date`. */
+    updated?: string;
     slug: string;
 }
 
@@ -179,18 +182,24 @@ export function blogPostingSchema(article: ArticleSchemaInput) {
         headline: article.title,
         description: article.description,
         datePublished: article.date,
+        dateModified: article.updated ?? article.date,
+        image: [`${SITE_URL}/og-image.png`],
+        // Written by Luke, published by the studio.
         author: {
-            "@type": "Organization",
-            name: SITE_NAME,
-            url: SITE_URL,
+            "@type": "Person",
+            name: "Luke Petzer",
+            url: `${SITE_URL}/about`,
         },
         publisher: {
             "@type": "Organization",
             name: SITE_NAME,
+            url: SITE_URL,
             logo: {
                 "@type": "ImageObject",
-                // /logo.png does not exist — public/ ships logo.svg.
-                url: `${SITE_URL}/logo.svg`,
+                // 720x720 PNG — replaces the 170 KB base64-in-SVG logo.svg.
+                url: `${SITE_URL}/logo-square.png`,
+                width: 720,
+                height: 720,
             },
         },
         mainEntityOfPage: {

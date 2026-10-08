@@ -2,12 +2,18 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/knowledge";
 import { SITE_URL } from "@/lib/site";
 
-// Metadata routes are static by default, so this file's output would
-// otherwise be baked in at build time and never refreshed — which is how
-// every <lastmod> ended up frozen at the same two-month-old timestamp
-// (seo-audit-2026-09, H4). Forcing it dynamic makes every deploy regenerate
-// the sitemap from current source data instead of serving a stale build.
-export const dynamic = "force-dynamic";
+// Generated once per build, never at request time. The article list comes
+// from content/knowledge-base/*.md, which is read with `fs`. At build time the
+// repo is on disk, so that works (it is how the /learn article pages
+// themselves are generated). At request time, inside the serverless function
+// Vercel creates for a dynamic route, the content folder is most likely not
+// bundled — under `force-dynamic` the live sitemap lost both articles while
+// the build-time pages kept working (seo-audit-2026-10, #2; cause inferred,
+// not reproduced on Vercel). `force-static` pins the sitemap to build time so
+// it can't disagree with the pages. <lastmod> stays stable: static routes use
+// the dates below and articles use their frontmatter dates — never
+// `new Date()`.
+export const dynamic = "force-static";
 
 /**
  * Stable "last meaningfully changed" date for each static route, taken from
@@ -72,12 +78,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
     ];
 
-    // Each article's own frontmatter date — real per-article freshness
-    // instead of a blanket timestamp (seo-audit-2026-09, H4).
+    // Each published article's own date (its `updated` date when it has one)
+    // — real per-article freshness instead of a blanket timestamp
+    // (seo-audit-2026-09, H4).
+    // Drafts never reach this list: getAllArticles() filters them out.
     const articles = await getAllArticles();
     const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
         url: `${SITE_URL}/learn/${article.slug}`,
-        lastModified: article.date,
+        lastModified: article.updated ?? article.date,
         changeFrequency: "monthly",
         priority: 0.6,
     }));

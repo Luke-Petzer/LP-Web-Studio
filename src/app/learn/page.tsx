@@ -32,6 +32,7 @@ export default async function LearnPage() {
             <main className="pb-structural bg-[#0A0A0A] min-h-screen">
                 <SubpageHero
                     title="LEARN"
+                    heading="Practical guides to ordering systems and automation"
                     subtitle="FIELD NOTES ON BUILDING BUSINESS SYSTEMS"
                 />
 

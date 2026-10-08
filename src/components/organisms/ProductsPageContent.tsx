@@ -81,6 +81,7 @@ export function ProductsPageContent() {
             <GeometricCanvas />
             <SubpageHero
                 title="PRODUCTS"
+                heading="B2B ordering portal for wholesalers and distributors"
                 subtitle="SYSTEMS YOU CAN SEE BEFORE YOU BUY"
             />
 

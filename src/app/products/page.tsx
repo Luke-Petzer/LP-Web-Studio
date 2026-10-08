@@ -7,8 +7,9 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
     title: "Products | B2B Ordering Platform & lp-os",
+    // No demo promise: the page says "Demo Coming Soon".
     description:
-        "The B2B ordering platform that replaces WhatsApp order chaos with a self-serve portal, and lp-os — the business command centre LP Web Studio runs on. See a live demo and current pricing.",
+        "B2B ordering portal for South African wholesalers and distributors. Replaces WhatsApp orders and PDF price lists. Pricing is shown on the page.",
     alternates: {
         canonical: `${SITE_URL}/products`,
     },

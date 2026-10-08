@@ -1,7 +1,7 @@
 ---
 title: "When WhatsApp Orders Stop Scaling"
 description: "WhatsApp is a great way to take your first orders — and a terrible way to take your thousandth. Here's where it breaks, and what to move to."
-date: "2026-06-18"
+date: "2026-07-17"
 faq:
   - question: "What's wrong with taking orders on WhatsApp?"
     answer: "Nothing, until volume grows. Orders get buried in chat threads, someone has to re-type every one into a spreadsheet, pricing arguments happen in DMs, and there's no single place to see what's outstanding. It works for ten orders a week and quietly falls apart at a hundred."

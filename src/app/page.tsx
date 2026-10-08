@@ -21,10 +21,11 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
     // `absolute` — the root layout template already appends "| LP Web Studio".
-    title: { absolute: "LP Web Studio | Ordering Systems, Client Portals & Business Automation" },
+    // 60 chars, leads with what is sold, carries the buyer's market ("South Africa").
+    title: { absolute: "B2B Ordering Systems & Portals, South Africa | LP Web Studio" },
     description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
     openGraph: {
-        title: "LP Web Studio | Ordering Systems, Client Portals & Business Automation",
+        title: "B2B Ordering Systems & Portals, South Africa | LP Web Studio",
         description: "We build the systems that run your business — ordering portals, client platforms, and automations that replace manual admin. Custom builds from R35,000.",
         images: ["/og-image.png"],
     },

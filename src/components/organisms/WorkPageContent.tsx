@@ -29,6 +29,7 @@ export function WorkPageContent() {
       <GeometricCanvas />
       <SubpageHero
         title="WORK"
+        heading="Client work: the Cafe Crave website rebuild"
         subtitle="SELECTED CLIENT ENGAGEMENTS"
       />
       <WorkScrollReveal />
